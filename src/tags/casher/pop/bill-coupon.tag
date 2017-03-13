@@ -26,7 +26,8 @@
     }
 
     self.barcodeCoupon = function(){
-      var vipCouponNum = Icommon.number;
+      // var vipCouponNum = Icommon.number;
+      var vipCouponNum = scanNumber;
       var params = {
           couponCode: vipCouponNum,
           baskets:parent.baskets

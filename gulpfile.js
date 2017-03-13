@@ -22,6 +22,27 @@ if (!fs.existsSync('./dev/config.js')) {
 }
 var config = require('./dev/config');
 
+gulp.task('riotAndroid', [], function() {
+    return gulp.src(['src/js/tags-dep.js','src/tags/common/*.tag', 'src/tags/order/**/*.tag','src/tags/shop/**/*.tag','src/tags/account/register/*.tag'])
+        .pipe(riot())
+        .pipe(concat('tags.js'))
+        .pipe(gulp.dest('src/js'));
+});
+
+gulp.task('webpackAndroid', ['riotAndroid'], function() {
+    return gulp.src('src/js/boot.js')
+        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(gulp.dest('src'))
+        .pipe(connect.reload());
+});
+
+gulp.task('lessAndroid', [], function() {
+    return gulp.src(['src/css/*.css', 'src/less/*.less', 'src/less/common/*.less', 'src/less/login/*.less', 'src/less/order/**/*.less', 'src/less/shop/**/*.less', 'src/less/static/**/*.less'])
+        .pipe(less())
+        .pipe(concat('bundle.css'))
+        .pipe(gulp.dest('src'));
+});
+
 gulp.task('riot', [], function() {
     return gulp.src(['src/js/tags-dep.js', 'src/tags/*.tag', 'src/tags/*/*.tag', 'src/tags/*/*/*.tag', 'src/tags/*/*/*/*.tag'])
         .pipe(riot())
@@ -60,6 +81,19 @@ gulp.task('move', ['clean'], function() {
 gulp.task('static', ['clean'], function() {
     return gulp.src('./src/static/**').pipe(gulp.dest('dist/static'));
 });
+
+gulp.task('online', ['clean', 'webpackAndroid', 'lessAndroid', 'move', 'static'], function() {
+    return gulp.src('./src/android.html')
+        .pipe(usemin({
+            css: [ minifyCSS, rev ],
+            html: [ function () {return minifyHtml({ empty: true });} ],
+            js: [ uglify, rev ],
+            inlinejs: [ uglify ],
+            inlinecss: [ minifyCSS, 'concat' ]
+        }))
+        .pipe(gulp.dest('dist/'));
+});
+
 gulp.task('dist', ['clean', 'webpack', 'less', 'move', 'static'], function() {
     return gulp.src('./src/*.html')
         .pipe(usemin({
@@ -70,6 +104,23 @@ gulp.task('dist', ['clean', 'webpack', 'less', 'move', 'static'], function() {
             inlinecss: [ minifyCSS, 'concat' ]
         }))
         .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('run', ['online'], function() {
+    connect.server({
+        root: 'src',
+        livereload: {
+            port: config.project.liveReloadPort,
+            src: 'http://localhost:' + config.project.liveReloadPort + '/livereload.js?snipver=1'
+        },
+        port: config.project.port
+    });
+    gulp.watch(['src/less/*', 'src/less/*/*','src/less/*/*/*'], ['lessAndroid'], function() {
+        return gulp.src('.').pipe(connect.reload());
+    });
+    return gulp.watch(['src/tags/*.tag', 'src/tags/*/*.tag','src/tags/*/*/*.tag', 'src/tags/*/*/*/*.tag', 'src/js/*.js'], ['webpackAndroid'], function(){
+        return gulp.src('.').pipe(connect.reload());
+    });
 });
 
 gulp.task('default', ['dist'], function() {

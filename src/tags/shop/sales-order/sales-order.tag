@@ -3,7 +3,7 @@
 		<span class="prev-day" onclick="{ prevDay }">前一天</span>
 		<date-picker></date-picker>
 		<span class="next-day" onclick="{ nextDay }">后一天</span>
-		<a class="switch" href="#/shop/return-order" if="{ type==1 }">退货单</a>
+		<a class="switch" onclick="{ setTitle }" if="{ type==1 }">退货单</a>
 	</div>
 	<div class="half re-left">
 		<div class="card">
@@ -129,7 +129,9 @@
 
 		// riot.routeParams.off('changed', self.changeType);
 
-
+		self.setTitle = function() {
+			utils.setTitle("#/shop/return-order", '退货单')
+		}
 		self.changeType = function() {
 			var date = self.getDateStr(new Date().getTime());
 			var oldType = self.type;

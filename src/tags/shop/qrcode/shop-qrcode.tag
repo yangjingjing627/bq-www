@@ -54,27 +54,37 @@
 		});
 
 		self.init = function () {
-			if (window.localStorage && ('setItem' in localStorage) && localStorage.getItem('account')) {
-					var localData = JSON.parse(localStorage.getItem('account'));
-					if (localData && localData.storeId) {
-						store.showPayQrCode.get({
-							storeId: localData.storeId
-						}, function (data) {
-								if (window.Icommon) {
-									self.qrCodeZfb = Icommon.fileRootPath + 'qrcode/zhifubao_' + Icommon.storeId + '.data?t=' + new Date().getTime();
-									self.qrCodeWx = Icommon.fileRootPath + 'qrcode/weixin_' + Icommon.storeId + '.data?t=' + new Date().getTime();
-									self.qrCodeDown = Icommon.fileRootPath + 'qrcode/scan_' + Icommon.storeId + '.data?t=' + new Date().getTime();
-									self.update();
-								}else {
-									self.qrCodeZfb = data.qrCodeZfb;
-									self.qrCodeWx = data.qrCodeWx;
-									self.qrCodeDown = data.qrCodeDown;
-									self.update();
-								}
-						});
-					}
-			}
+			utils.androidBridge(api.payQrInfoGet,{},function(res){
+				self.res = JSON.parse(res);
+				self.qrCodeZfb = self.res.data.aliCode;
+				self.qrCodeWx = self.res.data.weixinCode;
+				self.qrCodeDown = self.res.data.scanCode;
+				self.update();
+			})
 		}
+
+		// self.init = function () {
+		// 	if (window.localStorage && ('setItem' in localStorage) && localStorage.getItem('account')) {
+		// 			var localData = JSON.parse(localStorage.getItem('account'));
+		// 			if (localData && localData.storeId) {
+		// 				store.showPayQrCode.get({
+		// 					storeId: localData.storeId
+		// 				}, function (data) {
+		// 						if (window.Icommon) {
+		// 							self.qrCodeZfb = Icommon.fileRootPath + 'qrcode/zhifubao_' + Icommon.storeId + '.data?t=' + new Date().getTime();
+		// 							self.qrCodeWx = Icommon.fileRootPath + 'qrcode/weixin_' + Icommon.storeId + '.data?t=' + new Date().getTime();
+		// 							self.qrCodeDown = Icommon.fileRootPath + 'qrcode/scan_' + Icommon.storeId + '.data?t=' + new Date().getTime();
+		// 							self.update();
+		// 						}else {
+		// 							self.qrCodeZfb = data.qrCodeZfb;
+		// 							self.qrCodeWx = data.qrCodeWx;
+		// 							self.qrCodeDown = data.qrCodeDown;
+		// 							self.update();
+		// 						}
+		// 				});
+		// 			}
+		// 	}
+		// }
 
 //本地
 //if (window.Icommon) {

@@ -41,9 +41,7 @@
 		}
 
 		self.openSetting = function() {
-			if (window.Icommon) {
-				Icommon.openSetting();
-			}
+			utils.androidBridge(api.openSetting)
 		}
 
 		self.getCode = function(e){

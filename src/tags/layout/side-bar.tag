@@ -121,9 +121,7 @@
 		}
 
 		self.openSetting = function () {
-			if (window.Icommon) {
-				Icommon.openSetting();
-			}
+			utils.androidBridge(api.openSetting)
 		}
 
 		// 接收推送，同步商品

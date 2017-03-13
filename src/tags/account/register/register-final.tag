@@ -25,9 +25,7 @@
 		}
 
 		self.openSetting = function() {
-			if (window.Icommon) {
-				Icommon.openSetting();
-			}
+			utils.androidBridge(api.openSetting)
 		}
 
 		flux.bind.call(self,{

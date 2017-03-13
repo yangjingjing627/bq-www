@@ -89,22 +89,17 @@ var utils = {
 
     //用于向服务端同步数据
     sync: function(type) {
-        if (window.Icommon) {
-            Icommon.syn(null, null, {
-                name: type
-            });
-        }
+      var api = require('./API-android');
+      getWebViewJavascriptBridge(api.syn,{name: type})
     },
 
     loadShow: function() {
-        if (window.Iprogress) {
-            Iprogress.show();
-        }
+      var api = require('./API-android');
+      getWebViewJavascriptBridge(api.show)
     },
     loadHide: function() {
-        if (window.Iprogress) {
-            Iprogress.dismiss();
-        }
+      var api = require('./API-android');
+      getWebViewJavascriptBridge(api.dismiss)
     },
     iposHeader: function() {
         if (window.Icommon) {
@@ -122,8 +117,70 @@ var utils = {
             //  			return  "http://zm.store.meilizongjian.com/pos/";
             return false;
         }
+    },
+    androidBridge: function(url, params, callback) {
+        if (window.WebViewJavascriptBridge) {
+            window.WebViewJavascriptBridge.callHandler(
+                url,
+                params,
+                function(res) {
+                    callback(res)
+                }
+            );
+        } else {
+            document.addEventListener(
+                'WebViewJavascriptBridgeReady',
+                function() {
+                  setTimeout(function() {
+                    window.WebViewJavascriptBridge.callHandler(
+                      url,
+                      params,
+                      function(res) {
+                        callback(res)
+                      }
+                    );
+                  }, 20)
+                },
+                false
+            );
+        }
+    },
+    setTitle: function(link, name) {
+      var api = require('./API-android');
+      getWebViewJavascriptBridge(api.setTitle,{title: name})
+      location.href = link;
+    },
+    isAndroid: function() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+        return isAndroid
     }
-
 }
-
+function getWebViewJavascriptBridge(url, params, callback) {
+    if (window.WebViewJavascriptBridge) {
+        window.WebViewJavascriptBridge.callHandler(
+            url,
+            params,
+            function(res) {
+                callback(res)
+            }
+        );
+    } else {
+        document.addEventListener(
+            'WebViewJavascriptBridgeReady',
+            function() {
+              setTimeout(function() {
+                window.WebViewJavascriptBridge.callHandler(
+                  url,
+                  params,
+                  function(res) {
+                    callback(res)
+                  }
+                );
+              }, 20)
+            },
+            false
+        );
+    }
+}
 export default utils;

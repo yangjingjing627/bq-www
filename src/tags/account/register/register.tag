@@ -1,6 +1,6 @@
 <register>
 	<div id="login-wrap">
-		<a class="back" href="#/login">返回</a>
+		<a class="back" onclick="{ goback }">返回</a>
 		<div class="setting" onclick="{ openSetting }"></div>
 		<form class="register" onsubmit="{ submit }">
 			<h4>填写店长信息</h4>
@@ -27,9 +27,7 @@
 		self.verifyCode = self.verifyPhone = self.verifyOwner = self.verifyPWD = self.verifyRePWD = true;
 
 		self.openSetting = function() {
-			if (window.Icommon) {
-				Icommon.openSetting();
-			}
+			utils.androidBridge(api.openSetting)
 		}
 
 		function countDown(){
@@ -150,6 +148,9 @@
 						});
 			}
 		};
+		self.goback = function() {
+			utils.androidBridge(api.goLogin)
+		}
 		self.on('mount', function(){
 			if(window.Iapps){
 				Iapps.getImei(

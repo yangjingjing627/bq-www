@@ -200,9 +200,7 @@
 
 		//埋点
 		self.log = function (name) {
-			if (window.Icommon) {
-				Icommon.logEvent(null, null, {eventId: name});
-			}
+			utils.androidBridge(api.logEvent,{eventId: name})
 		}
 
 		self.backspace = function () {

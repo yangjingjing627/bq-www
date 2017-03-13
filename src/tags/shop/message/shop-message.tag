@@ -76,9 +76,7 @@
 
 		//埋点
 		self.relog = function(name) {
-				if (window.Icommon) {
-						Icommon.statisticalEvent(null,null,{eventId: 19});
-				}
+			utils.androidBridge(api.statisticalEvent,{eventId: 19})
 		}
 
 		openModal(id) {
@@ -89,11 +87,13 @@
 		}
 
 		self.openupQrcode = function () {
-			location.href = "#/shop/upqrcode";
+			utils.setTitle("#/shop/upqrcode", '支付二维码')
 		}
 
 		self.changeQrcode = function () {
 			location.href = "#/shop/userqrcode";
+			utils.setTitle("#/shop/userqrcode", '店铺推广二维码')
+
 		}
 
 		showSwitch(e) {
@@ -106,7 +106,7 @@
 					show: true
 				};
 			}
-			if (window.Ishop) {
+			// if (window.Ishop) {
 				httpGet({
 					url: api.showAds,
 					params: params,
@@ -117,7 +117,7 @@
 						}, 500)
 					}
 				});
-			}
+			// }
 		}
 
 		self.init = function () {

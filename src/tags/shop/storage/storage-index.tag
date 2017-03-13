@@ -5,7 +5,7 @@
                 <img src="{ img }">
                 <div>{ name }</div>
             </a>
-        </li>    
+        </li>
     </ul>
 
     <script>
@@ -19,14 +19,15 @@
 
         linkUrl(e){
             self.log(e.item.loginName);
-			location.href = e.item.link;
+						location.href = e.item.link;
+						utils.setTitle(e.item.link, e.item.name)
         }
 
         //埋点
         self.log = function(name) {
-            if (window.Icommon) {
-                Icommon.logEvent(null,null,{eventId: name});
-            }
+					utils.androidBridge(api.logEvent,{eventId: name},function(){
+            console.log('---shop-index----埋点－－－');
+          })
         }
     </script>
 

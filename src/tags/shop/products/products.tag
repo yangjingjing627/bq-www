@@ -7,7 +7,7 @@
 				</div>
 				<div class="btn-group">
 					<button>
-						<a href="#/shop/import-custom">导入已有商品库</a>
+						<a onclick="{ setTitle }">导入已有商品库</a>
 					</button>
 				</div>
 			</div>
@@ -66,6 +66,10 @@
 		var self = this;
 		self.next = 0;
 		self.scrollLock = false;
+		
+		self.setTitle = function() {
+			utils.setTitle("#/shop/import-custom", '导入已有商品库')
+		}
 
 		self.openModal = function (id) {
 			return function (e) {

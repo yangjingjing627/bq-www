@@ -17,9 +17,7 @@
 		var self = this;
 
 		self.openSetting = function () {
-			if (window.Icommon) {
-				Icommon.openSetting();
-			}
+			utils.androidBridge(api.openSetting)
 		}
 
 		self.submit = function (e) {

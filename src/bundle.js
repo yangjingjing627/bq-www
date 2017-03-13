@@ -3080,7 +3080,7 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';var _riotSeedFlux=__webpack_require__(7);var _riotSeedFlux2=_interopRequireDefault(_riotSeedFlux);var _store=__webpack_require__(8);var _constant=__webpack_require__(13);var _constant2=_interopRequireDefault(_constant);var _jquery=__webpack_require__(9);var _jquery2=_interopRequireDefault(_jquery);var _index2=__webpack_require__(14);var _index3=_interopRequireDefault(_index2);var _utils=__webpack_require__(10);var _utils2=_interopRequireDefault(_utils);var _shop=__webpack_require__(220);var _shop2=_interopRequireDefault(_shop);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}// import FastClick from 'fastclick';
+	/* WEBPACK VAR INJECTION */(function(riot) {'use strict';var _riotSeedFlux=__webpack_require__(7);var _riotSeedFlux2=_interopRequireDefault(_riotSeedFlux);var _store=__webpack_require__(8);var _constant=__webpack_require__(14);var _constant2=_interopRequireDefault(_constant);var _jquery=__webpack_require__(9);var _jquery2=_interopRequireDefault(_jquery);var _index2=__webpack_require__(15);var _index3=_interopRequireDefault(_index2);var _utils=__webpack_require__(10);var _utils2=_interopRequireDefault(_utils);var _shop=__webpack_require__(221);var _shop2=_interopRequireDefault(_shop);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}// import FastClick from 'fastclick';
 	// FastClick.attach(document.body, options);
 	// if ('addEventListener' in document) {
 	//     document.addEventListener('DOMContentLoaded', function() {
@@ -3090,13 +3090,13 @@
 	// }
 	// import daterangepicker from 'daterangepicker';
 	// ---end------注释ipos功能
-	__webpack_require__(221);// ---start------注释ipos功能
+	__webpack_require__(222);// ---start------注释ipos功能
 	// import uploader from 'simple-ajax-uploader';
 	//riot tags需要的依赖
-	if(window.navigator.userAgent.match(/Cordova/)){var api=__webpack_require__(11);var tokenPath=window.iposHeader+'/qiniu/uptoken';//  if(window.baseUrl || utils.iposHeader()){
+	if(window.navigator.userAgent.match(/Cordova/)){var api=__webpack_require__(12);var tokenPath=window.iposHeader+'/qiniu/uptoken';//  if(window.baseUrl || utils.iposHeader()){
 	//  		tokenPath = (window.baseUrl?window.baseUrl:utils.iposHeader()) + '/qiniu/uptoken';
 	//  }
-	}else{var tokenPath=window.iposHeader+'/qiniu/uptoken';var api=__webpack_require__(12);}var qiniuOpts={runtimes:'html5,flash,html4',//上传模式,依次退化
+	}else{var tokenPath=window.iposHeader+'/qiniu/uptoken';var api=__webpack_require__(13);}var qiniuOpts={runtimes:'html5,flash,html4',//上传模式,依次退化
 	browse_button:'',//上传选择的点选按钮，**必需**
 	uptoken_url:tokenPath,//Ajax请求upToken的Url，**强烈建议设置**（服务端提供）
 	unique_names:true,save_key:true,domain:'https://o93qmsoro.qnssl.com/',//bucket 域名，下载资源时用到，**必需**
@@ -3165,7 +3165,7 @@
 	//         }
 	//     }
 	// }
-	var globleEvents=riot.observable();riot.tag2('find-password','<div id="login-wrap"> <a class="back" href="#/login">返回</a> <div class="setting" onclick="{openSetting}"></div> <form class="register" onsubmit="{submit}"> <h4>找回密码</h4> <input class="{error: !verifyPhone}" value="{register.phoneMobile}" type="text" name="phone" id="register-phone" maxlength="11" placeholder="手机号"> <label> <input class="{error: !verifyCode}" value="{register.code}" type="text" name="phone" id="checkcode" placeholder="验证码"> <a if="{firstSend}" href="" onclick="{getCode}">获取</a> <a if="{!firstSend}" onclick="{getCode}"> 再次获取 <span if="{isCounting}" id="countDown">{countNum}</span> <b if="{isCounting}"> s </b> </a> </label> <input type="password" value="{register.password}" name="password" class="{error: !verifyPWD}" id="rg-pwd" placeholder="新密码"> <input type="password" value="{register.password}" class="{error: !verifyRePWD}" placeholder="再次确认密码" id="rg-repwd"> <button onclick="{submit}">修改密码</button> </form> </div>','','',function(opts){var self=this;self.countNum=60;self.firstSend=true;self.verifyCode=self.verifyPhone=self.verifyPWD=self.verifyRePWD=true;function countDown(){var count=(0,_jquery2.default)('#countDown');if(count[0]){count.text(self.countNum--);if(self.countNum>-1){setTimeout(countDown,1000);}else{self.isCounting=false;self.update();}}}self.openSetting=function(){if(window.Icommon){Icommon.openSetting();}};self.getCode=function(e){e.preventDefault();var target=e.target;var phone=(0,_jquery2.default)('#register-phone').val();if(phone.match(/^1[0-9]{10}$/)){self.verifyPhone=true;if(self.isCounting){return;}self.firstSend=false;_store.store.password.sendCode({phoneMobile:phone},function(){self.isCounting=true;self.countNum=60;self.update();countDown();});}else{self.verifyPhone=false;}};self.submit=function(e){e.preventDefault();self.verifyPhone=(0,_jquery2.default)('#register-phone').val().match(/^1[0-9]{10}$/)?true:false;self.verifyPWD=(0,_jquery2.default)('#rg-pwd').val()?true:false;self.verifyRePWD=(0,_jquery2.default)('#rg-pwd').val()==(0,_jquery2.default)('#rg-repwd').val()?true:false;if(self.verifyPhone&&self.verifyPWD&&self.verifyRePWD){_store.store.password.commit({phoneMobile:(0,_jquery2.default)('#register-phone').val(),code:(0,_jquery2.default)('#checkcode').val(),password:(0,_jquery2.default)('#rg-pwd').val()},function(res){if(res.code!==1){return;}else{location.hash='#login';}});}};});riot.tag2('login','<div id="login-wrap"> <form class="login" onsubmit="{submit}"> <div class="logo"></div> <div class="setting" onclick="{openSetting}"></div> <input id="username" type="text" name="username" placeholder="账号/手机号" maxlength="12"> <input id="password" type="password" name="account" placeholder="密码" maxlength="12"> <button class="login-btn">登录</button> <div class="tips"> <a class="left" href="#/register">开店</a> <a class="right" href="#/find-password">找回店主密码</a> </div> </form> </div>','','',function(opts){var self=this;self.openSetting=function(){if(window.Icommon){Icommon.openSetting();}};self.submit=function(e){e.preventDefault();var username=(0,_jquery2.default)('#username').val();var password=(0,_jquery2.default)('#password').val();if(!username){_utils2.default.toast("请填写用户名");return;}if(!password){_utils2.default.toast("请填写密码");return;}_store.store.account.login({username:(0,_jquery2.default)('#username').val(),password:(0,_jquery2.default)('#password').val(),imeCode:'2021414914044566'},function(data){if(data.code==1){self.login=true;location.replace("#/casher/index");location.reload();}else if(data.code==20101){self.login=false;(0,_jquery2.default)('#login-warning').show();}else if(data.msg){alert(data.msg);}});};self.closeWarning=function(){(0,_jquery2.default)('#login-warning').hide();};});riot.tag2('register-final','<div id="login-wrap"> <a class="back" href="#/register">上一步</a> <div class="setting" onclick="{openSetting}"></div> <form class="register" onsubmit="{submit}"> <h4>填写店铺信息</h4> <input type="text" name="storeName" class="{error: !verifyStoreName}" placeholder="店铺名称"> <input type="text" name="shopAddress" class="shopAddress {error: !verifyAddress}" onfocus="{openSelect}" value="{addressValue}" placeholder="店铺地址"> <input type="text" name="streetName" class="{error: !verifyStree}" placeholder="街道"> <input type="text" name="tel" class="{error: !verifytel}" placeholder="店铺电话" maxlength="20"> <label class="checkbox" onclick="{toggleLogin}"> <p id="autologin" class="on">打开收银机默认登陆此店铺</p> </label> <button>提交</button> </form> </div> <modal modal-width="" modal-height="" id="selectAddr"> <address-select></address-select> </modal>','','',function(opts){var self=this;var verifyList=['verifyStoreName','verifyAddress','verifyStree','verifytel'];for(var i=0;i<4;i++){self[verifyList[i]]=true;}self.openSetting=function(){if(window.Icommon){Icommon.openSetting();}};_riotSeedFlux2.default.bind.call(self,{name:'register',store:_store.store.register,success:function success(){self.update();}});function verify(){var storeName=(0,_jquery2.default)('input[name=storeName]').val();var addressName=(0,_jquery2.default)('input[name=shopAddress]').val();var streetName=(0,_jquery2.default)('input[name=streetName]').val();var tel=(0,_jquery2.default)('input[name=tel]').val();if(!storeName){self.verifyStoreName=false;_utils2.default.toast("请填写店铺名称");return false;}else{self.verifyStoreName=true;_store.store.register.set('storeName',storeName);}if(!addressName){self.verifyAddress=false;_utils2.default.toast("请填写店铺地址");return false;}else{self.verifyAddress=true;}if(!streetName){self.verifyStree=false;_utils2.default.toast("请填写街道信息");return false;}else{self.verifyStree=true;_store.store.register.set('streetName',streetName);}if(!tel.match(/[0-9]{6,}/)){self.verifytel=false;_utils2.default.toast("请填写正确的店铺电话");return false;}else{self.verifytel=true;_store.store.register.set('tel',tel);}return self.verifyStoreName&&self.verifyAddress&&self.verifyStree&&self.verifytel;}function autoLogin(){_store.store.account.login({username:self.register.phoneMobile,password:self.register.password,imeCode:'784372987'},function(data){location.replace("#/casher/index");location.reload();});}self.submit=function(e){e.preventDefault();if(verify()){_utils2.default.loadShow();if((0,_jquery2.default)('#autologin').hasClass('on')&&self.imeCode){self.register.bindDevice=true;}else{self.register.bindDevice=false;}if(self.imeCode){self.register.imeCode=self.imeCode;}(0,_store.httpPost)({url:api.register,params:self.register,success:function success(res){if((0,_jquery2.default)('#autologin').hasClass('on')){autoLogin();}else{location.hash='#login';}},complete:function complete(res){_utils2.default.loadHide();}});};};self.toggleLogin=function(e){(0,_jquery2.default)(e.target).toggleClass('on');};self.openSelect=function(){(0,_jquery2.default)('#selectAddr')[0].open();};self.on('mount',function(){if(window.Iapps){Iapps.getImei(function(res){if(res.imei){self.imeCode=res.imei;self.update();}},function(err){},{});}(0,_jquery2.default)(self.root).find('input').bind('input',function(e){(0,_jquery2.default)(this).removeClass('error');});});});riot.tag2('register','<div id="login-wrap"> <a class="back" href="#/login">返回</a> <div class="setting" onclick="{openSetting}"></div> <form class="register" onsubmit="{submit}"> <h4>填写店长信息</h4> <input class="{error: !verifyPhone}" value="{register.phoneMobile}" type="text" name="phone" id="register-phone" maxlength="11" placeholder="手机号"> <label> <input class="{error: !verifyCode}" value="{register.code}" type="text" name="phone" id="checkcode" placeholder="验证码"> <a if="{firstSend}" href="" onclick="{getCode}">获取</a> <a if="{!firstSend}" onclick="{getCode}"> 再次获取 <span if="{isCounting}" id="countDown">{countNum}</span> <b if="{isCounting}"> s </b> </a> </label> <input type="password" value="{register.password}" name="password" class="{error: !verifyPWD}" id="rg-pwd" placeholder="店长密码(6-12位)" maxlength="12"> <input type="password" value="{register.password}" class="{error: !verifyRePWD}" placeholder="再次店长密码" id="rg-repwd" maxlength="12"> <input type="text" name="owner" value="{register.personName}" class="{error: !verifyOwner}" id="owner-name" placeholder="店长姓名"> <button onclick="{submit}">提交</button> </form> </div>','','',function(opts){var self=this;self.countNum=60;self.firstSend=true;self.verifyCode=self.verifyPhone=self.verifyOwner=self.verifyPWD=self.verifyRePWD=true;self.openSetting=function(){if(window.Icommon){Icommon.openSetting();}};function countDown(){var count=(0,_jquery2.default)('#countDown');if(count[0]){count.text(self.countNum--);if(self.countNum>-1){setTimeout(countDown,1000);}else{self.isCounting=false;self.update();}}}_riotSeedFlux2.default.bind.call(self,{name:'register',store:_store.store.register,success:function success(){self.update();}});self.getCode=function(e){e.preventDefault();var target=e.target;var phone=(0,_jquery2.default)('#register-phone').val();if(phone.match(/^1[0-9]{10}$/)){self.verifyPhone=true;if(self.isCounting){return;}self.firstSend=false;_store.store.register.sendCode({phoneMobile:phone},function(){self.isCounting=true;self.countNum=60;self.update();countDown();});}else{self.verifyPhone=false;_utils2.default.toast("请填写正确的手机号");}};function autoLogin(){_store.store.account.login({username:(0,_jquery2.default)('#register-phone').val(),password:(0,_jquery2.default)('#rg-pwd').val(),imeCode:'784372987'},function(data){location.replace("#/casher/index");location.reload();});}self.submit=function(e){e.preventDefault();var registerStore=_store.store.register;self.verifyPhone=(0,_jquery2.default)('#register-phone').val().match(/^1[0-9]{10}$/)?true:false;self.verifyCode=(0,_jquery2.default)('#checkcode').val()?true:false;self.verifyOwner=(0,_jquery2.default)('#owner-name').val()?true:false;self.verifyPWD=/^[0-9a-zA-Z]{6,12}$/.test((0,_jquery2.default)('#rg-pwd').val());self.verifyRePWD=(0,_jquery2.default)('#rg-pwd').val()==(0,_jquery2.default)('#rg-repwd').val()?true:false;if(!self.verifyPhone){_utils2.default.toast("请填写正确的手机号");return;}if(!self.verifyCode){_utils2.default.toast("请填写正确的验证码");return;}if(!self.verifyPWD){_utils2.default.toast("请填写正确的密码");return;}if(!self.verifyRePWD){_utils2.default.toast("密码不一致");return;}if(!self.verifyOwner){_utils2.default.toast("请填写店长姓名");return;}if(self.verifyPhone&&self.verifyOwner&&self.verifyPWD&&self.verifyRePWD){_utils2.default.loadShow();self.register.bindDevice=true;var params={channel:'bpos',bindDevice:true,phoneMobile:(0,_jquery2.default)('#register-phone').val(),code:(0,_jquery2.default)('#checkcode').val(),personName:(0,_jquery2.default)('#owner-name').val(),password:(0,_jquery2.default)('#rg-pwd').val()};if(self.imeCode){params.imeCode=self.imeCode;}(0,_store.httpPost)({url:api.register,params:params,success:function success(res){autoLogin();},complete:function complete(res){_utils2.default.loadHide();}});}};self.on('mount',function(){if(window.Iapps){Iapps.getImei(function(res){if(res.imei){self.imeCode=res.imei;self.update();}},function(err){},{});}});});riot.tag2('app-index','<ul class="app-index"> <li each="{list}" onclick="{downorlook}" onmousedown="{deleteApp}"> <div class="app-list"> <div class="app-img"> <img riot-src="{icon}"> </div> <div class="no-down downloading" if="{status==3 || status==1}"> <div class="download-no" riot-style="height:{noDown}%"></div> <div class="download-yes" riot-style="height:{progress}%"></div> <div class="downloading-word">{progress || 0}%</div> </div> <div class="no-down" if="{status !=7}"></div> </div> <div class="app-name">{name}</div> </li> <div class="clearfix"></div> </ul>','','',function(opts){var self=this;self.downorlook=function(e){clearTimeout(timeoutDelete);var appInfo=JSON.stringify(e.item);if(e.item.status==3){_utils2.default.toast('正在下载');return;}_store.store.downloadApp.get(appInfo,function(){});};function getAppInfo(){var appInfo=Idownload.appinfo;appInfo=JSON.parse(appInfo);if(appInfo.nativeUpdate){self.init();}else{for(var i=0;i<self.list.length;i++){if(self.list[i].packageName==appInfo.packageName){self.list[i]=appInfo;self.list[i].noDown=100-appInfo.progress;break;}}}self.update();};self.init=function(){_store.store.getappinfo.get(function(data){if(window.Icommon){self.list=JSON.parse(data);}else{self.list=data;}self.update();_store.store.appList.get(function(data){if(self.list.length>0){var newAppList="";if(data&&data.length>0){for(var j=0;j<self.list.length;j++){newAppList+=self.list[j].packageName+"  ";}for(var i=0;i<data.length;i++){if(newAppList.indexOf(data[i].packageName)<0){self.list.push(data[i]);}else{for(var k=0;k<self.list.length;k++){if(self.list[k].packageName==data[i].packageName){self.list[k].type=data[i].type;}}}}}}else{self.list=data;}self.update();});});};var timeoutDelete;self.on('mount',function(){self.init();window.addEventListener('sendappinfo',getAppInfo,false);self.deleteApp=function(e){var appInfo=JSON.stringify(e.item);if(e.item.status==7){timeoutDelete=setTimeout(function(){if(confirm("是否删除?")){_store.store.unInstall.get(appInfo,function(){});}},1500);}};(0,_jquery2.default)(".app-list").mouseup(function(e){clearTimeout(timeoutDelete);});(0,_jquery2.default)(".app-list").mouseout(function(e){clearTimeout(timeoutDelete);});self.update();});self.on('unmount',function(){clearTimeout(timeoutDelete);window.removeEventListener('sendappinfo',getAppInfo);});});riot.tag2('casher-balance','<div class="balance-wrap"> <div class="balance-select"> <ul class="pay-info"> <li> <p if="{!refund}">应收<strong>￥<b>{pay.amount || 0}</b> </strong> </p> <p class="red" if="{refund}">应退<strong>￥<b>{payCashStr}</b> </strong> </p> </li> <li> <p class="red" if="{!refund && type==\'1\'}">现金<strong>￥<b>{payCashStr}</b> </strong> </p> </li> <li> <p if="{!refund && type==\'1\'}">找零<strong>￥<b>{payback}</b> </strong> </p> </li> </ul> <ul class="pay-type"> <li class="cash {active: type == \'1\'}" onclick="{changeType(\'1\')}"><span>现金</span></li> <li if="{!refund}" class="faceto {active: type == \'5\'}" onclick="{changeType(\'5\')}"><span>面对面收款</span></li> <li if="{!refund}" class="alipay {active: type == \'2\'}" onclick="{changeType(\'2\')}"><span>支付宝</span></li> <li if="{!refund}" class="wechat {active: type == \'3\'}" onclick="{changeType(\'3\')}"><span>微信</span></li> <li if="{!refund}" class="bank {active: type == \'4\'}" onclick="{changeType(\'4\')}"><span>银行卡</span></li> </ul> </div> <div class="keyboard"> <table> <tbody> <tr> <td colspan="1" rowspan="4" style="width:56.8%" show="{type !=\'1\'}"> <div class="pic-pay"> <div show="{type==\'4\'}" class="bank-code code-pic"></div> <p show="{type==\'2\' || type==\'3\' || type==\'5\'}">{codeTips}</p> </div> </td> <td onclick="{addString(\'7\')}" if="{type==\'1\'}">7</td> <td onclick="{addString(\'8\')}" if="{type==\'1\'}">8</td> <td onclick="{addString(\'9\')}" if="{type==\'1\'}">9</td> <td onclick="{backspace}" class="backspace" if="{type==\'1\'}"></td> <td colspan="2" if="{refund && type==\'1\'}" class="payback-option"> <p class="on" onclick="{setStorage}">退回时增加库存</p> </td> <td class="red" if="{!refund}" onclick="{wipe}">抹零</td> <td class="red discount-td" if="{!refund}" onclick="{openDiscount}">折扣</td> <td class="display-none" if="{!refund}"></td> <td class="red" if="{refund && type==\'1\'}" onclick="{openBox}">开钱箱</td> </tr> <tr if="{type !=\'1\'}"> <td class="big" rowspan="3" colspan="3" onclick="{check}">结算</td> </tr> <tr if="{type==\'1\'}"> <td onclick="{addString(\'4\')}">4</td> <td onclick="{addString(\'5\')}">5</td> <td onclick="{addString(\'6\')}">6</td> <td onclick="{addString(\'100\')}">100</td> <td class="big" rowspan="3" colspan="3" onclick="{check}">结算</td> </tr> <tr if="{type==\'1\'}"> <td onclick="{addString(\'1\')}">1</td> <td onclick="{addString(\'2\')}">2</td> <td onclick="{addString(\'3\')}">3</td> <td onclick="{addString(\'50\')}">50</td> </tr> <tr if="{type==\'1\'}"> <td onclick="{addString(\'0\')}">0</td> <td onclick="{addString(\'00\')}">00</td> <td onclick="{addString(\'.\')}">.</td> <td onclick="{addString(\'20\')}">20</td> </tr> </tbody> </div> </div> <modal id="discount-layer" modal-height="280px" opts="{discountOpts}"> <div class="discount"> <div class="top"> <label>请输入折扣百分比: <input id="discountInput" maxlength="3" type="tel" pattern="[0-9]*" value="{parent.discount}" name="discount"></label> </div> <div class="label">快捷输入：</div> <ul> <li onclick="{parent.getDiscount(95)}">95%</li> <li onclick="{parent.getDiscount(90)}">90%</li> <li onclick="{parent.getDiscount(85)}">85%</li> <li onclick="{parent.getDiscount(80)}">80%</li> <li onclick="{parent.getDiscount(75)}">75%</li> <li onclick="{parent.getDiscount(70)}">70%</li> <li onclick="{parent.getDiscount(65)}">65%</li> <li onclick="{parent.getDiscount(60)}">60%</li> </ul> </div> </modal> <modal id="pay-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> <modal id="find-zero" modal-width="500px" modal-height="250px" nofooter> <div class="find-zero about"> <div class="title"> 找零 </div> <div class="content"> {parent.payback} </div> <span class="red-box" onclick="{parent.payCashSuccess}">确定</span> </div> </modal> <modal id="payWaiting" modal-width="500px" nofooter> <pay-waiting></pay-waiting> </modal> <pop id="billCouponInfo" title="优惠券" twobutton popzbig="true" popclose="true"> <bill-coupon-info></bill-coupon-info> </pop> <pop id="billCouponNum" title="优惠券" twobutton popzbig="true" cancletext="返回"> <bill-coupon-num></bill-coupon-num> </pop> <pop id="billCoupon" title="优惠券" popclose="true"> <bill-coupon></bill-coupon> </pop> </div>','','',function(opts){var self=this;var params=riot.routeParams.params;self.type='1';self.discount=100;self.discountNum=100;self.payback=0.0;self.refund=params.refund||false;self.couponPrice=0;self.wipeButton=false;self.coupon=0;self.couponCode=0;self.vipNumber=0;var q=riot.route.query();if(q.vipphone&&q.vipphone!=""&&q.vipphone!="undefined"&&q.vipphone!=0){var payVip=function payVip(){_store.store.balance.payVip({vipNumber:self.vipNumber});};self.vipNumber=q.vipphone;setTimeout(payVip,500);}self.cartList=function(){_store.store.cart.get(function(res){self.baskets=JSON.stringify(res.list);self.update();});};self.getPay=function(){_store.store.pay.open(function(res){self.pay=res;if(self.pay&&self.pay.amount){var pay_amount=self.pay.amount.toFixed(1);self.pay.amount=pay_amount;self.hisPayPrice=self.pay.amount;self.payCashStr=self.payCashStr||self.pay.amount;caculate(self.pay.amount,self.payCashStr);self.update();}});_store.store.sys.sync();};function warning(text){var layer=(0,_jquery2.default)('#pay-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}function caculate(needPay,cash){if(needPay==undefined||cash==undefined){return;}needPay=Math.round(needPay*1000);cash=Math.round(cash*1000);self.payback=((cash-needPay)/1000).toFixed(1);self.update();}self.log=function(name){if(window.Icommon){Icommon.logEvent(null,null,{eventId:name});}};self.backspace=function(){var str=self.payCashStr;var l=str.length;if(!self.payInput){self.payCashStr='0';self.payInput=true;}else if(l>1){self.payCashStr=str.substring(-1,l-1);}else if(str!='0'){self.payCashStr='0';}else{return;}self.payInput=true;caculate(self.pay.amount,self.payCashStr);};self.addString=function(str){return function(){if(self.payCashStr=='0'){if(str=='.'){self.payCashStr+=str;}else if(str!='0'&&str!='00'){self.payCashStr=str;}}else if(!self.cashInput){self.payInput=true;if(str=='.'){self.payCashStr='0'+str;}else{self.payCashStr=str;}}else{self.payCashStr+=str;}self.cashInput=true;caculate(self.pay.amount,self.payCashStr);};};self.changeType=function(type){return function(){self.type=type;if(self.type==='3'){self.codeTips='点击结算，请顾客打开微信客户端扫描副屏二维码，即可完成收款';}else if(self.type==='2'){self.codeTips='点击结算，请顾客打开支付宝客户端扫描副屏二维码，即可完成收款';}else if(self.type==='5'){self.codeTips='点击结算，请顾客使用倍全便利app扫描副屏二维码，即可完成收款';}_store.store.balance.change({type:self.type,cash:self.payCashStr});};};self.getDiscount=function(num){return function(){self.discount=num;self.update();};};self.openDiscount=function(){self.log("0202");if((0,_jquery2.default)(".discount-td").is('.button-on')){(0,_jquery2.default)(".discount-td").toggleClass('button-on');self.discountNum=100;_store.store.balance.discount({discountNum:100,wipe:self.wipeButton},function(res){if(res&&res.code){(0,_jquery2.default)('#discount-layer')[0].close();}self.update();});self.update();self.computePayPrice();}else{(0,_jquery2.default)('#discount-layer')[0].open();}};self.wipe=function(e){self.log("0201");(0,_jquery2.default)(e.target).toggleClass('button-on');if((0,_jquery2.default)(e.target).is(".button-on")){self.wipeButton=true;_store.store.balance.wipe({wipe:true});}else{self.wipeButton=false;_store.store.balance.wipe({wipe:false});}self.update();self.computePayPrice();};self.computePayPrice=function(){if(self.wipeButton){var pay_amount=(self.hisPayPrice*self.discountNum/100-self.coupon).toFixed(3);self.pay.amount=pay_amount.substring(0,pay_amount.length-2);}else{var pay_amount=(self.hisPayPrice*self.discountNum/100-self.coupon).toFixed(1);self.pay.amount=pay_amount;}caculate(self.pay.amount,self.payCashStr);self.update();};self.openCoupon=function(e){if((0,_jquery2.default)(e.target).is(".button-on")){self.couponCode=0;self.coupon=0;self.computePayPrice();_store.store.balance.payCoupon({coupon:self.coupon});(0,_jquery2.default)(e.target).removeClass('button-on');}else{(0,_jquery2.default)("#billCoupon")[0].open(e);}};self.couponAdd=function(e){(0,_jquery2.default)(e.target).addClass('button-on');if(e.item.couponInfo){self.coupon=e.item.couponInfo.price;self.couponCode=e.item.couponInfo.couponCode;_store.store.balance.payCoupon({coupon:self.coupon,couponNumber:self.couponCode});}else{self.coupon=0;self.couponCode=0;_store.store.balance.payCoupon({coupon:self.coupon});}self.computePayPrice();};self.submitDiscount=function(){var discount=parseInt((0,_jquery2.default)('#discountInput').val());(0,_jquery2.default)(".discount-td").toggleClass('button-on');if((0,_jquery2.default)(".discount-td").is('.button-on')){self.discountNum=discount;_store.store.balance.discount({discountNum:discount,wipe:self.wipeButton},function(res){if(res&&res.code){(0,_jquery2.default)('#discount-layer')[0].close();}self.update();});}else{self.discountNum=100;_store.store.balance.discount({discountNum:100,wipe:self.wipeButton},function(res){if(res&&res.code){(0,_jquery2.default)('#discount-layer')[0].close();}self.update();});}(0,_jquery2.default)('#discount-layer')[0].close();self.update();self.computePayPrice();};self.check=function(){var param={type:self.refund?2:1,cash:self.payCashStr,stockAdd:(0,_jquery2.default)('.payback-option p').hasClass('on')?1:0,discountNum:self.discountNum,wipe:self.wipeButton,baskets:self.baskets,payType:self.type};if(!self.refund&&self.payCashStr-self.pay.amount<0&&self.type==1){warning('现金不得小于应收');return;}_store.store.pay.commit(param,function(res){if(res&&res.data){self.bill=res.data;}if(!self.refund){if(self.type==1){self.openBox();(0,_jquery2.default)("#find-zero")[0].open();return;}if(self.type==2||self.type==3||self.type==5){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_ING,bill:self.bill});}else{self.paySuccess();}}else{self.paySuccess();}});};self.payCashSuccess=function(){(0,_jquery2.default)("#find-zero")[0].close();self.paySuccess();};self.paySuccess=function(){warning('结算完成');self.bill={};setTimeout(function(){location.hash='#/casher/index';},1000);};self.setStorage=function(e){(0,_jquery2.default)(e.target).toggleClass('on');};self.openBox=function(){self.log("0203");(0,_store.httpGet)({url:api.openBox,success:function success(res){}});};self.discountOpts={onSubmit:self.submitDiscount};self.setQrcode=function(){self.codeTips="请顾客扫描二维码，输入相应金额";(0,_jquery2.default)('.pic-pay .wechat-code').on('error',function(){self.wechatUrl=defaultUrl;self.noWechatCode=true;self.update();});(0,_jquery2.default)('.pic-pay .alipay-code').on('error',function(){self.alipayUrl=defaultUrl;self.noAlipayCode=true;self.update();});self.update();};self.getReceivePay=function(){self.message=JSON.parse(Ipush.message);var bill="";if(self.message&&self.message.data&&self.message.data){bill=self.message.data;}if(self.bill.billUuid!=bill.billUuid){return;}(0,_jquery2.default)("#payWaiting")[0].close();if(self.message.type==_constant2.default.PUSH_PAY_SUCCESS){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_SUCCESS,bill:bill});self.update();}if(self.message.type==_constant2.default.PUSH_PAY_ING){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_ING,bill:self.bill});self.update();}if(self.message.type==_constant2.default.PUSH_PAY_FAIL){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_FAIL});self.update();}};self.scan=function(){window.dispatchEvent(new Event('receiveMessage'));};self.on('mount',function(){self.cashInput=false;self.setQrcode();self.cartList();self.getPay();window.addEventListener('receiveMessage',self.getReceivePay,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',self.getReceivePay,false);});});riot.tag2('casher-bill','<div class="white-box bill"> <div class="list" each="{bill}" onclick="{reviewBill(tbId)}"> <div class="time"><span>{time}</span></div> <ul> <li each="{goods}" class="bill-goods-list">{goodsName || \'无码商品\'} <span class="bill-quantity">{weight}</span></li> <li class="more" if="{goods.more}">......</li> </ul> </div> </div>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'bill',store:_store.store.bill,success:function success(){for(var i in self.bill){var date=new Date(self.bill[i].creationDate);self.bill[i].time=date.getHours()+':'+date.getMinutes();if(self.bill[i].goods.length>5){self.bill[i].goods.length=5;self.bill[i].goods.more=true;}}self.update();}});self.reviewBill=function(id){return function(){_store.store.bill.take({tbId:id});};};});riot.tag2('casher-cart','<div class="shopping-list {empty:!cartList.list.length}" id="casherCartShopList"> <ul> <li each="{i in cartList.list}" buyid="{i.goodsUuid}" onclick="{setDetail(i)}" class="{active : (i.goodsUuid == activeId && active)}"> <div class="li-wrap"> <div class="item-pic" riot-style="background-image:url({i.imageUrl || \'imgs/default-product.png\'})"></div> <div class="item-info"> <p>{i.goodsName || \'无码商品\'}</p> <p class="item-unit">{i.price}</p> </div> <div class="item-price"> <div> <i class="minus" onclick="{minus(i)}"></i> <span class="count">{i.weight}</span> <i class="add" onclick="{add(i)}"></i> </div> <strong>小计：￥<b>{i.amount}</b> </strong> </div> </div> </li> </ul> </div> <modal modal-width="" modal-height="" id="create-product"> <create-product></create-product> </modal>','','',function(opts){var self=this;var timer=50;var scrollTimer;self.active=self.opts.active;function getMulti(a,b){return Math.round(a*1000)*b/1000;};function getPlus(a,b){return(Math.round(a*1000)+Math.round(b*1000))/1000;}function scrollCart(){var scroll=(0,_jquery2.default)('#casherCartShopList');var scrollTop=scroll[0].scrollHeight;scroll[0].scrollTop=scrollTop;}function scrollHandler(e){clearTimeout(scrollTimer);var scroll=e.target;var rate=scroll.scrollTop/(scroll.scrollHeight-scroll.clientHeight);scrollTimer=setTimeout(function(){_store.store.sys.sendMessage({'scrollMessage':{scrollRate:rate}});},500);}function addToCart(item){item.quantity=1;var list=self.cartList.list;if(list.length){for(var i=0;i<list.length;i++){if(list[i].goodsUuid==item.goodsUuid){list[i].quantity++;break;}if(i==list.length-1){list.push(item);break;}}}else{list.push(item);}setTimeout(function(){_store.store.detail.set(item);},100);_store.store.cart.add(item.goodsUuid);setTimeout(function(){scrollCart();},200);}function barcodeHandle(){var number=Icommon.number;self.barCode=number;(0,_store.httpGet)({url:api.goodByBarcode,params:{barcode:number},success:function success(res){var list=self.cartList.list;if(res.data){addToCart(res.data);}else{_utils2.default.toast("商品库无该商品");}},error:function error(err){if(err.code===10007){_utils2.default.toast("请检查网络");}}});self.update();}self.createProductFromCode=function(number){var curModal=(0,_jquery2.default)('#create-product');var cur=curModal[0];var styleInfo;if(cur.attributes&&cur.attributes.getNamedItem){styleInfo=cur.attributes.getNamedItem("style");}if(!styleInfo||styleInfo.value&&styleInfo.value.indexOf("display:flex;")<0&&styleInfo.value.indexOf("display: flex;")<0){(0,_jquery2.default)('#create-product')[0].open({casherCart:true});}(0,_store.httpGet)({url:api.goodBySpecBarcode,params:{barcode:number},success:function success(res){(0,_jquery2.default)('#create-product .barcode-input').val(number);if(res.data){(0,_jquery2.default)('#create-product [name="goodsName"]').val(res.data.goodsName);(0,_jquery2.default)('#create-product [name="cateId"]').val(res.data.cateId);}if(res.data&&res.data.imageUrl){(0,_jquery2.default)('#create-product .img-area img').attr('src',res.data.imageUrl);(0,_jquery2.default)('#create-product-imgUrl').val(res.data.imageUrl);}},complete:function complete(status){if(status=="error"){_utils2.default.toast("请检查网络");}}});};_riotSeedFlux2.default.bind.call(self,{name:'cartList',store:_store.store.cart,success:function success(){var data=self.cartList;if(data){data.goodsAmount=0;data.list.forEach(function(i){data.goodsAmount=getPlus(data.goodsAmount,getMulti(i.price,i.quantity));});}self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){if(self.detail){self.activeId=self.detail.goodsUuid;}else{self.activeId='';}}});self.getMulti=getMulti;self.cashAddCart=function(params){addToCart(params);};self.add=function(data){return function(){_store.store.cart.add(data.goodsUuid);};};self.minus=function(data){return function(){if(data.quantity==1){setTimeout(function(){_store.store.detail.set(null);},0);}_store.store.cart.reduce(data.goodsUuid);};};self.setDetail=function(data){return function(){_store.store.detail.set(data);};};self.scan=function(){window.dispatchEvent(new Event('inputNumber'));};self.modalOpts={onSubmit:function onSubmit(){(0,_store.httpPost)({url:api.cartByScan,params:(0,_jquery2.default)('#add-product-form').serializeObject(),success:function success(res){_store.store.cart.get();self.addModal.close();},error:function error(res){}});},onClose:function onClose(){self.addModal.find('input').val('');}};self.on('mount',function(){var scroll=(0,_jquery2.default)(self.root).find('.shopping-list');self.addModal=(0,_jquery2.default)('#add-product')[0];window.addEventListener('inputNumber',barcodeHandle);scroll.bind('scroll',scrollHandler);});self.on('unmount',function(){var scroll=(0,_jquery2.default)(self.root).find('.shopping-list');window.removeEventListener('inputNumber',barcodeHandle);scroll.unbind('scroll',scrollHandler);});});riot.tag2('casher-detail','<div class="detail white-box" if="{detail}"> <div class="pic" riot-style="{detail.imageUrl ? \'background-image:url(\'+ detail.imageUrl +\')\' : \'background-image:url(imgs/default-400.png)\'}"></div> <p>{detail.goodsName || \'无码商品\'}</p> <p>条码：{detail.barcode || \'无\'}</p> <p>单位：{unit || \'无\'}</p> <div class="modify-cart"> <label>数量：</label> <span onclick="{modifyCart}">{detail.weight}</span> </div> <strong>￥{detail.price}</strong> <i class="line" style="display:none"></i> <div class="more" style="display:none"> <span>13811468801</span> </div> <modal id="modifyCartqu" modal-width="500px" opts="{modalCartOpts}"> <div class="wrap"> <div class="content"> <label for="">商品数量：</label> <input id="" type="tel" maxlength="9"> </div> </div> </modal> </div>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){self.update();if(self.detail){self.unit=_constant2.default.UNITS[self.detail.unit];}self.update();}});self.modalCartOpts={onOpen:function onOpen(){(0,_jquery2.default)('#modifyCartqu').find('input').val(self.detail.weight);},onSubmit:function onSubmit(){self.submitModifyCart();},onClose:function onClose(){(0,_jquery2.default)('#modifyCartqu').find('input').val('');}};self.submitModifyCart=function(){var quantity=(0,_jquery2.default)('#modifyCartqu').find('input').val()*1;if(!(0,_jquery2.default)('#modifyCartqu').find('input').val()){_utils2.default.toast("数量不能为空");return;}if(quantity>2000){_utils2.default.toast("数量不能超过2000");return;}var unit=self.detail.unit;if(unit==5||unit==6||unit==7||unit==8||unit==9){if(!/^[0-9]+([.]{1}[0-9]{1,3})?$/.test(quantity)){_utils2.default.toast("请输入正确的数量");return;}}else{if(!/^(0|\+?[1-9][0-9]*)$/.test(quantity)){_utils2.default.toast("请输入正确的数量");return;}}var params={goodsUuid:self.detail.goodsUuid,weight:quantity};self.update();(0,_jquery2.default)('#modifyCartqu')[0].close();(0,_store.httpPost)({url:api.modifyCartQuantity,params:params,success:function success(res){_store.store.cart.update(self.detail.goodsUuid,res.data);_store.store.detail.set(res.data.goods);}});(0,_jquery2.default)('#modifyCartqu').find('input').val('');};self.modifyCart=function(){(0,_jquery2.default)('#modifyCartqu')[0].open();(0,_jquery2.default)('#modifyCartqu').find('input').focus();};});riot.tag2('casher-index','<div class="content-wrap"> <div class="cart"> <casher-cart active="true"></casher-cart> <div class="actions" if="{!moreButton}"> <span onclick="{openBox}">开钱箱</span> <span onclick="{clearCart}">清空商品</span> <span onclick="{openWithoutName}">无码收银</span> <span onclick="{moreAction}">更多</span> </div> <div class="actions" if="{moreButton}"> <span class="back-action" onclick="{backAction}"></span> <span onclick="{saveBill}">挂单</span> <span onclick="{openBill}">取单</span> <span onclick="{openRefund}">退货</span> </div> </div> <div class="borad"> <div id="casher-view"> <casher-view></casher-view> </div> <div class="balance-btn"> <a onclick="{goCheck}" class="{disable: cartList.goodsAmount == 0}">收银 <span if="{cartList.goodsAmount}">￥{cartList.goodsAmount}</span> </a> </div> </div> <modal id="withoutName" modal-width="500px" opts="{modalOpts}"> <div class="wrap"> <div class="content"> <label for="priceNoName">商品价格：</label> <input pattern="[0-9]\\{1,5\\}\\.?[0-9]\\{0,2\\}" id="priceNoName" name="price" type="tel" maxlength="9"> </div> </div> </modal> <modal id="cart-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> <pop id="vipLogin" title="会员购物" twobutton> <vip-login></vip-login> </pop> </div>','','',function(opts){var self=this;var clientTimer;self.vipLogin=false;self.moreButton=false;self.vipModify=function(){(0,_jquery2.default)("#vipLogin")[0].open();};self.modalOpts={onSubmit:function onSubmit(){self.addNoName();},onClose:function onClose(){(0,_jquery2.default)('#withoutName').find('input').val('');}};_store.store.detail.set(null);self.log=function(name){if(window.Icommon){Icommon.logEvent(null,null,{eventId:name});}};function closeDetail(e){if(self.detail&&((0,_jquery2.default)('.detail')[0]&&(0,_jquery2.default)('.detail')[0].contains(e.target)||(0,_jquery2.default)(e.target).parents('li').attr('buyid')==self.detail.goodsUuid)){return;}else{_store.store.detail.set(null);(0,_jquery2.default)('body').unbind('click',closeDetail);self.isBindDetail=false;}}function warning(text){var layer=(0,_jquery2.default)('#cart-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}function matchInput(){var val=(0,_jquery2.default)('#withoutName').find('input').val();if(!/^[0-9]{1,5}\.?[0-9]{0,2}$/.test(val)){(0,_jquery2.default)('#withoutName').find('.content').css({'border-color':'red'});}else{(0,_jquery2.default)('#withoutName').find('.content').css({'border-color':'#CCC'});}}self.moreAction=self.backAction=function(){self.moreButton=!self.moreButton;self.update();};self.openBox=function(){self.log("0102");(0,_store.httpGet)({url:api.openBox,success:function success(res){}});};self.clearCart=function(){self.log("0103");if(self.cartList.list.length==0){warning('购物车是空的');return;}_store.store.cart.clear();_store.store.detail.set(null);};self.bindDetail=function(){if(!self.isBindDetail){(0,_jquery2.default)('body').bind('click',closeDetail);self.isBindDetail=true;}};self.saveBill=function(e){self.log("0105");if(self.cartList.list.length==0){warning('购物车是空的');return;}_store.store.bill.add();self.openBill(e);};self.openBill=function(e){self.log("0106");;var target=e?e.target:null;function closeBill(e){if((0,_jquery2.default)('.bill')[0]&&(0,_jquery2.default)('.bill')[0].contains(e.target)||target==e.target){return;}else{_store.store.bill.close();(0,_jquery2.default)('body').unbind('click',closeBill);}}_store.store.bill.open();(0,_jquery2.default)('body').bind('click',closeBill);};self.openRefund=function(){self.log("0107");_store.store.cart.clear();location.hash='#/casher/refund';};self.goCheck=function(){if(self.cartList.goodsAmount==0){return;}if(self.cartList.list.length>0){location.hash='#/casher/balance?vipphone='+self.vipphone;}else{return;}};self.openWithoutName=function(){self.log("0104");(0,_jquery2.default)('#withoutName')[0].open();(0,_jquery2.default)('#withoutName').find('input').focus();};self.addNoName=function(){var goodsUuid='good-id-'+new Date()*1;var price=(0,_jquery2.default)('#withoutName').find('input').val()*1;if(!price)return;var data={name:null,goodsUuid:goodsUuid,shoppingcartGoodsUuid:goodsUuid,type:2,quantity:1,price:price};_store.store.detail.set(data);self.cartList.list.push(data);_store.store.cart.addNoName({price:price,goodsUuid:data.goodsUuid});(0,_jquery2.default)('#withoutName').find('input').val('');(0,_jquery2.default)('#withoutName')[0].close();};self.on('mount',function(){_riotSeedFlux2.default.bind.call(self,{name:'cartList',store:_store.store.cart,success:function success(){if(self.cartList&&self.cartList.goodsAmount){self.cartList.goodsAmount=self.cartList.goodsAmount.toFixed(1);}self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){self.detail&&self.bindDetail();}});(0,_jquery2.default)('#withoutName input').on('input',matchInput);_store.store.pay.close();_store.store.cart.setState('shopping');});self.on('unmount',function(){(0,_jquery2.default)('#withoutName input').unbind('input',matchInput);});});riot.tag2('casher-refund','<div class="content-wrap"> <div class="cart"> <casher-cart></casher-cart> <div class="actions"> <span onclick="{cancelRefund}">取消退货</span> </div> </div> <div class="borad"> <div id="casher-view"></div> <div class="balance-btn"> <a onclick="{goCheck}" class="{disable:!cart.list.length}">确认退货</a> </div> </div> </div>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'cart',store:_store.store.cart,success:function success(){}});self.cancelRefund=function(){_store.store.cart.clear();location.hash='#/casher/index';};self.goCheck=function(){if(self.cart.list.length>0){location.hash='#/casher/refund-balance';}else{return;}};self.on('mount',function(){_store.store.cart.setState('refunding');});});riot.tag2('casher-view','<casher-bill if="{bill}"></casher-bill> <casher-detail if="{detail}"></casher-detail>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'bill',store:_store.store.bill,success:function success(){self.update();}});});riot.tag2('date-month','<div class="month-data"> <h4> <span class="el-icon-before" onclick="{beforeYear}"></span> <span class="year">{year}年</span> <span class="el-icon-after" onclick="{afterYear}"></span> </h4> <div class="content"> <ul> <li each="{monthList}" onclick="{selectDate}" class="{active: (value == month) && (selectyear == year)}"> <span>{name}</span> </li> </ul> </div> </div>','','',function(opts){var self=this;self.monthList=[{name:'1月',value:'01',active:false},{name:'2月',value:'02',active:false},{name:'3月',value:'03',active:false},{name:'4月',value:'04',active:false},{name:'5月',value:'05',active:false},{name:'6月',value:'06',active:false},{name:'7月',value:'07',active:false},{name:'8月',value:'08',active:false},{name:'9月',value:'09',active:false},{name:'10月',value:'10',active:false},{name:'11月',value:'11',active:false},{name:'12月',value:'12',active:false}];self.year='';self.update();self.selectDate=function(e){self.month=e.item.value;self.selectyear=self.year;var showDate={year:parseInt(self.year),month:parseInt(e.item.value)};console.log(showDate);self.parent.trigger('selectMonthdate',showDate);self.trigger('selectMonthdate',showDate);};self.beforeYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}self.year=parseInt(this.year)-1;};self.afterYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}self.year=parseInt(this.year)+1;};self.root.openDateMonth=self.openDateMonth=function(params){var _date;if(params){_date=params;}else{var myDate=new Date();_date=myDate.getFullYear()+'-'+(myDate.getMonth()+1<10?'0'+(myDate.getMonth()+1):myDate.getMonth()+1);}var date=_date.split('-');self.year=date[0];self.month=date[1];self.selectyear=date[0];self.update();};});riot.tag2('date-picker','<div class="date-picker">{value}</div> <input type="{type}" name="{name}" onchange="{changeValue}" max="{max}" min="{min}" defaultvalue="{defaultValue}">','','',function(opts){var self=this;var root=self.root;self.getDateStr=function(time){return _utils2.default.getDateStr(time);};self.init=function(){self.type=root.getAttribute('type')||'date';self.name=root.getAttribute('name');self.defaultValue=root.getAttribute('defaultValue');self.max=root.getAttribute('max');self.min=root.getAttribute('min');if(self.type==='date'){self.root.value=self.value=root.getAttribute('value')||self.getDateStr(new Date().getTime());}else if(self.type==='time'){self.root.value=self.value=root.getAttribute('value')||'00:00';}self.update();self.trigger('gotDate');self.parent.trigger('gotDate');};self.on('mount',function(){self.init();});self.changeValue=function(){self.root.value=self.value=root.getElementsByTagName('input')[0].value;if(self.type==='date'&&!self.value){self.root.value=self.value=self.getDateStr(new Date().getTime());}else if(self.type==='time'&&!self.value){self.root.value=self.value='00:00';}self.parent.trigger('dateChange');self.trigger('dateChange');};self.root.setValue=function(value){root.getElementsByTagName('input')[0].value=value;self.changeValue();};self.root.setTime=function(time){var value=self.getDateStr(time);root.getElementsByTagName('input')[0].value=value;self.changeValue();};self.dateString=function(date){var Y=date.getFullYear();var M=date.getMonth()+1;M=M<10?'0'+M:M;var D=date.getDate();D=D<10?'0'+D:D;return Y+"-"+M+"-"+D;};self.root.nextDay=function(cb){var str=self.value.replace(/-/g,"/");var timestamp=new Date(str).getTime()+1000*60*60*24;var date=new Date(timestamp);var newStr=self.dateString(date);root.getElementsByTagName('input')[0].value=newStr;self.changeValue();cb&&cb(newStr);};self.root.prevDay=function(cb){var str=self.value.replace(/-/g,"/");var timestamp=new Date(str).getTime()-1000*60*60*24;var date=new Date(timestamp);var newStr=self.dateString(date);root.getElementsByTagName('input')[0].value=newStr;self.changeValue();cb&&cb(newStr);};self.root.get=function(){return root.getElementsByTagName('input')[0].value;};});riot.tag2('date-year','<div class="year-data"> <h4> <span class="el-icon-before" onclick="{beforeYear}"></span> <span class="year"></span> <span class="el-icon-after" onclick="{afterYear}"></span> </h4> <div class="content"> <ul> <li each="{yearList}" onclick="{selectDate}" class="{active: value == year}"> <span>{name}</span> </li> </ul> </div> </div>','','',function(opts){var self=this;self.selectDate=function(e){self.year=e.item.value;var showDate=e.item.value;self.parent.trigger('selectYeardate',showDate);self.trigger('selectYeardate',showDate);};function get12year(last){var list=[];for(var i=0;i<12;i++){var lastyear=last-i;self.lastyear=lastyear;list.unshift({'name':lastyear,'value':lastyear});}self.yearList=list;self.update();}self.beforeYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}get12year(self.lastyear-1);};self.afterYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}get12year(self.lastyear+23);};self.root.openDateYear=self.openDateYear=function(params){var _date;if(params){_date=params;}else{var myDate=new Date();_date=myDate.getFullYear()+'-'+(myDate.getMonth()+1<10?'0'+(myDate.getMonth()+1):myDate.getMonth()+1);}var date=_date.split('-');self.year=parseInt(date[0]);var lastyear=self.year;var _index=lastyear%12;if(_index!=1){for(var i=0;i<12;i++){lastyear=lastyear+1;if(lastyear%12==1){break;}}}get12year(parseInt(lastyear));self.update();};});riot.tag2('daterangepicker','<div class="daterange"> <input id="daterange" value="" readonly="readonly" type="text"> </div>','.daterangepicker.dropdown-menu { max-width:none; z-index:30; padding-bottom:100px; border-left:1px solid #f1f1f1; border-right:1px solid #f1f1f1; border-bottom:1px solid #f1f1f1; border-radius:5px; display: none; } .daterangepicker .applyBtn{ position: absolute; bottom:26px; width:250px; height: 50px; line-height: 50px; text-align: center; color: #fff; font-size: 18px; background: #fe5f5f; border:0; left:50%; margin-left: -125px; border-radius:5px; } .table-condensed thead tr:first-child{ border-bottom:1px solid #ccc; } .daterangepicker .left .table-condensed tr td:last-child{ padding-right: 10px; min-width: 60px; border-right: 1px solid #ccc; } .daterangepicker .left .table-condensed tr:last-child th:last-child{ padding-right: 10px; min-width: 60px; border-right: 1px solid #ccc; } .daterangepicker .right .table-condensed tr:last-child th:first-child{ padding-left: 10px; min-width: 60px; } .daterangepicker .right .table-condensed tr td:first-child{ padding-left: 10px; min-width: 60px; } .daterangepicker .left .table-condensed thead tr:first-child th:first-child{ background: url(../imgs/nextno.png) no-repeat center; background-size:13px; } .daterangepicker .left .table-condensed thead tr:first-child th.available:first-child{ background: url(../imgs/back.png) no-repeat center; background-size:13px; } .daterangepicker .right .table-condensed thead tr:first-child th:last-child{ background: url(../imgs/nextno.png) no-repeat center; background-size:13px; transform: rotate(180deg); -o-transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); } .daterangepicker .right .table-condensed thead tr:first-child th.available:last-child{ background: url(../imgs/back.png) no-repeat center; background-size:13px; transform: rotate(180deg); -o-transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); } .daterangepicker .calendar.left{ float: left; } .daterangepicker .calendar.right{ float:right; } .daterangepicker .calendar{ display:none; } .daterangepicker.show-calendar .calendar{ display:block; } .daterangepicker .calendar.single .calendar-date{ border:0; } .daterangepicker .calendar th,.daterangepicker .calendar td{ font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif; white-space:nowrap; text-align:center; min-width:50px; font-size: 16px; color: #666; line-height: 40px; } .daterangepicker .daterangepicker_start_input,.daterangepicker .daterangepicker_end_input,.daterangepicker .cancelBtn{ display: none; } .daterangepicker .calendar-time{ text-align:center; line-height:30px; margin:8px auto 0; } .daterangepicker{ position:absolute; background:#fff; top:100px; left:20px; margin-top:1px; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; padding:4px; } .daterangepicker table{ width:100%; margin:0; } .daterangepicker td,.daterangepicker th{ text-align:center; width:20px; height:20px; cursor:pointer; white-space:nowrap; } .daterangepicker td.available:hover,.daterangepicker th.available:hover{ background:#eee; } .daterangepicker td.in-range{ background:#ebf4f8; -webkit-border-radius:0; -moz-border-radius:0; border-radius:0; } .daterangepicker td.available+td.start-date{ -webkit-border-radius:30px; -moz-border-radius:30px; border-radius:30px; } .daterangepicker td.in-range+td.end-date{ -webkit-border-radius:30px; -moz-border-radius:30px; border-radius:30px; } .daterangepicker td.start-date.end-date{ -webkit-border-radius:30px; -moz-border-radius:30px; border-radius:30px; } .daterangepicker td.active,.daterangepicker td.active:hover{ background: #fed9d9; color: #666; border-radius: 30px; width: 50px; height: 40px; } .daterangepicker th.month{ width:auto; height: 60px; font-size: 20px; color: #505050; } .daterangepicker td.off{ color:#999; } .daterangepicker td.disabled{ color:#ccc; text-decoration:line-through }','',function(opts){var self=this;var root=self.root;self.format=function(myDate){return myDate.getFullYear()+"-"+(myDate.getMonth()+1<9?"0"+(myDate.getMonth()+1):myDate.getMonth()+1)+"-"+(myDate.getDate()<9?"0"+myDate.getDate():myDate.getDate());};self.on('mount',function(){var myDate=new Date();var todayDate=self.format(myDate);myDate.setTime(myDate.getTime()-24*60*60*1000*7);var startDate=self.format(myDate);(0,_jquery2.default)("#daterange").val(startDate+"~"+todayDate);(0,_jquery2.default)('#daterange').daterangepicker({format:'YYYY-MM-DD',maxDate:todayDate,startDate:startDate,endDate:todayDate,dateLimit:{days:30},separator:' ~ ',locale:{applyLabel:'确定',customRangeLabel:'Custom',daysOfWeek:['周日','周一','周二','周三','周四','周五','周六'],monthNames:['1-','2-','3-','4-','5-','6-','7-','8-','9-','10-','11-','12-'],firstDay:1}},function(start,end,label){self.parent.trigger('dateChange');self.trigger('dateChange');});});});riot.tag2('modal','<div class="modal-dialog" riot-style="width:{width}; height:{height}"> <div class="modal-container"> <div class="modal-title" if="{title}">{title}</div> <yield></yield> </div> <div class="modal-submit" if="{!noFooter}"> <div class="button-wrap"> <a class="btn btn-default cancle {small: needDelete || samllBtn} {three:continue}">{cancleText || ⁗取消⁗}</a> <a class="btn btn-default delete {small: needDelete || samllBtn} " if="{needDelete}">{deleteText || ⁗删除⁗}</a> <a class="btn btn-primary continue {small: samllBtn} {three:continue}" if="{continue}">{continue || ⁗继续添加⁗}</a> <a class="btn btn-primary submit {small: samllBtn} {three:continue}">{submitText || ⁗确定⁗}</a> </div> <div class="clearfix"></div> </div> <div class="modal-submit" if="{buttonOk}"> <div class="button-wrap"> <a class="btn btn-primary cancle">{submitText || ⁗知道了⁗}</a> </div> <div class="clearfix"></div> </div> </div>','','',function(opts){var self=this;var config=self.opts.opts||self.opts||{};var EL=self.root;self.needDelete=EL.hasAttribute('delete');self.noFooter=EL.hasAttribute('nofooter');self.samllBtn=EL.hasAttribute('small');self.continue=EL.hasAttribute('continue');self.title=EL.hasAttribute('title');self.buttonOk=EL.hasAttribute('buttonOk');for(var i in config){self[i]=config[i];}self.width=config.width||EL.getAttribute('modal-width')||'500px';self.height=config.height||EL.getAttribute('modal-height')||'auto';self.on('mount',function(){var container=self.root.querySelector('.modal-container');var foot=self.root.querySelector('.modal-submit');var foodHeight=foot?parseInt(window.getComputedStyle(foot,null).height):0;if(self.height&&self.height!=='auto'){container.style.height=parseInt(self.height)-foodHeight-2+'px';}self.bindEvent();});self.root.open=self.open=function(params){self.root.style.display='flex';self.onOpen&&self.onOpen(params);};self.root.close=self.close=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.root.loadData=function(newData,colName){colName=colName||'data';self[colName]=newData;self.update();};self.confirm=self.root.confirm=function(params){self.onSubmit&&self.onSubmit(params);};self.goonButton=self.root.goonButton=function(params){self.onContinue&&self.onContinue(params);};self.delete=self.root.delete=function(params){self.onDelete&&self.onDelete(params);};self.bindEvent=function(){(0,_jquery2.default)(EL).find('.modal-close-wrap').on('click',self.close);(0,_jquery2.default)(EL).find('.cancle').on('click',self.close);(0,_jquery2.default)(EL).find('.delete').on('click',self.delete);(0,_jquery2.default)(EL).find('.submit').on('click',self.confirm);(0,_jquery2.default)(EL).find('.continue').on('click',self.goonButton);};});riot.tag2('pop','<div class="modal-dialog" riot-style="width:{width}; height:{height}"> <div class="pop-title" if="{title}"> <span>{title}</span> <div class="pop-help-wrap" if="{help}"> <a class="pop-help"></a> </div> <div class="pop-wclose-wrap" if="{popclose}" onclick="{wclose}"> </div> </div> <div class="modal-container pop-content"> <yield></yield> </div> <div class="pop-submit" if="{twoButton}"> <div class="button-wrap"> <a class="cancle">{cancleText || ⁗取消⁗}</a> <a class="sure">{sureText || ⁗确定⁗}</a> </div> <div class="clearfix"></div> </div> <div class="pop-submit" if="{oneButton}"> <div class="button-wrap"> <a class="konw">{konwText || \'知道了\'}</a> </div> </div> </div>','','class="{popz-big:popzBig}{popzbigTwo:popzbigTwo}"',function(opts){var self=this;var config=self.opts.opts||self.opts||{};var EL=self.root;self.title=EL.hasAttribute('title');self.twoButton=EL.hasAttribute('twobutton');self.oneButton=EL.hasAttribute('onebutton');self.popzBig=EL.hasAttribute('popzbig');self.popzbigTwo=EL.hasAttribute('popzbigtwo');self.sureText=EL.hasAttribute('suretext')?config.suretext:"确定";self.cancleText=EL.hasAttribute('cancletext')?config.cancletext:"取消";self.konwText=EL.hasAttribute('konwtext')?config.konwtext:"知道了";self.help=EL.hasAttribute('help');self.popclose=EL.hasAttribute('popclose');for(var i in config){self[i]=config[i];}self.width=config.width||EL.getAttribute('modal-width')||'500px';self.height=config.height||EL.getAttribute('modal-height')||'auto';self.on('mount',function(){var container=self.root.querySelector('.modal-container');var foot=self.root.querySelector('.pop-submit');var foodHeight=foot?parseInt(window.getComputedStyle(foot,null).height):0;if(self.height&&self.height!=='auto'){container.style.height=parseInt(self.height)-foodHeight-2+'px';}self.bindEvent();});self.root.open=self.open=function(params){self.root.style.display='flex';self.onOpen&&self.onOpen(params);};self.root.close=self.close=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.root.loadData=function(newData,colName){colName=colName||'data';self[colName]=newData;self.update();};self.confirm=self.root.confirm=function(params){self.onSubmit&&self.onSubmit(params);};self.helpbutton=self.root.helpbutton=function(params){self.onHelp&&self.onHelp(params);};self.konw=self.root.konw=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.wclose=self.root.wclose=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.bindEvent=function(){(0,_jquery2.default)(EL).find('.pop-help').on('click',self.helpbutton);(0,_jquery2.default)(EL).find('.cancle').on('click',self.close);(0,_jquery2.default)(EL).find('.konw').on('click',self.konw);(0,_jquery2.default)(EL).find('.sure').on('click',self.confirm);(0,_jquery2.default)(EL).find('.pop-wclose-wrap').on('click',self.wclose);};});riot.tag2('search','<div class="search-wraper"> <div class="input-wraper {active: searchWord}"> <input type="text" class="search-input" oninput="{search}" onblur="{blur}"> <span class="cancel-input" onclick="{cancelSearch}"></span> <ul if="{searchResult.length}"> <li each="{item in searchResult}" onclick="{handleClick(item)}">{item.goodsName} <span>￥{item.price}</span></li> </ul> </div> </div>','','',function(opts){var self=this;var config=self.opts.opts;var timer=200;_riotSeedFlux2.default.bind.call(self,{name:'searchResult',store:_store.store.search});self.search=function(e){var target=(0,_jquery2.default)(e.target);self.searchWord=target.val();clearTimeout(self.timer);self.timer=setTimeout(function(){if(self.searchWord){_store.store.search.fetch({q:self.searchWord});}},timer);};self.cancelSearch=function(){(0,_jquery2.default)(self.root).find('.search-input').val('');self.searchWord=null;};self.blur=function(){setTimeout(function(){_store.store.search.clear();self.searchResult=null;},timer);};self.handleClick=function(item){return function(){config.clickHandle(item);self.cancelSearch();};};});riot.tag2('select-date','<div class="select-date"> <a each="{list}" class="{active: value == selectType}" onclick="{selectDateType}">{name} <div class="input" if="{value==1}"> <input type="text" id="J-xl-2"> </div> </a> </div> <div class="date-ym"> <date-year if="{dateYear}" id="yearMonth"></date-year> <date-month if="{dateMonth}" id="dateMonth"></date-month> </div> <input type="hidden" name="" value="" id="selectdateChangeEnd"> <input type="hidden" name="" value="" id="selectdateChangeStart">','','',function(opts){var self=this;var config=self.opts.opts||self.opts||{};self.dateYear=false;self.dateMonth=false;self.selectType=1;self.list=[{'name':'按日选','value':1},{'name':'按周选','value':2},{'name':'按月选','value':3},{'name':'按年选','value':4}];self.root.open=self.open=function(params){var e={item:{value:params.selectType,startDate:params.startDate,endDate:params.endDate}};self.selectDateType(e);};self.selectDateType=function(e){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}var startDate=(0,_jquery2.default)("#selectdateChangeStart").val();if(e.item.value===1){self.selectType=1;self.confirmDate();}else if(e.item.value===2){self.selectType=2;self.confirmDate();}else if(e.item.value===3){self.selectType=3;self.dateYear=false;self.dateMonth=true;self.update();(0,_jquery2.default)("#dateMonth")[0].openDateMonth(startDate);}else if(e.item.value===4){self.selectType=4;self.dateYear=true;self.dateMonth=false;self.update();(0,_jquery2.default)("#yearMonth")[0].openDateYear(startDate);}};self.confirmDate=function(){self.update();laydate({elem:'#J-xl-2',format:'YYYY-MM-DD',isclear:false,issure:false,istoday:false,choose:function choose(datas){var startDate='';var endDate='';var showDate="";console.log(datas);if(self.selectType==1){startDate=datas;endDate=datas;showDate=startDate;}else if(self.selectType==2){var dateYear=datas.substring(0,10);var dd=dateYear.replace(/-/g,"/");var d=_utils2.default.getMonDate(dd);var arr=[];for(var i=0;i<7;i++){arr.push(d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate());d.setDate(d.getDate()+1);}(0,_jquery2.default)("#shows").text(arr[0]+'~'+arr[6]);startDate=arr[0];endDate=arr[6];}triggerDate(startDate,endDate);}});};function triggerDate(startDate,endDate){(0,_jquery2.default)("#selectdateChangeStart").val(startDate);(0,_jquery2.default)("#selectdateChangeEnd").val(endDate);var showDate=startDate+" ~ "+endDate;var date=startDate.split('-');if(self.selectType===1){showDate=startDate;}else if(self.selectType===3){showDate=date[0]+"-"+date[1];}else if(self.selectType===4){showDate=date[0]+"年";}var date={showDate:showDate,selectType:self.selectType};self.parent.trigger('selectdateChange',date);self.trigger('selectdateChange',date);}self.on('selectMonthdate',function(date){date.month=date.month<10?'0'+date.month:date.month;var startDate=date.year+"-"+date.month+"-"+"01";var endDate=date.year+"-"+date.month+"-"+_utils2.default.getLastDay(date.year,date.month);triggerDate(startDate,endDate);});self.on('selectYeardate',function(date){var startDate=date+"-01-01";var endDate=date+"-12-31";triggerDate(startDate,endDate);});self.on('mount',function(){self.confirmDate();});});riot.tag2('side-bar','<div id="side-bar"> <div class="header"> <div class="avator" onclick="{openTip}"></div> <div class="account-name" onclick="{openTip}">{accountName || \'用户名\'}</div> <div class="right-tip" style="display:none"> <div class="tri"></div> <a onclick="{openAbout}">关于我们</a> <a onclick="{logout}">退出账户</a> </div> </div> <div class="side-menu"> <ul> <li class="{active: type==\'casher\'||type==\'\'}"> <a href="#/casher/index"> <div class="menu-pic m-casher"></div> <div class="menu-title">收银</div> </a> </li> <li class="{active: type==\'shop\'}"> <a href="#/shop/index"> <div class="menu-pic m-store"></div> <div class="menu-title">店铺</div> </a> </li> <li class="{active: type==\'app\'}"> <a href="#/app/index"> <div class="menu-pic m-app"></div> <div class="menu-title">应用</div> </a> </li> </ul> <div class="setting" onclick="{openSetting}"></div> </div> <modal id="about-layer" model-width="400px" model-height="512px" without-delete nofooter> <div class="about"> <div class="about-close" onclick="{close}"></div> <h2>关于</h2> <img class="logo" width="106" src="imgs/logo.png"> <p>版本： {parent.version} </p> <span class="red-box" onclick="{parent.checkAppUpdateState}">检测更新</span> </div> </modal> </div>','','',function(opts){var self=this;function active(){self.type=location.hash.substr(2).split('/')[0].replace(/\?\S+/,'');self.update();if(self.type=='casher'||self.type=='shop'||self.type=='app'){self.checkUserIsLogin();}}_riotSeedFlux2.default.bind.call(self,{name:'account',store:_store.store.account,success:function success(){self.accountName=self.account?self.account.personName:'用户名';self.update();}});self.checkAppUpdateState=function(){(0,_store.httpGet)({url:api.checkAppUpdateState});};self.toBeConfirmed=function(){_store.store.orderConfirmed.get(function(data){if(data>0){(0,_jquery2.default)(".order-untreated").show().text(data);}else{(0,_jquery2.default)(".order-untreated").hide();}});};self.openTip=function(){var e=window.event;e.preventDefault();if(e&&e.stopPropagation){e.stopPropagation();}(0,_jquery2.default)('.right-tip').toggle();function closeTip(){(0,_jquery2.default)('.right-tip').hide();(0,_jquery2.default)(window).unbind('click',closeTip);}setTimeout(function(){(0,_jquery2.default)(window).bind('click',closeTip);},100);};self.openAbout=function(){(0,_jquery2.default)('#about-layer')[0].open();};self.closeAbout=function(){(0,_jquery2.default)('#about-layer')[0].close();};self.logout=function(){_store.store.account.logout();location.hash="#login";};self.openSetting=function(){if(window.Icommon){Icommon.openSetting();}};self.getReceiveSyn=function(){self.message=JSON.parse(Ipush.message);if(self.message.type==_constant2.default.PUSH_DATA_SYN){_store.store.synTask.get({name:"Goods",noloadShow:true},function(success){});_store.store.synTask.get({name:"GoodsCategory",noloadShow:true},function(success){});}else if(self.message.type==PUSH_GET_STORE){_store.store.synTask.get({name:"Store",noloadShow:true},function(success){});}};self.checkUserIsLogin=function(){var storeInfo={};if(window.localStorage&&localStorage.account){storeInfo=JSON.parse(localStorage.account);}if(!storeInfo.storeId){location.href="#login";}};self.on('mount',function(){self.checkUserIsLogin();if(window.Iapps){Iapps.getVersion(function(res){if(res.version){self.version=res.version;self.update();}else{self.version="V1.0.0 Beta";self.update();}},function(err){},{});}else{self.version="V1.0.0 Beta";}setTimeout(self.toBeConfirmed,500);window.addEventListener('orderNumChange',self.toBeConfirmed);window.addEventListener('receiveMessage',self.getReceiveSyn,false);});self.on('unmount',function(){window.removeEventListener('orderNumChange',self.toBeConfirmed);window.removeEventListener('receiveMessage',self.getReceiveSyn);});riot.routeParams.on('changed',active);active();});riot.tag2('top-bar','<div id="top-bar"> <div id="page-title"> <div class="title" if="{title}"> <a class="back" if="{back}" href="{back}">返回</a> {title}</div> <div id="top-search" if="{search}"> <search opts="{searchOpts}"></search> </div> <div id="type-list" if="{hasAdd}" onclick="{toggleProducts}"> <div class="tri" if="{showProducts}"> <div></div> </div> </div> </div> <div id="status"> <span if="{weather.city}">{weather.city}</span> <span if="{weather.weather}">{weather.weather}</span> <span if="{weather.temp}">{weather.temp}℃</span> <span>{nowDate}</span> <span class="icon i_wifi_full" if="{netState==\'wifi\'}"></span> <span class="icon i_wifi_weak" if="{netState==\'weak\'}"></span> <span class="icon i_wifi_no" if="{netState==\'no\'}"></span> </div> </div> <div id="product-layer" if="{hasAdd & showProducts}"> <div class="category top-category"> <h2>商品分类</h2> <ul> <li each="{category}" onclick="{changeCate}" class="{active: active}"> <a cateid="{cateId}">{cateName}</a> </li> </ul> </div> <div class="product-list"> <ul class="top-goods-list"> <li each="{item in goodList}" onclick="{addToCart(item)}"> <div class="item-pic" riot-style="{item.imageUrl ? \'background-image:url(\'+ item.imageUrl +\')\' : \'background-image:url(imgs/default-140.png);background-size:70px\'}"></div> <p>{item.goodsName || \'无码商品\'}</p> <strong>￥{item.price}</strong> </li> </ul> </div> </div>','','',function(opts){var self=this;_store.store.loadTopGoodsList=true;self.topGoodsListScroll=0;self.scan=function(){window.dispatchEvent(new Event('inputNumber'));};self.scan1=function(){window.Icommon=window.Icommon||{};window.Icommon.number='690168054050';window.dispatchEvent(new Event('inputNumber'));};self.checkNet=function(){if(window.navigator.connection){var type=window.navigator.connection.type;switch(type){case'Unknown connection':self.netState='unknown';break;case'WiFi connection':self.netState='wifi';break;case'Cell 2G connection':self.netState='2G';break;case'Cell 2G connection':self.netState='3G';break;case'Cell 2G connection':self.netState='4G';break;case'No network connection':self.netState='no';break;case'wifi':self.netState='wifi';break;case'none':self.netState='no';break;default:self.netState='no';}}else{self.netState='wifi';}_riotSeedFlux2.default.bind.call(self,{name:'weather',store:_store.store.weather,success:function success(){self.update();},error:function error(){self.update();}});self.update();};document.addEventListener("online",self.checkNet,false);document.addEventListener("offline",self.checkNet,false);riot.routeParams.on('changed',function(){var params=riot.routeParams.params;if(params){self.title=params.title;self.back=params.back;self.search=params.search;self.hasAdd=params.hasAdd;if(params.hasAdd){setTimeout(function(){(0,_jquery2.default)(".content-wrap").bind('click',hideProduct);},200);}}else{self.title=false;self.back=false;self.search=false;self.hasAdd=false;}self.update();});function scrollCart(){var scroll=(0,_jquery2.default)('#casherCartShopList');var scrollTop=scroll[0].scrollHeight;scroll[0].scrollTop=scrollTop;}function addToCart(item){item.quantity=1;var list=self.cartList.list;if(list.length){for(var i=0;i<list.length;i++){if(list[i].goodsUuid==item.goodsUuid){list[i].quantity++;break;}if(i==list.length-1){list.push(item);break;}}}else{list.push(item);}_store.store.cart.add(item.goodsUuid);setTimeout(function(){scrollCart();},200);}self.searchOpts={clickHandle:addToCart};self.addToCart=function(item){return function(){addToCart(item);self.update();};};function hideProduct(){self.showProducts=false;self.update();if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}(0,_jquery2.default)(".content-wrap").unbind('click',hideProduct);}self.toggleProducts=function(){var e=window.event;e.preventDefault();if(e&&e.stopPropagation){e.stopPropagation();}self.showProducts=self.showProducts?false:true;if(self.showProducts){setTimeout(function(){(0,_jquery2.default)(".content-wrap").bind('click',hideProduct);},100);}else{(0,_jquery2.default)(".content-wrap").unbind('click',hideProduct);}self.update();if(self.showProducts==true){if(_store.store.loadTopGoodsList){self.initCategory();}else{(0,_jquery2.default)('.top-goods-list').scrollTop(self.topGoodsListScroll);}}else{if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}}};self.initCategory=function(){_store.store.category.get(function(data){self.category=data;self.topGoodsListScroll=0;for(var i=0;i<self.category.length;i++){if(self.category[i].cateId==parseInt(self.cateId,10)){self.category[i].active=true;}else{self.category[i].active=false;}if(!self.cateId){self.cateId=self.category[0].cateId;self.category[0].active=true;}}self.update();self.cateHeight=(0,_jquery2.default)("#product-layer").height()-(0,_jquery2.default)(".top-category").height()-38;(0,_jquery2.default)(".product-list").css("height",self.cateHeight);self.initGoods(self.cateId);});};self.initGoods=function(cateId){var params={cateId:cateId,next:0};_store.store.topGoods.get(params,function(data){self.goods=data;self.goodList=self.goods.list;self.next=self.goods.next;self.update();self.listenDown();});};self.changeCate=function(e){self.cateId=e.item.cateId;for(var i=0;i<self.category.length;i++){if(self.category[i].cateId==parseInt(self.cateId,10)){self.category[i].active=true;}else{self.category[i].active=false;}if(self.cateId===null){self.category[0].active=true;}}self.topGoodsListScroll=0;(0,_jquery2.default)('.top-goods-list').scrollTop(0);self.initGoods(self.cateId);};self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.top-goods-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;self.topGoodsListScroll=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.topGoods.getMore({cateId:self.cateId,next:self.next},function(data){self.next=data.next;self.goodList=data.list;self.scrollLock=false;self.update();});}}};if(self.listWrap){self.listWrap.addEventListener('scroll',self.scrollDown,false);}},50);};self.initDate=function(){var date=new Date();var months=date.getMonth()+1;var hours=date.getHours();var minutes=date.getMinutes();if(months<10){months="0"+months;}var days=date.getDate();if(days<10){days="0"+days;}if(hours<10){hours="0"+hours;}if(minutes<10){minutes="0"+minutes;}var dateStr=date.getFullYear()+"年"+months+"月"+days+"日";var week=date.getDay();var time=hours+":"+minutes;var weekarr=['日','一','二','三','四','五','六'];self.nowDate=dateStr+" 周"+weekarr[week]+" "+time;self.update();setTimeout(self.initDate,60000);};self.on('mount',function(){self.checkNet();self.initDate();_riotSeedFlux2.default.bind.call(self,{name:'cartList',store:_store.store.cart});});});riot.tag2('order-history','<div class="order-index"> <div class="calendar-bar"> <span class="prev-day" onclick="{prevDay}">前一天</span> <date-picker></date-picker> <span class="next-day" onclick="{nextDay}">后一天</span> </div> <div class="order-tag"> <ul> <li onclick="{orderList}" status="{status}" each="{order}" class="{active:active}">{statusStr}</li> </ul> </div> <div class="order-content"> <div class="order-left {empty:!orderHistory.list.length}" id="hisorderList"> <div class="order-list {active:active}" each="{orderHistory.list}" onclick="{list}"> <div class="title">下单时间：<i class="f22-r">{createTime}</i></div> <div class="info"> <ul> <li>订单号：{code}</li> <li>收货人：{addrUserName}</li> <li>收货电话：{addrUserMobile}</li> <li>收货地址：{addrInfo}</li> <li>配送时间：{postTime}</li> </ul> </div> <div class="title">金额：<i class="f22-r">￥{payPrice}</i><i class="pad-tot">共计{totalCount}件</i></div> </div> </div> <div class="order-right"> <div class="order-list {order-no-button: (detail.status==4)}" style="display:none"> <div class="title text-c">在线订单(<i class="f22-r">{detail.code}</i>) <div class="order-print" onclick="{orderPrint}"></div> </div> <div class="o-d-con"> <div class="title">商品明细</div> <div class="info"> <ul> <li each="{detail.goods}">{goodsName}<div class="amount price">X{goodsCount}</div><div class="price">￥{buyTotalPrice}</div></li> </ul> </div> <div class="info"> <ul> <li>配送费：<div class="price">￥{detail.postPrice}</div></li> <li class="coupon" if="{detail.couponAmount}">优惠券：<div class="price">－¥{detail.couponAmount}</div></li> <li>总计：<div class="price">￥{detail.payPrice}</div></li> </ul> </div> <div class="title">配送明细</div> <div class="info border-none"> <ul> <li>订单状态：{detail.statusStr}</li> <li if="{detail.cancelUserName}">取消人：{detail.cancelUserName}</li> <li if="{detail.cancelReason}">取消原因：{detail.cancelReason}</li> <li>下单时间：{detail.createTime}</li> <li>收货人：{detail.addrUserName}</li> <li>收电话：{detail.addrUserMobile}</li> <li>收货地址：{detail.addrInfo}</li> <li>配送时间：{detail.postTime}</li> <li>买家留言：{detail.remark}</li> </ul> </div> </div> <div class="button"> <a class="cancel" onclick="{cancel}" if="{detail.status ==  3}">设为无效</a> <input type="hidden" id="orderId" value="{detail.orderId}"> </div> </div> </div> </div> </div>','','',function(opts){var self=this;self.size=5;self.status=3;self.getDateStr=function(time){return _utils2.default.getDateStr(time);};this.orderPrint=function(){_store.store.printOrderDetail.get(self.detail);}.bind(this);self.nextDay=function(){(0,_jquery2.default)(self.root).find('date-picker')[0].nextDay();};self.prevDay=function(){(0,_jquery2.default)(self.root).find('date-picker')[0].prevDay();};self.init=function(){if(!self.targetTime){var date=self.getDateStr(new Date().getTime());self.targetTime=date;}self.page=1;if(!self.status){self.status=3;}_riotSeedFlux2.default.bind.call(self,{name:'orderHistory',store:_store.store.orderHistory,refresh:true,params:{page:1,size:self.size,status:self.status,targetTime:self.targetTime},success:function success(){if(self.orderHistory.list&&self.orderHistory.list.length>0){self.orderHistory.list[0].active=true;self.detail=self.orderHistory.list[0];self.total=self.orderHistory.total;(0,_jquery2.default)(".order-list").show();}else{(0,_jquery2.default)(".order-list").hide();}self.update();}});};this.cancel=function(e){var refuse=(0,_jquery2.default)("<order-invalid></order-invalid>");(0,_jquery2.default)("order-history").append(refuse);riot.mount("order-invalid");}.bind(this);self.orderListAll=function(){var param={page:1,size:self.size,status:self.status,targetTime:self.targetTime};_store.store.orderHistory.get(param,function(data){self.total=data.total;self.page=data.page;});self.update();};this.orderList=function(e){if(e.item.active==false){for(var i=0;i<self.order.length;i++){self.order[i].active=false;}e.item.active=true;var status=e.item.status;self.status=status;self.update();self.orderListAll();}}.bind(this);this.list=function(e){for(var i=0;i<self.orderHistory.list.length;i++){self.orderHistory.list[i].active=false;}e.item.active=true;self.detail=e.item;self.update();}.bind(this);self.on('mount',function(){self.order=[{status:3,statusStr:"已完成",active:true},{status:4,statusStr:"无效订单",active:false}];self.update();self.init();self.nextPage();});self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('date-picker')[0].value;self.targetTime=date;self.init();});self.nextPage=function(){var curPage=1;(0,_jquery2.default)("#hisorderList").scroll(function(){if(curPage==1){self.listWrap=(0,_jquery2.default)('#hisorderList')[0];var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-20){if(!self.page){self.page=1;}if(!self.status){self.status=3;}if(self.page<self.total/self.size){curPage=2;var param={page:self.page+1,size:self.size,status:self.status,targetTime:self.targetTime};_store.store.orderHistory.getMore(param,function(data){self.page=data.page;self.update();curPage=1;});}}}});};});riot.tag2('order-index','<div class="order-index"> <div class="order-top"> <div class="order-status">接单状态:</div> <div class="order-status-img" if="{!storeOpen}"> <span id="orderStatusText">不接单</span> <div class="img" onclick="{orders}"></div> </div> <div class="order-status-img" if="{storeOpen}"> <span id="orderStatusText">接单</span> <div class="img active" onclick="{orders}"></div> </div> <div class="history icon" onclick="{histroyOrder}">历史订单</div> </div> <div class="order-tag" if="{storeOpen}"> <ul> <li onclick="{orderList}" status="{status}" each="{order}" class="{active:active}"> <div class="num" style="display:none" if="{num}" id="unconfirmedOrderNum"></div> {statusStr} </li> </ul> </div> <div class="order-content"> <div class="order-left {empty:!orderToday.list.length}" id="orderListLi" if="{storeOpen}"> <div class="order-list {active:active}" each="{orderToday.list}" onclick="{list}"> <div class="title">下单时间：<i class="f22-r">{createTime}</i> </div> <div class="info"> <ul> <li>订单号：{code}</li> <li>收货人：{addrUserName}</li> <li>收货电话：{addrUserMobile}</li> <li>收货地址：{addrInfo}</li> <li>配送时间：{postTime}</li> </ul> </div> <div class="title">金额：<i class="f22-r">￥{payPrice}</i> <i class="pad-tot">共计{totalCount}件</i> </div> </div> </div> <div class="order-right"> <div class="order-list {order-no-button: (detail.status==4)}" if="{storeOpen && orderToday.list.length>0}"> <div class="title text-c">在线订单(<i class="f22-r">{detail.code}</i>) <div class="order-print" onclick="{orderPrint}"></div> </div> <div class="o-d-con"> <div class="title">商品明细</div> <div class="info"> <ul> <li each="{detail.goods}">{goodsName}<div class="amount price">X{goodsCount}</div> <div class="price">￥{buyTotalPrice}</div> </li> </ul> </div> <div class="info"> <ul> <li>配送费：<div class="price">￥{detail.postPrice}</div> </li> <li class="coupon" if="{detail.couponAmount}">优惠券：<div class="price">－¥{detail.couponAmount}</div> </li> <li>总计：<div class="price">￥{detail.payPrice}</div> </li> </ul> </div> <div class="title">配送明细</div> <div class="info border-none"> <ul> <li>订单状态：{detail.statusStr}</li> <li if="{detail.cancelUserName}">取消人：{detail.cancelUserName}</li> <li if="{detail.cancelReason}">取消原因：{detail.cancelReason}</li> <li>下单时间：{detail.createTime}</li> <li>收货人：{detail.addrUserName}</li> <li>收电话：{detail.addrUserMobile}</li> <li>收货地址：{detail.addrInfo}</li> <li>配送时间：{detail.postTime}</li> <li>买家留言：{detail.remark}</li> </ul> </div> </div> <div class="button"> <a class="cancel" onclick="{cancel}" if="{detail.status==3}">设为无效</a> <div class="fl-left width-50" if="{detail.status==2}"> <a class="cancel" onclick="{cancel}">设为无效</a> </div> <div class="fl-right width-50" if="{detail.status==2}"> <a class="sure" onclick="{served}">已送达</a> </div> <div class="fl-left width-50" if="{detail.status==1}"> <a class="cancel" onclick="{denialOrders}">拒绝订单</a> </div> <div class="fl-right width-50" if="{detail.status==1}"> <a class="sure" onclick="{confirmOrder}">确认订单</a> </div> <div class="clear"></div> <input type="hidden" id="orderId" value="{detail.orderId}"> </div> </div> </div> </div> <modal id="order-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> </div>','','',function(opts){var self=this;self.size=5;self.status=1;this.histroyOrder=function(e){window.location.href="#/order/history";}.bind(this);self.orderPrint=function(){_store.store.printOrderDetail.get(self.detail);};self.getOrderPrintState=function(){if(_store.store.online){(0,_store.httpGet)({url:api.getOrderPrintState,complete:function complete(data){self.orderPrintState=data.printOrderState;self.update();}});}};function warning(text){var layer=(0,_jquery2.default)('#order-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}self.toBeConfirmed=function(){_store.store.orderConfirmed.get(function(data){if(data>0){(0,_jquery2.default)("#unconfirmedOrderNum").show().text(data);(0,_jquery2.default)(".order-untreated").show().text(data);}else{(0,_jquery2.default)("#unconfirmedOrderNum").hide();(0,_jquery2.default)(".order-untreated").hide();}});};this.orders=function(e){var status=2;if(!(0,_jquery2.default)(".img").is(".active")){status=1;}var param={status:status};_store.store.upCanOrder.get(param,function(){if(status==1){self.storeOpen=true;self.orderListAll();}else{self.storeOpen=false;}self.update();});}.bind(this);this.confirmOrder=function(e){var orderId=(0,_jquery2.default)("#orderId").val();var param={orderId:orderId};_store.store.orderConfirm.get(param,function(data){warning("操作成功");if(self.orderPrintState){self.orderPrint();}self.orderListAll();});}.bind(this);this.denialOrders=function(e){var refuse=(0,_jquery2.default)("<order-refuse></order-refuse>");(0,_jquery2.default)("order-index").append(refuse);riot.mount("order-refuse");}.bind(this);this.served=function(e){var orderId=(0,_jquery2.default)("#orderId").val();var param={orderId:orderId};_store.store.orderComplete.get(param,function(data){warning("操作成功");self.orderListAll();});}.bind(this);this.cancel=function(e){var refuse=(0,_jquery2.default)("<order-invalid></order-invalid>");(0,_jquery2.default)("order-index").append(refuse);riot.mount("order-invalid");}.bind(this);this.orderList=function(e){var status=e.status;if(e.item.active==false){for(var i=0;i<self.order.length;i++){self.order[i].active=false;}e.item.active=true;var status=e.item.status;self.status=status;self.update();self.orderListAll();}}.bind(this);self.orderListAll=function(){var params={page:1,size:self.size,status:self.status};_store.store.orderToday.get(params,function(data){self.total=data.total;self.page=data.page;self.orderToday=data;if(data.list&&data.list.length>0){data.list[0].active=true;self.detail=data.list[0];}self.update();self.toBeConfirmed();});};this.list=function(e){for(var i=0;i<self.orderToday.list.length;i++){self.orderToday.list[i].active=false;}e.item.active=true;self.detail=e.item;self.update();}.bind(this);self.on('mount',function(){self.order=[{status:1,statusStr:"待确认",active:true,num:true},{status:2,statusStr:"待送达",active:false,num:false},{status:3,statusStr:"已完成",active:false,num:false},{status:4,statusStr:"无效订单",active:false,num:false}];self.update();self.init();self.toBeConfirmed();self.nextPage();window.addEventListener('orderNumChange',self.orderListAll);});self.on('unmount',function(){window.removeEventListener('orderNumChange',self.orderListAll);});self.nextPage=function(){var curPage=1;(0,_jquery2.default)("#orderListLi").scroll(function(){if(curPage==1){self.listWrap=(0,_jquery2.default)('#orderListLi')[0];var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-20){if(!self.page){self.page=1;}if(!self.status){self.status=1;}if(self.page<self.total/self.size){curPage=2;var param={page:self.page+1,size:self.size,status:self.status};_store.store.orderToday.getMore(param,function(data){self.page=data.page;self.orderToday=data;self.update();curPage=1;});}}}else{return;}});};self.init=function(){self.getOrderPrintState();_store.store.storeInfo.get({},function(data){if(data.state==2){self.storeOpen=false;}else{self.storeOpen=true;self.orderListAll();}self.update();});};});riot.tag2('order-remind','<div style="display: none"> <audio id="music" src="file:///mnt/internal_sd/Android/data/cn.ipos100.pos/files/mp3/order.ogg"></audio> </div>','','',function(opts){var self=this;self.play=function(){var audio=document.getElementById('music');audio.play();window.dispatchEvent(new Event('orderNumChange'));};function playAudio(audio){var url=audio.currentSrc;if(!url){return;}if(url.search('http')!=-1){audio.play();}else{var myMedia=new Media(url,function(){},function(err){});myMedia.play();}}function getOrderMessage(){self.message=JSON.parse(Ipush.message);if(self.message.type==2){self.play();}}self.on('mount',function(){window.addEventListener('receiveMessage',getOrderMessage,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',getOrderMessage);});});riot.tag2('shop-index','<ul> <li each="{list}" onclick="{noAuthTip}" if="{show}"> <a> <img riot-src="{img}"> <div>{name}</div> </a> </li> <div class="clearfix"></div> </ul>','','',function(opts){var self=this;self.list=[{name:'结算单',img:'imgs/sales-order.png',link:'#/shop/sales-order',logName:'0301',authCode:'31',show:true},{name:'经营助手',img:'imgs/business-bq.png',link:'#/shop/business-assistant-bq',logName:'0304',authCode:'61',show:true},{name:'外接设备',img:'imgs/device.png',link:'#/shop/order-printer',logName:'0305',authCode:'71',show:true},{name:'员工',img:'imgs/employee.png',link:'#/shop/employee',logName:'0306',authCode:'81',show:true},{name:'店铺设置',img:'imgs/shop-message.png',link:'#/shop/setting',logName:'0308',authCode:'91',show:true}];self.noAuthTip=function(e){self.log(e.item.logName);if(e.item.haveAuth){location.href=e.item.link;return true;}else{alert('没有权限');return false;}};self.log=function(name){if(window.Icommon){Icommon.logEvent(null,null,{eventId:name});}};self.on('mount',function(){(0,_store.httpGet)({url:api.auth,success:function success(res){self.auth=res.data.permissionCodes.split(',');self.list.forEach(function(item){if(typeof item.authCode==='string'){if(self.auth.indexOf(item.authCode)>-1){item.haveAuth=true;}}else if(Object.prototype.toString.call(item.authCode)==='[object Array]'){item.authCode.forEach(function(code){if(self.auth.indexOf(code)>-1){item.haveAuth=true;}});}});self.update();}});});});riot.tag2('address-select','<div class="scroll-wrap"> <div class="scroll-content"> <div> <ul type="levelOne"> <li each="{region.levelOne}" code="{code}"> {name}</li> </ul> </div> <div> <ul type="levelTwo"> <li if="{!region.levelTwo.length}"> -- </li> <li if="{region.levelTwo.length}" each="{region.levelTwo}" code="{code}"> {name}</li> </ul> </div> <div> <ul type="levelThree"> <li if="{!region.levelThree.length}"> -- </li> <li if="{region.levelThree.length}" each="{region.levelThree}" code="{code}"> {name}</li> </ul> </div> <p></p> </div> </div>','','',function(opts){var hasTouch=!!('ontouchstart'in window||window.DocumentTouch&&document instanceof window.DocumentTouch);var startEvt=hasTouch?'touchstart':'mousedown';var moveEvt=hasTouch?'touchmove':'mousemove';var endEvt=hasTouch?'touchend':'mouseup';var self=this;var modal=self.parent;self.on('mount',function(){_riotSeedFlux2.default.bind.call(self,{name:'region',store:_store.store.region,success:function success(){self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'register',store:_store.store.register,success:function success(){self.update();}});bind();});function bind(){self.scale=40;(0,_jquery2.default)(self.root).find('ul').bind(startEvt,start);}function start(e){var e=window.event;self.target=(0,_jquery2.default)(e.target).parents('ul:first');self.startY=hasTouch&&e.targetTouches?e.targetTouches[0].pageY:e.pageY;self.top=parseInt(self.target.css('top'));self.max=self.target.height();if(self.max==self.scale){return;}(0,_jquery2.default)(window).bind(moveEvt,move);(0,_jquery2.default)(window).bind(endEvt,end);}function end(e){(0,_jquery2.default)(window).unbind(moveEvt);(0,_jquery2.default)(window).unbind(endEvt);self.top=parseInt(self.target.css('top'));var index=Math.round(Math.abs(self.top-self.scale)/self.scale);var left=Math.abs(self.scale*(1-index)-self.top);self.top=self.scale*(1-index);self.target.css('top',self.top);self.target.attr('idx',index);var key=self.target.attr('type');_store.store.region.setCurrent(key,self.region[key][index]);}function move(e){var e=window.event;e.preventDefault();self.offsetY=hasTouch&&e.targetTouches?e.targetTouches[0].pageY-self.startY:e.pageY-self.startY;var target=self.target;var topY=self.top+self.offsetY;if(topY<=self.scale&&topY>=self.scale*2-self.max){target.css('top',topY);}}modal.onSubmit=function(){var current=self.region.current;var addressCode=[];var addressValue=[];addressCode.push(current['levelOne']['code']);addressCode.push(current['levelTwo']['code']);addressCode.push(current['levelThree']['code']);addressValue.push(current['levelOne']['name']);addressValue.push(current['levelTwo']['name']);addressValue.push(current['levelThree']['name']);_store.store.register.set('addressCode',addressCode.join(','));modal.parent.addressCode=addressCode.join(',');modal.parent.newAddressCode=addressCode.join(',');modal.parent.addressValue=addressValue.join(',');modal.parent.addressValueWithoutSep=addressValue.join('');modal.parent.update();modal.root.close();};});riot.tag2('warning','<div class="warning" id="login-warning" style="display:none"> <h2>提示</h2> <p>{opts.msg}</p> <a class="red-box" onclick="{close}">知道了</a> </div>','','',function(opts){var self=this;self.root.open=function(){self.update();(0,_jquery2.default)('#login-warning').show();};self.close=self.root.close=function(){(0,_jquery2.default)('#login-warning').hide();};self.parent.on('update',function(){self.opts=self.opts?self.opts.opts:{};});});riot.tag2('pay-waiting','<div class="title"> {title_text} </div> <div class="modal-submit"> <div class="button-wrap"> <a class="btn btn-primary submit" onclick="{payFail}" if="{pay_status == 4}">知道了</a> <a class="btn btn-primary submit" onclick="{paySuccess}" if="{pay_status == 2}">知道了</a> <a class="btn btn-default cancle" onclick="{cancle}" if="{pay_status == 3}">支付失败</a> <a class="btn btn-primary submit" if="{pay_status == 3}" onclick="{paySuccess}">支付成功</a> </div> <div class="clearfix"></div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.title_text='等待用户支付';self.pay_status=3;modal.onOpen=function(params){self.data=params;if(params.pay_status==_constant2.default.PUSH_PAY_SUCCESS){self.title_text='支付成功';self.pay_status=2;}else if(params.pay_status==_constant2.default.PUSH_PAY_ING){self.title_text='用户支付中...';self.pay_status=3;}else if(params.pay_status==_constant2.default.PUSH_PAY_FAIL){self.title_text='支付失败';self.pay_status=4;}else{self.title_text='等待用户支付';self.pay_status=3;}self.update();};self.paySuccess=function(){modal.close();if(self.data&&self.data.bill){_store.store.pay.afterPayCommit({bill:self.data.bill});}parent.paySuccess();};self.payFail=function(){modal.close();parent.bill={};location.hash='#/casher/index';};self.cancle=function(){modal.close();parent.bill={};location.hash='#/casher/index';};});riot.tag2('bill-coupon-info','<div class="bill-coupon-info"> <div class="title">使用优惠券 </div> <div class="info"> <div class="price"> <span>{coupon.price}</span> </div> <div class="text"> <h3>{coupon.title}</h3> <h4>{coupon.couponCode}</h4> <div> <span class="left">{rules}</span> <span class="right">有效日期至:{coupon.effectTime}</span> <span class="clearfix"></span> </div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.params=params;self.coupon=self.params.item.couponInfo;self.update();};modal.onClose=function(){self.coupon={};self.update();};modal.onSubmit=function(){self.params.item.couponPrice=self.coupon.price;parent.couponCode=self.coupon.couponCode;modal.close();parent.couponAdd(self.params);self.update();};});riot.tag2('bill-coupon-num','<div class="vip-login"> <div class="phone"> <input type="tel" value="" placeholder="优惠券码" id="vipCouponNum"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.params=params;self.update();};modal.onClose=function(){(0,_jquery2.default)("#vipCouponNum").val("");};modal.onSubmit=function(){var vipCouponNum=(0,_jquery2.default)("#vipCouponNum").val();var params={couponCode:vipCouponNum,baskets:parent.baskets};_store.store.couponVerify.get(params,function(data){self.params.item={};self.params.item.couponInfo=data;modal.close();(0,_jquery2.default)("#billCouponInfo")[0].open(self.params);self.update();});};});riot.tag2('bill-coupon','<div class="bill-coupon"> <div class="img" onclick="{scan}"></div> <div class="info">请用扫码枪扫描手机上的优惠券码</div> <div class="input" onclick="{couponInput}">扫不到?手动输入</div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.scan=function(){modal.close();(0,_jquery2.default)("#billCouponInfo")[0].open(self.params);};self.couponInput=function(){modal.close();(0,_jquery2.default)("#billCouponNum")[0].open(self.params);};self.barcodeCoupon=function(){var vipCouponNum=Icommon.number;var params={couponCode:vipCouponNum,baskets:parent.baskets};_store.store.couponVerify.get(params,function(data){self.params.item={};self.params.item.couponInfo=data;modal.close();(0,_jquery2.default)("#billCouponInfo")[0].open(self.params);self.update();});};modal.onOpen=function(params){self.params=params;self.update();window.addEventListener('inputNumber',self.barcodeCoupon,false);};modal.onClose=function(){window.removeEventListener('inputNumber',self.barcodeCoupon);};modal.onSubmit=function(){};});riot.tag2('vip-login','<div class="vip-login"> <div class="phone"> <input type="tel" value="" placeholder="会员手机号" id="vipPhone"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.update();};modal.onClose=function(){(0,_jquery2.default)("#vipPhone").val("");};modal.onSubmit=function(){var _vipphone=(0,_jquery2.default)("#vipPhone").val();if(/^1[0-9]{10}$/.test(_vipphone)){var params={phoneMobile:_vipphone};_store.store.memberVerify.get(params,function(data){(0,_jquery2.default)("#vipPhone").val("");_utils2.default.toast("登录成功");modal.close();parent.vipLogin=true;parent.vipphone=_vipphone;self.update();parent.update();});}else{_utils2.default.toast("请填写正确的手机号");}};});riot.tag2('order-invalid','<div class="coverLayer"></div> <div class="popwin refuse"> <div class="refuse-t"> 请选择设为无效原因 </div> <div class="refuse-reason"> <ul> <li onclick="{selectReason}" class="active">收货人退货</li> <li onclick="{selectReason}">订单信息有误</li> <li onclick="{selectReason}" other="other">其他</li> <div class="input-reason"><input type="text" id="inputReason"></div> </ul> <div class="button"> <div class="fl-left reason"><a class="cancel" onclick="{closeWin}">取消</a></div> <div class="fl-right reason"><a class="sure" onclick="{determine}">确定</a></div> </div> </div> </div>','','',function(opts){var self=this;this.closeWin=function(){(0,_jquery2.default)("order-invalid").remove();}.bind(this);this.determine=function(){var param={};param.reason=(0,_jquery2.default)(".refuse-reason ul li.active").text();if((0,_jquery2.default)(".refuse-reason ul li.active").attr("other")=="other"){param.reason=(0,_jquery2.default)("#inputReason").val();}param.orderId=(0,_jquery2.default)("#orderId").val();param.userId=6;_store.store.orderInvalid.get(param,function(){window.dispatchEvent(new Event('orderNumChange'));(0,_jquery2.default)("order-invalid").remove();});}.bind(this);this.selectReason=function(e){if(!(0,_jquery2.default)(e.target).is(".active")){(0,_jquery2.default)(".refuse-reason ul li").removeClass("active");(0,_jquery2.default)(e.target).addClass("active");}}.bind(this);});riot.tag2('order-refuse','<div class="coverLayer"></div> <div class="popwin refuse"> <div class="refuse-t"> 请选择拒绝订单原因 </div> <div class="refuse-reason"> <ul> <li onclick="{selectReason}" class="active">没货</li> <li onclick="{selectReason}">地址太远，不送</li> <li onclick="{selectReason}">人员不够，送不了</li> <li onclick="{selectReason}">没时间，送不了</li> <li onclick="{selectReason}">收货人不要了</li> <li onclick="{selectReason}" other="other">其他</li> <div class="input-reason"><input type="text" id="inputReason"></div> </ul> <div class="button"> <div class="fl-left reason"><a class="cancel" onclick="{closeWin}">取消</a></div> <div class="fl-right reason"><a class="sure" onclick="{determine}">确定</a></div> </div> </div> </div>','','',function(opts){var self=this;this.closeWin=function(){(0,_jquery2.default)("order-refuse").remove();}.bind(this);this.determine=function(){var param={};param.reason=(0,_jquery2.default)(".refuse-reason ul li.active").text();if((0,_jquery2.default)(".active").attr("other")=="other"){param.reason=(0,_jquery2.default)("#inputReason").val();}param.orderId=(0,_jquery2.default)("#orderId").val();_store.store.orderRefuse.get(param,function(){window.dispatchEvent(new Event('orderNumChange'));(0,_jquery2.default)("order-refuse").remove();});}.bind(this);this.selectReason=function(e){if(!(0,_jquery2.default)(e.target).is(".active")){(0,_jquery2.default)(".refuse-reason ul li").removeClass("active");(0,_jquery2.default)(e.target).addClass("active");}}.bind(this);});riot.tag2('attain-sart','<div class="attain-sart" if="{attainReceive}"> <div class="cover"> </div> <div class="sart"> <div class="title">恭喜您</div> <div class="info">已达成{message.data.title}成就</div> <div class="button"> <a onclick="{goAttain}">去成就界面查看</a> </div> <div class="cancel"> <span onclick="{cancel}">稍后查看</span> </div> </div> </div>','','',function(opts){var self=this;self.attainReceive=false;self.cancel=function(){self.attainReceive=false;self.message={};self.update();};self.goAttain=function(){window.location.replace("#/shop/attain");window.dispatchEvent(new Event('receiveMessageReload'));self.attainReceive=false;self.message={};self.update();};function getReceiveMessage(){self.message=JSON.parse(Ipush.message);if(self.message.type==1){self.attainReceive=true;self.update();}}self.on('mount',function(){window.addEventListener('receiveMessage',getReceiveMessage,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',getReceiveMessage);});});riot.tag2('attain','<div class="attain"> <div class="attain-list"> <ul class="attain-list-ul"> <li class="list" each="{attain}" if="{attain.length > 0}"> <div class="attain_top"> <div class="left"> <h3>{name}</h3> <div class="img"> <img riot-src="{iconUrl}" alt=""> </div> <h5> {currentLevel}级/共{totalLevel}级</h5> </div> <div class="right"> <ul> <li each="{currentTask.behaviors}"> <div class="title"> {title} </div> <div class="num"> {currentNum}/{totalNum} </div> <div class="line"> <div class="co" riot-style="width:{currentNum/totalNum*100}%"></div> </div> </li> </ul> </div> </div> <div class="attain_bottom"> <div class="icon_bottom atta-coupon" if="{reward.type == 0}"></div> <div class="icon_bottom atta-app" if="{reward.type == 1}"></div> <div class="icon_bottom atta-ad" if="{reward.type == 2}"></div> <h5 if="{reward.type == 0}">{reward.totalNum}张总价值</h5> <h5 if="{reward.type == 0}">{reward.totalPrice}元优惠券</h5> <h5 if="{reward.type == 1}" class="atta-app">{reward.name}</h5> <h5 if="{reward.type == 2}" class="atta-ad">{reward.name}</h5> <a class="cancel" if="{status == 0}">领取</a> <a onclick="{getReceive}" if="{status == 1}">领取</a> <a class="cancel" if="{status == 2}">已领取</a> </div> </li> <div class="clear"> </div> <div class="none-list" if="{attain.length <= 0}"> <div class="none-list-text"> 暂无成就 </div> </div> </ul> </div> </div>','','',function(opts){var self=this;self.next=0;self.getReceive=function(e){var param={reachRecordId:e.item.recordId};_store.store.attain.getReward(param,function(data){_utils2.default.toast("领取成功");self.next=0;self.init();});};self.init=function(){self.next=0;var params={next:self.next};_store.store.attain.get(params,function(data){self.next=data.next;self.attain=data.list;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.attain-list-ul')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.attain.get({next:self.next},function(data){self.next=data.next;self.attain=self.attain.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},5000);};function getReceiveMessageReload(){self.init();}self.on('mount',function(){self.init();self.listenDown();window.addEventListener('receiveMessageReload',getReceiveMessageReload,false);});self.on('unmount',function(){window.removeEventListener('receiveMessageReload',getReceiveMessageReload);if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('coupon','<div class="coupon"> <div class="coupon-list"> <ul> <li class="cou-our" onclick="{addCoupon}"> <div class="add "></div> </li> <li each="{coupon}" class="{bacolor}" if="{coupon.length>0}"> <h4 onclick="{couponInfo}">{title} <div class="icon {public:source!=1}{our:source==1}"></div> <div class="info"></div> </h4> <h5>数量：{totalNumber}张</h5> <h5>面额：{denomination}</h5> <div class="stop-coupon" if="{bacolor==⁗cou-our⁗}" onclick="{couponStop}">停止发放</div> <div class="status {coupon-s-over:status==2}{coupon-s-invalid:status==3}{coupon-s-invalid:status==4}"></div> </li> <div class="clearfix"></div> </ul> </div> </div> <pop id="couponInfo" title="优惠券详情" onebutton> <coupon-info></coupon-info> </pop> <pop id="couponAdd" title="添加优惠券" twobutton suretext="发放" help="true"> <coupon-add></coupon-add> </pop> <pop width="650px" id="couponHelp" title="帮助" onebutton popzbig="true"> <coupon-help></coupon-help> </pop> <pop width="400px" id="couponPrice" title="发放面额、数量及总额" twobutton popzbig="true" suretext="下一步"> <coupon-price></coupon-price> </pop> <pop width="400px" id="couponPriceNext" title="发放面额、数量及总额" twobutton popzbigtwo="true" suretext="确定" cancletext="上一步"> <coupon-price-next></coupon-price-next> </pop> <pop width="400px" id="couponDate" title="有效期" twobutton popzbig="true"> <coupon-data></coupon-data> </pop> <pop id="couponCondition" title="获得条件" twobutton popzbig="true"> <coupon-con></coupon-con> </pop> <pop width="400px" id="couponWay" title="使用方式" twobutton popzbig="true"> <coupon-way></coupon-way> </pop> <pop width="400px" id="couponUse" title="使用条件" twobutton popzbig="true"> <coupon-use></coupon-use> </pop> <pop id="couponStop" title="提示" twobutton> <coupon-stop></coupon-stop> </pop>','','',function(opts){var self=this;self.next=0;self.addCoupon=function(){(0,_jquery2.default)("#couponAdd")[0].open();};self.couponInfo=function(e){(0,_jquery2.default)("#couponInfo")[0].open(e.item);};self.couponHelp=function(){(0,_jquery2.default)("#couponHelp")[0].open();};self.couponStop=function(e){(0,_jquery2.default)("#couponStop")[0].open(e.item.storeCouponId);};self.stopSure=function(id){_store.store.coupon.stop({couponId:id},function(data){self.next=0;self.init();});};self.init=function(){var params={next:self.next};_store.store.coupon.get(params,function(data){self.next=data.next;self.coupon=data.list;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.coupon-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.coupon.get({next:self.next},function(data){self.next=data.next;self.coupon=self.coupon.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.on('mount',function(){self.newCoupon={};self.init();self.listenDown();});self.on('unmount',function(){if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('device-index','<ul> <li each="{list}"> <a href="{link}" onclick="{noAuthTip}"> <img riot-src="{img}"> <div>{name}</div> </a> </li> <div class="clearfix"></div> </ul>','','',function(opts){var self=this;self.list=[{name:'小票打印机',img:'imgs/order-printer.png',link:'#/shop/order-printer'}];});riot.tag2('order-printer','<div class="half"> <div class="card"> <form> <span> 打印机类型：USB打印机 </span> </form> <div> <div class="half"> <button onclick="{printTest}" class="pull-right">打印测试页</button> </div> <div class="clearfix"></div> </div> <div> <p>结算时是否打印小票 <span class="switch {close: !print}" onclick="{switchPrint}"></span></p> </div> </div> </div>','','',function(opts){var self=this;self.connected=true;self.print=true;self.qrcode=true;self.qrcode=self.orderPrint;self.init=function(){(0,_store.httpGet)({url:api.printerInfo,success:function success(res){self.printerType=res.data.type;self.connected=res.data.print;self.print=res.data.printBill;self.qrcode=res.data.printQr;self.update();}});};self.getOrderPrintState=function(){(0,_store.httpGet)({url:api.getOrderPrintState,complete:function complete(data){self.orderPrint=data.printOrderState;self.update();}});};self.connect=function(e){(0,_store.httpGet)({url:api.switchPrinter,params:{enable:true},success:function success(){self.connected=true;self.update();}});};self.disconnect=function(e){(0,_store.httpGet)({url:api.switchPrinter,params:{enable:false},success:function success(){self.connected=false;self.update();}});};self.printTest=function(e){(0,_store.httpGet)({url:api.printTest});};self.switchPrint=function(e){(0,_store.httpGet)({url:api.printBill,params:{enable:!self.print},success:function success(){self.print=!self.print;self.update();}});};self.switchOrderPrint=function(e){(0,_store.httpGet)({url:api.setOrderPrintState,params:{printOrderState:!self.orderPrint},complete:function complete(){self.orderPrint=!self.orderPrint;self.update();}});};self.switchQrcode=function(e){(0,_store.httpGet)({url:api.printQr,params:{enable:!self.qrcode},success:function success(){self.qrcode=!self.qrcode;self.update();}});};self.on('mount',function(){self.init();self.getOrderPrintState();});});riot.tag2('tag-printer','','','',function(opts){});riot.tag2('business-assistant-bq','<div class="business-assistant-bq"> <div class="b-s-top"> <div class="rank"> <span>本日{weekRank.countryName}第{weekRank.rank}名<span> <ul> <li>本门店总销售额:{weekRank.totalAmount}</li> <li>{weekRank.countryName}最高销售额:{weekRank.highestAmount}</li> </ul> </div> <div class="chose-date"> <div class="get-date" onclick="{selectDate}" id="selectdateShow"> {showDate} </div> <input id="getstartDate" type="hidden" name="name" value="{startDate}"> <input id="getendDate" type="hidden" name="name" value="{endDate}"> <div if="{selectDateStatus}" class="select-date-select"> <select-date id="selectDate"></select-date> </div> </div> <div class="sale-data"> <span id="totalAmount">销售额:{allSale.totalAmount}</span> <span>总单数:{allSale.totalBills}</span> <span>销量:{allSale.totalSales}</span> <span>毛利润:{allSale.totalProfit}</span> </div> </div> <div class="b-s-con"> <div class="l-report brief-report"> <p><i></i><b>销售简报</b><i></i></p> <div class="channel-sale-rank"> <div class="report sale-info"> <div class="reportInfo"> 分渠道销售情况 </div> <div class="disc"> <div class="wraps wrap-r" id="circleOne"> <div class="circle circle-r"> <div class="percent left"></div> <div class="percent right wth0"></div> </div> <div class="num"> <b if="{!perSale}">销售额对比</b> <b if="{perSale}">销量对比</b> </div> </div> </ul> <ul class="sale-per" if="{!perSale}"> <li>网店销售额{channelInfo.onlineAmountScale || 0}%</li> <li>门店销售额{channelInfo.offlineAmountScale || 0}%</li> </ul> <ul class="sale-per" if="{perSale}"> <li>网店销量{channelInfo.onlineSalesScale || 0}%</li> <li>门店销量{channelInfo.offlineSalesScale || 0}%</li> </ul> <p> <i class="nobor">销售额</i> <i class="shift nobor" onclick="{shift}"><b></b></i> <i class="nobor">销售量</i> </p> </div> <div class="line"> <div class="line1"> <p class="grad-l"><span class="line-item">门店</span><b>{channelInfo.offlineCustomerPrice}</b></p> </div> <div class="line2"> <p class="grad-r"><span class="line-item">网店</span><b>{channelInfo.onlineCustomerPrice}</b></p> </div> <i>客单价</i> </div> </div> <div class="report"> <div class="reportInfo"> 各分类销售额占比 </div> <div id="circleSale"></div> </div> </div> <div class="goods-sale-rank report"> <div class="reportInfo"> 商品销售排名 </div> <div class="accordTosale"> <div class="good-class"> <select id="categorySel" class="" name="" onchange="{categorySel}"> <option each="{categoryRank}" value="{cateId}">{cateName}</option> </select> </div> <div class="good-according"> <div class="{active: active}" onclick="{accordSale}" each="{according}"> {accord} </div> </div> </div> <li class="li-bor-top"> <span style="width: 8%">项</span> <span style="width: 23%">商品</span> <span style="width: 13%">分类</span> <span style="width: 10%">销量</span> <span style="width: 15%">销售额</span> <span style="width: 15%">周转天数</span> <span style="width: 16%">毛利率</span> </li> <ul class="top-goods-list"> <li each="{item in next_gooda}"> <span style="width: 8%" if="{next_gooda.indexOf(item)==0 || next_gooda.indexOf(item)==1 || next_gooda.indexOf(item)==2}"></span> <span style="width: 8%" if="{next_gooda.indexOf(item) !=0 && next_gooda.indexOf(item) !=1 && next_gooda.indexOf(item) !=2}">{next_gooda.indexOf(item) + 1}</span> <span style="width: 23%">{item.goodsName}</span> <span style="width: 13%">{item.cateName}</span> <span style="width: 10%">{item.sales}</span> <span style="width: 15%" class="saleNum">{item.salesAmount}</span> <span style="width: 15%" if="{item.turnoverDays>= 0 &&  item.turnoverDays <= 999}">{item.turnoverDays}</span> <span style="width: 15%" if="{item.turnoverDays> 999}">999+</span> <span style="width: 15%" if="{item.turnoverDays < 0}">---</span> <span style="width: 16%">{item.grossMargin}%</span> <div class="" id="{item.activeStatus}" if="item.activeStatus"> </div> </li> <input id="getNext" type="hidden" name="name" value="{next}"> </ul> </div> </div> <div class="r-report brief-report"> <p><i></i><b>顾客简报</b><i></i></p> <div class="customer-sale-rank report week-sale"> <div class="reportInfo reportInfo-bq"> 分渠道顾客情况 </div> <div class="l-week-sale l-week-sale-bq"> <ul> <li class="bq-bor"> <dl style="width:100%;" class=""> <dt></dt> <dd>门店</dd> </dl> <ul> <li>本周消费顾客</li> <li>{weekMembersInfo.offlineBuyerNum}</li> <li class="addbg" if="{weekMembersInfo.offlineBuyerAddNum> 0}">上周 +{weekMembersInfo.offlineBuyerAddNum}</li> <li class="decrebg" if="{weekMembersInfo.offlineBuyerAddNum < 0}">上周 {weekMembersInfo.offlineBuyerAddNum}</li> <li if="{weekMembersInfo.offlineBuyerAddNum==0}">上周 ={weekMembersInfo.offlineBuyerAddNum}</li> </ul> </li> </ul> </div> <div class="c-week-sale"> <dl class=""> <dt></dt> <dd>网店</dd> </dl> <div class="u-bq"> <ul> <li>本周消费会员</li> <li>{weekMembersInfo.onlineBuyerNum}</li> <li class="addbg" if="{weekMembersInfo.onlineBuyerAddNum> 0}">上周 +{weekMembersInfo.onlineBuyerAddNum}</li> <li class="decrebg" if="{weekMembersInfo.onlineBuyerAddNum < 0}">上周 {weekMembersInfo.onlineBuyerAddNum}</li> <li if="{weekMembersInfo.onlineBuyerAddNum==0}">上周 ={weekMembersInfo.onlineBuyerAddNum}</li> </ul> <ul> <li>本周新增会员</li> <li>{weekMembersInfo.newMemberNum}</li> <li class="addbgNew" if="{weekMembersInfo.newMemberAddNum> 0}">上周 +{weekMembersInfo.newMemberAddNum}<span></span></li> <li class="decrebgNew" if="{weekMembersInfo.newMemberAddNum < 0}">上周 {weekMembersInfo.newMemberAddNum}<span></span></li> <li if="{weekMembersInfo.newMemberAddNum==0}">上周 ={weekMembersInfo.newMemberAddNum}</li> </ul> </div> </div> </div> <p><i></i><b>库存简报</b><i></i></p> <div class="customer-sale-rank warning-stock"> <div class="report"> <div class="reportInfo"> 库存预警 </div> </div> <h1></h1> <h2></h2> <a class="left-arrow" onclick="{leftBest}"></a> <div class="stock-con"> <div class="stock-scroll stock-scroll-best"> <ul> <li each="{bestStock}"> <div class="stock-pic"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}" alt=""></div> <div class="stock-num stock-rotate" if="{stockNum <999}">库存{stockNum}</div> <div class="stock-num stock-rotate" if="{stockNum>= 999}">库存999+</div> <div class="stock-name">{goodsName}</div> </li> </ul> </div> </div> <a class="right-arrow" onclick="{rightBest}"></a> </div> <div class="customer-sale-rank warning-stock"> <div class="report"> <div class="reportInfo"> 滞销商品 </div> </div> <h1 class="h1"></h1> <h2 class="h2"></h2> <a class="left-arrow" onclick="{leftDull}"></a> <div class="stock-con"> <div class="stock-scroll stock-scroll-dull"> <ul> <li each="{dullStock}"> <div class="stock-pic"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}" alt=""></div> <div class="stock-num stock-remain stock-rotate" if="{stockNum <999}">库存{stockNum}</div> <div class="stock-num stock-remain stock-rotate" if="{stockNum>= 999}">库存999+</div> <div class="stock-name">{goodsName}</div> </li> </ul> </div> </div> <a class="right-arrow" onclick="{rightDull}"></a> </div> </div> </div> </div>','','',function(opts){var self=this;self.nextNum=0;self.next=0;self.nextBest=0;self.nextDull=0;self.nowAmount=0;self.selectDateStatus=false;//
+	var globleEvents=riot.observable();riot.tag2('login','<div id="login-wrap"> <form class="login" onsubmit="{submit}"> <div class="logo"></div> <div class="setting" onclick="{openSetting}"></div> <input id="username" type="text" name="username" placeholder="账号/手机号" maxlength="12"> <input id="password" type="password" name="account" placeholder="密码" maxlength="12"> <button class="login-btn">登录</button> <div class="tips"> <a class="left" href="#/register">开店</a> <a class="right" href="#/find-password">找回店主密码</a> </div> </form> </div>','','',function(opts){var self=this;self.openSetting=function(){_utils2.default.androidBridge(api.openSetting);};self.submit=function(e){e.preventDefault();var username=(0,_jquery2.default)('#username').val();var password=(0,_jquery2.default)('#password').val();if(!username){_utils2.default.toast("请填写用户名");return;}if(!password){_utils2.default.toast("请填写密码");return;}_store.store.account.login({username:(0,_jquery2.default)('#username').val(),password:(0,_jquery2.default)('#password').val(),imeCode:'2021414914044566'},function(data){if(data.code==1){self.login=true;location.replace("#/casher/index");location.reload();}else if(data.code==20101){self.login=false;(0,_jquery2.default)('#login-warning').show();}else if(data.msg){alert(data.msg);}});};self.closeWarning=function(){(0,_jquery2.default)('#login-warning').hide();};});riot.tag2('casher-balance','<div class="balance-wrap"> <div class="balance-select"> <ul class="pay-info"> <li> <p if="{!refund}">应收<strong>￥<b>{pay.amount || 0}</b> </strong> </p> <p class="red" if="{refund}">应退<strong>￥<b>{payCashStr}</b> </strong> </p> </li> <li> <p class="red" if="{!refund && type==\'1\'}">现金<strong>￥<b>{payCashStr}</b> </strong> </p> </li> <li> <p if="{!refund && type==\'1\'}">找零<strong>￥<b>{payback}</b> </strong> </p> </li> </ul> <ul class="pay-type"> <li class="cash {active: type == \'1\'}" onclick="{changeType(\'1\')}"><span>现金</span></li> <li if="{!refund}" class="faceto {active: type == \'5\'}" onclick="{changeType(\'5\')}"><span>面对面收款</span></li> <li if="{!refund}" class="alipay {active: type == \'2\'}" onclick="{changeType(\'2\')}"><span>支付宝</span></li> <li if="{!refund}" class="wechat {active: type == \'3\'}" onclick="{changeType(\'3\')}"><span>微信</span></li> <li if="{!refund}" class="bank {active: type == \'4\'}" onclick="{changeType(\'4\')}"><span>银行卡</span></li> </ul> </div> <div class="keyboard"> <table> <tbody> <tr> <td colspan="1" rowspan="4" style="width:56.8%" show="{type !=\'1\'}"> <div class="pic-pay"> <div show="{type==\'4\'}" class="bank-code code-pic"></div> <p show="{type==\'2\' || type==\'3\' || type==\'5\'}">{codeTips}</p> </div> </td> <td onclick="{addString(\'7\')}" if="{type==\'1\'}">7</td> <td onclick="{addString(\'8\')}" if="{type==\'1\'}">8</td> <td onclick="{addString(\'9\')}" if="{type==\'1\'}">9</td> <td onclick="{backspace}" class="backspace" if="{type==\'1\'}"></td> <td colspan="2" if="{refund && type==\'1\'}" class="payback-option"> <p class="on" onclick="{setStorage}">退回时增加库存</p> </td> <td class="red" if="{!refund}" onclick="{wipe}">抹零</td> <td class="red discount-td" if="{!refund}" onclick="{openDiscount}">折扣</td> <td class="display-none" if="{!refund}"></td> <td class="red" if="{refund && type==\'1\'}" onclick="{openBox}">开钱箱</td> </tr> <tr if="{type !=\'1\'}"> <td class="big" rowspan="3" colspan="3" onclick="{check}">结算</td> </tr> <tr if="{type==\'1\'}"> <td onclick="{addString(\'4\')}">4</td> <td onclick="{addString(\'5\')}">5</td> <td onclick="{addString(\'6\')}">6</td> <td onclick="{addString(\'100\')}">100</td> <td class="big" rowspan="3" colspan="3" onclick="{check}">结算</td> </tr> <tr if="{type==\'1\'}"> <td onclick="{addString(\'1\')}">1</td> <td onclick="{addString(\'2\')}">2</td> <td onclick="{addString(\'3\')}">3</td> <td onclick="{addString(\'50\')}">50</td> </tr> <tr if="{type==\'1\'}"> <td onclick="{addString(\'0\')}">0</td> <td onclick="{addString(\'00\')}">00</td> <td onclick="{addString(\'.\')}">.</td> <td onclick="{addString(\'20\')}">20</td> </tr> </tbody> </div> </div> <modal id="discount-layer" modal-height="280px" opts="{discountOpts}"> <div class="discount"> <div class="top"> <label>请输入折扣百分比: <input id="discountInput" maxlength="3" type="tel" pattern="[0-9]*" value="{parent.discount}" name="discount"></label> </div> <div class="label">快捷输入：</div> <ul> <li onclick="{parent.getDiscount(95)}">95%</li> <li onclick="{parent.getDiscount(90)}">90%</li> <li onclick="{parent.getDiscount(85)}">85%</li> <li onclick="{parent.getDiscount(80)}">80%</li> <li onclick="{parent.getDiscount(75)}">75%</li> <li onclick="{parent.getDiscount(70)}">70%</li> <li onclick="{parent.getDiscount(65)}">65%</li> <li onclick="{parent.getDiscount(60)}">60%</li> </ul> </div> </modal> <modal id="pay-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> <modal id="find-zero" modal-width="500px" modal-height="250px" nofooter> <div class="find-zero about"> <div class="title"> 找零 </div> <div class="content"> {parent.payback} </div> <span class="red-box" onclick="{parent.payCashSuccess}">确定</span> </div> </modal> <modal id="payWaiting" modal-width="500px" nofooter> <pay-waiting></pay-waiting> </modal> <pop id="billCouponInfo" title="优惠券" twobutton popzbig="true" popclose="true"> <bill-coupon-info></bill-coupon-info> </pop> <pop id="billCouponNum" title="优惠券" twobutton popzbig="true" cancletext="返回"> <bill-coupon-num></bill-coupon-num> </pop> <pop id="billCoupon" title="优惠券" popclose="true"> <bill-coupon></bill-coupon> </pop> </div>','','',function(opts){var self=this;var params=riot.routeParams.params;self.type='1';self.discount=100;self.discountNum=100;self.payback=0.0;self.refund=params.refund||false;self.couponPrice=0;self.wipeButton=false;self.coupon=0;self.couponCode=0;self.vipNumber=0;var q=riot.route.query();if(q.vipphone&&q.vipphone!=""&&q.vipphone!="undefined"&&q.vipphone!=0){var payVip=function payVip(){_store.store.balance.payVip({vipNumber:self.vipNumber});};self.vipNumber=q.vipphone;setTimeout(payVip,500);}self.cartList=function(){_store.store.cart.get(function(res){self.baskets=JSON.stringify(res.list);self.update();});};self.getPay=function(){_store.store.pay.open(function(res){self.pay=res;if(self.pay&&self.pay.amount){var pay_amount=self.pay.amount.toFixed(1);self.pay.amount=pay_amount;self.hisPayPrice=self.pay.amount;self.payCashStr=self.payCashStr||self.pay.amount;caculate(self.pay.amount,self.payCashStr);self.update();}});_store.store.sys.sync();};function warning(text){var layer=(0,_jquery2.default)('#pay-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}function caculate(needPay,cash){if(needPay==undefined||cash==undefined){return;}needPay=Math.round(needPay*1000);cash=Math.round(cash*1000);self.payback=((cash-needPay)/1000).toFixed(1);self.update();}self.log=function(name){_utils2.default.androidBridge(api.logEvent,{eventId:name});};self.backspace=function(){var str=self.payCashStr;var l=str.length;if(!self.payInput){self.payCashStr='0';self.payInput=true;}else if(l>1){self.payCashStr=str.substring(-1,l-1);}else if(str!='0'){self.payCashStr='0';}else{return;}self.payInput=true;caculate(self.pay.amount,self.payCashStr);};self.addString=function(str){return function(){if(self.payCashStr=='0'){if(str=='.'){self.payCashStr+=str;}else if(str!='0'&&str!='00'){self.payCashStr=str;}}else if(!self.cashInput){self.payInput=true;if(str=='.'){self.payCashStr='0'+str;}else{self.payCashStr=str;}}else{self.payCashStr+=str;}self.cashInput=true;caculate(self.pay.amount,self.payCashStr);};};self.changeType=function(type){return function(){self.type=type;if(self.type==='3'){self.codeTips='点击结算，请顾客打开微信客户端扫描副屏二维码，即可完成收款';}else if(self.type==='2'){self.codeTips='点击结算，请顾客打开支付宝客户端扫描副屏二维码，即可完成收款';}else if(self.type==='5'){self.codeTips='点击结算，请顾客使用倍全便利app扫描副屏二维码，即可完成收款';}_store.store.balance.change({type:self.type,cash:self.payCashStr});};};self.getDiscount=function(num){return function(){self.discount=num;self.update();};};self.openDiscount=function(){self.log("0202");if((0,_jquery2.default)(".discount-td").is('.button-on')){(0,_jquery2.default)(".discount-td").toggleClass('button-on');self.discountNum=100;_store.store.balance.discount({discountNum:100,wipe:self.wipeButton},function(res){if(res&&res.code){(0,_jquery2.default)('#discount-layer')[0].close();}self.update();});self.update();self.computePayPrice();}else{(0,_jquery2.default)('#discount-layer')[0].open();}};self.wipe=function(e){self.log("0201");(0,_jquery2.default)(e.target).toggleClass('button-on');if((0,_jquery2.default)(e.target).is(".button-on")){self.wipeButton=true;_store.store.balance.wipe({wipe:true});}else{self.wipeButton=false;_store.store.balance.wipe({wipe:false});}self.update();self.computePayPrice();};self.computePayPrice=function(){if(self.wipeButton){var pay_amount=(self.hisPayPrice*self.discountNum/100-self.coupon).toFixed(3);self.pay.amount=pay_amount.substring(0,pay_amount.length-2);}else{var pay_amount=(self.hisPayPrice*self.discountNum/100-self.coupon).toFixed(1);self.pay.amount=pay_amount;}caculate(self.pay.amount,self.payCashStr);self.update();};self.openCoupon=function(e){if((0,_jquery2.default)(e.target).is(".button-on")){self.couponCode=0;self.coupon=0;self.computePayPrice();_store.store.balance.payCoupon({coupon:self.coupon});(0,_jquery2.default)(e.target).removeClass('button-on');}else{(0,_jquery2.default)("#billCoupon")[0].open(e);}};self.couponAdd=function(e){(0,_jquery2.default)(e.target).addClass('button-on');if(e.item.couponInfo){self.coupon=e.item.couponInfo.price;self.couponCode=e.item.couponInfo.couponCode;_store.store.balance.payCoupon({coupon:self.coupon,couponNumber:self.couponCode});}else{self.coupon=0;self.couponCode=0;_store.store.balance.payCoupon({coupon:self.coupon});}self.computePayPrice();};self.submitDiscount=function(){var discount=parseInt((0,_jquery2.default)('#discountInput').val());(0,_jquery2.default)(".discount-td").toggleClass('button-on');if((0,_jquery2.default)(".discount-td").is('.button-on')){self.discountNum=discount;_store.store.balance.discount({discountNum:discount,wipe:self.wipeButton},function(res){if(res&&res.code){(0,_jquery2.default)('#discount-layer')[0].close();}self.update();});}else{self.discountNum=100;_store.store.balance.discount({discountNum:100,wipe:self.wipeButton},function(res){if(res&&res.code){(0,_jquery2.default)('#discount-layer')[0].close();}self.update();});}(0,_jquery2.default)('#discount-layer')[0].close();self.update();self.computePayPrice();};self.check=function(){var param={type:self.refund?2:1,cash:self.payCashStr,stockAdd:(0,_jquery2.default)('.payback-option p').hasClass('on')?1:0,discountNum:self.discountNum,wipe:self.wipeButton,baskets:self.baskets,payType:self.type};if(!self.refund&&self.payCashStr-self.pay.amount<0&&self.type==1){warning('现金不得小于应收');return;}_store.store.pay.commit(param,function(res){if(res&&res.data){self.bill=res.data;}if(!self.refund){if(self.type==1){self.openBox();(0,_jquery2.default)("#find-zero")[0].open();return;}if(self.type==2||self.type==3||self.type==5){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_ING,bill:self.bill});}else{self.paySuccess();}}else{self.paySuccess();}});};self.payCashSuccess=function(){(0,_jquery2.default)("#find-zero")[0].close();self.paySuccess();};self.paySuccess=function(){warning('结算完成');self.bill={};setTimeout(function(){location.hash='#/casher/index';},1000);};self.setStorage=function(e){(0,_jquery2.default)(e.target).toggleClass('on');};self.openBox=function(){self.log("0203");(0,_store.httpGet)({url:api.openBox,success:function success(res){}});};self.discountOpts={onSubmit:self.submitDiscount};self.setQrcode=function(){self.codeTips="请顾客扫描二维码，输入相应金额";(0,_jquery2.default)('.pic-pay .wechat-code').on('error',function(){self.wechatUrl=defaultUrl;self.noWechatCode=true;self.update();});(0,_jquery2.default)('.pic-pay .alipay-code').on('error',function(){self.alipayUrl=defaultUrl;self.noAlipayCode=true;self.update();});self.update();};self.getReceivePay=function(){self.message=JSON.parse(Ipush.message);var bill="";if(self.message&&self.message.data&&self.message.data){bill=self.message.data;}if(self.bill.billUuid!=bill.billUuid){return;}(0,_jquery2.default)("#payWaiting")[0].close();if(self.message.type==_constant2.default.PUSH_PAY_SUCCESS){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_SUCCESS,bill:bill});self.update();}if(self.message.type==_constant2.default.PUSH_PAY_ING){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_ING,bill:self.bill});self.update();}if(self.message.type==_constant2.default.PUSH_PAY_FAIL){(0,_jquery2.default)("#payWaiting")[0].open({pay_status:_constant2.default.PUSH_PAY_FAIL});self.update();}};self.scan=function(){window.dispatchEvent(new Event('receiveMessage'));};self.on('mount',function(){self.cashInput=false;self.setQrcode();self.cartList();self.getPay();window.addEventListener('receiveMessage',self.getReceivePay,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',self.getReceivePay,false);});});riot.tag2('casher-bill','<div class="white-box bill"> <div class="list" each="{bill}" onclick="{reviewBill(tbId)}"> <div class="time"><span>{time}</span></div> <ul> <li each="{goods}" class="bill-goods-list">{goodsName || \'无码商品\'} <span class="bill-quantity">{weight}</span></li> <li class="more" if="{goods.more}">......</li> </ul> </div> </div>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'bill',store:_store.store.bill,success:function success(){for(var i in self.bill){var date=new Date(self.bill[i].creationDate);self.bill[i].time=date.getHours()+':'+date.getMinutes();if(self.bill[i].goods.length>5){self.bill[i].goods.length=5;self.bill[i].goods.more=true;}}self.update();}});self.reviewBill=function(id){return function(){_store.store.bill.take({tbId:id});};};});riot.tag2('casher-cart','<div class="shopping-list {empty:!cartList.list.length}" id="casherCartShopList"> <ul> <li each="{i in cartList.list}" buyid="{i.goodsUuid}" onclick="{setDetail(i)}" class="{active : (i.goodsUuid == activeId && active)}"> <div class="li-wrap"> <div class="item-pic" riot-style="background-image:url({i.imageUrl || \'imgs/default-product.png\'})"></div> <div class="item-info"> <p>{i.goodsName || \'无码商品\'}</p> <p class="item-unit">{i.price}</p> </div> <div class="item-price"> <div> <i class="minus" onclick="{minus(i)}"></i> <span class="count">{i.weight}</span> <i class="add" onclick="{add(i)}"></i> </div> <strong>小计：￥<b>{i.amount}</b> </strong> </div> </div> </li> </ul> </div> <modal modal-width="" modal-height="" id="create-product"> <create-product></create-product> </modal>','','',function(opts){var self=this;var timer=50;var scrollTimer;self.active=self.opts.active;function getMulti(a,b){return Math.round(a*1000)*b/1000;};function getPlus(a,b){return(Math.round(a*1000)+Math.round(b*1000))/1000;}function scrollCart(){var scroll=(0,_jquery2.default)('#casherCartShopList');var scrollTop=scroll[0].scrollHeight;scroll[0].scrollTop=scrollTop;}function scrollHandler(e){clearTimeout(scrollTimer);var scroll=e.target;var rate=scroll.scrollTop/(scroll.scrollHeight-scroll.clientHeight);scrollTimer=setTimeout(function(){_store.store.sys.sendMessage({'scrollMessage':{scrollRate:rate}});},500);}function addToCart(item){item.quantity=1;var list=self.cartList.list;if(list.length){for(var i=0;i<list.length;i++){if(list[i].goodsUuid==item.goodsUuid){list[i].quantity++;break;}if(i==list.length-1){list.push(item);break;}}}else{list.push(item);}setTimeout(function(){_store.store.detail.set(item);},100);_store.store.cart.add(item.goodsUuid);setTimeout(function(){scrollCart();},200);}function barcodeHandle(){var number=Icommon.number;self.barCode=number;(0,_store.httpGet)({url:api.goodByBarcode,params:{barcode:number},success:function success(res){var list=self.cartList.list;if(res.data){addToCart(res.data);}else{_utils2.default.toast("商品库无该商品");}},error:function error(err){if(err.code===10007){_utils2.default.toast("请检查网络");}}});self.update();}self.createProductFromCode=function(number){var curModal=(0,_jquery2.default)('#create-product');var cur=curModal[0];var styleInfo;if(cur.attributes&&cur.attributes.getNamedItem){styleInfo=cur.attributes.getNamedItem("style");}if(!styleInfo||styleInfo.value&&styleInfo.value.indexOf("display:flex;")<0&&styleInfo.value.indexOf("display: flex;")<0){(0,_jquery2.default)('#create-product')[0].open({casherCart:true});}(0,_store.httpGet)({url:api.goodBySpecBarcode,params:{barcode:number},success:function success(res){(0,_jquery2.default)('#create-product .barcode-input').val(number);if(res.data){(0,_jquery2.default)('#create-product [name="goodsName"]').val(res.data.goodsName);(0,_jquery2.default)('#create-product [name="cateId"]').val(res.data.cateId);}if(res.data&&res.data.imageUrl){(0,_jquery2.default)('#create-product .img-area img').attr('src',res.data.imageUrl);(0,_jquery2.default)('#create-product-imgUrl').val(res.data.imageUrl);}},complete:function complete(status){if(status=="error"){_utils2.default.toast("请检查网络");}}});};_riotSeedFlux2.default.bind.call(self,{name:'cartList',store:_store.store.cart,success:function success(){var data=self.cartList;if(data){data.goodsAmount=0;data.list.forEach(function(i){data.goodsAmount=getPlus(data.goodsAmount,getMulti(i.price,i.quantity));});}self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){if(self.detail){self.activeId=self.detail.goodsUuid;}else{self.activeId='';}}});self.getMulti=getMulti;self.cashAddCart=function(params){addToCart(params);};self.add=function(data){return function(){_store.store.cart.add(data.goodsUuid);};};self.minus=function(data){return function(){if(data.quantity==1){setTimeout(function(){_store.store.detail.set(null);},0);}_store.store.cart.reduce(data.goodsUuid);};};self.setDetail=function(data){return function(){_store.store.detail.set(data);};};self.scan=function(){window.dispatchEvent(new Event('inputNumber'));};self.modalOpts={onSubmit:function onSubmit(){(0,_store.httpPost)({url:api.cartByScan,params:(0,_jquery2.default)('#add-product-form').serializeObject(),success:function success(res){_store.store.cart.get();self.addModal.close();},error:function error(res){}});},onClose:function onClose(){self.addModal.find('input').val('');}};self.on('mount',function(){var scroll=(0,_jquery2.default)(self.root).find('.shopping-list');self.addModal=(0,_jquery2.default)('#add-product')[0];window.addEventListener('inputNumber',barcodeHandle);scroll.bind('scroll',scrollHandler);});self.on('unmount',function(){var scroll=(0,_jquery2.default)(self.root).find('.shopping-list');window.removeEventListener('inputNumber',barcodeHandle);scroll.unbind('scroll',scrollHandler);});});riot.tag2('casher-detail','<div class="detail white-box" if="{detail}"> <div class="pic" riot-style="{detail.imageUrl ? \'background-image:url(\'+ detail.imageUrl +\')\' : \'background-image:url(imgs/default-400.png)\'}"></div> <p>{detail.goodsName || \'无码商品\'}</p> <p>条码：{detail.barcode || \'无\'}</p> <p>单位：{unit || \'无\'}</p> <div class="modify-cart"> <label>数量：</label> <span onclick="{modifyCart}">{detail.weight}</span> </div> <strong>￥{detail.price}</strong> <i class="line" style="display:none"></i> <div class="more" style="display:none"> <span>13811468801</span> </div> <modal id="modifyCartqu" modal-width="500px" opts="{modalCartOpts}"> <div class="wrap"> <div class="content"> <label for="">商品数量：</label> <input id="" type="tel" maxlength="9"> </div> </div> </modal> </div>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){self.update();if(self.detail){self.unit=_constant2.default.UNITS[self.detail.unit];}self.update();}});self.modalCartOpts={onOpen:function onOpen(){(0,_jquery2.default)('#modifyCartqu').find('input').val(self.detail.weight);},onSubmit:function onSubmit(){self.submitModifyCart();},onClose:function onClose(){(0,_jquery2.default)('#modifyCartqu').find('input').val('');}};self.submitModifyCart=function(){var quantity=(0,_jquery2.default)('#modifyCartqu').find('input').val()*1;if(!(0,_jquery2.default)('#modifyCartqu').find('input').val()){_utils2.default.toast("数量不能为空");return;}if(quantity>2000){_utils2.default.toast("数量不能超过2000");return;}var unit=self.detail.unit;if(unit==5||unit==6||unit==7||unit==8||unit==9){if(!/^[0-9]+([.]{1}[0-9]{1,3})?$/.test(quantity)){_utils2.default.toast("请输入正确的数量");return;}}else{if(!/^(0|\+?[1-9][0-9]*)$/.test(quantity)){_utils2.default.toast("请输入正确的数量");return;}}var params={goodsUuid:self.detail.goodsUuid,weight:quantity};self.update();(0,_jquery2.default)('#modifyCartqu')[0].close();(0,_store.httpPost)({url:api.modifyCartQuantity,params:params,success:function success(res){_store.store.cart.update(self.detail.goodsUuid,res.data);_store.store.detail.set(res.data.goods);}});(0,_jquery2.default)('#modifyCartqu').find('input').val('');};self.modifyCart=function(){(0,_jquery2.default)('#modifyCartqu')[0].open();(0,_jquery2.default)('#modifyCartqu').find('input').focus();};});riot.tag2('casher-index','<div class="content-wrap"> <div class="cart"> <casher-cart active="true"></casher-cart> <div class="actions" if="{!moreButton}"> <span onclick="{openBox}">开钱箱</span> <span onclick="{clearCart}">清空商品</span> <span onclick="{openWithoutName}">无码收银</span> <span onclick="{moreAction}">更多</span> </div> <div class="actions" if="{moreButton}"> <span class="back-action" onclick="{backAction}"></span> <span onclick="{saveBill}">挂单</span> <span onclick="{openBill}">取单</span> <span onclick="{openRefund}">退货</span> </div> </div> <div class="borad"> <div id="casher-view"> <casher-view></casher-view> </div> <div class="balance-btn"> <a onclick="{goCheck}" class="{disable: cartList.goodsAmount == 0}">收银 <span if="{cartList.goodsAmount}">￥{cartList.goodsAmount}</span> </a> </div> </div> <modal id="withoutName" modal-width="500px" opts="{modalOpts}"> <div class="wrap"> <div class="content"> <label for="priceNoName">商品价格：</label> <input pattern="[0-9]\\{1,5\\}\\.?[0-9]\\{0,2\\}" id="priceNoName" name="price" type="tel" maxlength="9"> </div> </div> </modal> <modal id="cart-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> <pop id="vipLogin" title="会员购物" twobutton> <vip-login></vip-login> </pop> </div>','','',function(opts){var self=this;var clientTimer;self.vipLogin=false;self.moreButton=false;self.vipModify=function(){(0,_jquery2.default)("#vipLogin")[0].open();};self.modalOpts={onSubmit:function onSubmit(){self.addNoName();},onClose:function onClose(){(0,_jquery2.default)('#withoutName').find('input').val('');}};_store.store.detail.set(null);self.log=function(name){if(window.Icommon){Icommon.logEvent(null,null,{eventId:name});}};function closeDetail(e){if(self.detail&&((0,_jquery2.default)('.detail')[0]&&(0,_jquery2.default)('.detail')[0].contains(e.target)||(0,_jquery2.default)(e.target).parents('li').attr('buyid')==self.detail.goodsUuid)){return;}else{_store.store.detail.set(null);(0,_jquery2.default)('body').unbind('click',closeDetail);self.isBindDetail=false;}}function warning(text){var layer=(0,_jquery2.default)('#cart-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}function matchInput(){var val=(0,_jquery2.default)('#withoutName').find('input').val();if(!/^[0-9]{1,5}\.?[0-9]{0,2}$/.test(val)){(0,_jquery2.default)('#withoutName').find('.content').css({'border-color':'red'});}else{(0,_jquery2.default)('#withoutName').find('.content').css({'border-color':'#CCC'});}}self.moreAction=self.backAction=function(){self.moreButton=!self.moreButton;self.update();};self.openBox=function(){self.log("0102");(0,_store.httpGet)({url:api.openBox,success:function success(res){}});};self.clearCart=function(){self.log("0103");if(self.cartList.list.length==0){warning('购物车是空的');return;}_store.store.cart.clear();_store.store.detail.set(null);};self.bindDetail=function(){if(!self.isBindDetail){(0,_jquery2.default)('body').bind('click',closeDetail);self.isBindDetail=true;}};self.saveBill=function(e){self.log("0105");if(self.cartList.list.length==0){warning('购物车是空的');return;}_store.store.bill.add();self.openBill(e);};self.openBill=function(e){self.log("0106");;var target=e?e.target:null;function closeBill(e){if((0,_jquery2.default)('.bill')[0]&&(0,_jquery2.default)('.bill')[0].contains(e.target)||target==e.target){return;}else{_store.store.bill.close();(0,_jquery2.default)('body').unbind('click',closeBill);}}_store.store.bill.open();(0,_jquery2.default)('body').bind('click',closeBill);};self.openRefund=function(){self.log("0107");_store.store.cart.clear();location.hash='#/casher/refund';};self.goCheck=function(){if(self.cartList.goodsAmount==0){return;}if(self.cartList.list.length>0){location.hash='#/casher/balance?vipphone='+self.vipphone;}else{return;}};self.openWithoutName=function(){self.log("0104");(0,_jquery2.default)('#withoutName')[0].open();(0,_jquery2.default)('#withoutName').find('input').focus();};self.addNoName=function(){var goodsUuid='good-id-'+new Date()*1;var price=(0,_jquery2.default)('#withoutName').find('input').val()*1;if(!price)return;var data={name:null,goodsUuid:goodsUuid,shoppingcartGoodsUuid:goodsUuid,type:2,quantity:1,price:price};_store.store.detail.set(data);self.cartList.list.push(data);_store.store.cart.addNoName({price:price,goodsUuid:data.goodsUuid});(0,_jquery2.default)('#withoutName').find('input').val('');(0,_jquery2.default)('#withoutName')[0].close();};self.on('mount',function(){_riotSeedFlux2.default.bind.call(self,{name:'cartList',store:_store.store.cart,success:function success(){if(self.cartList&&self.cartList.goodsAmount){self.cartList.goodsAmount=self.cartList.goodsAmount.toFixed(1);}self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){self.detail&&self.bindDetail();}});(0,_jquery2.default)('#withoutName input').on('input',matchInput);_store.store.pay.close();_store.store.cart.setState('shopping');});self.on('unmount',function(){(0,_jquery2.default)('#withoutName input').unbind('input',matchInput);});});riot.tag2('casher-refund','<div class="content-wrap"> <div class="cart"> <casher-cart></casher-cart> <div class="actions"> <span onclick="{cancelRefund}">取消退货</span> </div> </div> <div class="borad"> <div id="casher-view"></div> <div class="balance-btn"> <a onclick="{goCheck}" class="{disable:!cart.list.length}">确认退货</a> </div> </div> </div>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'cart',store:_store.store.cart,success:function success(){}});self.cancelRefund=function(){_store.store.cart.clear();location.hash='#/casher/index';};self.goCheck=function(){if(self.cart.list.length>0){location.hash='#/casher/refund-balance';}else{return;}};self.on('mount',function(){_store.store.cart.setState('refunding');});});riot.tag2('casher-view','<casher-bill if="{bill}"></casher-bill> <casher-detail if="{detail}"></casher-detail>','','',function(opts){var self=this;_riotSeedFlux2.default.bind.call(self,{name:'detail',store:_store.store.detail,success:function success(){self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'bill',store:_store.store.bill,success:function success(){self.update();}});});riot.tag2('side-bar','<div id="side-bar"> <div class="header"> <div class="avator" onclick="{openTip}"></div> <div class="account-name" onclick="{openTip}">{accountName || \'用户名\'}</div> <div class="right-tip" style="display:none"> <div class="tri"></div> <a onclick="{openAbout}">关于我们</a> <a onclick="{logout}">退出账户</a> </div> </div> <div class="side-menu"> <ul> <li class="{active: type==\'casher\'||type==\'\'}"> <a href="#/casher/index"> <div class="menu-pic m-casher"></div> <div class="menu-title">收银</div> </a> </li> <li class="{active: type==\'shop\'}"> <a href="#/shop/index"> <div class="menu-pic m-store"></div> <div class="menu-title">店铺</div> </a> </li> <li class="{active: type==\'app\'}"> <a href="#/app/index"> <div class="menu-pic m-app"></div> <div class="menu-title">应用</div> </a> </li> </ul> <div class="setting" onclick="{openSetting}"></div> </div> <modal id="about-layer" model-width="400px" model-height="512px" without-delete nofooter> <div class="about"> <div class="about-close" onclick="{close}"></div> <h2>关于</h2> <img class="logo" width="106" src="imgs/logo.png"> <p>版本： {parent.version} </p> <span class="red-box" onclick="{parent.checkAppUpdateState}">检测更新</span> </div> </modal> </div>','','',function(opts){var self=this;function active(){self.type=location.hash.substr(2).split('/')[0].replace(/\?\S+/,'');self.update();if(self.type=='casher'||self.type=='shop'||self.type=='app'){self.checkUserIsLogin();}}_riotSeedFlux2.default.bind.call(self,{name:'account',store:_store.store.account,success:function success(){self.accountName=self.account?self.account.personName:'用户名';self.update();}});self.checkAppUpdateState=function(){(0,_store.httpGet)({url:api.checkAppUpdateState});};self.toBeConfirmed=function(){_store.store.orderConfirmed.get(function(data){if(data>0){(0,_jquery2.default)(".order-untreated").show().text(data);}else{(0,_jquery2.default)(".order-untreated").hide();}});};self.openTip=function(){var e=window.event;e.preventDefault();if(e&&e.stopPropagation){e.stopPropagation();}(0,_jquery2.default)('.right-tip').toggle();function closeTip(){(0,_jquery2.default)('.right-tip').hide();(0,_jquery2.default)(window).unbind('click',closeTip);}setTimeout(function(){(0,_jquery2.default)(window).bind('click',closeTip);},100);};self.openAbout=function(){(0,_jquery2.default)('#about-layer')[0].open();};self.closeAbout=function(){(0,_jquery2.default)('#about-layer')[0].close();};self.logout=function(){_store.store.account.logout();location.hash="#login";};self.openSetting=function(){_utils2.default.androidBridge(api.openSetting);};self.getReceiveSyn=function(){self.message=JSON.parse(Ipush.message);if(self.message.type==_constant2.default.PUSH_DATA_SYN){_store.store.synTask.get({name:"Goods",noloadShow:true},function(success){});_store.store.synTask.get({name:"GoodsCategory",noloadShow:true},function(success){});}else if(self.message.type==PUSH_GET_STORE){_store.store.synTask.get({name:"Store",noloadShow:true},function(success){});}};self.checkUserIsLogin=function(){var storeInfo={};if(window.localStorage&&localStorage.account){storeInfo=JSON.parse(localStorage.account);}if(!storeInfo.storeId){location.href="#login";}};self.on('mount',function(){self.checkUserIsLogin();if(window.Iapps){Iapps.getVersion(function(res){if(res.version){self.version=res.version;self.update();}else{self.version="V1.0.0 Beta";self.update();}},function(err){},{});}else{self.version="V1.0.0 Beta";}setTimeout(self.toBeConfirmed,500);window.addEventListener('orderNumChange',self.toBeConfirmed);window.addEventListener('receiveMessage',self.getReceiveSyn,false);});self.on('unmount',function(){window.removeEventListener('orderNumChange',self.toBeConfirmed);window.removeEventListener('receiveMessage',self.getReceiveSyn);});riot.routeParams.on('changed',active);active();});riot.tag2('top-bar','<div id="top-bar"> <div id="page-title"> <div class="title" if="{title}"> <a class="back" if="{back}" href="{back}">返回</a> {title}</div> <div id="top-search" if="{search}"> <search opts="{searchOpts}"></search> </div> <div id="type-list" if="{hasAdd}" onclick="{toggleProducts}"> <div class="tri" if="{showProducts}"> <div></div> </div> </div> </div> <div id="status"> <span if="{weather.city}">{weather.city}</span> <span if="{weather.weather}">{weather.weather}</span> <span if="{weather.temp}">{weather.temp}℃</span> <span>{nowDate}</span> <span class="icon i_wifi_full" if="{netState==\'wifi\'}"></span> <span class="icon i_wifi_weak" if="{netState==\'weak\'}"></span> <span class="icon i_wifi_no" if="{netState==\'no\'}"></span> </div> </div> <div id="product-layer" if="{hasAdd & showProducts}"> <div class="category top-category"> <h2>商品分类</h2> <ul> <li each="{category}" onclick="{changeCate}" class="{active: active}"> <a cateid="{cateId}">{cateName}</a> </li> </ul> </div> <div class="product-list"> <ul class="top-goods-list"> <li each="{item in goodList}" onclick="{addToCart(item)}"> <div class="item-pic" riot-style="{item.imageUrl ? \'background-image:url(\'+ item.imageUrl +\')\' : \'background-image:url(imgs/default-140.png);background-size:70px\'}"></div> <p>{item.goodsName || \'无码商品\'}</p> <strong>￥{item.price}</strong> </li> </ul> </div> </div>','','',function(opts){var self=this;_store.store.loadTopGoodsList=true;self.topGoodsListScroll=0;self.scan=function(){window.dispatchEvent(new Event('inputNumber'));};self.scan1=function(){window.Icommon=window.Icommon||{};window.Icommon.number='690168054050';window.dispatchEvent(new Event('inputNumber'));};self.checkNet=function(){if(window.navigator.connection){var type=window.navigator.connection.type;switch(type){case'Unknown connection':self.netState='unknown';break;case'WiFi connection':self.netState='wifi';break;case'Cell 2G connection':self.netState='2G';break;case'Cell 2G connection':self.netState='3G';break;case'Cell 2G connection':self.netState='4G';break;case'No network connection':self.netState='no';break;case'wifi':self.netState='wifi';break;case'none':self.netState='no';break;default:self.netState='no';}}else{self.netState='wifi';}_riotSeedFlux2.default.bind.call(self,{name:'weather',store:_store.store.weather,success:function success(){self.update();},error:function error(){self.update();}});self.update();};document.addEventListener("online",self.checkNet,false);document.addEventListener("offline",self.checkNet,false);riot.routeParams.on('changed',function(){var params=riot.routeParams.params;if(params){self.title=params.title;self.back=params.back;self.search=params.search;self.hasAdd=params.hasAdd;if(params.hasAdd){setTimeout(function(){(0,_jquery2.default)(".content-wrap").bind('click',hideProduct);},200);}}else{self.title=false;self.back=false;self.search=false;self.hasAdd=false;}self.update();});function scrollCart(){var scroll=(0,_jquery2.default)('#casherCartShopList');var scrollTop=scroll[0].scrollHeight;scroll[0].scrollTop=scrollTop;}function addToCart(item){item.quantity=1;var list=self.cartList.list;if(list.length){for(var i=0;i<list.length;i++){if(list[i].goodsUuid==item.goodsUuid){list[i].quantity++;break;}if(i==list.length-1){list.push(item);break;}}}else{list.push(item);}_store.store.cart.add(item.goodsUuid);setTimeout(function(){scrollCart();},200);}self.searchOpts={clickHandle:addToCart};self.addToCart=function(item){return function(){addToCart(item);self.update();};};function hideProduct(){self.showProducts=false;self.update();if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}(0,_jquery2.default)(".content-wrap").unbind('click',hideProduct);}self.toggleProducts=function(){var e=window.event;e.preventDefault();if(e&&e.stopPropagation){e.stopPropagation();}self.showProducts=self.showProducts?false:true;if(self.showProducts){setTimeout(function(){(0,_jquery2.default)(".content-wrap").bind('click',hideProduct);},100);}else{(0,_jquery2.default)(".content-wrap").unbind('click',hideProduct);}self.update();if(self.showProducts==true){if(_store.store.loadTopGoodsList){self.initCategory();}else{(0,_jquery2.default)('.top-goods-list').scrollTop(self.topGoodsListScroll);}}else{if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}}};self.initCategory=function(){_store.store.category.get(function(data){self.category=data;self.topGoodsListScroll=0;for(var i=0;i<self.category.length;i++){if(self.category[i].cateId==parseInt(self.cateId,10)){self.category[i].active=true;}else{self.category[i].active=false;}if(!self.cateId){self.cateId=self.category[0].cateId;self.category[0].active=true;}}self.update();self.cateHeight=(0,_jquery2.default)("#product-layer").height()-(0,_jquery2.default)(".top-category").height()-38;(0,_jquery2.default)(".product-list").css("height",self.cateHeight);self.initGoods(self.cateId);});};self.initGoods=function(cateId){var params={cateId:cateId,next:0};_store.store.topGoods.get(params,function(data){self.goods=data;self.goodList=self.goods.list;self.next=self.goods.next;self.update();self.listenDown();});};self.changeCate=function(e){self.cateId=e.item.cateId;for(var i=0;i<self.category.length;i++){if(self.category[i].cateId==parseInt(self.cateId,10)){self.category[i].active=true;}else{self.category[i].active=false;}if(self.cateId===null){self.category[0].active=true;}}self.topGoodsListScroll=0;(0,_jquery2.default)('.top-goods-list').scrollTop(0);self.initGoods(self.cateId);};self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.top-goods-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;self.topGoodsListScroll=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.topGoods.getMore({cateId:self.cateId,next:self.next},function(data){self.next=data.next;self.goodList=data.list;self.scrollLock=false;self.update();});}}};if(self.listWrap){self.listWrap.addEventListener('scroll',self.scrollDown,false);}},50);};self.initDate=function(){var date=new Date();var months=date.getMonth()+1;var hours=date.getHours();var minutes=date.getMinutes();if(months<10){months="0"+months;}var days=date.getDate();if(days<10){days="0"+days;}if(hours<10){hours="0"+hours;}if(minutes<10){minutes="0"+minutes;}var dateStr=date.getFullYear()+"年"+months+"月"+days+"日";var week=date.getDay();var time=hours+":"+minutes;var weekarr=['日','一','二','三','四','五','六'];self.nowDate=dateStr+" 周"+weekarr[week]+" "+time;self.update();setTimeout(self.initDate,60000);};self.on('mount',function(){self.checkNet();self.initDate();_riotSeedFlux2.default.bind.call(self,{name:'cartList',store:_store.store.cart});});});riot.tag2('date-month','<div class="month-data"> <h4> <span class="el-icon-before" onclick="{beforeYear}"></span> <span class="year">{year}年</span> <span class="el-icon-after" onclick="{afterYear}"></span> </h4> <div class="content"> <ul> <li each="{monthList}" onclick="{selectDate}" class="{active: (value == month) && (selectyear == year)}"> <span>{name}</span> </li> </ul> </div> </div>','','',function(opts){var self=this;self.monthList=[{name:'1月',value:'01',active:false},{name:'2月',value:'02',active:false},{name:'3月',value:'03',active:false},{name:'4月',value:'04',active:false},{name:'5月',value:'05',active:false},{name:'6月',value:'06',active:false},{name:'7月',value:'07',active:false},{name:'8月',value:'08',active:false},{name:'9月',value:'09',active:false},{name:'10月',value:'10',active:false},{name:'11月',value:'11',active:false},{name:'12月',value:'12',active:false}];self.year='';self.update();self.selectDate=function(e){self.month=e.item.value;self.selectyear=self.year;var showDate={year:parseInt(self.year),month:parseInt(e.item.value)};console.log(showDate);self.parent.trigger('selectMonthdate',showDate);self.trigger('selectMonthdate',showDate);};self.beforeYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}self.year=parseInt(this.year)-1;};self.afterYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}self.year=parseInt(this.year)+1;};self.root.openDateMonth=self.openDateMonth=function(params){var _date;if(params){_date=params;}else{var myDate=new Date();_date=myDate.getFullYear()+'-'+(myDate.getMonth()+1<10?'0'+(myDate.getMonth()+1):myDate.getMonth()+1);}var date=_date.split('-');self.year=date[0];self.month=date[1];self.selectyear=date[0];self.update();};});riot.tag2('date-picker','<div class="date-picker">{value}</div> <input type="{type}" name="{name}" onchange="{changeValue}" max="{max}" min="{min}" defaultvalue="{defaultValue}">','','',function(opts){var self=this;var root=self.root;self.getDateStr=function(time){return _utils2.default.getDateStr(time);};self.init=function(){self.type=root.getAttribute('type')||'date';self.name=root.getAttribute('name');self.defaultValue=root.getAttribute('defaultValue');self.max=root.getAttribute('max');self.min=root.getAttribute('min');if(self.type==='date'){self.root.value=self.value=root.getAttribute('value')||self.getDateStr(new Date().getTime());}else if(self.type==='time'){self.root.value=self.value=root.getAttribute('value')||'00:00';}self.update();self.trigger('gotDate');self.parent.trigger('gotDate');};self.on('mount',function(){self.init();});self.changeValue=function(){self.root.value=self.value=root.getElementsByTagName('input')[0].value;if(self.type==='date'&&!self.value){self.root.value=self.value=self.getDateStr(new Date().getTime());}else if(self.type==='time'&&!self.value){self.root.value=self.value='00:00';}self.parent.trigger('dateChange');self.trigger('dateChange');};self.root.setValue=function(value){root.getElementsByTagName('input')[0].value=value;self.changeValue();};self.root.setTime=function(time){var value=self.getDateStr(time);root.getElementsByTagName('input')[0].value=value;self.changeValue();};self.dateString=function(date){var Y=date.getFullYear();var M=date.getMonth()+1;M=M<10?'0'+M:M;var D=date.getDate();D=D<10?'0'+D:D;return Y+"-"+M+"-"+D;};self.root.nextDay=function(cb){var str=self.value.replace(/-/g,"/");var timestamp=new Date(str).getTime()+1000*60*60*24;var date=new Date(timestamp);var newStr=self.dateString(date);root.getElementsByTagName('input')[0].value=newStr;self.changeValue();cb&&cb(newStr);};self.root.prevDay=function(cb){var str=self.value.replace(/-/g,"/");var timestamp=new Date(str).getTime()-1000*60*60*24;var date=new Date(timestamp);var newStr=self.dateString(date);root.getElementsByTagName('input')[0].value=newStr;self.changeValue();cb&&cb(newStr);};self.root.get=function(){return root.getElementsByTagName('input')[0].value;};});riot.tag2('date-year','<div class="year-data"> <h4> <span class="el-icon-before" onclick="{beforeYear}"></span> <span class="year"></span> <span class="el-icon-after" onclick="{afterYear}"></span> </h4> <div class="content"> <ul> <li each="{yearList}" onclick="{selectDate}" class="{active: value == year}"> <span>{name}</span> </li> </ul> </div> </div>','','',function(opts){var self=this;self.selectDate=function(e){self.year=e.item.value;var showDate=e.item.value;self.parent.trigger('selectYeardate',showDate);self.trigger('selectYeardate',showDate);};function get12year(last){var list=[];for(var i=0;i<12;i++){var lastyear=last-i;self.lastyear=lastyear;list.unshift({'name':lastyear,'value':lastyear});}self.yearList=list;self.update();}self.beforeYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}get12year(self.lastyear-1);};self.afterYear=function(){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}get12year(self.lastyear+23);};self.root.openDateYear=self.openDateYear=function(params){var _date;if(params){_date=params;}else{var myDate=new Date();_date=myDate.getFullYear()+'-'+(myDate.getMonth()+1<10?'0'+(myDate.getMonth()+1):myDate.getMonth()+1);}var date=_date.split('-');self.year=parseInt(date[0]);var lastyear=self.year;var _index=lastyear%12;if(_index!=1){for(var i=0;i<12;i++){lastyear=lastyear+1;if(lastyear%12==1){break;}}}get12year(parseInt(lastyear));self.update();};});riot.tag2('daterangepicker','<div class="daterange"> <input id="daterange" value="" readonly="readonly" type="text"> </div>','.daterangepicker.dropdown-menu { max-width:none; z-index:30; padding-bottom:100px; border-left:1px solid #f1f1f1; border-right:1px solid #f1f1f1; border-bottom:1px solid #f1f1f1; border-radius:5px; display: none; } .daterangepicker .applyBtn{ position: absolute; bottom:26px; width:250px; height: 50px; line-height: 50px; text-align: center; color: #fff; font-size: 18px; background: #fe5f5f; border:0; left:50%; margin-left: -125px; border-radius:5px; } .table-condensed thead tr:first-child{ border-bottom:1px solid #ccc; } .daterangepicker .left .table-condensed tr td:last-child{ padding-right: 10px; min-width: 60px; border-right: 1px solid #ccc; } .daterangepicker .left .table-condensed tr:last-child th:last-child{ padding-right: 10px; min-width: 60px; border-right: 1px solid #ccc; } .daterangepicker .right .table-condensed tr:last-child th:first-child{ padding-left: 10px; min-width: 60px; } .daterangepicker .right .table-condensed tr td:first-child{ padding-left: 10px; min-width: 60px; } .daterangepicker .left .table-condensed thead tr:first-child th:first-child{ background: url(../imgs/nextno.png) no-repeat center; background-size:13px; } .daterangepicker .left .table-condensed thead tr:first-child th.available:first-child{ background: url(../imgs/back.png) no-repeat center; background-size:13px; } .daterangepicker .right .table-condensed thead tr:first-child th:last-child{ background: url(../imgs/nextno.png) no-repeat center; background-size:13px; transform: rotate(180deg); -o-transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); } .daterangepicker .right .table-condensed thead tr:first-child th.available:last-child{ background: url(../imgs/back.png) no-repeat center; background-size:13px; transform: rotate(180deg); -o-transform: rotate(180deg); -webkit-transform: rotate(180deg); -moz-transform: rotate(180deg); } .daterangepicker .calendar.left{ float: left; } .daterangepicker .calendar.right{ float:right; } .daterangepicker .calendar{ display:none; } .daterangepicker.show-calendar .calendar{ display:block; } .daterangepicker .calendar.single .calendar-date{ border:0; } .daterangepicker .calendar th,.daterangepicker .calendar td{ font-family:\'Helvetica Neue\',Helvetica,Arial,sans-serif; white-space:nowrap; text-align:center; min-width:50px; font-size: 16px; color: #666; line-height: 40px; } .daterangepicker .daterangepicker_start_input,.daterangepicker .daterangepicker_end_input,.daterangepicker .cancelBtn{ display: none; } .daterangepicker .calendar-time{ text-align:center; line-height:30px; margin:8px auto 0; } .daterangepicker{ position:absolute; background:#fff; top:100px; left:20px; margin-top:1px; -webkit-border-radius:4px; -moz-border-radius:4px; border-radius:4px; padding:4px; } .daterangepicker table{ width:100%; margin:0; } .daterangepicker td,.daterangepicker th{ text-align:center; width:20px; height:20px; cursor:pointer; white-space:nowrap; } .daterangepicker td.available:hover,.daterangepicker th.available:hover{ background:#eee; } .daterangepicker td.in-range{ background:#ebf4f8; -webkit-border-radius:0; -moz-border-radius:0; border-radius:0; } .daterangepicker td.available+td.start-date{ -webkit-border-radius:30px; -moz-border-radius:30px; border-radius:30px; } .daterangepicker td.in-range+td.end-date{ -webkit-border-radius:30px; -moz-border-radius:30px; border-radius:30px; } .daterangepicker td.start-date.end-date{ -webkit-border-radius:30px; -moz-border-radius:30px; border-radius:30px; } .daterangepicker td.active,.daterangepicker td.active:hover{ background: #fed9d9; color: #666; border-radius: 30px; width: 50px; height: 40px; } .daterangepicker th.month{ width:auto; height: 60px; font-size: 20px; color: #505050; } .daterangepicker td.off{ color:#999; } .daterangepicker td.disabled{ color:#ccc; text-decoration:line-through }','',function(opts){var self=this;var root=self.root;self.format=function(myDate){return myDate.getFullYear()+"-"+(myDate.getMonth()+1<9?"0"+(myDate.getMonth()+1):myDate.getMonth()+1)+"-"+(myDate.getDate()<9?"0"+myDate.getDate():myDate.getDate());};self.on('mount',function(){var myDate=new Date();var todayDate=self.format(myDate);myDate.setTime(myDate.getTime()-24*60*60*1000*7);var startDate=self.format(myDate);(0,_jquery2.default)("#daterange").val(startDate+"~"+todayDate);(0,_jquery2.default)('#daterange').daterangepicker({format:'YYYY-MM-DD',maxDate:todayDate,startDate:startDate,endDate:todayDate,dateLimit:{days:30},separator:' ~ ',locale:{applyLabel:'确定',customRangeLabel:'Custom',daysOfWeek:['周日','周一','周二','周三','周四','周五','周六'],monthNames:['1-','2-','3-','4-','5-','6-','7-','8-','9-','10-','11-','12-'],firstDay:1}},function(start,end,label){self.parent.trigger('dateChange');self.trigger('dateChange');});});});riot.tag2('modal','<div class="modal-dialog" riot-style="width:{width}; height:{height}"> <div class="modal-container"> <div class="modal-title" if="{title}">{title}</div> <yield></yield> </div> <div class="modal-submit" if="{!noFooter}"> <div class="button-wrap"> <a class="btn btn-default cancle {small: needDelete || samllBtn} {three:continue}">{cancleText || ⁗取消⁗}</a> <a class="btn btn-default delete {small: needDelete || samllBtn} " if="{needDelete}">{deleteText || ⁗删除⁗}</a> <a class="btn btn-primary continue {small: samllBtn} {three:continue}" if="{continue}">{continue || ⁗继续添加⁗}</a> <a class="btn btn-primary submit {small: samllBtn} {three:continue}">{submitText || ⁗确定⁗}</a> </div> <div class="clearfix"></div> </div> <div class="modal-submit" if="{buttonOk}"> <div class="button-wrap"> <a class="btn btn-primary cancle">{submitText || ⁗知道了⁗}</a> </div> <div class="clearfix"></div> </div> </div>','','',function(opts){var self=this;var config=self.opts.opts||self.opts||{};var EL=self.root;self.needDelete=EL.hasAttribute('delete');self.noFooter=EL.hasAttribute('nofooter');self.samllBtn=EL.hasAttribute('small');self.continue=EL.hasAttribute('continue');self.title=EL.hasAttribute('title');self.buttonOk=EL.hasAttribute('buttonOk');for(var i in config){self[i]=config[i];}self.width=config.width||EL.getAttribute('modal-width')||'500px';self.height=config.height||EL.getAttribute('modal-height')||'auto';self.on('mount',function(){var container=self.root.querySelector('.modal-container');var foot=self.root.querySelector('.modal-submit');var foodHeight=foot?parseInt(window.getComputedStyle(foot,null).height):0;if(self.height&&self.height!=='auto'){container.style.height=parseInt(self.height)-foodHeight-2+'px';}self.bindEvent();});self.root.open=self.open=function(params){self.root.style.display='flex';self.onOpen&&self.onOpen(params);};self.root.close=self.close=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.root.loadData=function(newData,colName){colName=colName||'data';self[colName]=newData;self.update();};self.confirm=self.root.confirm=function(params){self.onSubmit&&self.onSubmit(params);};self.goonButton=self.root.goonButton=function(params){self.onContinue&&self.onContinue(params);};self.delete=self.root.delete=function(params){self.onDelete&&self.onDelete(params);};self.bindEvent=function(){(0,_jquery2.default)(EL).find('.modal-close-wrap').on('click',self.close);(0,_jquery2.default)(EL).find('.cancle').on('click',self.close);(0,_jquery2.default)(EL).find('.delete').on('click',self.delete);(0,_jquery2.default)(EL).find('.submit').on('click',self.confirm);(0,_jquery2.default)(EL).find('.continue').on('click',self.goonButton);};});riot.tag2('pop','<div class="modal-dialog" riot-style="width:{width}; height:{height}"> <div class="pop-title" if="{title}"> <span>{title}</span> <div class="pop-help-wrap" if="{help}"> <a class="pop-help"></a> </div> <div class="pop-wclose-wrap" if="{popclose}" onclick="{wclose}"> </div> </div> <div class="modal-container pop-content"> <yield></yield> </div> <div class="pop-submit" if="{twoButton}"> <div class="button-wrap"> <a class="cancle">{cancleText || ⁗取消⁗}</a> <a class="sure">{sureText || ⁗确定⁗}</a> </div> <div class="clearfix"></div> </div> <div class="pop-submit" if="{oneButton}"> <div class="button-wrap"> <a class="konw">{konwText || \'知道了\'}</a> </div> </div> </div>','','class="{popz-big:popzBig}{popzbigTwo:popzbigTwo}"',function(opts){var self=this;var config=self.opts.opts||self.opts||{};var EL=self.root;self.title=EL.hasAttribute('title');self.twoButton=EL.hasAttribute('twobutton');self.oneButton=EL.hasAttribute('onebutton');self.popzBig=EL.hasAttribute('popzbig');self.popzbigTwo=EL.hasAttribute('popzbigtwo');self.sureText=EL.hasAttribute('suretext')?config.suretext:"确定";self.cancleText=EL.hasAttribute('cancletext')?config.cancletext:"取消";self.konwText=EL.hasAttribute('konwtext')?config.konwtext:"知道了";self.help=EL.hasAttribute('help');self.popclose=EL.hasAttribute('popclose');for(var i in config){self[i]=config[i];}self.width=config.width||EL.getAttribute('modal-width')||'500px';self.height=config.height||EL.getAttribute('modal-height')||'auto';self.on('mount',function(){var container=self.root.querySelector('.modal-container');var foot=self.root.querySelector('.pop-submit');var foodHeight=foot?parseInt(window.getComputedStyle(foot,null).height):0;if(self.height&&self.height!=='auto'){container.style.height=parseInt(self.height)-foodHeight-2+'px';}self.bindEvent();});self.root.open=self.open=function(params){self.root.style.display='flex';self.onOpen&&self.onOpen(params);};self.root.close=self.close=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.root.loadData=function(newData,colName){colName=colName||'data';self[colName]=newData;self.update();};self.confirm=self.root.confirm=function(params){self.onSubmit&&self.onSubmit(params);};self.helpbutton=self.root.helpbutton=function(params){self.onHelp&&self.onHelp(params);};self.konw=self.root.konw=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.wclose=self.root.wclose=function(params){self.root.style.display='none';self.onClose&&self.onClose(params);};self.bindEvent=function(){(0,_jquery2.default)(EL).find('.pop-help').on('click',self.helpbutton);(0,_jquery2.default)(EL).find('.cancle').on('click',self.close);(0,_jquery2.default)(EL).find('.konw').on('click',self.konw);(0,_jquery2.default)(EL).find('.sure').on('click',self.confirm);(0,_jquery2.default)(EL).find('.pop-wclose-wrap').on('click',self.wclose);};});riot.tag2('search','<div class="search-wraper"> <div class="input-wraper {active: searchWord}"> <input type="text" class="search-input" oninput="{search}" onblur="{blur}"> <span class="cancel-input" onclick="{cancelSearch}"></span> <ul if="{searchResult.length}"> <li each="{item in searchResult}" onclick="{handleClick(item)}">{item.goodsName} <span>￥{item.price}</span></li> </ul> </div> </div>','','',function(opts){var self=this;var config=self.opts.opts;var timer=200;_riotSeedFlux2.default.bind.call(self,{name:'searchResult',store:_store.store.search});self.search=function(e){var target=(0,_jquery2.default)(e.target);self.searchWord=target.val();clearTimeout(self.timer);self.timer=setTimeout(function(){if(self.searchWord){_store.store.search.fetch({q:self.searchWord});}},timer);};self.cancelSearch=function(){(0,_jquery2.default)(self.root).find('.search-input').val('');self.searchWord=null;};self.blur=function(){setTimeout(function(){_store.store.search.clear();self.searchResult=null;},timer);};self.handleClick=function(item){return function(){config.clickHandle(item);self.cancelSearch();};};});riot.tag2('select-date','<div class="select-date"> <a each="{list}" class="{active: value == selectType}" onclick="{selectDateType}">{name} <div class="input" if="{value==1}"> <input type="text" id="J-xl-2"> </div> </a> </div> <div class="date-ym"> <date-year if="{dateYear}" id="yearMonth"></date-year> <date-month if="{dateMonth}" id="dateMonth"></date-month> </div> <input type="hidden" name="" value="" id="selectdateChangeEnd"> <input type="hidden" name="" value="" id="selectdateChangeStart">','','',function(opts){var self=this;var config=self.opts.opts||self.opts||{};self.dateYear=false;self.dateMonth=false;self.selectType=1;self.list=[{'name':'按日选','value':1},{'name':'按周选','value':2},{'name':'按月选','value':3},{'name':'按年选','value':4}];self.root.open=self.open=function(params){var e={item:{value:params.selectType,startDate:params.startDate,endDate:params.endDate}};self.selectDateType(e);};self.selectDateType=function(e){var em=window.event;em.preventDefault();if(em&&em.stopPropagation){em.stopPropagation();}var startDate=(0,_jquery2.default)("#selectdateChangeStart").val();if(e.item.value===1){self.selectType=1;self.confirmDate();}else if(e.item.value===2){self.selectType=2;self.confirmDate();}else if(e.item.value===3){self.selectType=3;self.dateYear=false;self.dateMonth=true;self.update();(0,_jquery2.default)("#dateMonth")[0].openDateMonth(startDate);}else if(e.item.value===4){self.selectType=4;self.dateYear=true;self.dateMonth=false;self.update();(0,_jquery2.default)("#yearMonth")[0].openDateYear(startDate);}};self.confirmDate=function(){self.update();laydate({elem:'#J-xl-2',format:'YYYY-MM-DD',isclear:false,issure:false,istoday:false,choose:function choose(datas){var startDate='';var endDate='';var showDate="";console.log(datas);if(self.selectType==1){startDate=datas;endDate=datas;showDate=startDate;}else if(self.selectType==2){var dateYear=datas.substring(0,10);var dd=dateYear.replace(/-/g,"/");var d=_utils2.default.getMonDate(dd);var arr=[];for(var i=0;i<7;i++){arr.push(d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate());d.setDate(d.getDate()+1);}(0,_jquery2.default)("#shows").text(arr[0]+'~'+arr[6]);startDate=arr[0];endDate=arr[6];}triggerDate(startDate,endDate);}});};function triggerDate(startDate,endDate){(0,_jquery2.default)("#selectdateChangeStart").val(startDate);(0,_jquery2.default)("#selectdateChangeEnd").val(endDate);var showDate=startDate+" ~ "+endDate;var date=startDate.split('-');if(self.selectType===1){showDate=startDate;}else if(self.selectType===3){showDate=date[0]+"-"+date[1];}else if(self.selectType===4){showDate=date[0]+"年";}var date={showDate:showDate,selectType:self.selectType};self.parent.trigger('selectdateChange',date);self.trigger('selectdateChange',date);}self.on('selectMonthdate',function(date){date.month=date.month<10?'0'+date.month:date.month;var startDate=date.year+"-"+date.month+"-"+"01";var endDate=date.year+"-"+date.month+"-"+_utils2.default.getLastDay(date.year,date.month);triggerDate(startDate,endDate);});self.on('selectYeardate',function(date){var startDate=date+"-01-01";var endDate=date+"-12-31";triggerDate(startDate,endDate);});self.on('mount',function(){self.confirmDate();});});riot.tag2('app-index','<ul class="app-index"> <li each="{list}" onclick="{downorlook}" onmousedown="{deleteApp}"> <div class="app-list"> <div class="app-img"> <img riot-src="{icon}"> </div> <div class="no-down downloading" if="{status==3 || status==1}"> <div class="download-no" riot-style="height:{noDown}%"></div> <div class="download-yes" riot-style="height:{progress}%"></div> <div class="downloading-word">{progress || 0}%</div> </div> <div class="no-down" if="{status !=7}"></div> </div> <div class="app-name">{name}</div> </li> <div class="clearfix"></div> </ul>','','',function(opts){var self=this;self.downorlook=function(e){clearTimeout(timeoutDelete);var appInfo=JSON.stringify(e.item);if(e.item.status==3){_utils2.default.toast('正在下载');return;}_store.store.downloadApp.get(appInfo,function(){});};function getAppInfo(){var appInfo=Idownload.appinfo;appInfo=JSON.parse(appInfo);if(appInfo.nativeUpdate){self.init();}else{for(var i=0;i<self.list.length;i++){if(self.list[i].packageName==appInfo.packageName){self.list[i]=appInfo;self.list[i].noDown=100-appInfo.progress;break;}}}self.update();};self.init=function(){_store.store.getappinfo.get(function(data){if(window.Icommon){self.list=JSON.parse(data);}else{self.list=data;}self.update();_store.store.appList.get(function(data){if(self.list.length>0){var newAppList="";if(data&&data.length>0){for(var j=0;j<self.list.length;j++){newAppList+=self.list[j].packageName+"  ";}for(var i=0;i<data.length;i++){if(newAppList.indexOf(data[i].packageName)<0){self.list.push(data[i]);}else{for(var k=0;k<self.list.length;k++){if(self.list[k].packageName==data[i].packageName){self.list[k].type=data[i].type;}}}}}}else{self.list=data;}self.update();});});};var timeoutDelete;self.on('mount',function(){self.init();window.addEventListener('sendappinfo',getAppInfo,false);self.deleteApp=function(e){var appInfo=JSON.stringify(e.item);if(e.item.status==7){timeoutDelete=setTimeout(function(){if(confirm("是否删除?")){_store.store.unInstall.get(appInfo,function(){});}},1500);}};(0,_jquery2.default)(".app-list").mouseup(function(e){clearTimeout(timeoutDelete);});(0,_jquery2.default)(".app-list").mouseout(function(e){clearTimeout(timeoutDelete);});self.update();});self.on('unmount',function(){clearTimeout(timeoutDelete);window.removeEventListener('sendappinfo',getAppInfo);});});riot.tag2('order-history','<div class="order-index"> <div class="calendar-bar"> <span class="prev-day" onclick="{prevDay}">前一天</span> <date-picker></date-picker> <span class="next-day" onclick="{nextDay}">后一天</span> </div> <div class="order-tag"> <ul> <li onclick="{orderList}" status="{status}" each="{order}" class="{active:active}">{statusStr}</li> </ul> </div> <div class="order-content"> <div class="order-left {empty:!orderHistory.list.length}" id="hisorderList"> <div class="order-list {active:active}" each="{orderHistory.list}" onclick="{list}"> <div class="title">下单时间：<i class="f22-r">{createTime}</i></div> <div class="info"> <ul> <li>订单号：{code}</li> <li>收货人：{addrUserName}</li> <li>收货电话：{addrUserMobile}</li> <li>收货地址：{addrInfo}</li> <li>配送时间：{postTime}</li> </ul> </div> <div class="title">金额：<i class="f22-r">￥{payPrice}</i><i class="pad-tot">共计{totalCount}件</i></div> </div> </div> <div class="order-right"> <div class="order-list {order-no-button: (detail.status==4)}" style="display:none"> <div class="title text-c">在线订单(<i class="f22-r">{detail.code}</i>) <div class="order-print" onclick="{orderPrint}"></div> </div> <div class="o-d-con"> <div class="title">商品明细</div> <div class="info"> <ul> <li each="{detail.goods}">{goodsName}<div class="amount price">X{goodsCount}</div><div class="price">￥{buyTotalPrice}</div></li> </ul> </div> <div class="info"> <ul> <li>配送费：<div class="price">￥{detail.postPrice}</div></li> <li class="coupon" if="{detail.couponAmount}">优惠券：<div class="price">－¥{detail.couponAmount}</div></li> <li>总计：<div class="price">￥{detail.payPrice}</div></li> </ul> </div> <div class="title">配送明细</div> <div class="info border-none"> <ul> <li>订单状态：{detail.statusStr}</li> <li if="{detail.cancelUserName}">取消人：{detail.cancelUserName}</li> <li if="{detail.cancelReason}">取消原因：{detail.cancelReason}</li> <li>下单时间：{detail.createTime}</li> <li>收货人：{detail.addrUserName}</li> <li>收电话：{detail.addrUserMobile}</li> <li>收货地址：{detail.addrInfo}</li> <li>配送时间：{detail.postTime}</li> <li>买家留言：{detail.remark}</li> </ul> </div> </div> <div class="button"> <a class="cancel" onclick="{cancel}" if="{detail.status ==  3}">设为无效</a> <input type="hidden" id="orderId" value="{detail.orderId}"> </div> </div> </div> </div> </div>','','',function(opts){var self=this;self.size=5;self.status=3;self.getDateStr=function(time){return _utils2.default.getDateStr(time);};this.orderPrint=function(){_store.store.printOrderDetail.get(self.detail);}.bind(this);self.nextDay=function(){(0,_jquery2.default)(self.root).find('date-picker')[0].nextDay();};self.prevDay=function(){(0,_jquery2.default)(self.root).find('date-picker')[0].prevDay();};self.init=function(){if(!self.targetTime){var date=self.getDateStr(new Date().getTime());self.targetTime=date;}self.page=1;if(!self.status){self.status=3;}_riotSeedFlux2.default.bind.call(self,{name:'orderHistory',store:_store.store.orderHistory,refresh:true,params:{page:1,size:self.size,status:self.status,targetTime:self.targetTime},success:function success(){if(self.orderHistory.list&&self.orderHistory.list.length>0){self.orderHistory.list[0].active=true;self.detail=self.orderHistory.list[0];self.total=self.orderHistory.total;(0,_jquery2.default)(".order-list").show();}else{(0,_jquery2.default)(".order-list").hide();}self.update();}});};this.cancel=function(e){var refuse=(0,_jquery2.default)("<order-invalid></order-invalid>");(0,_jquery2.default)("order-history").append(refuse);riot.mount("order-invalid");}.bind(this);self.orderListAll=function(){var param={page:1,size:self.size,status:self.status,targetTime:self.targetTime};_store.store.orderHistory.get(param,function(data){self.total=data.total;self.page=data.page;});self.update();};this.orderList=function(e){if(e.item.active==false){for(var i=0;i<self.order.length;i++){self.order[i].active=false;}e.item.active=true;var status=e.item.status;self.status=status;self.update();self.orderListAll();}}.bind(this);this.list=function(e){for(var i=0;i<self.orderHistory.list.length;i++){self.orderHistory.list[i].active=false;}e.item.active=true;self.detail=e.item;self.update();}.bind(this);self.on('mount',function(){self.order=[{status:3,statusStr:"已完成",active:true},{status:4,statusStr:"无效订单",active:false}];self.update();self.init();self.nextPage();});self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('date-picker')[0].value;self.targetTime=date;self.init();});self.nextPage=function(){var curPage=1;(0,_jquery2.default)("#hisorderList").scroll(function(){if(curPage==1){self.listWrap=(0,_jquery2.default)('#hisorderList')[0];var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-20){if(!self.page){self.page=1;}if(!self.status){self.status=3;}if(self.page<self.total/self.size){curPage=2;var param={page:self.page+1,size:self.size,status:self.status,targetTime:self.targetTime};_store.store.orderHistory.getMore(param,function(data){self.page=data.page;self.update();curPage=1;});}}}});};});riot.tag2('order-index','<div class="order-index"> <div class="order-top"> <div class="order-status">接单状态:</div> <div class="order-status-img" if="{!storeOpen}"> <span id="orderStatusText">不接单</span> <div class="img" onclick="{orders}"></div> </div> <div class="order-status-img" if="{storeOpen}"> <span id="orderStatusText">接单</span> <div class="img active" onclick="{orders}"></div> </div> <div class="history icon" onclick="{histroyOrder}">历史订单</div> </div> <div class="order-tag" if="{storeOpen}"> <ul> <li onclick="{orderList}" status="{status}" each="{order}" class="{active:active}"> <div class="num" style="display:none" if="{num}" id="unconfirmedOrderNum"></div> {statusStr} </li> </ul> </div> <div class="order-content"> <div class="order-left {empty:!orderToday.list.length}" id="orderListLi" if="{storeOpen}"> <div class="order-list {active:active}" each="{orderToday.list}" onclick="{list}"> <div class="title">下单时间：<i class="f22-r">{createTime}</i> </div> <div class="info"> <ul> <li>订单号：{code}</li> <li>收货人：{addrUserName}</li> <li>收货电话：{addrUserMobile}</li> <li>收货地址：{addrInfo}</li> <li>配送时间：{postTime}</li> </ul> </div> <div class="title">金额：<i class="f22-r">￥{payPrice}</i> <i class="pad-tot">共计{totalCount}件</i> </div> </div> </div> <div class="order-right"> <div class="order-list {order-no-button: (detail.status==4)}" if="{storeOpen && orderToday.list.length>0}"> <div class="title text-c">在线订单(<i class="f22-r">{detail.code}</i>) <div class="order-print" onclick="{orderPrint}"></div> </div> <div class="o-d-con"> <div class="title">商品明细</div> <div class="info"> <ul> <li each="{detail.goods}">{goodsName}<div class="amount price">X{goodsCount}</div> <div class="price">￥{buyTotalPrice}</div> </li> </ul> </div> <div class="info"> <ul> <li>配送费：<div class="price">￥{detail.postPrice}</div> </li> <li class="coupon" if="{detail.couponAmount}">优惠券：<div class="price">－¥{detail.couponAmount}</div> </li> <li>总计：<div class="price">￥{detail.payPrice}</div> </li> </ul> </div> <div class="title">配送明细</div> <div class="info border-none"> <ul> <li>订单状态：{detail.statusStr}</li> <li if="{detail.cancelUserName}">取消人：{detail.cancelUserName}</li> <li if="{detail.cancelReason}">取消原因：{detail.cancelReason}</li> <li>下单时间：{detail.createTime}</li> <li>收货人：{detail.addrUserName}</li> <li>收电话：{detail.addrUserMobile}</li> <li>收货地址：{detail.addrInfo}</li> <li>配送时间：{detail.postTime}</li> <li>买家留言：{detail.remark}</li> </ul> </div> </div> <div class="button"> <a class="cancel" onclick="{cancel}" if="{detail.status==3}">设为无效</a> <div class="fl-left width-50" if="{detail.status==2}"> <a class="cancel" onclick="{cancel}">设为无效</a> </div> <div class="fl-right width-50" if="{detail.status==2}"> <a class="sure" onclick="{served}">已送达</a> </div> <div class="fl-left width-50" if="{detail.status==1}"> <a class="cancel" onclick="{denialOrders}">拒绝订单</a> </div> <div class="fl-right width-50" if="{detail.status==1}"> <a class="sure" onclick="{confirmOrder}">确认订单</a> </div> <div class="clear"></div> <input type="hidden" id="orderId" value="{detail.orderId}"> </div> </div> </div> </div> <modal id="order-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> </div>','','',function(opts){var self=this;self.size=5;self.status=1;this.histroyOrder=function(e){_utils2.default.setTitle("#/order/history",'历史订单');}.bind(this);self.orderPrint=function(){_store.store.printOrderDetail.get(self.detail);};self.getOrderPrintState=function(){if(_store.store.online){(0,_store.httpGet)({url:api.getOrderPrintState,complete:function complete(data){self.orderPrintState=data.printOrderState;self.update();}});}};function warning(text){var layer=(0,_jquery2.default)('#order-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}self.toBeConfirmed=function(){_store.store.orderConfirmed.get(function(data){if(data>0){(0,_jquery2.default)("#unconfirmedOrderNum").show().text(data);(0,_jquery2.default)(".order-untreated").show().text(data);}else{(0,_jquery2.default)("#unconfirmedOrderNum").hide();(0,_jquery2.default)(".order-untreated").hide();}});};this.orders=function(e){var status=2;if(!(0,_jquery2.default)(".img").is(".active")){status=1;}var param={status:status};_store.store.upCanOrder.get(param,function(){if(status==1){self.storeOpen=true;self.orderListAll();}else{self.storeOpen=false;}self.update();});}.bind(this);this.confirmOrder=function(e){var orderId=(0,_jquery2.default)("#orderId").val();var param={orderId:orderId};_store.store.orderConfirm.get(param,function(data){warning("操作成功");if(self.orderPrintState){self.orderPrint();}self.orderListAll();});}.bind(this);this.denialOrders=function(e){var refuse=(0,_jquery2.default)("<order-refuse></order-refuse>");(0,_jquery2.default)("order-index").append(refuse);riot.mount("order-refuse");}.bind(this);this.served=function(e){var orderId=(0,_jquery2.default)("#orderId").val();var param={orderId:orderId};_store.store.orderComplete.get(param,function(data){warning("操作成功");self.orderListAll();});}.bind(this);this.cancel=function(e){var refuse=(0,_jquery2.default)("<order-invalid></order-invalid>");(0,_jquery2.default)("order-index").append(refuse);riot.mount("order-invalid");}.bind(this);this.orderList=function(e){var status=e.status;if(e.item.active==false){for(var i=0;i<self.order.length;i++){self.order[i].active=false;}e.item.active=true;var status=e.item.status;self.status=status;self.update();self.orderListAll();}}.bind(this);self.orderListAll=function(){var params={page:1,size:self.size,status:self.status};_store.store.orderToday.get(params,function(data){self.total=data.total;self.page=data.page;self.orderToday=data;if(data.list&&data.list.length>0){data.list[0].active=true;self.detail=data.list[0];}self.update();self.toBeConfirmed();});};this.list=function(e){for(var i=0;i<self.orderToday.list.length;i++){self.orderToday.list[i].active=false;}e.item.active=true;self.detail=e.item;self.update();}.bind(this);self.on('mount',function(){self.order=[{status:1,statusStr:"待确认",active:true,num:true},{status:2,statusStr:"待送达",active:false,num:false},{status:3,statusStr:"已完成",active:false,num:false},{status:4,statusStr:"无效订单",active:false,num:false}];self.update();self.init();self.toBeConfirmed();self.nextPage();window.addEventListener('orderNumChange',self.orderListAll);});self.on('unmount',function(){window.removeEventListener('orderNumChange',self.orderListAll);});self.nextPage=function(){var curPage=1;(0,_jquery2.default)("#orderListLi").scroll(function(){if(curPage==1){self.listWrap=(0,_jquery2.default)('#orderListLi')[0];var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-20){if(!self.page){self.page=1;}if(!self.status){self.status=1;}if(self.page<self.total/self.size){curPage=2;var param={page:self.page+1,size:self.size,status:self.status};_store.store.orderToday.getMore(param,function(data){self.page=data.page;self.orderToday=data;self.update();curPage=1;});}}}else{return;}});};self.init=function(){self.getOrderPrintState();_store.store.storeInfo.get({},function(data){if(data.state==2){self.storeOpen=false;}else{self.storeOpen=true;self.orderListAll();}self.update();});};});riot.tag2('order-remind','<div style="display: none"> <audio id="music" src="file:///mnt/internal_sd/Android/data/cn.ipos100.pos/files/mp3/order.ogg"></audio> </div>','','',function(opts){var self=this;self.play=function(){var audio=document.getElementById('music');audio.play();window.dispatchEvent(new Event('orderNumChange'));};function playAudio(audio){var url=audio.currentSrc;if(!url){return;}if(url.search('http')!=-1){audio.play();}else{var myMedia=new Media(url,function(){},function(err){});myMedia.play();}}function getOrderMessage(){self.message=JSON.parse(Ipush.message);if(self.message.type==2){self.play();}}self.on('mount',function(){window.addEventListener('receiveMessage',getOrderMessage,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',getOrderMessage);});});riot.tag2('shop-index','<ul> <li each="{list}" onclick="{noAuthTip}" if="{show}"> <a> <img riot-src="{img}"> <div>{name}</div> </a> </li> <div class="clearfix"></div> </ul>','','',function(opts){var self=this;self.list=[{name:'结算单',img:'imgs/sales-order.png',link:'#/shop/sales-order',logName:'0301',authCode:'31',show:true},{name:'经营助手',img:'imgs/business-bq.png',link:'#/shop/business-assistant-bq',logName:'0304',authCode:'61',show:true},{name:'外接设备',img:'imgs/device.png',link:'#/shop/order-printer',logName:'0305',authCode:'71',show:true},{name:'员工',img:'imgs/employee.png',link:'#/shop/employee',logName:'0306',authCode:'81',show:true},{name:'店铺设置',img:'imgs/shop-message.png',link:'#/shop/setting',logName:'0308',authCode:'91',show:true}];self.noAuthTip=function(e){self.log(e.item.logName);if(e.item.haveAuth){location.href=e.item.link;return true;}else{alert('没有权限');return false;}};self.log=function(name){if(window.Icommon){Icommon.logEvent(null,null,{eventId:name});}};self.on('mount',function(){(0,_store.httpGet)({url:api.auth,success:function success(res){self.auth=res.data.permissionCodes.split(',');self.list.forEach(function(item){if(typeof item.authCode==='string'){if(self.auth.indexOf(item.authCode)>-1){item.haveAuth=true;}}else if(Object.prototype.toString.call(item.authCode)==='[object Array]'){item.authCode.forEach(function(code){if(self.auth.indexOf(code)>-1){item.haveAuth=true;}});}});self.update();}});});});riot.tag2('find-password','<div id="login-wrap"> <a class="back" href="#/login">返回</a> <div class="setting" onclick="{openSetting}"></div> <form class="register" onsubmit="{submit}"> <h4>找回密码</h4> <input class="{error: !verifyPhone}" value="{register.phoneMobile}" type="text" name="phone" id="register-phone" maxlength="11" placeholder="手机号"> <label> <input class="{error: !verifyCode}" value="{register.code}" type="text" name="phone" id="checkcode" placeholder="验证码"> <a if="{firstSend}" href="" onclick="{getCode}">获取</a> <a if="{!firstSend}" onclick="{getCode}"> 再次获取 <span if="{isCounting}" id="countDown">{countNum}</span> <b if="{isCounting}"> s </b> </a> </label> <input type="password" value="{register.password}" name="password" class="{error: !verifyPWD}" id="rg-pwd" placeholder="新密码"> <input type="password" value="{register.password}" class="{error: !verifyRePWD}" placeholder="再次确认密码" id="rg-repwd"> <button onclick="{submit}">修改密码</button> </form> </div>','','',function(opts){var self=this;self.countNum=60;self.firstSend=true;self.verifyCode=self.verifyPhone=self.verifyPWD=self.verifyRePWD=true;function countDown(){var count=(0,_jquery2.default)('#countDown');if(count[0]){count.text(self.countNum--);if(self.countNum>-1){setTimeout(countDown,1000);}else{self.isCounting=false;self.update();}}}self.openSetting=function(){_utils2.default.androidBridge(api.openSetting);};self.getCode=function(e){e.preventDefault();var target=e.target;var phone=(0,_jquery2.default)('#register-phone').val();if(phone.match(/^1[0-9]{10}$/)){self.verifyPhone=true;if(self.isCounting){return;}self.firstSend=false;_store.store.password.sendCode({phoneMobile:phone},function(){self.isCounting=true;self.countNum=60;self.update();countDown();});}else{self.verifyPhone=false;}};self.submit=function(e){e.preventDefault();self.verifyPhone=(0,_jquery2.default)('#register-phone').val().match(/^1[0-9]{10}$/)?true:false;self.verifyPWD=(0,_jquery2.default)('#rg-pwd').val()?true:false;self.verifyRePWD=(0,_jquery2.default)('#rg-pwd').val()==(0,_jquery2.default)('#rg-repwd').val()?true:false;if(self.verifyPhone&&self.verifyPWD&&self.verifyRePWD){_store.store.password.commit({phoneMobile:(0,_jquery2.default)('#register-phone').val(),code:(0,_jquery2.default)('#checkcode').val(),password:(0,_jquery2.default)('#rg-pwd').val()},function(res){if(res.code!==1){return;}else{location.hash='#login';}});}};});riot.tag2('register-final','<div id="login-wrap"> <a class="back" href="#/register">上一步</a> <div class="setting" onclick="{openSetting}"></div> <form class="register" onsubmit="{submit}"> <h4>填写店铺信息</h4> <input type="text" name="storeName" class="{error: !verifyStoreName}" placeholder="店铺名称"> <input type="text" name="shopAddress" class="shopAddress {error: !verifyAddress}" onfocus="{openSelect}" value="{addressValue}" placeholder="店铺地址"> <input type="text" name="streetName" class="{error: !verifyStree}" placeholder="街道"> <input type="text" name="tel" class="{error: !verifytel}" placeholder="店铺电话" maxlength="20"> <label class="checkbox" onclick="{toggleLogin}"> <p id="autologin" class="on">打开收银机默认登陆此店铺</p> </label> <button>提交</button> </form> </div> <modal modal-width="" modal-height="" id="selectAddr"> <address-select></address-select> </modal>','','',function(opts){var self=this;var verifyList=['verifyStoreName','verifyAddress','verifyStree','verifytel'];for(var i=0;i<4;i++){self[verifyList[i]]=true;}self.openSetting=function(){_utils2.default.androidBridge(api.openSetting);};_riotSeedFlux2.default.bind.call(self,{name:'register',store:_store.store.register,success:function success(){self.update();}});function verify(){var storeName=(0,_jquery2.default)('input[name=storeName]').val();var addressName=(0,_jquery2.default)('input[name=shopAddress]').val();var streetName=(0,_jquery2.default)('input[name=streetName]').val();var tel=(0,_jquery2.default)('input[name=tel]').val();if(!storeName){self.verifyStoreName=false;_utils2.default.toast("请填写店铺名称");return false;}else{self.verifyStoreName=true;_store.store.register.set('storeName',storeName);}if(!addressName){self.verifyAddress=false;_utils2.default.toast("请填写店铺地址");return false;}else{self.verifyAddress=true;}if(!streetName){self.verifyStree=false;_utils2.default.toast("请填写街道信息");return false;}else{self.verifyStree=true;_store.store.register.set('streetName',streetName);}if(!tel.match(/[0-9]{6,}/)){self.verifytel=false;_utils2.default.toast("请填写正确的店铺电话");return false;}else{self.verifytel=true;_store.store.register.set('tel',tel);}return self.verifyStoreName&&self.verifyAddress&&self.verifyStree&&self.verifytel;}function autoLogin(){_store.store.account.login({username:self.register.phoneMobile,password:self.register.password,imeCode:'784372987'},function(data){location.replace("#/casher/index");location.reload();});}self.submit=function(e){e.preventDefault();if(verify()){_utils2.default.loadShow();if((0,_jquery2.default)('#autologin').hasClass('on')&&self.imeCode){self.register.bindDevice=true;}else{self.register.bindDevice=false;}if(self.imeCode){self.register.imeCode=self.imeCode;}(0,_store.httpPost)({url:api.register,params:self.register,success:function success(res){if((0,_jquery2.default)('#autologin').hasClass('on')){autoLogin();}else{location.hash='#login';}},complete:function complete(res){_utils2.default.loadHide();}});};};self.toggleLogin=function(e){(0,_jquery2.default)(e.target).toggleClass('on');};self.openSelect=function(){(0,_jquery2.default)('#selectAddr')[0].open();};self.on('mount',function(){if(window.Iapps){Iapps.getImei(function(res){if(res.imei){self.imeCode=res.imei;self.update();}},function(err){},{});}(0,_jquery2.default)(self.root).find('input').bind('input',function(e){(0,_jquery2.default)(this).removeClass('error');});});});riot.tag2('register','<div id="login-wrap"> <a class="back" onclick="{goback}">返回</a> <div class="setting" onclick="{openSetting}"></div> <form class="register" onsubmit="{submit}"> <h4>填写店长信息</h4> <input class="{error: !verifyPhone}" value="{register.phoneMobile}" type="text" name="phone" id="register-phone" maxlength="11" placeholder="手机号"> <label> <input class="{error: !verifyCode}" value="{register.code}" type="text" name="phone" id="checkcode" placeholder="验证码"> <a if="{firstSend}" href="" onclick="{getCode}">获取</a> <a if="{!firstSend}" onclick="{getCode}"> 再次获取 <span if="{isCounting}" id="countDown">{countNum}</span> <b if="{isCounting}"> s </b> </a> </label> <input type="password" value="{register.password}" name="password" class="{error: !verifyPWD}" id="rg-pwd" placeholder="店长密码(6-12位)" maxlength="12"> <input type="password" value="{register.password}" class="{error: !verifyRePWD}" placeholder="再次店长密码" id="rg-repwd" maxlength="12"> <input type="text" name="owner" value="{register.personName}" class="{error: !verifyOwner}" id="owner-name" placeholder="店长姓名"> <button onclick="{submit}">提交</button> </form> </div>','','',function(opts){var self=this;self.countNum=60;self.firstSend=true;self.verifyCode=self.verifyPhone=self.verifyOwner=self.verifyPWD=self.verifyRePWD=true;self.openSetting=function(){_utils2.default.androidBridge(api.openSetting);};function countDown(){var count=(0,_jquery2.default)('#countDown');if(count[0]){count.text(self.countNum--);if(self.countNum>-1){setTimeout(countDown,1000);}else{self.isCounting=false;self.update();}}}_riotSeedFlux2.default.bind.call(self,{name:'register',store:_store.store.register,success:function success(){self.update();}});self.getCode=function(e){e.preventDefault();var target=e.target;var phone=(0,_jquery2.default)('#register-phone').val();if(phone.match(/^1[0-9]{10}$/)){self.verifyPhone=true;if(self.isCounting){return;}self.firstSend=false;_store.store.register.sendCode({phoneMobile:phone},function(){self.isCounting=true;self.countNum=60;self.update();countDown();});}else{self.verifyPhone=false;_utils2.default.toast("请填写正确的手机号");}};function autoLogin(){_store.store.account.login({username:(0,_jquery2.default)('#register-phone').val(),password:(0,_jquery2.default)('#rg-pwd').val(),imeCode:'784372987'},function(data){location.replace("#/casher/index");location.reload();});}self.submit=function(e){e.preventDefault();var registerStore=_store.store.register;self.verifyPhone=(0,_jquery2.default)('#register-phone').val().match(/^1[0-9]{10}$/)?true:false;self.verifyCode=(0,_jquery2.default)('#checkcode').val()?true:false;self.verifyOwner=(0,_jquery2.default)('#owner-name').val()?true:false;self.verifyPWD=/^[0-9a-zA-Z]{6,12}$/.test((0,_jquery2.default)('#rg-pwd').val());self.verifyRePWD=(0,_jquery2.default)('#rg-pwd').val()==(0,_jquery2.default)('#rg-repwd').val()?true:false;if(!self.verifyPhone){_utils2.default.toast("请填写正确的手机号");return;}if(!self.verifyCode){_utils2.default.toast("请填写正确的验证码");return;}if(!self.verifyPWD){_utils2.default.toast("请填写正确的密码");return;}if(!self.verifyRePWD){_utils2.default.toast("密码不一致");return;}if(!self.verifyOwner){_utils2.default.toast("请填写店长姓名");return;}if(self.verifyPhone&&self.verifyOwner&&self.verifyPWD&&self.verifyRePWD){_utils2.default.loadShow();self.register.bindDevice=true;var params={channel:'bpos',bindDevice:true,phoneMobile:(0,_jquery2.default)('#register-phone').val(),code:(0,_jquery2.default)('#checkcode').val(),personName:(0,_jquery2.default)('#owner-name').val(),password:(0,_jquery2.default)('#rg-pwd').val()};if(self.imeCode){params.imeCode=self.imeCode;}(0,_store.httpPost)({url:api.register,params:params,success:function success(res){autoLogin();},complete:function complete(res){_utils2.default.loadHide();}});}};self.goback=function(){_utils2.default.androidBridge(api.goLogin);};self.on('mount',function(){if(window.Iapps){Iapps.getImei(function(res){if(res.imei){self.imeCode=res.imei;self.update();}},function(err){},{});}});});riot.tag2('pay-waiting','<div class="title"> {title_text} </div> <div class="modal-submit"> <div class="button-wrap"> <a class="btn btn-primary submit" onclick="{payFail}" if="{pay_status == 4}">知道了</a> <a class="btn btn-primary submit" onclick="{paySuccess}" if="{pay_status == 2}">知道了</a> <a class="btn btn-default cancle" onclick="{cancle}" if="{pay_status == 3}">支付失败</a> <a class="btn btn-primary submit" if="{pay_status == 3}" onclick="{paySuccess}">支付成功</a> </div> <div class="clearfix"></div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.title_text='等待用户支付';self.pay_status=3;modal.onOpen=function(params){self.data=params;if(params.pay_status==_constant2.default.PUSH_PAY_SUCCESS){self.title_text='支付成功';self.pay_status=2;}else if(params.pay_status==_constant2.default.PUSH_PAY_ING){self.title_text='用户支付中...';self.pay_status=3;}else if(params.pay_status==_constant2.default.PUSH_PAY_FAIL){self.title_text='支付失败';self.pay_status=4;}else{self.title_text='等待用户支付';self.pay_status=3;}self.update();};self.paySuccess=function(){modal.close();if(self.data&&self.data.bill){_store.store.pay.afterPayCommit({bill:self.data.bill});}parent.paySuccess();};self.payFail=function(){modal.close();parent.bill={};location.hash='#/casher/index';};self.cancle=function(){modal.close();parent.bill={};location.hash='#/casher/index';};});riot.tag2('bill-coupon-info','<div class="bill-coupon-info"> <div class="title">使用优惠券 </div> <div class="info"> <div class="price"> <span>{coupon.price}</span> </div> <div class="text"> <h3>{coupon.title}</h3> <h4>{coupon.couponCode}</h4> <div> <span class="left">{rules}</span> <span class="right">有效日期至:{coupon.effectTime}</span> <span class="clearfix"></span> </div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.params=params;self.coupon=self.params.item.couponInfo;self.update();};modal.onClose=function(){self.coupon={};self.update();};modal.onSubmit=function(){self.params.item.couponPrice=self.coupon.price;parent.couponCode=self.coupon.couponCode;modal.close();parent.couponAdd(self.params);self.update();};});riot.tag2('bill-coupon-num','<div class="vip-login"> <div class="phone"> <input type="tel" value="" placeholder="优惠券码" id="vipCouponNum"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.params=params;self.update();};modal.onClose=function(){(0,_jquery2.default)("#vipCouponNum").val("");};modal.onSubmit=function(){var vipCouponNum=(0,_jquery2.default)("#vipCouponNum").val();var params={couponCode:vipCouponNum,baskets:parent.baskets};_store.store.couponVerify.get(params,function(data){self.params.item={};self.params.item.couponInfo=data;modal.close();(0,_jquery2.default)("#billCouponInfo")[0].open(self.params);self.update();});};});riot.tag2('bill-coupon','<div class="bill-coupon"> <div class="img" onclick="{scan}"></div> <div class="info">请用扫码枪扫描手机上的优惠券码</div> <div class="input" onclick="{couponInput}">扫不到?手动输入</div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.scan=function(){modal.close();(0,_jquery2.default)("#billCouponInfo")[0].open(self.params);};self.couponInput=function(){modal.close();(0,_jquery2.default)("#billCouponNum")[0].open(self.params);};self.barcodeCoupon=function(){var vipCouponNum=scanNumber;var params={couponCode:vipCouponNum,baskets:parent.baskets};_store.store.couponVerify.get(params,function(data){self.params.item={};self.params.item.couponInfo=data;modal.close();(0,_jquery2.default)("#billCouponInfo")[0].open(self.params);self.update();});};modal.onOpen=function(params){self.params=params;self.update();window.addEventListener('inputNumber',self.barcodeCoupon,false);};modal.onClose=function(){window.removeEventListener('inputNumber',self.barcodeCoupon);};modal.onSubmit=function(){};});riot.tag2('vip-login','<div class="vip-login"> <div class="phone"> <input type="tel" value="" placeholder="会员手机号" id="vipPhone"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.update();};modal.onClose=function(){(0,_jquery2.default)("#vipPhone").val("");};modal.onSubmit=function(){var _vipphone=(0,_jquery2.default)("#vipPhone").val();if(/^1[0-9]{10}$/.test(_vipphone)){var params={phoneMobile:_vipphone};_store.store.memberVerify.get(params,function(data){(0,_jquery2.default)("#vipPhone").val("");_utils2.default.toast("登录成功");modal.close();parent.vipLogin=true;parent.vipphone=_vipphone;self.update();parent.update();});}else{_utils2.default.toast("请填写正确的手机号");}};});riot.tag2('order-invalid','<div class="coverLayer"></div> <div class="popwin refuse"> <div class="refuse-t"> 请选择设为无效原因 </div> <div class="refuse-reason"> <ul> <li onclick="{selectReason}" class="active">收货人退货</li> <li onclick="{selectReason}">订单信息有误</li> <li onclick="{selectReason}" other="other">其他</li> <div class="input-reason"><input type="text" id="inputReason"></div> </ul> <div class="button"> <div class="fl-left reason"><a class="cancel" onclick="{closeWin}">取消</a></div> <div class="fl-right reason"><a class="sure" onclick="{determine}">确定</a></div> </div> </div> </div>','','',function(opts){var self=this;this.closeWin=function(){(0,_jquery2.default)("order-invalid").remove();}.bind(this);this.determine=function(){var param={};param.reason=(0,_jquery2.default)(".refuse-reason ul li.active").text();if((0,_jquery2.default)(".refuse-reason ul li.active").attr("other")=="other"){param.reason=(0,_jquery2.default)("#inputReason").val();}param.orderId=(0,_jquery2.default)("#orderId").val();param.userId=6;_store.store.orderInvalid.get(param,function(){window.dispatchEvent(new Event('orderNumChange'));(0,_jquery2.default)("order-invalid").remove();});}.bind(this);this.selectReason=function(e){if(!(0,_jquery2.default)(e.target).is(".active")){(0,_jquery2.default)(".refuse-reason ul li").removeClass("active");(0,_jquery2.default)(e.target).addClass("active");}}.bind(this);});riot.tag2('order-refuse','<div class="coverLayer"></div> <div class="popwin refuse"> <div class="refuse-t"> 请选择拒绝订单原因 </div> <div class="refuse-reason"> <ul> <li onclick="{selectReason}" class="active">没货</li> <li onclick="{selectReason}">地址太远，不送</li> <li onclick="{selectReason}">人员不够，送不了</li> <li onclick="{selectReason}">没时间，送不了</li> <li onclick="{selectReason}">收货人不要了</li> <li onclick="{selectReason}" other="other">其他</li> <div class="input-reason"><input type="text" id="inputReason"></div> </ul> <div class="button"> <div class="fl-left reason"><a class="cancel" onclick="{closeWin}">取消</a></div> <div class="fl-right reason"><a class="sure" onclick="{determine}">确定</a></div> </div> </div> </div>','','',function(opts){var self=this;this.closeWin=function(){(0,_jquery2.default)("order-refuse").remove();}.bind(this);this.determine=function(){var param={};param.reason=(0,_jquery2.default)(".refuse-reason ul li.active").text();if((0,_jquery2.default)(".active").attr("other")=="other"){param.reason=(0,_jquery2.default)("#inputReason").val();}param.orderId=(0,_jquery2.default)("#orderId").val();_store.store.orderRefuse.get(param,function(){window.dispatchEvent(new Event('orderNumChange'));(0,_jquery2.default)("order-refuse").remove();});}.bind(this);this.selectReason=function(e){if(!(0,_jquery2.default)(e.target).is(".active")){(0,_jquery2.default)(".refuse-reason ul li").removeClass("active");(0,_jquery2.default)(e.target).addClass("active");}}.bind(this);});riot.tag2('attain-sart','<div class="attain-sart" if="{attainReceive}"> <div class="cover"> </div> <div class="sart"> <div class="title">恭喜您</div> <div class="info">已达成{message.data.title}成就</div> <div class="button"> <a onclick="{goAttain}">去成就界面查看</a> </div> <div class="cancel"> <span onclick="{cancel}">稍后查看</span> </div> </div> </div>','','',function(opts){var self=this;self.attainReceive=false;self.cancel=function(){self.attainReceive=false;self.message={};self.update();};self.goAttain=function(){window.location.replace("#/shop/attain");window.dispatchEvent(new Event('receiveMessageReload'));self.attainReceive=false;self.message={};self.update();};function getReceiveMessage(){self.message=JSON.parse(Ipush.message);if(self.message.type==1){self.attainReceive=true;self.update();}}self.on('mount',function(){window.addEventListener('receiveMessage',getReceiveMessage,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',getReceiveMessage);});});riot.tag2('attain','<div class="attain"> <div class="attain-list"> <ul class="attain-list-ul"> <li class="list" each="{attain}" if="{attain.length > 0}"> <div class="attain_top"> <div class="left"> <h3>{name}</h3> <div class="img"> <img riot-src="{iconUrl}" alt=""> </div> <h5> {currentLevel}级/共{totalLevel}级</h5> </div> <div class="right"> <ul> <li each="{currentTask.behaviors}"> <div class="title"> {title} </div> <div class="num"> {currentNum}/{totalNum} </div> <div class="line"> <div class="co" riot-style="width:{currentNum/totalNum*100}%"></div> </div> </li> </ul> </div> </div> <div class="attain_bottom"> <div class="icon_bottom atta-coupon" if="{reward.type == 0}"></div> <div class="icon_bottom atta-app" if="{reward.type == 1}"></div> <div class="icon_bottom atta-ad" if="{reward.type == 2}"></div> <h5 if="{reward.type == 0}">{reward.totalNum}张总价值</h5> <h5 if="{reward.type == 0}">{reward.totalPrice}元优惠券</h5> <h5 if="{reward.type == 1}" class="atta-app">{reward.name}</h5> <h5 if="{reward.type == 2}" class="atta-ad">{reward.name}</h5> <a class="cancel" if="{status == 0}">领取</a> <a onclick="{getReceive}" if="{status == 1}">领取</a> <a class="cancel" if="{status == 2}">已领取</a> </div> </li> <div class="clear"> </div> <div class="none-list" if="{attain.length <= 0}"> <div class="none-list-text"> 暂无成就 </div> </div> </ul> </div> </div>','','',function(opts){var self=this;self.next=0;self.getReceive=function(e){var param={reachRecordId:e.item.recordId};_store.store.attain.getReward(param,function(data){_utils2.default.toast("领取成功");self.next=0;self.init();});};self.init=function(){self.next=0;var params={next:self.next};_store.store.attain.get(params,function(data){self.next=data.next;self.attain=data.list;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.attain-list-ul')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.attain.get({next:self.next},function(data){self.next=data.next;self.attain=self.attain.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},5000);};function getReceiveMessageReload(){self.init();}self.on('mount',function(){self.init();self.listenDown();window.addEventListener('receiveMessageReload',getReceiveMessageReload,false);});self.on('unmount',function(){window.removeEventListener('receiveMessageReload',getReceiveMessageReload);if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('business-assistant-bq','<div class="business-assistant-bq"> <div class="b-s-top"> <div class="rank"> <span>本日{weekRank.countryName}第{weekRank.rank}名<span> <ul> <li>本门店总销售额:{weekRank.totalAmount}</li> <li>{weekRank.countryName}最高销售额:{weekRank.highestAmount}</li> </ul> </div> <div class="chose-date"> <div class="get-date" onclick="{selectDate}" id="selectdateShow"> {showDate} </div> <input id="getstartDate" type="hidden" name="name" value="{startDate}"> <input id="getendDate" type="hidden" name="name" value="{endDate}"> <div if="{selectDateStatus}" class="select-date-select"> <select-date id="selectDate"></select-date> </div> </div> <div class="sale-data"> <span id="totalAmount">销售额:{allSale.totalAmount}</span> <span>总单数:{allSale.totalBills}</span> <span>销量:{allSale.totalSales}</span> <span>毛利润:{allSale.totalProfit}</span> </div> </div> <div class="b-s-con"> <div class="l-report brief-report"> <p><i></i><b>销售简报</b><i></i></p> <div class="channel-sale-rank"> <div class="report sale-info"> <div class="reportInfo"> 分渠道销售情况 </div> <div class="disc"> <div class="wraps wrap-r" id="circleOne"> <div class="circle circle-r"> <div class="percent left"></div> <div class="percent right wth0"></div> </div> <div class="num"> <b if="{!perSale}">销售额对比</b> <b if="{perSale}">销量对比</b> </div> </div> </ul> <ul class="sale-per" if="{!perSale}"> <li>网店销售额{channelInfo.onlineAmountScale || 0}%</li> <li>门店销售额{channelInfo.offlineAmountScale || 0}%</li> </ul> <ul class="sale-per" if="{perSale}"> <li>网店销量{channelInfo.onlineSalesScale || 0}%</li> <li>门店销量{channelInfo.offlineSalesScale || 0}%</li> </ul> <p> <i class="nobor">销售额</i> <i class="shift nobor" onclick="{shift}"><b></b></i> <i class="nobor">销售量</i> </p> </div> <div class="line"> <div class="line1"> <p class="grad-l"><span class="line-item">门店</span><b>{channelInfo.offlineCustomerPrice}</b></p> </div> <div class="line2"> <p class="grad-r"><span class="line-item">网店</span><b>{channelInfo.onlineCustomerPrice}</b></p> </div> <i>客单价</i> </div> </div> <div class="report"> <div class="reportInfo"> 各分类销售额占比 </div> <div id="circleSale"></div> </div> </div> <div class="goods-sale-rank report"> <div class="reportInfo"> 商品销售排名 </div> <div class="accordTosale"> <div class="good-class"> <select id="categorySel" class="" name="" onchange="{categorySel}"> <option each="{categoryRank}" value="{cateId}">{cateName}</option> </select> </div> <div class="good-according"> <div class="{active: active}" onclick="{accordSale}" each="{according}"> {accord} </div> </div> </div> <li class="li-bor-top"> <span style="width: 8%">项</span> <span style="width: 23%">商品</span> <span style="width: 13%">分类</span> <span style="width: 10%">销量</span> <span style="width: 15%">销售额</span> <span style="width: 15%">周转天数</span> <span style="width: 16%">毛利率</span> </li> <ul class="top-goods-list"> <li each="{item in next_gooda}"> <span style="width: 8%" if="{next_gooda.indexOf(item)==0 || next_gooda.indexOf(item)==1 || next_gooda.indexOf(item)==2}"></span> <span style="width: 8%" if="{next_gooda.indexOf(item) !=0 && next_gooda.indexOf(item) !=1 && next_gooda.indexOf(item) !=2}">{next_gooda.indexOf(item) + 1}</span> <span style="width: 23%">{item.goodsName}</span> <span style="width: 13%">{item.cateName}</span> <span style="width: 10%">{item.sales}</span> <span style="width: 15%" class="saleNum">{item.salesAmount}</span> <span style="width: 15%" if="{item.turnoverDays>= 0 &&  item.turnoverDays <= 999}">{item.turnoverDays}</span> <span style="width: 15%" if="{item.turnoverDays> 999}">999+</span> <span style="width: 15%" if="{item.turnoverDays < 0}">---</span> <span style="width: 16%">{item.grossMargin}%</span> <div class="" id="{item.activeStatus}" if="item.activeStatus"> </div> </li> <input id="getNext" type="hidden" name="name" value="{next}"> </ul> </div> </div> <div class="r-report brief-report"> <p><i></i><b>顾客简报</b><i></i></p> <div class="customer-sale-rank report week-sale"> <div class="reportInfo reportInfo-bq"> 分渠道顾客情况 </div> <div class="l-week-sale l-week-sale-bq"> <ul> <li class="bq-bor"> <dl style="width:100%;" class=""> <dt></dt> <dd>门店</dd> </dl> <ul> <li>本周消费顾客</li> <li>{weekMembersInfo.offlineBuyerNum}</li> <li class="addbg" if="{weekMembersInfo.offlineBuyerAddNum> 0}">上周 +{weekMembersInfo.offlineBuyerAddNum}</li> <li class="decrebg" if="{weekMembersInfo.offlineBuyerAddNum < 0}">上周 {weekMembersInfo.offlineBuyerAddNum}</li> <li if="{weekMembersInfo.offlineBuyerAddNum==0}">上周 ={weekMembersInfo.offlineBuyerAddNum}</li> </ul> </li> </ul> </div> <div class="c-week-sale"> <dl class=""> <dt></dt> <dd>网店</dd> </dl> <div class="u-bq"> <ul> <li>本周消费会员</li> <li>{weekMembersInfo.onlineBuyerNum}</li> <li class="addbg" if="{weekMembersInfo.onlineBuyerAddNum> 0}">上周 +{weekMembersInfo.onlineBuyerAddNum}</li> <li class="decrebg" if="{weekMembersInfo.onlineBuyerAddNum < 0}">上周 {weekMembersInfo.onlineBuyerAddNum}</li> <li if="{weekMembersInfo.onlineBuyerAddNum==0}">上周 ={weekMembersInfo.onlineBuyerAddNum}</li> </ul> <ul> <li>本周新增会员</li> <li>{weekMembersInfo.newMemberNum}</li> <li class="addbgNew" if="{weekMembersInfo.newMemberAddNum> 0}">上周 +{weekMembersInfo.newMemberAddNum}<span></span></li> <li class="decrebgNew" if="{weekMembersInfo.newMemberAddNum < 0}">上周 {weekMembersInfo.newMemberAddNum}<span></span></li> <li if="{weekMembersInfo.newMemberAddNum==0}">上周 ={weekMembersInfo.newMemberAddNum}</li> </ul> </div> </div> </div> <p><i></i><b>库存简报</b><i></i></p> <div class="customer-sale-rank warning-stock"> <div class="report"> <div class="reportInfo"> 库存预警 </div> </div> <h1></h1> <h2></h2> <a class="left-arrow" onclick="{leftBest}"></a> <div class="stock-con"> <div class="stock-scroll stock-scroll-best"> <ul> <li each="{bestStock}"> <div class="stock-pic"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}" alt=""></div> <div class="stock-num stock-rotate" if="{stockNum <999}">库存{stockNum}</div> <div class="stock-num stock-rotate" if="{stockNum>= 999}">库存999+</div> <div class="stock-name">{goodsName}</div> </li> </ul> </div> </div> <a class="right-arrow" onclick="{rightBest}"></a> </div> <div class="customer-sale-rank warning-stock"> <div class="report"> <div class="reportInfo"> 滞销商品 </div> </div> <h1 class="h1"></h1> <h2 class="h2"></h2> <a class="left-arrow" onclick="{leftDull}"></a> <div class="stock-con"> <div class="stock-scroll stock-scroll-dull"> <ul> <li each="{dullStock}"> <div class="stock-pic"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}" alt=""></div> <div class="stock-num stock-remain stock-rotate" if="{stockNum <999}">库存{stockNum}</div> <div class="stock-num stock-remain stock-rotate" if="{stockNum>= 999}">库存999+</div> <div class="stock-name">{goodsName}</div> </li> </ul> </div> </div> <a class="right-arrow" onclick="{rightDull}"></a> </div> </div> </div> </div>','','',function(opts){var self=this;self.nextNum=0;self.next=0;self.nextBest=0;self.nextDull=0;self.nowAmount=0;self.selectDateStatus=false;//
 	self.selectType=1;//
 	self.offlineAmountScale=0;self.offlineSalesScale=0;self.selectDate=function(){self.selectDateStatus=!self.selectDateStatus;self.update();if(self.selectDateStatus){var date={selectType:self.selectType,startDate:self.startDate,endDate:self.endDate};(0,_jquery2.default)("#selectDate")[0].open(date);}var e=window.event;e.preventDefault();if(e&&e.stopPropagation){e.stopPropagation();}self.update();function closeSelectDate(){self.selectDateStatus=false;self.update();(0,_jquery2.default)(window).unbind('click',closeSelectDate);}setTimeout(function(){(0,_jquery2.default)(window).bind('click',closeSelectDate);},100);};self.type=0;var storeInfo={};if(window.localStorage&&localStorage.account){storeInfo=JSON.parse(localStorage.account);}var myDate=new Date();var todayDate='2012-12-12';self.startDate=todayDate;self.endDate=todayDate;var params={storeId:storeInfo.storeId,channel:1,//channel	渠道 0.ipos 1.bpos
 	startDate:self.startDate,endDate:self.endDate};self.next_gooda=[];self.list=[{item:'按日选',active:true},{item:'按周选',active:false},{item:'按月选',active:false},{item:'按年选',active:false}];// self.cate = [{
@@ -3385,7 +3385,7 @@
 	return new Date(new_date.getTime()-1000*60*60*24).getDate();//获取当月最后一天日期
 	}// 获取某日所属周一和周二
 	function getMonDate(obj){var d=new Date(obj),// var d=new Date(2016-12-14),
-	day=d.getDay(),date=d.getDate();if(day==1)return d;if(day==0)d.setDate(date-6);else d.setDate(date-day+1);return d;}});riot.tag2('shop-chart','<div class="shop-chart"> <div class="chart-top"><div class="chart-dater"><daterangepicker></daterangepicker></div></div> <div class="chart-content"> <div style="width: 100%;height:100%;background: #fff;"> <div id="main" style="width: 100%;height:100%;"></div> </div> </div> </div>','','',function(opts){var self=this;self.dateChart=function(data){var myChart=_index3.default.init((0,_jquery2.default)('#main')[0]);self.data=data;self.storeName=data.storeName;var xdata=self.data.title;var maxHeight=self.data.maxHeight;var seriesData=[];var colorList=['#aac6f8','#9d9d9d','#488fd1','#e96409','#ff7f50','#87cefa','#da70d6','#32cd32','#6495ed','#ff69b4','#ba55d3'];var legendData=[];for(var i=0;i<self.data.charts.length;i++){var seriesList={};var itemStyle={normal:{label:{show:true,position:'top',textStyle:{fontSize:'12',color:'#666'}}}};var charts=self.data.charts[i];legendData.push(self.data.charts[i].name);seriesList.name=self.data.charts[i].name;seriesList.type=self.data.charts[i].type;seriesList.data=self.data.charts[i].data;seriesList.itemStyle=itemStyle;if(self.data.charts[i].type=="bar"){seriesList.barWidth=30;}seriesList.itemStyle.normal.color=colorList[i];if(self.data.charts.length>5){seriesList.itemStyle.normal.label.show=false;}seriesData.push(seriesList);}var option={title:{text:self.storeName,x:'center',textStyle:{fontSize:18,fontWeight:'bolder',color:'#333'}},tooltip:{trigger:'axis'},legend:{data:legendData,x:'right'},grid:{borderWidth:0,containLabel:true},xAxis:{boundaryGap:true,type:'category',splitLine:{show:false},data:xdata,axisLabel:{textStyle:{color:"#666"}}},yAxis:{type:'value',scale:true,name:'金额',max:maxHeight,min:0,boundaryGap:[0.2,0.2],axisLabel:{textStyle:{color:"#666"}}},series:seriesData};myChart.setOption(option);};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('#daterange').val();var beginDate=date.split("~")[0];var endDate=date.split("~")[1];var param={beginDate:beginDate,endDate:endDate,storeId:8};_store.store.dataDashboard.get(param,function(date){self.dateChart(date);});});self.on('mount',function(){_store.store.dataDashboard.get({},function(date){self.dateChart(date);});});});riot.tag2('create-employee','<form id="create-employee-form"> <label> 姓名： <input type="text" name="personName" maxlength="20"> </label> <label> 账号： <input type="text" name="username" placeholder="账户名必须大于6位" maxlength="12"> </label> <label> 密码： <input type="password" name="password" placeholder="密码必须大于6位" maxlength="12"> </label> <label> 电话： <input type="tel" name="mobile" maxlength="20"> </label> <input name="type" type="hidden" value="2"> </form>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){self.submitStatus=1;_utils2.default.clearForm('create-employee-form');};modal.onSubmit=function(){var params=(0,_jquery2.default)('#create-employee-form').serializeObject();if(!(params.personName&&params.personName.length>1&&params.personName.length<10)){_utils2.default.toast("请输入正确的员工姓名");return;}if(!(params.username&&/^[0-9a-zA-Z]{6,12}$/g.test(params.username))){_utils2.default.toast("账号必须为6-12位字母或数字混合");return;}if(!(params.password&&/^[0-9a-zA-Z]{6,12}$/g.test(params.password))){_utils2.default.toast("密码格式不正确");return;}if(!(params.mobile=="")&&!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(params.mobile)){_utils2.default.toast("电话格式不正确");return;}if(self.submitStatus===2){return;}self.submitStatus=2;_store.store.employee.create(params,function(){self.submitStatus=1;modal.close();},function(){self.submitStatus=1;});};self.on('mount',function(){if(_store.store.online){var gotimeout;(0,_jquery2.default)("#create-employee-form").find("input").focus(function(){clearTimeout(gotimeout);(0,_jquery2.default)(".modal-dialog").css("top","220px");});(0,_jquery2.default)("#create-employee-form").find("input").blur(function(){gotimeout=setTimeout(function(){(0,_jquery2.default)(".modal-dialog").css("top","50%");},200);});}});});riot.tag2('employee','<div class="employee"> <h3>店员账户管理</h3> <ul class="employee-list"> <li class="add-employee" onclick="{openModal(\'create-employee\')}"> <div> <img src="imgs/add-big.png"> <p>添加员工</p> </div> </li> <li class="employee-item" each="{slaves}"> <form> <div class="input-content"> <input type="hidden" name="userId" value="{userId}"> <label> 姓名： <input type="text" name="personName" value="{personName}"> </label> <label> 账户： <input type="text" name="username" value="{username}" placeholder=""> </label> <label> 密码： <input type="passport" name="password" placeholder="**********"> </label> <label> 电话： <input type="tel" name="mobile" value="{mobile}"> </label> <input type="hidden" name="type" value="2"> </div> <div class="em-button"> <a class="delete" onclick="{delete}">删除</a> <a class="save" onclick="{save}">保存</a> </div> </form> </li> <div class="clearfix"></div> </ul> </div> <modal modal-width="5rem" modal-height="" small id="create-employee" title="添加员工"> <create-employee></create-employee> </modal>','','',function(opts){var self=this;self.personName='';self.mobile='';self.password='';self.username='';this.openModal=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};}.bind(this);self.init=function(){_riotSeedFlux2.default.bind.call(self,{name:'employees',store:_store.store.employee,success:function success(){self.masters=[];self.slaves=[];self.employees.forEach(function(item){if(item.type===1){self.masters.push(item);}else if(item.type===2){self.slaves.push(item);}});self.update();}});};self.countHeight=function(){var height=(0,_jquery2.default)('.employee .employee-item').css('height');(0,_jquery2.default)('.add-employee').css('height',height);};self.openSelect=function(e){var evt=document.createEvent("MouseEvents");var dom=(0,_jquery2.default)(e.target.parentNode).find('select')[0];evt.initEvent("mousedown",true,true);if(dom){dom.dispatchEvent(evt);}};self.save=function(e){var form=e.target.parentNode.parentNode;var params=(0,_jquery2.default)(form).serializeObject();if(!(params.personName&&params.personName.length>1&&params.personName.length<10)){alert("请输入正确的员工姓名");return;}if(!(params.username&&/^[0-9a-zA-Z]{6,12}$/g.test(params.username))){alert("账号必须为6-12位字母或数字混合");return;}if(!(params.mobile=="")&&!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(params.mobile)){alert("电话格式不正确");return;}_store.store.employee.update(params);};self.delete=function(e){var id=e.item.userId;var name=e.item.personName||e.item.username;if(confirm("确认删除员工"+name+"么？")){_store.store.employee.delete({userId:id});}};self.on('mount',function(){self.init();self.countHeight();});});riot.tag2('shop-message','<form id="shop-message-form"> <div class="half"> <div class="card fit"> <label> 名称：<input type="text" name="storeName" value="{message.storeName}"> </label> <label onclick="{openModal(\'selectAddress\')}"> 地址：<span style="color: #333333">{addressValueWithoutSep || message.address}</span> </label> <input type="hidden" value="{addressValueWithoutSep || message.address}"> <input type="hidden" name="addressCode" value="{newAddressCode || message.addressCode}"> <label> 街道：<input type="text" name="streetName" value="{message.streetName}"> </label> <label> 店铺联系电话：<input type="tel" name="tel" value="{message.tel}"> </label> <label> <span class="notice">店铺公告：</span> <textarea name="notice" value="{message.notice}"></textarea> </label> </div> <div class="card fit"> <label> 配送范围：<input type="text" name="deliveryArea" value="{message.deliveryArea}"> </label> <label> 起送价（元）：<input type="tel" name="deliveryAmount" value="{message.deliveryAmount}"> </label> <label> 配送费（元）：<input type="tel" name="postPrice" value="{message.postPrice}"> </label> <label style="padding-top: 0;"> 接单时间：<date-picker name="startTime" id="dp-startTime" type="time"></date-picker> - <date-picker name="endTime" id="dp-endTime" type="time"></date-picker> </label> </div> </div> <div class="half"> <div class="card qrcode"> <h4>店铺推广二维码</h4> <div class="card-usre-de">该二维码会在客屏和打印票据处显示</div> <div class="change-qrcode" onclick="{changeQrcode}">更换或保存到手机</div> <img riot-src="{message.qrCodePromotion || message.qrCode}" class="shop-message-qrcode"> <div class="show-switch" if="{!message.showInfo}"> <span class="left">二维码客屏展示</span> <span class="right close" onclick="{showSwitch}"></span> </div> <div class="show-switch" if="{message.showInfo}"> <span class="left">二维码客屏展示</span> <span class="right open" onclick="{showSwitch}"></span> </div> </div> <div class="card"> 打开收银机默认登录此店铺 <input type="checkbox" name="bindDevice" value="true" __checked="{message.bindDevice}"> </div> <div class="card" onclick="{openupQrcode}"> <div class="up-qrcode"></div> <div class="up-text">支付二维码</div> </div> </div> </form> <div class="clearfix"></div> <div class="save-shop-message"> <button onclick="{save}">保 存</button> </div> <modal modal-width="" modal-height="" id="selectAddress"> <address-select></address-select> </modal>','','',function(opts){var self=this;self.relog=function(name){if(window.Icommon){Icommon.statisticalEvent(null,null,{eventId:19});}};this.openModal=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};}.bind(this);self.openupQrcode=function(){location.href="#/shop/upqrcode";};self.changeQrcode=function(){location.href="#/shop/userqrcode";};this.showSwitch=function(e){if(self.message.showInfo){var params={show:false};}else{var params={show:true};}if(window.Ishop){(0,_store.httpGet)({url:api.showAds,params:params,success:function success(res){_store.store.storeMessage.get();setTimeout(function(){_store.store.sys.sendMessage({updateStoreMessage:true});},500);}});}}.bind(this);self.init=function(){_riotSeedFlux2.default.bind.call(self,{name:'message',store:_store.store.storeMessage,success:function success(){self.historyMessageNotice=self.message.notice;(0,_jquery2.default)("#dp-startTime").get(0).setValue(self.message.startTime);(0,_jquery2.default)("#dp-endTime").get(0).setValue(self.message.endTime);}});};self.save=function(){var params=(0,_jquery2.default)('#shop-message-form').serializeObject();_store.store.storeMessage.update(params);if(self.historyMessageNotice!=params.notice){self.relog();}};self.on('mount',function(){self.init();});});riot.tag2('shop-setting','<div class="half"> <div class="setting-shop {active:message.bindDevice}" onclick="{setting}"> 打开收银机默认登录此店铺 </div> </div> <div class="half"> <div class="shop-bind" if="{qrcode.bqStoreId}"> <ul> <li> <span>已绑定 {qrcode.bqStoreName}</span> <a onclick="{removeBind}">解除绑定</a> <div class="clearfix"> </div> </li> <li> <span>上次数据同步完成时间: {qrcode.bindTime || \'暂未同步\'}</span> <a onclick="{dataSyn}">数据同步</a> <a onclick="{dataCalibration}">数据校准</a> <div class="clearfix"> </div> </li> </ul> </div> <div class="code" if="{qrcode.qrCodeUrl}"> <div class="title"> 绑定倍全店铺 <i>(使用倍全商户端APP内的扫码功能)</i> </div> <div class="img"> <img riot-src="{qrcode.qrCodeUrl}" alt=""> </div> </div> <div class="shop-bind" if="{!qrcode.qrCodeUrl && !qrcode.bqStoreId}"> 系统异常 </div> </div>','','',function(opts){var self=this;self.shopBind=false;self.getMessage=function(){(0,_store.httpGet)({url:api.storeMessage,params:{},success:function success(res){self.message=res.data;self.update();}});};self.getQrcode=function(){(0,_store.httpGet)({url:api.oauthQrcode,params:{},success:function success(res){self.qrcode=res.data;if(self.qrcode&&self.qrcode.bindTime){self.qrcode.bindTime=self.qrcode.bindTime.substring(0,self.qrcode.bindTime.length-3);}self.update();}});};self.dataCalibration=function(){(0,_store.httpGet)({url:api.clearAllGoodsAndSync,params:{},success:function success(){_utils2.default.toast("开始校准");}});};self.removeBind=function(){(0,_store.httpGet)({url:api.oauthTokenClean,params:{},success:function success(res){_utils2.default.toast('解除绑定成功');self.getQrcode();}});};self.dataSyn=function(){(0,_store.httpPost)({url:api.syncBqinfo,params:{},success:function success(res){_utils2.default.toast('开始同步数据');}});};self.setting=function(){self.message.bindDevice=!self.message.bindDevice;self.update();var params={bindDevice:self.message.bindDevice,imeCode:self.imeCode};(0,_store.httpPost)({url:api.bindDevice,params:params,success:function(_success){function success(_x){return _success.apply(this,arguments);}success.toString=function(){return _success.toString();};return success;}(function(res){if(success){success(res);}}),complete:function complete(res){_utils2.default.loadHide();}});};self.getReceiveBind=function(){self.mes=JSON.parse(Ipush.message);if(self.mes.type==_constant2.default.PUSH_LOGIN_BIND){_utils2.default.toast('绑定成功');self.getQrcode();}else if(self.mes.type==_constant2.default.PUSH_GET_CODE){self.getQrcode();}};self.on('mount',function(){self.getMessage();self.getQrcode();if(window.Iapps){Iapps.getImei(function(res){if(res.imei){self.imeCode=res.imei;self.update();}},function(err){},{});}window.addEventListener('receiveMessage',self.getReceiveBind,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',self.getReceiveBind);});});riot.tag2('import-custom','<div class="import-wraper"> <div class="step"> <p>插入U盘，下载Excel模板至U盘</p> <img src="imgs/udisk.png"> <button class="download-tpl"> <a onclick="{download}" target="_top">点击下载</a> </button> </div> <div class="step"> <p>在电脑端按照模板添加商品</p> <img src="imgs/computer.png"> <button class="add-goods">添加商品</button> </div> <div class="step"> <p>将制作好的Excel表导入</p> <img src="imgs/import-img.png"> <button class="import-excel">点击导入</button> </div> <div class="clearfix"></div> </div> <div class="import-text"> <span class="title">提示：</span> <span class="info">1.一次导入表格里的商品数量最多500条</span> <span class="info">2.表格中商品若和店铺现有商品冲突，会覆盖现有商品</span> <span class="info">3.商品条码不填则自动生成13位条码</span> <span class="info">4.表格中多个条码重复商品，取第一条数据</span> </div> <modal modal-width="" modal-height="" delete id="import-error" title="导入失败" nofooter buttonok> <import-error></import-error> </modal> <modal modal-width="" modal-height="" delete id="import-loading" title="导入进度" nofooter> <import-loading></import-loading> </modal>','','',function(opts){var self=this;self.on('mount',function(){new uploader.SimpleUpload({button:(0,_jquery2.default)('.import-excel')[0],url:api.goodImport,name:'uploadFile',responseType:'json',allowedExtensions:["xls","xlsx","xlsm"],maxSize:512,onSubmit:function onSubmit(filename,extension){(0,_jquery2.default)("#import-loading")[0].open();},onComplete:function onComplete(filename,response){if(parseInt(response.code,10)===1){_utils2.default.toast('上传成功');(0,_jquery2.default)(".loading-text").text("正在同步商品");var param={name:"Goods",noloadShow:true};_store.store.synTask.get(param,function(success){if(success){(0,_jquery2.default)("#import-loading")[0].close();_utils2.default.toast('同步成功');_store.store.loadTopGoodsList=true;}});}else if(parseInt(response.code,10)!==1&&response.msg){(0,_jquery2.default)("#import-loading")[0].close();(0,_jquery2.default)("#import-error")[0].open(response.msg);}else{(0,_jquery2.default)("#import-loading")[0].close();_utils2.default.toast('上传失败');}},onExtError:function onExtError(filename,extension){_utils2.default.toast('文件类型不正确');},onSizeError:function onSizeError(filename,fileSize){_utils2.default.toast('文件最大为512kb');},onError:function onError(filename,errorType,status,statusText,response,uploadBtn,fileSize){(0,_jquery2.default)("#import-loading")[0].close();_utils2.default.toast('上传失败');}});});this.download=function(e){_store.store.importTemplate.get(function(data){if(data&&data.url){_store.store.downTemplateExcel.get({url:data.url});}else{_utils2.default.toast("暂无可用模版");}});}.bind(this);self.on('unmount',function(){});});riot.tag2('import-standard','<div class="import-wraper"> <div class="step"> <h3>默认商品库</h3> <p style="text-align: center;">说明：常用商品库</p> <button>点击导入</button> </div> <div class="step"> <h3>小便利店商品库</h3> <p>说明：包含50万种商品。分为生 活用品、小吃零食、厨卫用品三 大类。</p> <button>点击导入</button> </div> <div class="step"> <h3>小商超商品库</h3> <p>说明：包含500万种商品。分为 香烟、酒水、副食、生鲜、水果、 粮油等二十大类。</p> <button>点击导入</button> </div> <div class="clearfix"></div> </div>','','',function(opts){});riot.tag2('products','<div class="products-new"> <div class="products-top"> <div class="product-tool-bar"> <div class="sub-search"> <search opts="{searchOpts}"></search> </div> <div class="btn-group"> <button> <a href="#/shop/import-custom">导入已有商品库</a> </button> </div> </div> <div class="category-content"> <ul class="product-class-wraper"> <li each="{category}" class="product-class {active: active}" onclick="{changeCate}"> <a>{cateName}</a> </li> <div class="clearfix"></div> </ul> </div> <div class="category-count"> <span class="line-left"></span> <span class="line-center">商品总数：{goodsCount}</span> <span class="line-right"></span> </div> </div> <ul class="product-item-wraper"> <li class="create-product" onclick="{openCreate}" if="{addproduct}"><img src="imgs/add-product.png"></li> <li class="product-item" each="{goodList}" onclick="{openModal(\'prodcut-detail\')}"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}"> <div class="product-summary"> <div class="product-name"> <span>{goodsName}</span> </div> <div class="product-attr"> <span>进价：</span> <span>{countPrice(purchasePrice)}</span> </div> <div class="product-attr"> <span>售价：</span> <span>{countPrice(price)}</span> </div> <div class="product-attr"> <span>库存：</span> <span>{stockNum || 0}</span> </div> </div> </li> <div class="clearfix"></div> </ul> </div> <modal modal-width="" modal-height="" delete id="prodcut-detail" title="编辑商品"> <update-product></update-product> </modal> <modal modal-width="" modal-height="" id="create-product" title="添加商品" continue="继续添加"> <create-product></create-product> </modal> <modal modal-width="" modal-height="" id="input-barcode"> <input-barcode></input-barcode> </modal>','','',function(opts){var self=this;self.next=0;self.scrollLock=false;self.openModal=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};};self.openCreate=function(){if(_store.store.online){(0,_jquery2.default)('#create-product')[0].open();}else{(0,_jquery2.default)('#input-barcode')[0].open();}};this.openModalwidthSearch=function(id){return function(item){(0,_jquery2.default)('#'+id)[0].open(item);};}.bind(this);self.createProductFromCode=function(number){var curModal=(0,_jquery2.default)('#create-product');var cur=curModal[0];var styleInfo;if(cur.attributes&&cur.attributes.getNamedItem){styleInfo=cur.attributes.getNamedItem("style");}if(!styleInfo||styleInfo.value&&styleInfo.value.indexOf("display:flex;")<0&&styleInfo.value.indexOf("display: flex;")<0){(0,_jquery2.default)('#create-product')[0].open();}(0,_store.httpGet)({url:api.goodBySpecBarcode,params:{barcode:number},success:function success(res){(0,_jquery2.default)('#create-product .barcode-input').val(number);(0,_jquery2.default)('#create-product [name="goodsName"]').val(res.data.goodsName);(0,_jquery2.default)('#create-product [name="cateId"]').val(res.data.cateId);if(res.data.imageUrl){(0,_jquery2.default)('#create-product .img-area img').attr('src',res.data.imageUrl);(0,_jquery2.default)('#create-product-imgUrl').val(res.data.imageUrl);}},complete:function complete(status){if(status=="error"){_utils2.default.toast("请检查网络");}}});};self.barcodeHandle=function(){var number=Icommon.number;self.getGoodsInfo(number);};self.getGoodsInfo=function(number){if(!number){(0,_jquery2.default)('#create-product')[0].open();return;}(0,_store.httpGet)({url:api.goodByBarcode,params:{barcode:number},success:function success(res){if(res.data){(0,_jquery2.default)('#prodcut-detail')[0].open(res.data);}else{self.createProductFromCode(number);}},error:function error(err){if(err.code===10007){_utils2.default.toast("请检查网络");}}});};self.initCategory=function(){_riotSeedFlux2.default.bind.call(self,{name:'category',store:_store.store.categoryAll,success:function success(){self.addproduct=true;self.cateId=self.category[0].cateId;self.category[0].active=true;self.update();self.cateHeight=(0,_jquery2.default)(".products-top").height();(0,_jquery2.default)(".products-new").css("padding-top",self.cateHeight);self.initGoods(self.cateId);}});};self.initGoods=function(cateId){var params={cateId:cateId,next:0};self.getGoodsCount(cateId);_riotSeedFlux2.default.bind.call(self,{name:'goods',store:_store.store.goods,params:params,success:function success(){self.goodList=self.goods.list;self.next=self.goods.next;}});};self.searchOpts={clickHandle:self.openModalwidthSearch('prodcut-detail')};this.countPrice=function(price){if(price){return'￥'+price;}}.bind(this);self.on('mount',function(){self.initCategory();self.listenDown();window.addEventListener('inputNumber',self.barcodeHandle,false);});self.on('unmount',function(){window.removeEventListener('inputNumber',self.barcodeHandle);if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.product-item-wraper')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.goods.getMore({cateId:self.cateId,next:self.next},function(next){self.next=next;self.scrollLock=false;});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.getGoodsCount=function(cateId){_store.store.getGoodsCountByCateId.get({cateId:cateId},function(data){self.goodsCount=data;self.update();});};self.changeCate=function(e){self.cateId=e.item.cateId;for(var i=0;i<self.category.length;i++){if(self.category[i].cateId==parseInt(self.cateId,10)){self.category[i].active=true;}else{self.category[i].active=false;}if(self.cateId===null){self.category[0].active=true;}}self.getGoodsCount(self.cateId);_store.store.goods.get({cateId:self.cateId,next:0});};});riot.tag2('shop-qrcode','<div class="qrcode-top"> <a onclick="{refresh}">刷新</a> </div> <div class="qrcode-wraper" id="container"> <div class="qrcode-item"> <h3>支付宝二维码</h3> <div class="exist-qrcode" tabindex="1"> <img riot-src="{qrCodeZfb || \'imgs/no-qrcode.png\'}" onerror="javascript:this.src=\'imgs/no-qrcode.png\'"> </div> </div> <div class="qrcode-item"> <h3>微信二维码</h3> <div class="exist-qrcode" tabindex="1"> <img riot-src="{qrCodeWx || \'imgs/no-qrcode.png\'}" onerror="javascript:this.src=\'imgs/no-qrcode.png\'"> </div> </div> <div class="clearfix"></div> </div> <div class="qrcode-wraper"> <div class="code"> <h3 class="title">上传支付二维码方法</h3> <h4>1.用手机扫描下方二维码进入上传页面</h4> <div class="img-code"> <img riot-src="{qrCodeDown}" onerror="javascript:this.src=\'imgs/no-qrcode.png\'"> </div> <h4>2.根据提示上传二维码</h4> <h4>3.上传成功后点击右上角"刷新"按钮刷新此页面</h4> </div> </div>','','',function(opts){var self=this;if(window.Icommon){self.qrCodeZfb=Icommon.fileRootPath+'qrcode/zhifubao_'+Icommon.storeId+'.data?t='+new Date().getTime();self.qrCodeWx=Icommon.fileRootPath+'qrcode/weixin_'+Icommon.storeId+'.data?t='+new Date().getTime();self.qrCodeDown=Icommon.fileRootPath+'qrcode/scan_'+Icommon.storeId+'.data?t='+new Date().getTime();self.update();}self.refresh=function(){self.init();};self.on('mount',function(){self.init();});self.init=function(){if(window.localStorage&&'setItem'in localStorage&&localStorage.getItem('account')){var localData=JSON.parse(localStorage.getItem('account'));if(localData&&localData.storeId){_store.store.showPayQrCode.get({storeId:localData.storeId},function(data){if(window.Icommon){self.qrCodeZfb=Icommon.fileRootPath+'qrcode/zhifubao_'+Icommon.storeId+'.data?t='+new Date().getTime();self.qrCodeWx=Icommon.fileRootPath+'qrcode/weixin_'+Icommon.storeId+'.data?t='+new Date().getTime();self.qrCodeDown=Icommon.fileRootPath+'qrcode/scan_'+Icommon.storeId+'.data?t='+new Date().getTime();self.update();}else{self.qrCodeZfb=data.qrCodeZfb;self.qrCodeWx=data.qrCodeWx;self.qrCodeDown=data.qrCodeDown;self.update();}});}}};});riot.tag2('shop-userqrcode','<div class="qrcode-top"> <a onclick="{refresh}">刷新</a> </div> <div class="qrcode-wraper"> <div class="qrcode-item"> <h3>店铺推广二维码</h3> <div class="exist-qrcode" tabindex="1"> <img riot-src="{message.qrCodePromotion || message.qrCode}"> </div> </div> </div> <div class="qrcode-wraper"> <div class="code"> <div class="title1">将店铺二维码更换或保存到手机的方法：</div> <div class="title2">用手机扫描下方二维码进入编辑页面</div> <div class="img-code"> <img riot-src="{message.qrCodePromotionUrl}"> </div> <div class="info active">更换二维码步骤：</div> <div class="info">根据提示在手机编辑页面更换二维码，然后点击"保存"</div> <div class="info">保存完毕之后， 在此页面点击"刷新"</div> <div class="info active">将网店二维码保存到手机步骤：</div> <div class="info">在手机编辑页面点击网店二维码，然后选择保存到相册</div> </div> </div>','','',function(opts){var self=this;self.refresh=function(){_store.store.synTask.get({name:"Store"},function(data){self.init();});};self.on('mount',function(){self.init();});self.init=function(){_store.store.storeMessage.get({},function(data){self.message=data;self.update();setTimeout(function(){_store.store.sys.sendMessage({updateStoreMessage:true});},500);});};});riot.tag2('income','<div class="income-content"> <div class="income-top"> <a onclick="{goRecord}" class="{active: record}">发放记录</a> <a onclick="{goAccount}" class="{active:!record}">发放账户</a> </div> <div class="income-text"> <div class="left" id="incomeList"> <div class="income-record" if="{record}"> <h4>累计收入： <i>{totalPay}</i></h4> <h4>待支付收入：<i>{waitPay}</i></h4> <ul> <li each="{income}"> <div> <span>{title}</span> </div> <div> <span class="fl-left">{date}</span> <span class="fl-right">{income}</span> <span class="clear"></span> </div> </li> </ul> </div> <div class="income-account" if="{account}"> <ul> <li> <span class="fl-left">银行：</span> <span class="fl-right">{card.bankName}</span> <span class="clear"></span> </li> <li> <span class="fl-left">卡号：</span> <span class="fl-right">{card.cardCode}</span> <span class="clear"></span> </li> <li> <span class="fl-left">开户银行：</span> <span class="fl-right">{card.bankAddress}</span> <span class="clear"></span> </li> <li> <span class="fl-left">姓名：</span> <span class="fl-right">{card.name}</span> <span class="clear"></span> </li> </ul> <div class="button"> <a onclick="{editAccount}">修改</a> </div> </div> <div class="income-account-edit" if="{accountEdit}"> <ul> <li> <span class="fl-left">银行：</span> <span class="fl-right"> <input type="text" value="{card.bankName}" id="bankName"> </span> <span class="clear"></span> </li> <li> <span class="fl-left">卡号：</span> <span class="fl-right"> <input type="tel" value="{card.cardCode}" id="cardCode"> </span> <span class="clear"></span> </li> <li> <span class="fl-left">开户银行：</span> <span class="fl-right"> <input type="text" name="name" value="{card.bankAddress}" id="bankAddress"> </span> <span class="clear"></span> </li> <li> <span class="fl-left">姓名：</span> <span class="fl-right"> <input type="text" value="{card.name}" id="name"> </span> <span class="clear"></span> </li> </ul> <div class="button"> <a onclick="{saveAccount}">保存</a> </div> </div> </div> </div> </div> <pop id="popModifPhone" title="验证手机" twobutton suretext="下一步"> <pop-modify-phone></pop-modify-phone> </pop>','','',function(opts){var self=this;self.record=true;self.account=false;self.accountEdit=false;self.update();self.page=0;self.pageSize=10;self.init=function(){var param={next:0};_store.store.rewardIncomeList.get(param,function(data){self.income=data.list;self.next=data.next;self.totalPay=data.totalPay;self.waitPay=data.waitPay;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('#incomeList')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.rewardIncomeList.get({next:self.next},function(data){self.next=data.next;self.income=self.income.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.editAccount=function(){_store.store.changeCardCodeSend.get(function(data){var param={incomePhone:data.phoneMobile,type:2};(0,_jquery2.default)("#popModifPhone")[0].open(param);});};self.saveAccount=function(){var param={bankName:(0,_jquery2.default)("#bankName").val(),cardCode:(0,_jquery2.default)("#cardCode").val(),bankAddress:(0,_jquery2.default)("#bankAddress").val(),name:(0,_jquery2.default)("#name").val()};if(!param.bankName){_utils2.default.toast("请填写银行");return;}if(!param.cardCode){_utils2.default.toast("请填写卡号");return;}if(param.cardCode.length<15||param.cardCode.length>19){_utils2.default.toast("银行卡号长度必须在15到19之间");return;}var num=/^\d*$/;if(!num.exec(param.cardCode)){_utils2.default.toast("银行卡号必须全为数字");return;}if(!param.bankAddress){_utils2.default.toast("请填写开户银行地址");return;}if(!param.name){_utils2.default.toast("请填写姓名");return;}param.cardId=self.card.cardId;_store.store.bankCardUpdate.get(param,function(data){self.account=true;self.accountEdit=false;self.update();self.goAccount();});};self.goRecord=function(){self.record=true;self.account=false;self.accountEdit=false;self.update();};self.goAccount=function(){_store.store.bankCard.get(function(data){if(data.status==1){self.record=false;self.account=true;self.card=data;self.accountEdit=false;self.update();}else{_utils2.default.toast("还未绑定银行卡");}});};self.on('mount',function(){self.init();self.listenDown();});self.on('unmount',function(){if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('reward','<div class="reward"> <div class="reward-top"> <a onclick="{shopIncome}">奖励收入</a> </div> <div class="reward-list"> <ul if="{reward.length > 0}"> <li class="{classli}" each="{reward}"> <div class="icon"></div> <h5>{title}{desc}</h5> <div class="look-div" onclick="{popReInfo}"> <a class="look-a">查看</a> </div> </li> <div class="clear"></div> </ul> <div class="none-list" if="{reward.length <= 0}"> <div class="none-list-text"> 暂无奖励 </div> </div> </div> </div> <pop id="popAppInfo" title="应用奖励详情" onebutton> <pop-app-reward-desc></pop-app-reward-desc> </pop> <pop id="popCouponInfo" title="优惠券奖励详情" onebutton> <pop-coupon-reward></pop-coupon-reward> </pop> <pop id="popAdInfo" title="广告奖励详情" onebutton> <pop-ad-reward></pop-ad-reward> </pop> <pop id="popModifPhone" title="验证手机" twobutton suretext="下一步"> <pop-modify-phone></pop-modify-phone> </pop> <pop id="popAddCard" title="设置发放账户" twobutton suretext="完成"> <pop-add-card></pop-add-card> </pop>','','',function(opts){var self=this;self.next=0;self.popReInfo=function(e){if(e.item.type==0){(0,_jquery2.default)("#popCouponInfo")[0].open(e.item);}else if(e.item.type==1){(0,_jquery2.default)("#popAppInfo")[0].open(e.item);}else{(0,_jquery2.default)("#popAdInfo")[0].open(e.item);}};self.init=function(){var params={next:self.next};_store.store.reward.get(params,function(data){self.next=data.next;self.reward=data.list;self.update();});};self.shopIncome=function(){_store.store.bankCard.get(function(data){if(data.status==1){location.href="#/shop/income";}else{self.incomePhone=data.phoneMobile;_store.store.changeCardCodeSend.get(function(data){var param={incomePhone:data.phoneMobile,type:1};(0,_jquery2.default)("#popModifPhone")[0].open(param);});}});};self.addCard=function(){(0,_jquery2.default)("#popAddCard")[0].open();};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.reward-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.reward.get({next:self.next},function(data){self.next=data.next;self.reward=self.reward.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.on('mount',function(){self.init();self.listenDown();});self.on('unmount',function(){if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('return-order','<div class="calendar-bar"> <span class="prev-day" onclick="{prevDay}">前一天</span> <date-picker></date-picker> <span class="next-day" onclick="{nextDay}">后一天</span> <a class="switch" href="#/shop/sales-order" if="{type==2}">结算单</a> </div> <div class="half re-left"> <div class="card"> <div class="order-overview"> <div> <dt>退款额：</dt><dd>￥{amount}</dd> </div> <div class="sum"> <span>共</span> <span class="number">{orderCount}</span> <span if="{type==2}">笔退货单</span> </div> </div> <div class="order-list-wraper"> <ul class="order-list"> <li each="{orderList}" class="{active: active}" onclick="{chooseOrder}"> <div> <span>{billSn}</span> <span style="float: right;">{getTimeStr(addTime)}</span> </div> <div> <span style="padding-right: 1.296296rem"> <span>退款：</span> ￥{amount} </span> <span if="{type==1}">利润：￥{profit}</span> </div> <div>{stockAddMap(stockAdd)}</div> </li> </ul> </div> </div> </div> <div class="half re-right"> <div class="card order-detail-wraper" if="{currentOrder}"> <div class="order-base"> <h4 onclick="{print}"> {orderDetail.billSn} </h4> <div class="order-time"> 时间：{getDateTimeStr(orderDetail.addTime)} </div> <div class="order-handle"> <span>收银员：{orderDetail.personName || \'未知\'}</span> <span class="pull-right">{stockAddMap(orderDetail.stockAdd)}</span> </div> </div> <div class="order-detail-list"> <li> <span style="width: 11%">项</span> <span style="width: 42%">品名</span> <span style="width: 14%">数量</span> <span style="width: 14%">单价</span> <span style="width: 14%">小计</span> </li> <ul> <li each="{item in orderDetail.list}"> <span style="width: 11%">{orderDetail.list.indexOf(item) + 1}</span> <span style="width: 42%">{item.goodsName || \' \'}</span> <span style="width: 14%">{item.quantity || \' \'}</span> <span style="width: 14%">{item.price || \' \'}</span> <span style="width: 14%">{item.amount || item.quantity*item.price}</span> </li> </ul> </div> <div class="return-order-summary"> <div> <span>总项：{orderDetail.list.length}</span> <span class="pull-right">总金额：<b>￥{orderDetail.amount}</b></span> </div> <div> <span>总数：{countNumber(orderDetail.list)}</span> </div> </div> </div> </div>','','',function(opts){var self=this;self.getType=function(){if(location.hash.match(/\/shop\/sales-order/)){self.type=1;}else if(location.hash.match(/\/shop\/return-order/)){self.type=2;}};self.getType();self.changeType=function(){var date=self.getDateStr(new Date().getTime());var oldType=self.type;self.getType();if(oldType!==self.type){self.currentOrder=null;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});}};self.paymentTypeMap=function(type){switch(type){case 1:return'现金';break;case 2:return'支付宝';break;case 3:return'微信支付';break;case 4:return'刷卡';break;case 5:return'面对面支付';break;default:return'现金';}};self.stockAddMap=function(type){switch(type){case 0:return'未增加库存';break;case 1:return'已增加库存';break;default:return'未增加库存';}};self.getDateStr=function(time){return _utils2.default.getDateStr(time);};self.getTimeStr=function(time){return _utils2.default.getTimeStr(time);};self.getDateTimeStr=function(time){return _utils2.default.getDateTimeStr(time);};self.countNumber=function(arr){var number=0;arr.forEach(function(item){if(item.quantity){number=number+item.quantity;}});return number;};self.print=function(e){(0,_store.httpGet)({url:"Iprinter.printBill",params:{billUuid:self.currentOrder.refundBillUuid},success:function success(res){}});};self.init=function(){var date=self.getDateStr(new Date().getTime());_riotSeedFlux2.default.bind.call(self,{name:'orders',store:_store.store.salesOrder,params:{type:self.type,date:date},success:function success(){self.amount=self.orders.amount;self.profit=self.orders.profit;self.orderList=self.orders.list;self.orderCount=self.orders.list.length;self.update();}});};self.getDetail=function(uuid){(0,_store.httpGet)({url:api.orderGoods,params:{billUuid:uuid,type:self.type},success:function success(res){self.orderDetail=res.data;self.update();}});};self.chooseOrder=function(e){self.orderList.forEach(function(item){item.active=false;});e.item.active=true;self.currentOrder=e.item;var uuid=self.currentOrder.billUuid||self.currentOrder.refundBillUuid;self.getDetail(uuid);self.update();};self.nextDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].nextDay();};self.prevDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].prevDay();};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('date-picker')[0].value;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});});self.on('mount',function(){self.init();});});riot.tag2('sales-order','<div class="calendar-bar"> <span class="prev-day" onclick="{prevDay}">前一天</span> <date-picker></date-picker> <span class="next-day" onclick="{nextDay}">后一天</span> <a class="switch" href="#/shop/return-order" if="{type==1}">退货单</a> </div> <div class="half re-left"> <div class="card"> <div class="order-overview"> <div> <dt>结算额：</dt><dd>￥{amount}</dd> </div> <div if="{type==1 && viewProfit}"> </div> <div class="sum"> <span>共</span> <span class="number">{orderCount}</span> <span>笔结算单</span> </div> </div> <div class="order-list-wraper"> <ul class="order-list"> <li each="{orderList}" class="{active: active}" onclick="{chooseOrder}"> <div> <span>{billSn}</span> <span style="float: right;">{getTimeStr(addTime)}</span> </div> <div> <span style="padding-right: 1.296296rem"> <span>收银：</span> ￥{amount} </span> </div> <div> 支付方式：{paymentTypeMap(paymentType)} </div> </li> </ul> </div> </div> </div> <div class="half re-right"> <div class="card order-detail-wraper" if="{currentOrder}"> <div class="order-base"> <h4 onclick="{print}"> {orderDetail.billSn} <div class="print-sales"> </div> </h4> <div class="order-time"> 时间：{getDateTimeStr(orderDetail.addTime)} </div> <div class="order-handle"> <span>收银员：{orderDetail.personName || \'未知\'}</span> <span class="pull-right">支付方式：{paymentTypeMap(orderDetail.paymentType)}</span> </div> </div> <div class="order-detail-list"> <li> <span style="width: 10%">项</span> <span style="width: 38%">品名</span> <span style="width: 15%">数量</span> <span style="width: 15%">单价</span> <span style="width: 15%">小计</span> </li> <ul> <li each="{item in orderDetail.list}"> <span style="width: 10%">{orderDetail.list.indexOf(item) + 1}</span> <span style="width: 38%">{item.goodsName || \'无码商品\'}</span> <span style="width: 15%">{item.weight || \' \'}</span> <span style="width: 15%">{item.price || \' \'}</span> <span style="width: 15%">{item.amount || \' \'}</span> </li> </ul> </div> <div class="order-sales-detail"> <div class=""> <span>总项：{orderDetail.list.length} 总数：{countNumber(orderDetail.list)}</span> </div> <div class=""> <span>折扣：{(orderDetail.discountPct || 100) + \'%\'}</span> <span class="pull-right">总金额：￥{orderDetail.goodsAmount}</span> </div> </div> <div class="order-summary"> <div class="amount"> <span>实收：<b>￥{orderDetail.amount}</b></span> </div> </div> </div> </div>','','',function(opts){var self=this;self.viewProfit=true;self.getType=function(){if(location.hash.match(/\/shop\/sales-order/)){self.type=1;}else if(location.hash.match(/\/shop\/return-order/)){self.type=2;}};self.getType();self.changeType=function(){var date=self.getDateStr(new Date().getTime());var oldType=self.type;self.getType();if(oldType!==self.type){self.currentOrder=null;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});}};self.paymentTypeMap=function(type){switch(type){case 1:return'现金';break;case 2:return'支付宝';break;case 3:return'微信支付';break;case 4:return'刷卡';break;case 5:return'面对面支付';break;default:return'现金';}};self.stockAddMap=function(type){switch(type){case 0:return'未增加库存';break;case 1:return'已增加库存';break;default:return'未增加库存';}};self.getDateStr=function(time){return _utils2.default.getDateStr(time);};self.getTimeStr=function(time){return _utils2.default.getTimeStr(time);};self.getDateTimeStr=function(time){return _utils2.default.getDateTimeStr(time);};self.countNumber=function(arr){var number=0;arr.forEach(function(item){if(item.weight){number=(number*1000+item.weight*1000)/1000;}});return number;};self.print=function(e){(0,_store.httpGet)({url:"Iprinter.printBill",params:{billUuid:self.currentOrder.billUuid},success:function success(res){}});};self.init=function(){var date=self.getDateStr(new Date().getTime());_riotSeedFlux2.default.bind.call(self,{name:'orders',store:_store.store.salesOrder,params:{type:self.type,date:date},success:function success(){self.amount=self.orders.amount;self.profit=self.orders.profit;self.orderList=self.orders.list;self.orderCount=self.orders.list.length;self.update();}});};self.getDetail=function(uuid){(0,_store.httpGet)({url:api.orderGoods,params:{billUuid:uuid,type:self.type},success:function success(res){self.orderDetail=res.data;self.update();}});};self.chooseOrder=function(e){self.orderList.forEach(function(item){item.active=false;});e.item.active=true;self.currentOrder=e.item;var uuid=self.currentOrder.billUuid||self.currentOrder.refundBillUuid;self.getDetail(uuid);self.update();};self.checkAuth=function(){(0,_store.httpGet)({url:api.auth,success:function success(res){self.auth=res.data.permissionCodes.split(',');if(self.auth.indexOf('32')<0){self.viewProfit=false;}self.update();}});};self.nextDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].nextDay();};self.prevDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].prevDay();};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('date-picker')[0].value;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});});self.on('mount',function(){self.init();self.checkAuth();});});riot.tag2('storage-in','<div class="storage-in"> <div class="storage-top"> <div class="search"> <search opts="{searchOpts}"></search> </div> <div class="supplier"> <div class="business">供货商:</div> <div class="select" onclick="{supplier}"> <span id="selectSupplierName">无</span> <input type="hidden" id="selectSupplierId"> <div class="icon-down"></div> <div class="drop-down display-none"> <span each="{supplierList}" onclick="{selectSupplier}">{supplierName}</span> </div> </div> <div class="clear"></div> </div> </div> <div class="storage-content"> <div class="storage-product"> <div class="product-li" if="{goods.length>0}"> <ul> <li each="{goods}" onclick="{forDetail}" class="{active:active}"> <div class="img"><img alt="" riot-src="{imageUrl  || \'imgs/default-product.png\'}"> </div> <div class="info"> <h3>{goodsName}</h3> <h2>￥{purchasePrice}</h2> </div> <div class="add-less"> <div class="less" onclick="{decrGoods}"></div> <div class="input">{quantity}</div> <div class="add" onclick="{incrGoods}"></div> <div class="clear"></div> </div> <div class="total">小计：￥{subtotal}</div> </li> </ul> </div> <div class="billing pro-li" if="{goods.length>0}"> <ul> <li>品类：{categoryNum}</li> <li>总数：{quantity}</li> <li>合计进价：<i>￥{goodsAmount}</i> </li> </ul> </div> </div> <div class="storage-detail"> <div class="s-pro-d" style="display: none"> <div class="img"><img alt="" riot-src="{detail.imageUrl  || \'imgs/default-product.png\'}"> </div> <div class="name">{detail.goodsName}</div> <div class="billing"> <ul> <li>进价：<i>￥{detail.purchasePrice}</i> </li> <li>库存：{detail.quantity}</li> </ul> </div> </div> <div class="st-button"> <a class="{disable: !quantity}" onclick="{commit}"> <i if="{type==1}">生成入库单</i> <i if="{type==2}">生成出库单</i> </a> </div> </div> <div class="clear"></div> </div> <modal id="storage-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> <modal id="storage-warning-han" modal-width="430px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText1}</p> </modal> <modal id="storageAddPurchasePrice" modal-width="" modal-height=""> <add-price></add-price> </modal> </div>','','',function(opts){var self=this;var params=riot.routeParams.params;var type=params.type;self.type=type;this.selectSupplier=function(e){(0,_jquery2.default)("#selectSupplierName").text(e.item.supplierName);(0,_jquery2.default)("#selectSupplierId").val(e.item.supplierId);}.bind(this);self.scanCodeStorage=function(){var number=Icommon.number;(0,_store.httpGet)({url:api.gooduuidByBarcode,params:{barcode:number},success:function success(res){if(res&&res.data&&res.data.goodsUuid){self.goodsAdd(res.data);}else{warningHan("商品未建档，请先在“店铺”-“商品”处添加该商品");}}});};function warning(text){var layer=(0,_jquery2.default)('#storage-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}function warningHan(text){var layer=(0,_jquery2.default)('#storage-warning-han')[0];self.warningText1=text;self.update();layer.open();setTimeout(function(){layer.close();},2000);}this.commit=function(e){if(!self.quantity){return;}else{var param={type:type};param.supplierId=(0,_jquery2.default)("#selectSupplierId").val();_store.store.stockCommit.get(param,function(data){if(type==1){warning('入库单已生成');}else{warning('出库单已生成');}self.goods=[];self.detail="";self.goodsAmount='';self.quantity='';self.categoryNum='';(0,_jquery2.default)(".s-pro-d").hide();self.update();_store.store.synTask.get({name:"Goods"},function(){});});}}.bind(this);this.supplier=function(e){(0,_jquery2.default)(".drop-down").toggleClass("display-none");}.bind(this);this.incrGoods=function(e){var param={goodsUuid:e.item.goodsUuid,type:type};_store.store.stockIncr.get(param,function(data){self.goodsAmount=data.goodsAmount;self.quantity=data.quantity;self.categoryNum=data.categoryNum;e.item.quantity=data.qty;e.item.subtotal=(e.item.quantity*e.item.purchasePrice).toFixed(2);self.update();});}.bind(this);this.decrGoods=function(e){var param={goodsUuid:e.item.goodsUuid,type:type};_store.store.stockDecr.get(param,function(data){self.goodsAmount=data.goodsAmount;self.quantity=data.quantity;self.categoryNum=data.categoryNum;e.item.quantity=data.qty;e.item.subtotal=(e.item.quantity*e.item.purchasePrice).toFixed(2);if(e.item.quantity==0){for(var i=0;i<self.goods.length;i++){if(self.goods[i].goodsUuid==e.item.goodsUuid){self.goods.splice(i,1);if(self.goods&&self.goods.length>0){self.detail=self.goods[0];self.update();(0,_jquery2.default)(".product-li ul li").eq(0).addClass("active");}else{(0,_jquery2.default)(".s-pro-d").hide();}}}}self.update();});}.bind(this);this.forDetail=function(e){(0,_jquery2.default)(".product-li ul li").removeClass("active");(0,_jquery2.default)(e.currentTarget).addClass("active");(0,_jquery2.default)(".s-pro-d").show();self.detail=e.item;if(self.detail.imageUrl){self.detail.imageUrl=e.item.imageUrl.replace('-min','-normal');}}.bind(this);_riotSeedFlux2.default.bind.call(self,{name:'supplierList',store:_store.store.supplierList,params:{},success:function success(){self.update();}});this.getGoods=function(){return function(item){self.goodsAdd(item);};}.bind(this);self.searchOpts={clickHandle:self.getGoods()};self.on('mount',function(){window.addEventListener('inputNumber',self.scanCodeStorage,false);});self.on('unmount',function(){_store.store.stockCommit.clear({type:type});window.removeEventListener('inputNumber',self.scanCodeStorage);});self.updatePrice=function(data){var params={};};self.goodsAdd=function(e){var param={type:type};param.goodsUuid=e.goodsUuid;_store.store.stockAdd.get(param,function(data){if(!data.goods.purchasePrice){(0,_jquery2.default)("#storageAddPurchasePrice")[0].open(data.goods);return;}self.categoryNum=data.categoryNum;self.quantity=data.quantity;self.goodsAmount=data.goodsAmount;var goods=false;if(self.goods&&self.goods.length>0){goods=true;}else{self.goods=[];}if(goods){var hasSame=false;for(var i=0;i<self.goods.length;i++){if(self.goods[i].goodsUuid==data.goods.goodsUuid){if(data.goods.imageUrl){data.goods.imageUrl=data.goods.imageUrl.split("?")[0]+"-min";}data.goods.subtotal=(data.goods.quantity*data.goods.purchasePrice).toFixed(2);self.goods[i]=data.goods;hasSame=true;}}if(!hasSame){var newList=[];data.goods.subtotal=(data.goods.quantity*data.goods.purchasePrice).toFixed(2);if(data.goods.imageUrl){data.goods.imageUrl=data.goods.imageUrl.split("?")[0]+"-min";}newList.push(data.goods);self.goods=self.goods.concat(newList);}}else{data.goods.subtotal=(data.goods.quantity*data.goods.purchasePrice).toFixed(2);if(data.goods.imageUrl){data.goods.imageUrl=data.goods.imageUrl.split("?")[0]+"-min";}self.goods.push(data.goods);self.detail=self.goods[0];if(self.detail.imageUrl){self.detail.imageUrl=self.goods[0].imageUrl.replace('-min','-normal');}(0,_jquery2.default)(".s-pro-d").show();self.goods[0].active=true;}self.update();});};});riot.tag2('storage-index','<ul> <li each="{list}"> <a onclick="{linkUrl}"> <img riot-src="{img}"> <div>{name}</div> </a> </li> </ul>','','',function(opts){var self=this;self.list=[{name:'入库',img:'imgs/import.png',link:'#/shop/storagein',loginName:'0401'},{name:'出库',img:'imgs/export.png',link:'#/shop/storageout',loginName:'0402'},{name:'单据',img:'imgs/shop-order.png',link:'#/shop/receipt',loginName:'0403'},{name:'供货商',img:'imgs/supplier.png',link:'#/shop/supplier',loginName:'0404'}];this.linkUrl=function(e){self.log(e.item.loginName);location.href=e.item.link;}.bind(this);self.log=function(name){if(window.Icommon){Icommon.logEvent(null,null,{eventId:name});}};});riot.tag2('storage-receipt','<div class="storage-receipt"> <div class="calendar-bar"> <div class="chart-dater"><daterangepicker></daterangepicker></div> </div> <div class="receipt-content"> <div class="receipt-left"> <div class="re-top"> <a class="{active:active}" each="{tag}" onclick="{stockList}">{name}</a> </div> <div class="re-content" id="storReceipt"> <div class="re-pro" if="{stockListByDate.list.length>0}"> <div class="re-pro-list {active:active}" each="{stockListByDate.list}" onclick="{stockInfo}"> <div class="re-li"> <span class="fl-left supplier-name" if="{type==1}">入库单</span> <span class="fl-left supplier-name" if="{type==2}">出库单</span> <span class="fl-right">{stockSn}</span> <span class="clear"></span> </div> <div class="re-li"> <span class="fl-left">{supplierName}</span> <span class="fl-right">{creationDate}</span> <span class="clear"></span> </div> <div class="re-li"> <span class="fl-left">共<i>{categoryNum}</i>款 <i>{quantity}</i>件</span> <span class="fl-right price">￥ {amount}</span> <span class="clear"></span> </div> </div> </div> </div> </div> <div class="receipt-right"> <div class="receipt-pro-d" if="{stockListByDate.list.length>0}"> <div class="rpro-c"> <div class="title" if="{goods.type == 1}">进货单</div> <div class="title" if="{goods.type == 2}">出货单</div> <div class="name"> <span class="fl-left">供应商：{goods.supplierName}</span> <span class="fl-right">{goods.creationDate}</span> <span class="clear"></span> </div> <div class="name">单号：{goods.stockSn}</div> <div class="table-div"> <table> <tr> <td style="width:10%">项</td> <td style="width:60%">品名</td> <td style="width:10%">数量</td> <td style="width:10%">单价</td> <td style="width:10%">小计</td> </tr> </table> </div> </div> <div class="table-div table-content"> <table> <tr each="{item in goods.list}"> <td style="width:10%">{goods.list.indexOf(item) + 1}</td> <td style="width:60%">{item.goodsName}</td> <td style="width:10%">{item.quantity}</td> <td style="width:10%">{item.purchasePrice}</td> <td style="width:10%">{item.amount}</td> </tr> </table> </div> <div class="r-bottom"> <div class="b-d"> <span class="fl-left">总项：{goods.item}</span> <span class="fl-right">总金额：<i>￥{goods.amount}</i></span> <span class="clear"></span> </div> <div class="b-d"> <span class="fl-left">总数：{goods.quantity}</span> <span class="clear"></span> </div> </div> </div> </div> <div class="clear"></div> </div>','','',function(opts){var self=this;self.next=0;self.type=0;this.stockInfo=function(e){if((0,_jquery2.default)(e.currentTarget).is(".active")){return;}(0,_jquery2.default)(".re-pro-list").removeClass("active");(0,_jquery2.default)(e.currentTarget).addClass("active");var p={stockId:e.item.stockId,type:e.item.type};_store.store.stockGoodsList.get(p,function(data){self.goods=data;self.goods.item=e.item.categoryNum;self.goods.amount=e.item.amount;self.goods.quantity=e.item.quantity;self.update();});}.bind(this);this.stockList=function(e){if(e.item.active==true){return;}for(var i=0;i<self.tag.length;i++){self.tag[i].active=false;}self.type=e.item.type;e.item.active=true;var param={type:e.item.type,next:0,startDate:self.startDate,endDate:self.endDate};_store.store.stockListByDate.get(param);}.bind(this);self.on('mount',function(){self.tag=[{"name":"全部","type":0,"active":true},{"name":"入库单","type":1,"active":false},{"name":"出库单","type":2,"active":false}];self.update();self.init();self.nextPage();});self.format=function(myDate){return myDate.getFullYear()+"-"+(myDate.getMonth()+1<9?"0"+(myDate.getMonth()+1):myDate.getMonth()+1)+"-"+(myDate.getDate()<9?"0"+myDate.getDate():myDate.getDate());};self.init=function(){var myDate=new Date();var endDate=self.format(myDate);myDate.setTime(myDate.getTime()-24*60*60*1000*7);var startDate=self.format(myDate);self.startDate=startDate;self.endDate=endDate;_riotSeedFlux2.default.bind.call(self,{name:'stockListByDate',store:_store.store.stockListByDate,refresh:true,params:{type:self.type,next:self.next,startDate:startDate,endDate:endDate},success:function success(){self.update();if(self.stockListByDate.list&&self.stockListByDate.list.length>0){self.stockListByDate.list[0].active=true;var stockId=self.stockListByDate.list[0].stockId;var type=self.stockListByDate.list[0].type;var p={stockId:stockId,type:type};self.next=self.stockListByDate.next;_store.store.stockGoodsList.get(p,function(data){self.goods=data;self.goods.item=self.stockListByDate.list[0].categoryNum;self.goods.amount=self.stockListByDate.list[0].amount;self.goods.quantity=self.stockListByDate.list[0].quantity;self.update();});}else{self.goods="";self.update();}}});};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('#daterange').val();var startDate=date.split("~")[0].replace(/(^\s*)|(\s*$)/g,"");var endDate=date.split("~")[1].replace(/(^\s*)|(\s*$)/g,"");self.startDate=startDate;self.endDate=endDate;var param={type:self.type,next:0,startDate:startDate,endDate:endDate};_store.store.stockListByDate.get(param);});self.nextPage=function(){var curPage=1;(0,_jquery2.default)("#storReceipt").scroll(function(){if(curPage==1){self.listWrap=(0,_jquery2.default)('#storReceipt')[0];var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-20){if(self.next){curPage=2;var param={next:self.next,type:self.type,startDate:self.startDate,endDate:self.endDate};_store.store.stockListByDate.getMore(param,function(next){self.next=next;self.update();curPage=1;});}}}});};});riot.tag2('storage-supplier','<div class="supplier"> <div class="supplier-list" each="{supplierList}"> <div class="input"> <label>名称:</label> <input type="text" value="{supplierName}" class="name" maxlength="20"> </div> <div class="input"> <label>电话:</label> <input type="text" value="{tel}" class="phone" maxlength="20"> </div> <div class="button"> <div class="fl-left "> <a class="cancel" onclick="{deleteSupplier}">删除</a> </div> <div class="fl-right"> <a class="sure" onclick="{saveSupplier}">保存</a> </div> <div class="clear"></div> </div> </div> <div class="supplier-list add addSupplier"> <div class="input"> <label>名称:</label> <input type="text" class="name" maxlength="20"> </div> <div class="input"> <label>电话:</label> <input type="text" class="phone" maxlength="20"> </div> <div class="button"> <div class="fl-left "> <a class="cancel" onclick="{cancel}">取消</a> </div> <div class="fl-right"> <a class="sure" onclick="{addSaveSupplier}">添加</a> </div> <div class="clear"></div> </div> </div> <div class="supplier-list addSupplier" onclick="{addSupplier}"> <div class="add"></div> <div class="info">添加供应商</div> </div> <modal id="supplier-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> </div>','','',function(opts){var self=this;self.addSupplier=self.cancel=function(){(0,_jquery2.default)(".addSupplier").toggleClass("add");};function warning(text){var layer=(0,_jquery2.default)('#supplier-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}this.deleteSupplier=function(e){var param={supplierId:e.item.supplierId};if(confirm("确定删除吗？")){_store.store.supplierDel.get(param,function(data){(0,_jquery2.default)(e.target).parent().parent().parent().remove();});}}.bind(this);this.addSaveSupplier=function(e){var param={};if(e.item&&e.item.supplierId){param.supplierId=e.item.supplierId;}param.name=(0,_jquery2.default)(e.target).parent().parent().parent().find(".name").val();param.tel=(0,_jquery2.default)(e.target).parent().parent().parent().find(".phone").val();if(!param.name){warning('请填写供货商名称');return;}if(!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(param.tel)){warning('请填写正确供货商电话');return;}_store.store.supplierAddOrUpdate.get(param,function(data){var suppList=[];suppList.push(data);self.supplierList=self.supplierList.concat(suppList);(0,_jquery2.default)(".addSupplier").toggleClass("add");(0,_jquery2.default)(e.target).parent().parent().parent().find(".name").val("");(0,_jquery2.default)(e.target).parent().parent().parent().find(".phone").val("");warning("添加成功");self.update();});}.bind(this);this.saveSupplier=function(e){var param={};if(e.item&&e.item.supplierId){param.supplierId=e.item.supplierId;}param.name=(0,_jquery2.default)(e.target).parent().parent().parent().find(".name").val();param.tel=(0,_jquery2.default)(e.target).parent().parent().parent().find(".phone").val();if(!param.name){warning('请填写供货商名称');return;}if(!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(param.tel)){warning('请填写正确供货商电话');return;}_store.store.supplierAddOrUpdate.get(param,function(data){warning("修改成功");self.update();});}.bind(this);_riotSeedFlux2.default.bind.call(self,{name:'supplierList',store:_store.store.supplierList,params:{},success:function success(){self.update();}});});riot.tag2('coupon-add','<div class="coupon-pop"> <div class="coupon-add"> <div class="add-list"> <ul> <li onclick="{fillIn(\'couponPrice\')}"> <span>发放面额、数量及总额：</span> <span id="fillCouponPrice" class="fill"></span> </li> <li onclick="{fillIn(\'couponDate\')}"> <span>有效期：</span> <span id="fillCouponDate" class="fill"></span> </li> <li onclick="{fillIn(\'couponCondition\')}"> <span>获得条件：</span> <span id="fillCouponCondition" class="fill"></span> </li> <li onclick="{fillIn(\'couponWay\')}"> <span>使用方式：</span> <span id="fillCouponWay" class="fill"></span> </li> <li onclick="{fillIn(\'couponUse\')}"> <span>使用条件：</span> <span id="fillCouponUse" class="fill"></span> </li> </ul> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.cou={};self.update();self.fillIn=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};};modal.onSubmit=function(){if(parent.newCoupon){if(!parent.newCoupon.totalNumber){_utils2.default.toast("请填写优惠券数量");return;}if(!parent.newCoupon.totalPrice){_utils2.default.toast("请填写优惠总金额");return;}if(parent.newCoupon.priceType==0){if(parent.newCoupon.fixedPrice){parent.newCoupon.minPrice=parent.newCoupon.fixedPrice;parent.newCoupon.maxPrice=parent.newCoupon.fixedPrice;}else{_utils2.default.toast("请填写单个金额");return;}}else{if(!parent.newCoupon.minPrice){_utils2.default.toast("请填写最小金额");return;}if(!parent.newCoupon.maxPrice){_utils2.default.toast("请填写最大金额");return;}}if(!parent.newCoupon.effectDays){_utils2.default.toast("请填写有效期");return;}if(!parent.newCoupon.preType){_utils2.default.toast("请选择获得条件");return;}if(!parent.newCoupon.useWay&&parent.newCoupon.useWay!=0){_utils2.default.toast("请选择使用方式");return;}if(!parent.newCoupon.priceLimit){_utils2.default.toast("请填写使用条件");return;}parent.newCoupon.ruleType=0;parent.newCoupon.type=0;parent.newCoupon.source=1;_store.store.coupon.create(parent.newCoupon,function(data){parent.newCoupon={};parent.next=0;parent.init();parent.update();modal.close();});}};modal.onClose=function(){(0,_jquery2.default)("coupon-add").find(".fill").text("");parent.newCoupon={};parent.update();self.update();};modal.onHelp=function(){(0,_jquery2.default)("#couponHelp")[0].open();};});riot.tag2('coupon-con','<div class="coupon-pop"> <div class="coupon-price" id="couponCon"> <div class="price-li" each="{conList}" onclick="{conselect}"> <div class="select con {selected:selected}"></div> <div class=" price-in"> <i class="blod">{title}：</i> {info} </div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.conList=[{"title":"首次登录网店","info":"顾客首次通过店铺二维码或者链接登录本店铺就会获得优惠券。","selected":true,"value":1000},{"title":"首次在网店下单","info":"顾客首次在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。","selected":false,"value":1001},{"title":"首次在实体店购物","info":"会员在实体店首次购物结算时，就会获得优惠券。","selected":false,"value":1002},{"title":"网店下单","info":"顾客在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。","selected":false,"value":1003},{"title":"实体店购物","info":"会员在实体店购物结算时，就会获得优惠券。","selected":false,"value":1004},{"title":"全部本店会员","info":"全部本店已有会员。","selected":false,"value":1005}];var selected=parent.newCoupon.preType;for(var i in self.conList){if(selected==self.conList[i].value){self.conList[i].selected=true;}else{self.conList[i].selected=false;}}self.update();};self.conselect=function(e){for(var i in self.conList){self.conList[i].selected=false;}e.item.selected=true;self.conCode=e.item;};modal.onClose=function(){};modal.onSubmit=function(){var couUseCon="";for(var i in self.conList){if(self.conList[i].selected){couUseCon=self.conList[i];}}if(couUseCon){(0,_jquery2.default)("#fillCouponCondition").text(couUseCon.title);parent.newCoupon.preType=couUseCon.value;modal.close();}else{_utils2.default.toast("请选择获得条件");}};});riot.tag2('coupon-data','<div class="coupon-pop"> <div class="coupon-data"> <div class="content"> <div class="use-text"> 有效天数 ： </div> <div class="use-input data"> <input type="tel" value="" maxlength="2" id="couData"> <span class="yuan">天</span> </div> <div class="clearfix"></div> </div> <div class="prompt"> *最多为90天 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("coupon-data").find("#couData").val(parent.newCoupon.effectDays);self.update();};modal.onClose=function(){(0,_jquery2.default)("coupon-data").find("#couData").val("");};modal.onSubmit=function(){var _couData=parseInt((0,_jquery2.default)("coupon-data").find("#couData").val());if(/^[1-9]\d*$/.test(_couData)&&_couData<=90){(0,_jquery2.default)("#fillCouponDate").text(_couData+"天");parent.newCoupon.effectDays=_couData;modal.close();}else{_utils2.default.toast("请填写正确的日期");return;}};});riot.tag2('coupon-help','<div class="coupon-pop"> <div class="coupon-help"> <div class="title"> 发放总数量： </div> <div class="info"> 为优惠券可使用的最大数量。如果使用完毕，优惠券会自动失效。 </div> <div class="title"> 发放总额： </div> <div class="info"> 为优惠券所发放的总额 </div> <div class="title"> 有效期： </div> <div class="info"> 为顾客领到优惠券的日期往后一直到所设置的天数。比如有效期为7天，顾客1月1日领到优惠券，1月7日24:00过期。 </div> <div class="title"> <span>获得条件：</span> <span class="normal">总共如下六种：</span> </div> <div class="info"> 首次登录网店：顾客首次通过店铺二维码或者链接登录本店铺就会获得优惠券。 </div> <div class="info"> 首次在网店下单：顾客首次在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。 </div> <div class="info"> 首次在实体店购物：会员在实体店首次购物结算时，就会获得优惠券。 </div> <div class="info"> 网店下单：顾客在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。 </div> <div class="info"> 实体店购物：会员在实体店购物结算时，就会获得优惠券。 </div> <div class="info"> 全部本店会员：全部本店已有会员 </div> <div class="title"> <span>使用方式：</span> <span class="normal">分为网店使用、实体店使用和通用三种。</span> </div> <div class="info"> 网店使用：顾客在线上网店购物时使用。 </div> <div class="info"> 实体店使用：会员在实体店购物时使用。 </div> <div class="info"> 通用：顾客既可以在线上购物使用也可以在实体店购物使用。 </div> <div class="title"> 使用条件： </div> <div class="info"> 可以设置优惠券所应用单据的最低总额，比如使用需满足购物金额为20元，那么只有该笔单据满20元才可用该优惠券。 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;});riot.tag2('coupon-info','<div class="coupon-pop"> <div class="coupon-info"> <div class="title"> 优惠券来源： </div> <div class="info"> {info.sourceDesc} </div> <div class="title"> 优惠券详情 </div> <div class="info">金额：{info.denomination}</div> <div class="info" if="{info.beginTime}">领取时段：{info.beginTime}至{info.endTime}</div> <div class="info">有效期：{info.effectDays}天</div> <div class="info">获取条件：{info.getRules}</div> <div class="info">使用方式： <span if="{info.useWay===0}">通用</span> <span if="{info.useWay===1}">线上使用</span> <span if="{info.useWay===2}">店铺使用</span> </div> <div class="info">使用条件：{info.rules}</div> <div class="title"> 使用详情 </div> <div class="info">已使用：{info.useNumber}张，共{info.usePrice}元</div> <div class="info">已发放：{info.sendNumber}张，共{info.sendPrice}元</div> <div class="info">应发放总数：{info.totalNumber}张，共{info.totalPrice}元</div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var product=self.parent.parent;modal.onOpen=function(params){_store.store.coupon.info({couponId:params.storeCouponId},function(data){self.info=data;self.update();});};modal.onClose=function(){self.info="";self.update();};modal.onSubmit=function(){modal.close();};});riot.tag2('coupon-price-next','<div class="coupon-pop"> <div class="coupon-price"> <div class="price-li"> <div class="left price-in"> <span>发放总数：</span> <span class="price-fixed"> <input type="tel" value="" id="totalCoupon" oninput="{totalPrice}" maxlength="6"> </span> <span class="yuan">张</span> </div> <div class="clearfix"></div> </div> <div class="price-li"> <div class="left price-in"> <span>发放总额：</span> <span class="price-fixed"> <input type="tel" value="" id="totalPrice" maxlength="7"> </span> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> <div class="prompt"> *最小随机金额×总数≤总额≤最大随机金额×总数 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.totalPrice=function(){var totalCoupon=parseInt((0,_jquery2.default)("#totalCoupon").val());if(/^[1-9]\d*$/.test(totalCoupon)&&self.params.type===0){(0,_jquery2.default)("#totalPrice").val(totalCoupon*parent.fixedPrice);}};modal.onOpen=function(params){self.params=params;if(self.params.type===0){(0,_jquery2.default)("#totalPrice").attr("readonly",true);}else{(0,_jquery2.default)("#totalPrice").attr("readonly",false);}self.update();};modal.onClose=function(){(0,_jquery2.default)("#totalPrice").attr("readonly",false);(0,_jquery2.default)("coupon-price-next").find("input").val("");};modal.onSubmit=function(){var totalCoupon=parseInt((0,_jquery2.default)("#totalCoupon").val());var totalPrice=parseInt((0,_jquery2.default)("#totalPrice").val());if(!/^[1-9]\d*$/.test(totalCoupon)){_utils2.default.toast("请填写正确的数量");return;}if(!/^[1-9]\d*$/.test(totalPrice)){_utils2.default.toast("请填写正确的总额");return;}if(self.params.type===0){(0,_jquery2.default)("#fillCouponPrice").text(parent.fixedPrice+"元、"+totalCoupon+"张、"+totalPrice+"元");parent.newCoupon.totalNumber=totalCoupon;parent.newCoupon.totalPrice=totalPrice;parent.newCoupon.fixedPrice=parent.fixedPrice;parent.newCoupon.priceType=0;(0,_jquery2.default)("#totalPrice").attr("readonly",false);(0,_jquery2.default)("#couponPrice")[0].close();modal.close();}else{if(parent.minPrice*totalCoupon<=totalPrice&&totalPrice<=parent.maxPrice*totalCoupon){(0,_jquery2.default)("#fillCouponPrice").text(parent.minPrice+"-"+parent.maxPrice+"元、"+totalCoupon+"张、"+totalPrice+"元");parent.newCoupon.minPrice=parent.minPrice;parent.newCoupon.maxPrice=parent.maxPrice;parent.newCoupon.totalNumber=totalCoupon;parent.newCoupon.totalPrice=totalPrice;parent.newCoupon.priceType=1;(0,_jquery2.default)("#totalPrice").attr("readonly",false);(0,_jquery2.default)("#couponPrice")[0].close();modal.close();}else{_utils2.default.toast("请填写正确总额");return;}}};});riot.tag2('coupon-price','<div class="coupon-pop"> <div class="coupon-price"> <div class="price-li"> <div class="select left selected fixed" onclick="{select}"></div> <div class="left price-in"> <span>固定金额：</span> <span class="price-fixed"> <input type="tel" value="" id="fixedPrice" maxlength="7"> </span> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> <div class="price-li"> <div class="select left fixedno" onclick="{select}"></div> <div class="left price-in"> <span>随机金额：</span> <span class="price-random ran"> <input type="tel" value="" id="randomPriceLow" maxlength="7"> </span> <span class="price-m"></span> <span class="price-random"> <input type="tel" value="" id="randomPriceTall" maxlength="7"> </span> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> <div class="prompt"> *面额必须是整数,随机金额会取包含两端的整数 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){parent.fixedPrice="";parent.minPrice="";parent.maxPrice="";if(parent.newCoupon.priceType==1){(0,_jquery2.default)(".fixedno").addClass("selected");(0,_jquery2.default)(".fixed").removeClass("selected");(0,_jquery2.default)("#randomPriceLow").val(parent.newCoupon.minPrice);(0,_jquery2.default)("#randomPriceTall").val(parent.newCoupon.maxPrice);}else{(0,_jquery2.default)(".fixed").addClass("selected");(0,_jquery2.default)(".fixedno").removeClass("selected");(0,_jquery2.default)("#fixedPrice").val(parent.newCoupon.fixedPrice);}self.update();};modal.onClose=function(){(0,_jquery2.default)("coupon-price").find("input").val("");self.update();};modal.onSubmit=function(){if((0,_jquery2.default)("#fixedPrice").parent().parent().prev(".select").is(".selected")){var fixedPrice=parseInt((0,_jquery2.default)("#fixedPrice").val());if(/^[1-9]\d*$/.test(fixedPrice)){parent.fixedPrice=fixedPrice;var params={type:0,fixedPrice:fixedPrice};(0,_jquery2.default)("#couponPriceNext")[0].open(params);}else{_utils2.default.toast("请填写正确的金额");return;}}else{var minPrice=parseInt((0,_jquery2.default)("#randomPriceLow").val());var maxPrice=parseInt((0,_jquery2.default)("#randomPriceTall").val());if(/^[1-9]\d*$/.test(minPrice)&&/^[1-9]\d*$/.test(maxPrice)&&minPrice<maxPrice){parent.minPrice=minPrice;parent.maxPrice=maxPrice;var params={type:1,minPrice:minPrice,maxPrice:maxPrice};(0,_jquery2.default)("#couponPriceNext")[0].open(params);}else{_utils2.default.toast("请填写正确的金额");return;}}};self.select=function(e){if(!(0,_jquery2.default)(e.target).is(".selected")){(0,_jquery2.default)(".select").removeClass("selected");(0,_jquery2.default)(e.target).addClass("selected");}};});riot.tag2('coupon-stop','<div class="coupon-pop"> <div class="coupon-stop"> 确定停止发放优惠券吗？已经停止发放的优惠券无法恢复发放。 </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(param){self.param=param;self.update();};modal.onSubmit=function(){parent.stopSure(self.param);modal.close();};});riot.tag2('coupon-use','<div class="coupon-pop"> <div class="coupon-use"> <div class="content"> <div class="use-text"> 使用需满足购物金额 ： </div> <div class="use-input"> <input type="tel" value="" maxlength="7" id=""> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("coupon-use").find("input").val(parent.newCoupon.priceLimit);self.update();};modal.onClose=function(){(0,_jquery2.default)("coupon-use").find("input").val("");};modal.onSubmit=function(){var conUseCode=(0,_jquery2.default)("coupon-use").find("input").val();if(!/^[1-9]\d*$/.test(conUseCode)){_utils2.default.toast("请填写正确的金额");return;}(0,_jquery2.default)("#fillCouponUse").text("购物满"+conUseCode+"元");parent.newCoupon.priceLimit=conUseCode;modal.close();};});riot.tag2('coupon-way','<div class="coupon-pop"> <div class="coupon-price"> <div class="price-li" each="{couUseList}" onclick="{couUseSelect}"> <div class="select left {selected:selected}"></div> <div class="left price-in"> {title} </div> <div class="clearfix"></div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.couUseList=[{"title":"网店使用","selected":true,"value":1},{"title":"实体店使用","selected":true,"value":2},{"title":"通用","selected":true,"value":0}];modal.onOpen=function(params){var selected=parent.newCoupon.useWay;for(var i in self.couUseList){if(selected===self.couUseList[i].value){self.couUseList[i].selected=true;}else{self.couUseList[i].selected=false;}}self.update();};modal.onClose=function(){};modal.onSubmit=function(){var couUseCode="";for(var i in self.couUseList){if(self.couUseList[i].selected){couUseCode=self.couUseList[i];}}if(couUseCode){(0,_jquery2.default)("#fillCouponWay").text(couUseCode.title);parent.newCoupon.useWay=couUseCode.value;modal.close();}else{_utils2.default.toast("请选择使用方式");}};self.couUseSelect=function(e){for(var i in self.couUseList){self.couUseList[i].selected=false;}e.item.selected=true;};});riot.tag2('create-product','<form id="create-product-form" name="create-product"> <label> 条码： <input type="text" name="barcode" oninput="{checkGood}" class="barcode-input long-input"> </label> <label> 商品名： <input type="text" name="goodsName" class="long-input" id="goodsName" maxlength="64"> </label> <div class="edit-area"> <label> 零售价（元）： <input type="tel" name="price" maxlength="8"> </label> <label> 进货价（元）： <input type="tel" name="purchasePrice" maxlength="8"> </label> <label> 分类： <select name="cateId"> <option each="{categorySelect}" value="{cateId}" __selected="{cateId==currentCateId}">{cateName}</option> </select> </label> <label> 库存： <input type="tel" name="stockNum" maxlength="10"> </label> <input type="hidden" name="imageUrl" id="create-product-imgUrl"> </div> <div class="img-area" id="create-product-img"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}" onerror="javascript:this.src=\'imgs/default-product.png\' "> </div> </form>','','',function(opts){var self=this;self.type='update';var modal=self.parent;var cash=self.parent.parent;modal.onOpen=function(params){_utils2.default.createUploader({idName:'create-product-img',container:'create-product-form',success:function success(up,file,info){var domain=up.getOption('domain');var res=_jquery2.default.parseJSON(info);var sourceLink=domain+res.key;(0,_jquery2.default)('#create-product-imgUrl').val(sourceLink);self.imageUrl=sourceLink+"?imageView2/1/w/200/q/50";self.update();}});if(params&&params.casherCart){self.casherCart=true;}else{self.casherCart=false;}self.currentCateId=self.parent.parent.cateId;self.update();};modal.onClose=function(){_utils2.default.clearForm('create-product-form');(0,_jquery2.default)('#create-product .img-area img').attr('src','');(0,_jquery2.default)('#create-product-imgUrl').val('');(0,_jquery2.default)('.moxie-shim').remove();};modal.onSubmit=function(){var params=(0,_jquery2.default)('#create-product-form').serializeObject();params.parentCateId=cash.cateId;if(!params.goodsName){_utils2.default.toast('请输入商品名');return;}if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.price)){_utils2.default.toast('请输入正确的零售价');return;}if(params.purchasePrice!=""){if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.purchasePrice)){_utils2.default.toast('请输入正确的进货价');return;}}if(params.stockNum!=""){if(!/^\d+$/.test(params.stockNum)){_utils2.default.toast('请输入正确库存');return;}}if(self.casherCart){_store.store.goods.cashCreate(params,function(res){if(res&&res.goodsUuid){params.goodsUuid=res.goodsUuid;_store.store.synTask.get({name:"Goods"},function(success){if(success){_utils2.default.toast('添加成功');_store.store.loadTopGoodsList=true;cash.cashAddCart(params);}modal.close();});}});}else{_store.store.goods.create(params,function(){_utils2.default.toast('添加成功');cash.getGoodsCount(cash.cateId);_store.store.loadTopGoodsList=true;modal.close();});}};modal.onContinue=function(){var params=(0,_jquery2.default)('#create-product-form').serializeObject();params.parentCateId=cash.cateId;if(!params.goodsName){_utils2.default.toast('请输入商品名');return;}if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.price)){_utils2.default.toast('请输入正确的零售价');return;}if(params.purchasePrice!=""){if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.purchasePrice)){_utils2.default.toast('请输入正确的进货价');return;}}if(params.stockNum!=""){if(!/^\d+$/.test(params.stockNum)){_utils2.default.toast('请输入正确库存');return;}}_store.store.goods.create(params,function(){_utils2.default.toast('添加成功');_store.store.loadTopGoodsList=true;cash.getGoodsCount(cash.cateId);_utils2.default.clearForm('create-product-form');(0,_jquery2.default)('#create-product .img-area img').attr('src','');(0,_jquery2.default)('#create-product-imgUrl').val('');if(!_store.store.online){modal.close();cash.openCreate();}});};_riotSeedFlux2.default.bind.call(self,{name:'categorySelect',store:_store.store.categorySelect});self.on('mount',function(){if(_store.store.online){var gotimeout;(0,_jquery2.default)("#create-product-form").find("input").focus(function(){clearTimeout(gotimeout);(0,_jquery2.default)(".modal-dialog").css("top","220px");});(0,_jquery2.default)("#create-product-form").find("input").blur(function(){gotimeout=setTimeout(function(){(0,_jquery2.default)(".modal-dialog").css("top","50%");},200);});}});});riot.tag2('import-error','<div class="import-error"> <div class="title">Excel表格数据有误，导入失败</div> <div class="info">详情</div> <ul class="error-ul"> <li each="{i in error}">{i}</li> </ul> </div>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){var mgs=params;if(mgs.indexOf(';')>-1){var errormgs=mgs.split(';');self.error=errormgs;}else{self.error=[];self.error.push(params);}self.update();};modal.onClose=function(){self.error=[];self.update();};self.on('mount',function(){});});riot.tag2('import-loading','<div class="import-loading"> <div class="loading-text">{text}</div> <div class="loaded"> <div class="loader"> <div class="loader-inner line-scale"> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div> </div> <div class="button"> <a class="{active:button}" onclick="{onClose}">取消导入</a> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var timeInterval;var baseTime=600000;self.text="正在导入商品";self.time=0;modal.onOpen=function(params){self.button=false;clearInterval(timeInterval);self.time=0;(0,_jquery2.default)(".loading-text").text("正在导入商品");self.update();timeInterval=setInterval(function(){self.time=self.time+1;self.update();},1000);setTimeout(buttonOpen,baseTime);function buttonOpen(){self.button=true;clearInterval(timeInterval);self.update();}};self.onClose=function(){if(self.button){clearInterval(timeInterval);self.time=0;modal.close();self.button=false;self.update();}else{var lastTime=baseTime/1000-self.time;if(lastTime>60){var toastTime=parseInt(lastTime/60)+"分"+lastTime%60+"秒";}else{var toastTime=lastTime;}_utils2.default.toast("请在"+toastTime+"后取消");}};self.on('mount',function(){});});riot.tag2('input-barcode','<div class="wrap"> <div class="content"> <label for="priceNoName">商品条码：</label> <input id="barcodeInput" name="price" type="tel" oninput="{checkInput}"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var product=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("#barcodeInput").focus();self.update();};modal.onClose=function(){(0,_jquery2.default)("#barcodeInput").val("");};modal.onSubmit=function(){var input=(0,_jquery2.default)("#barcodeInput").val().trim();product.getGoodsInfo(input);modal.close();};self.checkInput=function(){var input=(0,_jquery2.default)("#barcodeInput").val().trim();if(input.length==13){product.getGoodsInfo(input);modal.close();}};self.on('mount',function(){});});riot.tag2('update-product','<form id="update-product-form" name="update-product"> <input type="hidden" value="{data.goodsUuid}" name="goodsUuid"> <label> 条码： <input value="{data.barcode}" name="barcode" class="long-input" readonly="readonly"> </label> <label> 商品名： <input type="text" value="{data.goodsName}" name="goodsName" class="long-input" maxlength="64"> </label> <div class="edit-area"> <label> 零售价（元）： <input type="tel" value="{data.price}" name="price" maxlength="8"> </label> <label> 进货价（元）： <input type="tel" value="{data.purchasePrice}" name="purchasePrice" maxlength="8"> </label> <label> 分类： <select name="cateId"> <option each="{categorySelect}" value="{cateId}" __selected="{cateId==currentCateId}">{cateName}</option> </select> </label> <label> 库存： <input type="tel" value="{data.stockNum || 0}" name="stockNum" maxlength="10"> </label> <input type="hidden" name="imageUrl" id="update-product-imgUrl"> </div> <div class="img-area" id="update-product-img"> <img riot-src="{data.imageUrl || \'imgs/default-product.png\'}"> </div> </form>','','',function(opts){var self=this;self.type='update';self.cates=new Array();var modal=self.parent;var cash=self.parent.parent;modal.onOpen=function(params){self.data={purchasePrice:" "};self.update();self.data=params;self.update();self.currentCateId=self.data.cateId;_utils2.default.createUploader({idName:'update-product-img',container:'prodcut-detail',success:function success(up,file,info){var domain=up.getOption('domain');var res=_jquery2.default.parseJSON(info);var sourceLink=domain+res.key;(0,_jquery2.default)('#update-product-imgUrl').val(sourceLink);self.data.imageUrl=sourceLink+"?imageView2/1/w/200/q/50";self.update();}});self.update();};modal.onClose=function(){(0,_jquery2.default)('.moxie-shim').remove();self.data={purchasePrice:" "};self.update();};modal.onSubmit=function(){var params=(0,_jquery2.default)('#update-product-form').serializeObject();params.parentCateId=cash.cateId;if(!params.goodsName){_utils2.default.toast('请输入商品名');return;}if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.price)){_utils2.default.toast('请输入正确的零售价');return;}params.purchasePrice=params.purchasePrice.trim();if(params.purchasePrice!=""){if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.purchasePrice)){_utils2.default.toast('请输入正确的进货价');return;}}if(params.stockNum!=""){if(!/^\d+$/.test(params.stockNum)){_utils2.default.toast('请输入正确库存');return;}}_store.store.goods.update(params,function(){_utils2.default.toast('修改成功');_store.store.loadTopGoodsList=true;modal.close();self.data={purchasePrice:" "};self.update();});};modal.onDelete=function(){if(confirm('确认删除该商品么?')){var params={goodsUuid:self.data.goodsUuid,parentCateId:cash.cateId};_store.store.goods.delete(params,function(){_utils2.default.toast('删除成功');_store.store.loadTopGoodsList=true;cash.getGoodsCount(cash.cateId);modal.close();self.data={purchasePrice:" "};self.update();});}};_riotSeedFlux2.default.bind.call(self,{name:'categorySelect',store:_store.store.categorySelect});self.on('mount',function(){if(_store.store.online){var gotimeout;(0,_jquery2.default)("#update-product-form").find("input").focus(function(){if((0,_jquery2.default)(this).attr("readonly")!="readonly"){clearTimeout(gotimeout);(0,_jquery2.default)(".modal-dialog").css("top","220px");}});(0,_jquery2.default)("#update-product-form").find("input").blur(function(){gotimeout=setTimeout(function(){(0,_jquery2.default)(".modal-dialog").css("top","50%");},200);});}});});riot.tag2('pop-ad-reward','<div class="reward-pop"> <h2>广告收入：</h2> <h5>该奖励将使您的iPos客屏播放广告，您将获得广告分成。分成根 据实际广告播放时长和广告费浮动变化。因此，请务必确保iPos 在线并且正常播放广告。广告分成每天24:00统计。每月奖励收 入会按时一并打入您的账户。请点击“奖励收入”查看。</h5> <h2>广告收入详情：</h2> <div class="reward-ad-tab" if="{icome.length >0}"> <ul> <li each="{icome}"> <span>{date}</span> <span>{income}</span> </li> </ul> </div> <div class="reward-in-em" if="{icome.length == 0}"> 暂无广告收益 </div> </div>','','',function(opts){var self=this;var modal=self.parent;self.next=0;modal.onOpen=function(params){self.init();self.listenDown();};self.init=function(){self.next=0;var param={next:self.next};_store.store.advIncomeList.get(param,function(data){self.next=data.next;self.icome=data.list;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.reward-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.advIncomeList.get({next:self.next},function(data){self.next=data.next;self.icome=self.coupon.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};modal.onClose=function(){self.next=0;self.icome=[];if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}};modal.onSubmit=function(){modal.close();};});riot.tag2('pop-add-card','<div class="add-card"> <h4>填写账户</h4> <div class="li"> <span>银行：</span> <input type="text" value="" id="bankName"> </div> <div class="li"> <span>卡号：</span> <input type="text" value="" id="cardCode"> </div> <div class="li"> <span>开户银行：</span> <input type="text" value="" class="long" id="bankAddress"> </div> <div class="li"> <span>姓名：</span> <input type="text" value="" id="name"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(){};modal.onClose=function(){(0,_jquery2.default)("pop-add-card").find("input").val("");};modal.onSubmit=function(){var param={bankName:(0,_jquery2.default)("#bankName").val(),cardCode:(0,_jquery2.default)("#cardCode").val(),bankAddress:(0,_jquery2.default)("#bankAddress").val(),name:(0,_jquery2.default)("#name").val()};if(!param.bankName){_utils2.default.toast("请填写银行");return;}if(!param.cardCode){_utils2.default.toast("请填写卡号");return;}if(param.cardCode.length<15||param.cardCode.length>19){_utils2.default.toast("银行卡号长度必须在15到19之间");return;}var num=/^\d*$/;if(!num.exec(param.cardCode)){_utils2.default.toast("银行卡号必须全为数字");return;}if(!param.bankAddress){_utils2.default.toast("请填写开户银行地址");return;}if(!param.name){_utils2.default.toast("请填写姓名");return;}_store.store.bankCardAdd.get(param,function(data){modal.close();location.href="#/shop/income";});};});riot.tag2('pop-app-reward-desc','<div class="reward-pop"> <h2>解锁应用:</h2> <h5>该奖励可以让您解锁 <i>{apps}</i> 应用,请到"应用"处下载并体验！</h5> <div style="height:30px"></div> </div>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){var param={reachRecordId:params.rewardRecordId};_store.store.reward.info(param,function(data){self.app=data.apps;var apps="";for(var i=0;i<data.apps.length;i++){apps=data.apps[i].name+"、";}apps=apps.substring(0,apps.length-1);self.apps=apps;self.update();});};modal.onClose=function(){};modal.onSubmit=function(){modal.close();};});riot.tag2('pop-coupon-reward','<div class="reward-pop"> <h2>优惠券：</h2> <h5>该奖励是系统自动发放优惠券给您的顾客。您依照优惠券使用方法核销即可。优惠券所产生的优惠金额由iPos承担。奖励收入为 优惠券实际使用金额。该金额会按时打入您的账户。请点击“奖励 收入”查看。</h5> <h2>优惠券详情:</h2> <h5> 金额：{info.totalPrice}元</h5> <h5> 有效时段：{info.beginTime} - {info.endTime}</h5> <h5> 获得条件：{info.getRules}</h5> <h5> 使用方式：{info.sourceDesc}</h5> <h5> 使用条件：{info.rules}</h5> <h2>奖励收入详情：</h2> <h5>已使用：{info.useNum?info.useNum:0} 张</h5> <h5>获得收入：￥{info.usePrice?info.usePrice:0}</h5> </div>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){var param={reachRecordId:params.rewardRecordId};_store.store.reward.info(param,function(data){self.info=data;self.update();});};modal.onClose=function(){self.info={};};modal.onSubmit=function(){modal.close();};});riot.tag2('pop-modify-phone','<div class="modify-pop"> <h4>验证手机号：</h4> <h5>已发送验证码到店铺手机号{phone}，请输入验证码</h5> <div class="modify-phone"> <span class="input"> <input type="tel" name="" value="" id="code"> </span> <span id="countDown" if="{isCounting}">{countNum}</span> <span if="{isCounting}">s</span> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.isCounting=true;self.countNum=60;var csetTime;modal.onOpen=function(params){clearTimeout(csetTime);self.incomePhone=params.incomePhone;self.type=params.type;var phone=self.incomePhone.toString();self.phone=phone.substring(0,3)+"XXXX"+phone.substring(7,11);self.isCounting=true;self.countNum=60;self.update();countDown();};function countDown(){var count=(0,_jquery2.default)('#countDown');if(count[0]){count.text(self.countNum--);if(self.countNum>-1){csetTime=setTimeout(countDown,1000);}else{self.isCounting=false;self.update();}}}modal.onClose=function(){(0,_jquery2.default)("pop-modify-phone").find("input").val("");clearTimeout(csetTime);};modal.onSubmit=function(){var param={phoneMobile:self.incomePhone};var code=(0,_jquery2.default)("#code").val();if(!code){_utils2.default.toast("请填写验证码");return;}param.code=code;_store.store.mobileVerify.get(param,function(data){if(self.type==1){parent.addCard();}else{parent.account=false;parent.accountEdit=true;parent.update();}modal.close();});};});riot.tag2('add-price','<div class="wrap"> <div class="content"> <label for="priceNoName">请填写商品进价：</label> <input id="addPriceInput" name="price" type="tel" maxlength="20"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var product=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("#addPriceInput").focus();self.params=params;self.update();};modal.onClose=function(){(0,_jquery2.default)("#addPriceInput").val("");self.params="";self.update();};modal.onSubmit=function(){var input=(0,_jquery2.default)("#addPriceInput").val().trim();if(/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(input)){self.params.purchasePrice=input;_store.store.goods.updateforstor(self.params,function(){_utils2.default.toast('保存成功');product.goodsAdd(self.params);modal.close();self.params="";self.update();});}else{_utils2.default.toast("请输入正确的价格");}};});
+	day=d.getDay(),date=d.getDate();if(day==1)return d;if(day==0)d.setDate(date-6);else d.setDate(date-day+1);return d;}});riot.tag2('shop-chart','<div class="shop-chart"> <div class="chart-top"><div class="chart-dater"><daterangepicker></daterangepicker></div></div> <div class="chart-content"> <div style="width: 100%;height:100%;background: #fff;"> <div id="main" style="width: 100%;height:100%;"></div> </div> </div> </div>','','',function(opts){var self=this;self.dateChart=function(data){var myChart=_index3.default.init((0,_jquery2.default)('#main')[0]);self.data=data;self.storeName=data.storeName;var xdata=self.data.title;var maxHeight=self.data.maxHeight;var seriesData=[];var colorList=['#aac6f8','#9d9d9d','#488fd1','#e96409','#ff7f50','#87cefa','#da70d6','#32cd32','#6495ed','#ff69b4','#ba55d3'];var legendData=[];for(var i=0;i<self.data.charts.length;i++){var seriesList={};var itemStyle={normal:{label:{show:true,position:'top',textStyle:{fontSize:'12',color:'#666'}}}};var charts=self.data.charts[i];legendData.push(self.data.charts[i].name);seriesList.name=self.data.charts[i].name;seriesList.type=self.data.charts[i].type;seriesList.data=self.data.charts[i].data;seriesList.itemStyle=itemStyle;if(self.data.charts[i].type=="bar"){seriesList.barWidth=30;}seriesList.itemStyle.normal.color=colorList[i];if(self.data.charts.length>5){seriesList.itemStyle.normal.label.show=false;}seriesData.push(seriesList);}var option={title:{text:self.storeName,x:'center',textStyle:{fontSize:18,fontWeight:'bolder',color:'#333'}},tooltip:{trigger:'axis'},legend:{data:legendData,x:'right'},grid:{borderWidth:0,containLabel:true},xAxis:{boundaryGap:true,type:'category',splitLine:{show:false},data:xdata,axisLabel:{textStyle:{color:"#666"}}},yAxis:{type:'value',scale:true,name:'金额',max:maxHeight,min:0,boundaryGap:[0.2,0.2],axisLabel:{textStyle:{color:"#666"}}},series:seriesData};myChart.setOption(option);};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('#daterange').val();var beginDate=date.split("~")[0];var endDate=date.split("~")[1];var param={beginDate:beginDate,endDate:endDate,storeId:8};_store.store.dataDashboard.get(param,function(date){self.dateChart(date);});});self.on('mount',function(){_store.store.dataDashboard.get({},function(date){self.dateChart(date);});});});riot.tag2('coupon','<div class="coupon"> <div class="coupon-list"> <ul> <li class="cou-our" onclick="{addCoupon}"> <div class="add "></div> </li> <li each="{coupon}" class="{bacolor}" if="{coupon.length>0}"> <h4 onclick="{couponInfo}">{title} <div class="icon {public:source!=1}{our:source==1}"></div> <div class="info"></div> </h4> <h5>数量：{totalNumber}张</h5> <h5>面额：{denomination}</h5> <div class="stop-coupon" if="{bacolor==⁗cou-our⁗}" onclick="{couponStop}">停止发放</div> <div class="status {coupon-s-over:status==2}{coupon-s-invalid:status==3}{coupon-s-invalid:status==4}"></div> </li> <div class="clearfix"></div> </ul> </div> </div> <pop id="couponInfo" title="优惠券详情" onebutton> <coupon-info></coupon-info> </pop> <pop id="couponAdd" title="添加优惠券" twobutton suretext="发放" help="true"> <coupon-add></coupon-add> </pop> <pop width="650px" id="couponHelp" title="帮助" onebutton popzbig="true"> <coupon-help></coupon-help> </pop> <pop width="400px" id="couponPrice" title="发放面额、数量及总额" twobutton popzbig="true" suretext="下一步"> <coupon-price></coupon-price> </pop> <pop width="400px" id="couponPriceNext" title="发放面额、数量及总额" twobutton popzbigtwo="true" suretext="确定" cancletext="上一步"> <coupon-price-next></coupon-price-next> </pop> <pop width="400px" id="couponDate" title="有效期" twobutton popzbig="true"> <coupon-data></coupon-data> </pop> <pop id="couponCondition" title="获得条件" twobutton popzbig="true"> <coupon-con></coupon-con> </pop> <pop width="400px" id="couponWay" title="使用方式" twobutton popzbig="true"> <coupon-way></coupon-way> </pop> <pop width="400px" id="couponUse" title="使用条件" twobutton popzbig="true"> <coupon-use></coupon-use> </pop> <pop id="couponStop" title="提示" twobutton> <coupon-stop></coupon-stop> </pop>','','',function(opts){var self=this;self.next=0;self.addCoupon=function(){(0,_jquery2.default)("#couponAdd")[0].open();};self.couponInfo=function(e){(0,_jquery2.default)("#couponInfo")[0].open(e.item);};self.couponHelp=function(){(0,_jquery2.default)("#couponHelp")[0].open();};self.couponStop=function(e){(0,_jquery2.default)("#couponStop")[0].open(e.item.storeCouponId);};self.stopSure=function(id){_store.store.coupon.stop({couponId:id},function(data){self.next=0;self.init();});};self.init=function(){var params={next:self.next};_store.store.coupon.get(params,function(data){self.next=data.next;self.coupon=data.list;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.coupon-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.coupon.get({next:self.next},function(data){self.next=data.next;self.coupon=self.coupon.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.on('mount',function(){self.newCoupon={};self.init();self.listenDown();});self.on('unmount',function(){if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('device-index','<ul> <li each="{list}"> <a href="{link}" onclick="{noAuthTip}"> <img riot-src="{img}"> <div>{name}</div> </a> </li> <div class="clearfix"></div> </ul>','','',function(opts){var self=this;self.list=[{name:'小票打印机',img:'imgs/order-printer.png',link:'#/shop/order-printer'}];self.noAuthTip=function(){_utils2.default.setTitle(self.list[0].link,self.list[0].name);};});riot.tag2('order-printer','<div class="half"> <div class="card"> <form> <span> 打印机类型：USB打印机 </span> </form> <div> <div class="half"> <button onclick="{printTest}" class="pull-right">打印测试页</button> </div> <div class="clearfix"></div> </div> <div> <p>结算时是否打印小票 <span class="switch {close: !print}" onclick="{switchPrint}"></span></p> </div> </div> </div>','','',function(opts){var self=this;self.connected=true;self.print=true;self.qrcode=true;self.qrcode=self.orderPrint;self.init=function(){(0,_store.httpGet)({url:api.printerInfo,success:function success(res){self.printerType=res.data.type;self.connected=res.data.print;self.print=res.data.printBill;self.qrcode=res.data.printQr;self.update();}});};self.getOrderPrintState=function(){(0,_store.httpGet)({url:api.getOrderPrintState,complete:function complete(data){self.orderPrint=data.printOrderState;self.update();}});};self.connect=function(e){(0,_store.httpGet)({url:api.switchPrinter,params:{enable:true},success:function success(){self.connected=true;self.update();}});};self.disconnect=function(e){(0,_store.httpGet)({url:api.switchPrinter,params:{enable:false},success:function success(){self.connected=false;self.update();}});};self.printTest=function(e){(0,_store.httpGet)({url:api.printTest});};self.switchPrint=function(e){(0,_store.httpGet)({url:api.printBill,params:{enable:!self.print},success:function success(){self.print=!self.print;self.update();}});};self.switchOrderPrint=function(e){(0,_store.httpGet)({url:api.setOrderPrintState,params:{printOrderState:!self.orderPrint},complete:function complete(){self.orderPrint=!self.orderPrint;self.update();}});};self.switchQrcode=function(e){(0,_store.httpGet)({url:api.printQr,params:{enable:!self.qrcode},success:function success(){self.qrcode=!self.qrcode;self.update();}});};self.on('mount',function(){self.init();self.getOrderPrintState();});});riot.tag2('tag-printer','','','',function(opts){});riot.tag2('create-employee','<form id="create-employee-form"> <label> 姓名： <input type="text" name="personName" maxlength="20"> </label> <label> 账号： <input type="text" name="username" placeholder="账户名必须大于6位" maxlength="12"> </label> <label> 密码： <input type="password" name="password" placeholder="密码必须大于6位" maxlength="12"> </label> <label> 电话： <input type="tel" name="mobile" maxlength="20"> </label> <input name="type" type="hidden" value="2"> </form>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){self.submitStatus=1;_utils2.default.clearForm('create-employee-form');};modal.onSubmit=function(){var params=(0,_jquery2.default)('#create-employee-form').serializeObject();if(!(params.personName&&params.personName.length>1&&params.personName.length<10)){_utils2.default.toast("请输入正确的员工姓名");return;}if(!(params.username&&/^[0-9a-zA-Z]{6,12}$/g.test(params.username))){_utils2.default.toast("账号必须为6-12位字母或数字混合");return;}if(!(params.password&&/^[0-9a-zA-Z]{6,12}$/g.test(params.password))){_utils2.default.toast("密码格式不正确");return;}if(!(params.mobile=="")&&!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(params.mobile)){_utils2.default.toast("电话格式不正确");return;}if(self.submitStatus===2){return;}self.submitStatus=2;_store.store.employee.create(params,function(){self.submitStatus=1;modal.close();},function(){self.submitStatus=1;});};self.on('mount',function(){if(_store.store.online){var gotimeout;(0,_jquery2.default)("#create-employee-form").find("input").focus(function(){clearTimeout(gotimeout);(0,_jquery2.default)(".modal-dialog").css("top","220px");});(0,_jquery2.default)("#create-employee-form").find("input").blur(function(){gotimeout=setTimeout(function(){(0,_jquery2.default)(".modal-dialog").css("top","50%");},200);});}});});riot.tag2('employee','<div class="employee"> <h3>店员账户管理</h3> <ul class="employee-list"> <li class="add-employee" onclick="{openModal(\'create-employee\')}"> <div> <img src="imgs/add-big.png"> <p>添加员工</p> </div> </li> <li class="employee-item" each="{slaves}"> <form> <div class="input-content"> <input type="hidden" name="userId" value="{userId}"> <label> 姓名： <input type="text" name="personName" value="{personName}"> </label> <label> 账户： <input type="text" name="username" value="{username}" placeholder=""> </label> <label> 密码： <input type="passport" name="password" placeholder="**********"> </label> <label> 电话： <input type="tel" name="mobile" value="{mobile}"> </label> <input type="hidden" name="type" value="2"> </div> <div class="em-button"> <a class="delete" onclick="{delete}">删除</a> <a class="save" onclick="{save}">保存</a> </div> </form> </li> <div class="clearfix"></div> </ul> </div> <modal modal-width="5rem" modal-height="" small id="create-employee" title="添加员工"> <create-employee></create-employee> </modal>','','',function(opts){var self=this;self.personName='';self.mobile='';self.password='';self.username='';this.openModal=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};}.bind(this);self.init=function(){_riotSeedFlux2.default.bind.call(self,{name:'employees',store:_store.store.employee,success:function success(){self.masters=[];self.slaves=[];self.employees.forEach(function(item){if(item.type===1){self.masters.push(item);}else if(item.type===2){self.slaves.push(item);}});self.update();}});};self.countHeight=function(){var height=(0,_jquery2.default)('.employee .employee-item').css('height');(0,_jquery2.default)('.add-employee').css('height',height);};self.openSelect=function(e){var evt=document.createEvent("MouseEvents");var dom=(0,_jquery2.default)(e.target.parentNode).find('select')[0];evt.initEvent("mousedown",true,true);if(dom){dom.dispatchEvent(evt);}};self.save=function(e){var form=e.target.parentNode.parentNode;var params=(0,_jquery2.default)(form).serializeObject();if(!(params.personName&&params.personName.length>1&&params.personName.length<10)){alert("请输入正确的员工姓名");return;}if(!(params.username&&/^[0-9a-zA-Z]{6,12}$/g.test(params.username))){alert("账号必须为6-12位字母或数字混合");return;}if(!(params.mobile=="")&&!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(params.mobile)){alert("电话格式不正确");return;}_store.store.employee.update(params);};self.delete=function(e){var id=e.item.userId;var name=e.item.personName||e.item.username;if(confirm("确认删除员工"+name+"么？")){_store.store.employee.delete({userId:id});}};self.on('mount',function(){self.init();self.countHeight();});});riot.tag2('import-custom','<div class="import-wraper"> <div class="step"> <p>插入U盘，下载Excel模板至U盘</p> <img src="imgs/udisk.png"> <button class="download-tpl"> <a onclick="{download}" target="_top">点击下载</a> </button> </div> <div class="step"> <p>在电脑端按照模板添加商品</p> <img src="imgs/computer.png"> <button class="add-goods">添加商品</button> </div> <div class="step"> <p>将制作好的Excel表导入</p> <img src="imgs/import-img.png"> <button class="import-excel">点击导入</button> </div> <div class="clearfix"></div> </div> <div class="import-text"> <span class="title">提示：</span> <span class="info">1.一次导入表格里的商品数量最多500条</span> <span class="info">2.表格中商品若和店铺现有商品冲突，会覆盖现有商品</span> <span class="info">3.商品条码不填则自动生成13位条码</span> <span class="info">4.表格中多个条码重复商品，取第一条数据</span> </div> <modal modal-width="" modal-height="" delete id="import-error" title="导入失败" nofooter buttonok> <import-error></import-error> </modal> <modal modal-width="" modal-height="" delete id="import-loading" title="导入进度" nofooter> <import-loading></import-loading> </modal>','','',function(opts){var self=this;self.on('mount',function(){new uploader.SimpleUpload({button:(0,_jquery2.default)('.import-excel')[0],url:api.goodImport,name:'uploadFile',responseType:'json',allowedExtensions:["xls","xlsx","xlsm"],maxSize:512,onSubmit:function onSubmit(filename,extension){(0,_jquery2.default)("#import-loading")[0].open();},onComplete:function onComplete(filename,response){if(parseInt(response.code,10)===1){_utils2.default.toast('上传成功');(0,_jquery2.default)(".loading-text").text("正在同步商品");var param={name:"Goods",noloadShow:true};_store.store.synTask.get(param,function(success){if(success){(0,_jquery2.default)("#import-loading")[0].close();_utils2.default.toast('同步成功');_store.store.loadTopGoodsList=true;}});}else if(parseInt(response.code,10)!==1&&response.msg){(0,_jquery2.default)("#import-loading")[0].close();(0,_jquery2.default)("#import-error")[0].open(response.msg);}else{(0,_jquery2.default)("#import-loading")[0].close();_utils2.default.toast('上传失败');}},onExtError:function onExtError(filename,extension){_utils2.default.toast('文件类型不正确');},onSizeError:function onSizeError(filename,fileSize){_utils2.default.toast('文件最大为512kb');},onError:function onError(filename,errorType,status,statusText,response,uploadBtn,fileSize){(0,_jquery2.default)("#import-loading")[0].close();_utils2.default.toast('上传失败');}});});this.download=function(e){_store.store.importTemplate.get(function(data){if(data&&data.url){_store.store.downTemplateExcel.get({url:data.url});}else{_utils2.default.toast("暂无可用模版");}});}.bind(this);self.on('unmount',function(){});});riot.tag2('import-standard','<div class="import-wraper"> <div class="step"> <h3>默认商品库</h3> <p style="text-align: center;">说明：常用商品库</p> <button>点击导入</button> </div> <div class="step"> <h3>小便利店商品库</h3> <p>说明：包含50万种商品。分为生 活用品、小吃零食、厨卫用品三 大类。</p> <button>点击导入</button> </div> <div class="step"> <h3>小商超商品库</h3> <p>说明：包含500万种商品。分为 香烟、酒水、副食、生鲜、水果、 粮油等二十大类。</p> <button>点击导入</button> </div> <div class="clearfix"></div> </div>','','',function(opts){});riot.tag2('products','<div class="products-new"> <div class="products-top"> <div class="product-tool-bar"> <div class="sub-search"> <search opts="{searchOpts}"></search> </div> <div class="btn-group"> <button> <a onclick="{setTitle}">导入已有商品库</a> </button> </div> </div> <div class="category-content"> <ul class="product-class-wraper"> <li each="{category}" class="product-class {active: active}" onclick="{changeCate}"> <a>{cateName}</a> </li> <div class="clearfix"></div> </ul> </div> <div class="category-count"> <span class="line-left"></span> <span class="line-center">商品总数：{goodsCount}</span> <span class="line-right"></span> </div> </div> <ul class="product-item-wraper"> <li class="create-product" onclick="{openCreate}" if="{addproduct}"><img src="imgs/add-product.png"></li> <li class="product-item" each="{goodList}" onclick="{openModal(\'prodcut-detail\')}"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}"> <div class="product-summary"> <div class="product-name"> <span>{goodsName}</span> </div> <div class="product-attr"> <span>进价：</span> <span>{countPrice(purchasePrice)}</span> </div> <div class="product-attr"> <span>售价：</span> <span>{countPrice(price)}</span> </div> <div class="product-attr"> <span>库存：</span> <span>{stockNum || 0}</span> </div> </div> </li> <div class="clearfix"></div> </ul> </div> <modal modal-width="" modal-height="" delete id="prodcut-detail" title="编辑商品"> <update-product></update-product> </modal> <modal modal-width="" modal-height="" id="create-product" title="添加商品" continue="继续添加"> <create-product></create-product> </modal> <modal modal-width="" modal-height="" id="input-barcode"> <input-barcode></input-barcode> </modal>','','',function(opts){var self=this;self.next=0;self.scrollLock=false;self.setTitle=function(){_utils2.default.setTitle("#/shop/import-custom",'导入已有商品库');};self.openModal=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};};self.openCreate=function(){if(_store.store.online){(0,_jquery2.default)('#create-product')[0].open();}else{(0,_jquery2.default)('#input-barcode')[0].open();}};this.openModalwidthSearch=function(id){return function(item){(0,_jquery2.default)('#'+id)[0].open(item);};}.bind(this);self.createProductFromCode=function(number){var curModal=(0,_jquery2.default)('#create-product');var cur=curModal[0];var styleInfo;if(cur.attributes&&cur.attributes.getNamedItem){styleInfo=cur.attributes.getNamedItem("style");}if(!styleInfo||styleInfo.value&&styleInfo.value.indexOf("display:flex;")<0&&styleInfo.value.indexOf("display: flex;")<0){(0,_jquery2.default)('#create-product')[0].open();}(0,_store.httpGet)({url:api.goodBySpecBarcode,params:{barcode:number},success:function success(res){(0,_jquery2.default)('#create-product .barcode-input').val(number);(0,_jquery2.default)('#create-product [name="goodsName"]').val(res.data.goodsName);(0,_jquery2.default)('#create-product [name="cateId"]').val(res.data.cateId);if(res.data.imageUrl){(0,_jquery2.default)('#create-product .img-area img').attr('src',res.data.imageUrl);(0,_jquery2.default)('#create-product-imgUrl').val(res.data.imageUrl);}},complete:function complete(status){if(status=="error"){_utils2.default.toast("请检查网络");}}});};self.barcodeHandle=function(){var number=Icommon.number;self.getGoodsInfo(number);};self.getGoodsInfo=function(number){if(!number){(0,_jquery2.default)('#create-product')[0].open();return;}(0,_store.httpGet)({url:api.goodByBarcode,params:{barcode:number},success:function success(res){if(res.data){(0,_jquery2.default)('#prodcut-detail')[0].open(res.data);}else{self.createProductFromCode(number);}},error:function error(err){if(err.code===10007){_utils2.default.toast("请检查网络");}}});};self.initCategory=function(){_riotSeedFlux2.default.bind.call(self,{name:'category',store:_store.store.categoryAll,success:function success(){self.addproduct=true;self.cateId=self.category[0].cateId;self.category[0].active=true;self.update();self.cateHeight=(0,_jquery2.default)(".products-top").height();(0,_jquery2.default)(".products-new").css("padding-top",self.cateHeight);self.initGoods(self.cateId);}});};self.initGoods=function(cateId){var params={cateId:cateId,next:0};self.getGoodsCount(cateId);_riotSeedFlux2.default.bind.call(self,{name:'goods',store:_store.store.goods,params:params,success:function success(){self.goodList=self.goods.list;self.next=self.goods.next;}});};self.searchOpts={clickHandle:self.openModalwidthSearch('prodcut-detail')};this.countPrice=function(price){if(price){return'￥'+price;}}.bind(this);self.on('mount',function(){self.initCategory();self.listenDown();window.addEventListener('inputNumber',self.barcodeHandle,false);});self.on('unmount',function(){window.removeEventListener('inputNumber',self.barcodeHandle);if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.product-item-wraper')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.goods.getMore({cateId:self.cateId,next:self.next},function(next){self.next=next;self.scrollLock=false;});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.getGoodsCount=function(cateId){_store.store.getGoodsCountByCateId.get({cateId:cateId},function(data){self.goodsCount=data;self.update();});};self.changeCate=function(e){self.cateId=e.item.cateId;for(var i=0;i<self.category.length;i++){if(self.category[i].cateId==parseInt(self.cateId,10)){self.category[i].active=true;}else{self.category[i].active=false;}if(self.cateId===null){self.category[0].active=true;}}self.getGoodsCount(self.cateId);_store.store.goods.get({cateId:self.cateId,next:0});};});riot.tag2('shop-qrcode','<div class="qrcode-top"> <a onclick="{refresh}">刷新</a> </div> <div class="qrcode-wraper" id="container"> <div class="qrcode-item"> <h3>支付宝二维码</h3> <div class="exist-qrcode" tabindex="1"> <img riot-src="{qrCodeZfb || \'imgs/no-qrcode.png\'}" onerror="javascript:this.src=\'imgs/no-qrcode.png\'"> </div> </div> <div class="qrcode-item"> <h3>微信二维码</h3> <div class="exist-qrcode" tabindex="1"> <img riot-src="{qrCodeWx || \'imgs/no-qrcode.png\'}" onerror="javascript:this.src=\'imgs/no-qrcode.png\'"> </div> </div> <div class="clearfix"></div> </div> <div class="qrcode-wraper"> <div class="code"> <h3 class="title">上传支付二维码方法</h3> <h4>1.用手机扫描下方二维码进入上传页面</h4> <div class="img-code"> <img riot-src="{qrCodeDown}" onerror="javascript:this.src=\'imgs/no-qrcode.png\'"> </div> <h4>2.根据提示上传二维码</h4> <h4>3.上传成功后点击右上角"刷新"按钮刷新此页面</h4> </div> </div>','','',function(opts){var self=this;if(window.Icommon){self.qrCodeZfb=Icommon.fileRootPath+'qrcode/zhifubao_'+Icommon.storeId+'.data?t='+new Date().getTime();self.qrCodeWx=Icommon.fileRootPath+'qrcode/weixin_'+Icommon.storeId+'.data?t='+new Date().getTime();self.qrCodeDown=Icommon.fileRootPath+'qrcode/scan_'+Icommon.storeId+'.data?t='+new Date().getTime();self.update();}self.refresh=function(){self.init();};self.on('mount',function(){self.init();});self.init=function(){_utils2.default.androidBridge(api.payQrInfoGet,{},function(res){self.res=JSON.parse(res);self.qrCodeZfb=self.res.data.aliCode;self.qrCodeWx=self.res.data.weixinCode;self.qrCodeDown=self.res.data.scanCode;self.update();});};});riot.tag2('shop-userqrcode','<div class="qrcode-top"> <a onclick="{refresh}">刷新</a> </div> <div class="qrcode-wraper"> <div class="qrcode-item"> <h3>店铺推广二维码</h3> <div class="exist-qrcode" tabindex="1"> <img riot-src="{message.qrCodePromotion || message.qrCode}"> </div> </div> </div> <div class="qrcode-wraper"> <div class="code"> <div class="title1">将店铺二维码更换或保存到手机的方法：</div> <div class="title2">用手机扫描下方二维码进入编辑页面</div> <div class="img-code"> <img riot-src="{message.qrCodePromotionUrl}"> </div> <div class="info active">更换二维码步骤：</div> <div class="info">根据提示在手机编辑页面更换二维码，然后点击"保存"</div> <div class="info">保存完毕之后， 在此页面点击"刷新"</div> <div class="info active">将网店二维码保存到手机步骤：</div> <div class="info">在手机编辑页面点击网店二维码，然后选择保存到相册</div> </div> </div>','','',function(opts){var self=this;self.refresh=function(){_store.store.synTask.get({name:"Store"},function(data){self.init();});};self.on('mount',function(){self.init();});self.init=function(){_store.store.storeMessage.get({},function(data){self.message=data;self.update();setTimeout(function(){_store.store.sys.sendMessage({updateStoreMessage:true});},500);});};});riot.tag2('income','<div class="income-content"> <div class="income-top"> <a onclick="{goRecord}" class="{active: record}">发放记录</a> <a onclick="{goAccount}" class="{active:!record}">发放账户</a> </div> <div class="income-text"> <div class="left" id="incomeList"> <div class="income-record" if="{record}"> <h4>累计收入： <i>{totalPay}</i></h4> <h4>待支付收入：<i>{waitPay}</i></h4> <ul> <li each="{income}"> <div> <span>{title}</span> </div> <div> <span class="fl-left">{date}</span> <span class="fl-right">{income}</span> <span class="clear"></span> </div> </li> </ul> </div> <div class="income-account" if="{account}"> <ul> <li> <span class="fl-left">银行：</span> <span class="fl-right">{card.bankName}</span> <span class="clear"></span> </li> <li> <span class="fl-left">卡号：</span> <span class="fl-right">{card.cardCode}</span> <span class="clear"></span> </li> <li> <span class="fl-left">开户银行：</span> <span class="fl-right">{card.bankAddress}</span> <span class="clear"></span> </li> <li> <span class="fl-left">姓名：</span> <span class="fl-right">{card.name}</span> <span class="clear"></span> </li> </ul> <div class="button"> <a onclick="{editAccount}">修改</a> </div> </div> <div class="income-account-edit" if="{accountEdit}"> <ul> <li> <span class="fl-left">银行：</span> <span class="fl-right"> <input type="text" value="{card.bankName}" id="bankName"> </span> <span class="clear"></span> </li> <li> <span class="fl-left">卡号：</span> <span class="fl-right"> <input type="tel" value="{card.cardCode}" id="cardCode"> </span> <span class="clear"></span> </li> <li> <span class="fl-left">开户银行：</span> <span class="fl-right"> <input type="text" name="name" value="{card.bankAddress}" id="bankAddress"> </span> <span class="clear"></span> </li> <li> <span class="fl-left">姓名：</span> <span class="fl-right"> <input type="text" value="{card.name}" id="name"> </span> <span class="clear"></span> </li> </ul> <div class="button"> <a onclick="{saveAccount}">保存</a> </div> </div> </div> </div> </div> <pop id="popModifPhone" title="验证手机" twobutton suretext="下一步"> <pop-modify-phone></pop-modify-phone> </pop>','','',function(opts){var self=this;self.record=true;self.account=false;self.accountEdit=false;self.update();self.page=0;self.pageSize=10;self.init=function(){var param={next:0};_store.store.rewardIncomeList.get(param,function(data){self.income=data.list;self.next=data.next;self.totalPay=data.totalPay;self.waitPay=data.waitPay;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('#incomeList')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.rewardIncomeList.get({next:self.next},function(data){self.next=data.next;self.income=self.income.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.editAccount=function(){_store.store.changeCardCodeSend.get(function(data){var param={incomePhone:data.phoneMobile,type:2};(0,_jquery2.default)("#popModifPhone")[0].open(param);});};self.saveAccount=function(){var param={bankName:(0,_jquery2.default)("#bankName").val(),cardCode:(0,_jquery2.default)("#cardCode").val(),bankAddress:(0,_jquery2.default)("#bankAddress").val(),name:(0,_jquery2.default)("#name").val()};if(!param.bankName){_utils2.default.toast("请填写银行");return;}if(!param.cardCode){_utils2.default.toast("请填写卡号");return;}if(param.cardCode.length<15||param.cardCode.length>19){_utils2.default.toast("银行卡号长度必须在15到19之间");return;}var num=/^\d*$/;if(!num.exec(param.cardCode)){_utils2.default.toast("银行卡号必须全为数字");return;}if(!param.bankAddress){_utils2.default.toast("请填写开户银行地址");return;}if(!param.name){_utils2.default.toast("请填写姓名");return;}param.cardId=self.card.cardId;_store.store.bankCardUpdate.get(param,function(data){self.account=true;self.accountEdit=false;self.update();self.goAccount();});};self.goRecord=function(){self.record=true;self.account=false;self.accountEdit=false;self.update();};self.goAccount=function(){_store.store.bankCard.get(function(data){if(data.status==1){self.record=false;self.account=true;self.card=data;self.accountEdit=false;self.update();}else{_utils2.default.toast("还未绑定银行卡");}});};self.on('mount',function(){self.init();self.listenDown();});self.on('unmount',function(){if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('reward','<div class="reward"> <div class="reward-top"> <a onclick="{shopIncome}">奖励收入</a> </div> <div class="reward-list"> <ul if="{reward.length > 0}"> <li class="{classli}" each="{reward}"> <div class="icon"></div> <h5>{title}{desc}</h5> <div class="look-div" onclick="{popReInfo}"> <a class="look-a">查看</a> </div> </li> <div class="clear"></div> </ul> <div class="none-list" if="{reward.length <= 0}"> <div class="none-list-text"> 暂无奖励 </div> </div> </div> </div> <pop id="popAppInfo" title="应用奖励详情" onebutton> <pop-app-reward-desc></pop-app-reward-desc> </pop> <pop id="popCouponInfo" title="优惠券奖励详情" onebutton> <pop-coupon-reward></pop-coupon-reward> </pop> <pop id="popAdInfo" title="广告奖励详情" onebutton> <pop-ad-reward></pop-ad-reward> </pop> <pop id="popModifPhone" title="验证手机" twobutton suretext="下一步"> <pop-modify-phone></pop-modify-phone> </pop> <pop id="popAddCard" title="设置发放账户" twobutton suretext="完成"> <pop-add-card></pop-add-card> </pop>','','',function(opts){var self=this;self.next=0;self.popReInfo=function(e){if(e.item.type==0){(0,_jquery2.default)("#popCouponInfo")[0].open(e.item);}else if(e.item.type==1){(0,_jquery2.default)("#popAppInfo")[0].open(e.item);}else{(0,_jquery2.default)("#popAdInfo")[0].open(e.item);}};self.init=function(){var params={next:self.next};_store.store.reward.get(params,function(data){self.next=data.next;self.reward=data.list;self.update();});};self.shopIncome=function(){_store.store.bankCard.get(function(data){if(data.status==1){location.href="#/shop/income";}else{self.incomePhone=data.phoneMobile;_store.store.changeCardCodeSend.get(function(data){var param={incomePhone:data.phoneMobile,type:1};(0,_jquery2.default)("#popModifPhone")[0].open(param);});}});};self.addCard=function(){(0,_jquery2.default)("#popAddCard")[0].open();};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.reward-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.reward.get({next:self.next},function(data){self.next=data.next;self.reward=self.reward.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};self.on('mount',function(){self.init();self.listenDown();});self.on('unmount',function(){if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}});});riot.tag2('shop-message','<form id="shop-message-form"> <div class="half"> <div class="card fit"> <label> 名称：<input type="text" name="storeName" value="{message.storeName}"> </label> <label onclick="{openModal(\'selectAddress\')}"> 地址：<span style="color: #333333">{addressValueWithoutSep || message.address}</span> </label> <input type="hidden" value="{addressValueWithoutSep || message.address}"> <input type="hidden" name="addressCode" value="{newAddressCode || message.addressCode}"> <label> 街道：<input type="text" name="streetName" value="{message.streetName}"> </label> <label> 店铺联系电话：<input type="tel" name="tel" value="{message.tel}"> </label> <label> <span class="notice">店铺公告：</span> <textarea name="notice" value="{message.notice}"></textarea> </label> </div> <div class="card fit"> <label> 配送范围：<input type="text" name="deliveryArea" value="{message.deliveryArea}"> </label> <label> 起送价（元）：<input type="tel" name="deliveryAmount" value="{message.deliveryAmount}"> </label> <label> 配送费（元）：<input type="tel" name="postPrice" value="{message.postPrice}"> </label> <label style="padding-top: 0;"> 接单时间：<date-picker name="startTime" id="dp-startTime" type="time"></date-picker> - <date-picker name="endTime" id="dp-endTime" type="time"></date-picker> </label> </div> </div> <div class="half"> <div class="card qrcode"> <h4>店铺推广二维码</h4> <div class="card-usre-de">该二维码会在客屏和打印票据处显示</div> <div class="change-qrcode" onclick="{changeQrcode}">更换或保存到手机</div> <img riot-src="{message.qrCodePromotion || message.qrCode}" class="shop-message-qrcode"> <div class="show-switch" if="{!message.showInfo}"> <span class="left">二维码客屏展示</span> <span class="right close" onclick="{showSwitch}"></span> </div> <div class="show-switch" if="{message.showInfo}"> <span class="left">二维码客屏展示</span> <span class="right open" onclick="{showSwitch}"></span> </div> </div> <div class="card"> 打开收银机默认登录此店铺 <input type="checkbox" name="bindDevice" value="true" __checked="{message.bindDevice}"> </div> <div class="card" onclick="{openupQrcode}"> <div class="up-qrcode"></div> <div class="up-text">支付二维码</div> </div> </div> </form> <div class="clearfix"></div> <div class="save-shop-message"> <button onclick="{save}">保 存</button> </div> <modal modal-width="" modal-height="" id="selectAddress"> <address-select></address-select> </modal>','','',function(opts){var self=this;self.relog=function(name){_utils2.default.androidBridge(api.statisticalEvent,{eventId:19});};this.openModal=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};}.bind(this);self.openupQrcode=function(){_utils2.default.setTitle("#/shop/upqrcode",'支付二维码');};self.changeQrcode=function(){location.href="#/shop/userqrcode";_utils2.default.setTitle("#/shop/userqrcode",'店铺推广二维码');};this.showSwitch=function(e){if(self.message.showInfo){var params={show:false};}else{var params={show:true};}(0,_store.httpGet)({url:api.showAds,params:params,success:function success(res){_store.store.storeMessage.get();setTimeout(function(){_store.store.sys.sendMessage({updateStoreMessage:true});},500);}});}.bind(this);self.init=function(){_riotSeedFlux2.default.bind.call(self,{name:'message',store:_store.store.storeMessage,success:function success(){self.historyMessageNotice=self.message.notice;(0,_jquery2.default)("#dp-startTime").get(0).setValue(self.message.startTime);(0,_jquery2.default)("#dp-endTime").get(0).setValue(self.message.endTime);}});};self.save=function(){var params=(0,_jquery2.default)('#shop-message-form').serializeObject();_store.store.storeMessage.update(params);if(self.historyMessageNotice!=params.notice){self.relog();}};self.on('mount',function(){self.init();});});riot.tag2('shop-setting','<div class="half"> <div class="setting-shop {active:message.bindDevice}" onclick="{setting}"> 打开收银机默认登录此店铺 </div> </div> <div class="half"> <div class="shop-bind" if="{qrcode.bqStoreId}"> <ul> <li> <span>已绑定 {qrcode.bqStoreName}</span> <a onclick="{removeBind}">解除绑定</a> <div class="clearfix"> </div> </li> <li> <span>上次数据同步完成时间: {qrcode.bindTime || \'暂未同步\'}</span> <a onclick="{dataSyn}">数据同步</a> <a onclick="{dataCalibration}">数据校准</a> <div class="clearfix"> </div> </li> </ul> </div> <div class="code" if="{qrcode.qrCodeUrl}"> <div class="title"> 绑定倍全店铺 <i>(使用倍全商户端APP内的扫码功能)</i> </div> <div class="img"> <img riot-src="{qrcode.qrCodeUrl}" alt=""> </div> </div> <div class="shop-bind" if="{!qrcode.qrCodeUrl && !qrcode.bqStoreId}"> 系统异常 </div> </div>','','',function(opts){var self=this;self.shopBind=false;self.getMessage=function(){(0,_store.httpGet)({url:api.storeMessage,params:{},success:function success(res){self.message=res.data;self.update();}});};self.getQrcode=function(){(0,_store.httpGet)({url:api.oauthQrcode,params:{},success:function success(res){self.qrcode=res.data;if(self.qrcode&&self.qrcode.bindTime){self.qrcode.bindTime=self.qrcode.bindTime.substring(0,self.qrcode.bindTime.length-3);}self.update();}});};self.dataCalibration=function(){(0,_store.httpGet)({url:api.clearAllGoodsAndSync,params:{},success:function success(){_utils2.default.toast("开始校准");}});};self.removeBind=function(){(0,_store.httpGet)({url:api.oauthTokenClean,params:{},success:function success(res){_utils2.default.toast('解除绑定成功');self.getQrcode();}});};self.dataSyn=function(){(0,_store.httpPost)({url:api.syncBqinfo,params:{},success:function success(res){_utils2.default.toast('开始同步数据');}});};self.setting=function(){self.message.bindDevice=!self.message.bindDevice;self.update();var params={bindDevice:self.message.bindDevice,imeCode:self.imeCode};(0,_store.httpPost)({url:api.bindDevice,params:params,success:function(_success){function success(_x){return _success.apply(this,arguments);}success.toString=function(){return _success.toString();};return success;}(function(res){if(success){success(res);}}),complete:function complete(res){_utils2.default.loadHide();}});};self.getReceiveBind=function(){self.mes=JSON.parse(Ipush.message);if(self.mes.type==_constant2.default.PUSH_LOGIN_BIND){_utils2.default.toast('绑定成功');self.getQrcode();}else if(self.mes.type==_constant2.default.PUSH_GET_CODE){self.getQrcode();}};self.on('mount',function(){self.getMessage();self.getQrcode();if(window.Iapps){Iapps.getImei(function(res){if(res.imei){self.imeCode=res.imei;self.update();}},function(err){},{});}window.addEventListener('receiveMessage',self.getReceiveBind,false);});self.on('unmount',function(){window.removeEventListener('receiveMessage',self.getReceiveBind);});});riot.tag2('return-order','<div class="calendar-bar"> <span class="prev-day" onclick="{prevDay}">前一天</span> <date-picker></date-picker> <span class="next-day" onclick="{nextDay}">后一天</span> <a class="switch" onclick="{setTitle}" if="{type==2}">结算单</a> </div> <div class="half re-left"> <div class="card"> <div class="order-overview"> <div> <dt>退款额：</dt><dd>￥{amount}</dd> </div> <div class="sum"> <span>共</span> <span class="number">{orderCount}</span> <span if="{type==2}">笔退货单</span> </div> </div> <div class="order-list-wraper"> <ul class="order-list"> <li each="{orderList}" class="{active: active}" onclick="{chooseOrder}"> <div> <span>{billSn}</span> <span style="float: right;">{getTimeStr(addTime)}</span> </div> <div> <span style="padding-right: 1.296296rem"> <span>退款：</span> ￥{amount} </span> <span if="{type==1}">利润：￥{profit}</span> </div> <div>{stockAddMap(stockAdd)}</div> </li> </ul> </div> </div> </div> <div class="half re-right"> <div class="card order-detail-wraper" if="{currentOrder}"> <div class="order-base"> <h4 onclick="{print}"> {orderDetail.billSn} </h4> <div class="order-time"> 时间：{getDateTimeStr(orderDetail.addTime)} </div> <div class="order-handle"> <span>收银员：{orderDetail.personName || \'未知\'}</span> <span class="pull-right">{stockAddMap(orderDetail.stockAdd)}</span> </div> </div> <div class="order-detail-list"> <li> <span style="width: 11%">项</span> <span style="width: 42%">品名</span> <span style="width: 14%">数量</span> <span style="width: 14%">单价</span> <span style="width: 14%">小计</span> </li> <ul> <li each="{item in orderDetail.list}"> <span style="width: 11%">{orderDetail.list.indexOf(item) + 1}</span> <span style="width: 42%">{item.goodsName || \' \'}</span> <span style="width: 14%">{item.quantity || \' \'}</span> <span style="width: 14%">{item.price || \' \'}</span> <span style="width: 14%">{item.amount || item.quantity*item.price}</span> </li> </ul> </div> <div class="return-order-summary"> <div> <span>总项：{orderDetail.list.length}</span> <span class="pull-right">总金额：<b>￥{orderDetail.amount}</b></span> </div> <div> <span>总数：{countNumber(orderDetail.list)}</span> </div> </div> </div> </div>','','',function(opts){var self=this;self.getType=function(){if(location.hash.match(/\/shop\/sales-order/)){self.type=1;}else if(location.hash.match(/\/shop\/return-order/)){self.type=2;}};self.getType();self.setTitle=function(){_utils2.default.setTitle("#/shop/sales-order",'结算单');};self.changeType=function(){var date=self.getDateStr(new Date().getTime());var oldType=self.type;self.getType();if(oldType!==self.type){self.currentOrder=null;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});}};self.paymentTypeMap=function(type){switch(type){case 1:return'现金';break;case 2:return'支付宝';break;case 3:return'微信支付';break;case 4:return'刷卡';break;case 5:return'面对面支付';break;default:return'现金';}};self.stockAddMap=function(type){switch(type){case 0:return'未增加库存';break;case 1:return'已增加库存';break;default:return'未增加库存';}};self.getDateStr=function(time){return _utils2.default.getDateStr(time);};self.getTimeStr=function(time){return _utils2.default.getTimeStr(time);};self.getDateTimeStr=function(time){return _utils2.default.getDateTimeStr(time);};self.countNumber=function(arr){var number=0;arr.forEach(function(item){if(item.quantity){number=number+item.quantity;}});return number;};self.print=function(e){(0,_store.httpGet)({url:"Iprinter.printBill",params:{billUuid:self.currentOrder.refundBillUuid},success:function success(res){}});};self.init=function(){var date=self.getDateStr(new Date().getTime());_riotSeedFlux2.default.bind.call(self,{name:'orders',store:_store.store.salesOrder,params:{type:self.type,date:date},success:function success(){self.amount=self.orders.amount;self.profit=self.orders.profit;self.orderList=self.orders.list;self.orderCount=self.orders.list.length;self.update();}});};self.getDetail=function(uuid){(0,_store.httpGet)({url:api.orderGoods,params:{billUuid:uuid,type:self.type},success:function success(res){self.orderDetail=res.data;self.update();}});};self.chooseOrder=function(e){self.orderList.forEach(function(item){item.active=false;});e.item.active=true;self.currentOrder=e.item;var uuid=self.currentOrder.billUuid||self.currentOrder.refundBillUuid;self.getDetail(uuid);self.update();};self.nextDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].nextDay();};self.prevDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].prevDay();};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('date-picker')[0].value;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});});self.on('mount',function(){self.init();});});riot.tag2('sales-order','<div class="calendar-bar"> <span class="prev-day" onclick="{prevDay}">前一天</span> <date-picker></date-picker> <span class="next-day" onclick="{nextDay}">后一天</span> <a class="switch" onclick="{setTitle}" if="{type==1}">退货单</a> </div> <div class="half re-left"> <div class="card"> <div class="order-overview"> <div> <dt>结算额：</dt><dd>￥{amount}</dd> </div> <div if="{type==1 && viewProfit}"> </div> <div class="sum"> <span>共</span> <span class="number">{orderCount}</span> <span>笔结算单</span> </div> </div> <div class="order-list-wraper"> <ul class="order-list"> <li each="{orderList}" class="{active: active}" onclick="{chooseOrder}"> <div> <span>{billSn}</span> <span style="float: right;">{getTimeStr(addTime)}</span> </div> <div> <span style="padding-right: 1.296296rem"> <span>收银：</span> ￥{amount} </span> </div> <div> 支付方式：{paymentTypeMap(paymentType)} </div> </li> </ul> </div> </div> </div> <div class="half re-right"> <div class="card order-detail-wraper" if="{currentOrder}"> <div class="order-base"> <h4 onclick="{print}"> {orderDetail.billSn} <div class="print-sales"> </div> </h4> <div class="order-time"> 时间：{getDateTimeStr(orderDetail.addTime)} </div> <div class="order-handle"> <span>收银员：{orderDetail.personName || \'未知\'}</span> <span class="pull-right">支付方式：{paymentTypeMap(orderDetail.paymentType)}</span> </div> </div> <div class="order-detail-list"> <li> <span style="width: 10%">项</span> <span style="width: 38%">品名</span> <span style="width: 15%">数量</span> <span style="width: 15%">单价</span> <span style="width: 15%">小计</span> </li> <ul> <li each="{item in orderDetail.list}"> <span style="width: 10%">{orderDetail.list.indexOf(item) + 1}</span> <span style="width: 38%">{item.goodsName || \'无码商品\'}</span> <span style="width: 15%">{item.weight || \' \'}</span> <span style="width: 15%">{item.price || \' \'}</span> <span style="width: 15%">{item.amount || \' \'}</span> </li> </ul> </div> <div class="order-sales-detail"> <div class=""> <span>总项：{orderDetail.list.length} 总数：{countNumber(orderDetail.list)}</span> </div> <div class=""> <span>折扣：{(orderDetail.discountPct || 100) + \'%\'}</span> <span class="pull-right">总金额：￥{orderDetail.goodsAmount}</span> </div> </div> <div class="order-summary"> <div class="amount"> <span>实收：<b>￥{orderDetail.amount}</b></span> </div> </div> </div> </div>','','',function(opts){var self=this;self.viewProfit=true;self.getType=function(){if(location.hash.match(/\/shop\/sales-order/)){self.type=1;}else if(location.hash.match(/\/shop\/return-order/)){self.type=2;}};self.getType();self.setTitle=function(){_utils2.default.setTitle("#/shop/return-order",'退货单');};self.changeType=function(){var date=self.getDateStr(new Date().getTime());var oldType=self.type;self.getType();if(oldType!==self.type){self.currentOrder=null;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});}};self.paymentTypeMap=function(type){switch(type){case 1:return'现金';break;case 2:return'支付宝';break;case 3:return'微信支付';break;case 4:return'刷卡';break;case 5:return'面对面支付';break;default:return'现金';}};self.stockAddMap=function(type){switch(type){case 0:return'未增加库存';break;case 1:return'已增加库存';break;default:return'未增加库存';}};self.getDateStr=function(time){return _utils2.default.getDateStr(time);};self.getTimeStr=function(time){return _utils2.default.getTimeStr(time);};self.getDateTimeStr=function(time){return _utils2.default.getDateTimeStr(time);};self.countNumber=function(arr){var number=0;arr.forEach(function(item){if(item.weight){number=(number*1000+item.weight*1000)/1000;}});return number;};self.print=function(e){(0,_store.httpGet)({url:"Iprinter.printBill",params:{billUuid:self.currentOrder.billUuid},success:function success(res){}});};self.init=function(){var date=self.getDateStr(new Date().getTime());_riotSeedFlux2.default.bind.call(self,{name:'orders',store:_store.store.salesOrder,params:{type:self.type,date:date},success:function success(){self.amount=self.orders.amount;self.profit=self.orders.profit;self.orderList=self.orders.list;self.orderCount=self.orders.list.length;self.update();}});};self.getDetail=function(uuid){(0,_store.httpGet)({url:api.orderGoods,params:{billUuid:uuid,type:self.type},success:function success(res){self.orderDetail=res.data;self.update();}});};self.chooseOrder=function(e){self.orderList.forEach(function(item){item.active=false;});e.item.active=true;self.currentOrder=e.item;var uuid=self.currentOrder.billUuid||self.currentOrder.refundBillUuid;self.getDetail(uuid);self.update();};self.checkAuth=function(){(0,_store.httpGet)({url:api.auth,success:function success(res){self.auth=res.data.permissionCodes.split(',');if(self.auth.indexOf('32')<0){self.viewProfit=false;}self.update();}});};self.nextDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].nextDay();};self.prevDay=function(){self.currentOrder=null;(0,_jquery2.default)(self.root).find('date-picker')[0].prevDay();};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('date-picker')[0].value;_riotSeedFlux2.default.update(_store.store.salesOrder,{type:self.type,date:date});});self.on('mount',function(){self.init();self.checkAuth();});});riot.tag2('storage-in','<div class="storage-in"> <div class="storage-top"> <div class="search"> <search opts="{searchOpts}"></search> </div> <div class="supplier"> <div class="business">供货商:</div> <div class="select" onclick="{supplier}"> <span id="selectSupplierName">无</span> <input type="hidden" id="selectSupplierId"> <div class="icon-down"></div> <div class="drop-down display-none"> <span each="{supplierList}" onclick="{selectSupplier}">{supplierName}</span> </div> </div> <div class="clear"></div> </div> </div> <div class="storage-content"> <div class="storage-product"> <div class="product-li" if="{goods.length>0}"> <ul> <li each="{goods}" onclick="{forDetail}" class="{active:active}"> <div class="img"><img alt="" riot-src="{imageUrl  || \'imgs/default-product.png\'}"> </div> <div class="info"> <h3>{goodsName}</h3> <h2>￥{purchasePrice}</h2> </div> <div class="add-less"> <div class="less" onclick="{decrGoods}"></div> <div class="input">{quantity}</div> <div class="add" onclick="{incrGoods}"></div> <div class="clear"></div> </div> <div class="total">小计：￥{subtotal}</div> </li> </ul> </div> <div class="billing pro-li" if="{goods.length>0}"> <ul> <li>品类：{categoryNum}</li> <li>总数：{quantity}</li> <li>合计进价：<i>￥{goodsAmount}</i> </li> </ul> </div> </div> <div class="storage-detail"> <div class="s-pro-d" style="display: none"> <div class="img"><img alt="" riot-src="{detail.imageUrl  || \'imgs/default-product.png\'}"> </div> <div class="name">{detail.goodsName}</div> <div class="billing"> <ul> <li>进价：<i>￥{detail.purchasePrice}</i> </li> <li>库存：{detail.quantity}</li> </ul> </div> </div> <div class="st-button"> <a class="{disable: !quantity}" onclick="{commit}"> <i if="{type==1}">生成入库单</i> <i if="{type==2}">生成出库单</i> </a> </div> </div> <div class="clear"></div> </div> <modal id="storage-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> <modal id="storage-warning-han" modal-width="430px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText1}</p> </modal> <modal id="storageAddPurchasePrice" modal-width="" modal-height=""> <add-price></add-price> </modal> </div>','','',function(opts){var self=this;var params=riot.routeParams.params;var type=params.type;self.type=type;this.selectSupplier=function(e){(0,_jquery2.default)("#selectSupplierName").text(e.item.supplierName);(0,_jquery2.default)("#selectSupplierId").val(e.item.supplierId);}.bind(this);self.scanCodeStorage=function(){var number=Icommon.number;(0,_store.httpGet)({url:api.gooduuidByBarcode,params:{barcode:number},success:function success(res){if(res&&res.data&&res.data.goodsUuid){self.goodsAdd(res.data);}else{warningHan("商品未建档，请先在“店铺”-“商品”处添加该商品");}}});};function warning(text){var layer=(0,_jquery2.default)('#storage-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}function warningHan(text){var layer=(0,_jquery2.default)('#storage-warning-han')[0];self.warningText1=text;self.update();layer.open();setTimeout(function(){layer.close();},2000);}this.commit=function(e){if(!self.quantity){return;}else{var param={type:type};param.supplierId=(0,_jquery2.default)("#selectSupplierId").val();_store.store.stockCommit.get(param,function(data){if(type==1){warning('入库单已生成');}else{warning('出库单已生成');}self.goods=[];self.detail="";self.goodsAmount='';self.quantity='';self.categoryNum='';(0,_jquery2.default)(".s-pro-d").hide();self.update();_store.store.synTask.get({name:"Goods"},function(){});});}}.bind(this);this.supplier=function(e){(0,_jquery2.default)(".drop-down").toggleClass("display-none");}.bind(this);this.incrGoods=function(e){var param={goodsUuid:e.item.goodsUuid,type:type};_store.store.stockIncr.get(param,function(data){self.goodsAmount=data.goodsAmount;self.quantity=data.quantity;self.categoryNum=data.categoryNum;e.item.quantity=data.qty;e.item.subtotal=(e.item.quantity*e.item.purchasePrice).toFixed(2);self.update();});}.bind(this);this.decrGoods=function(e){var param={goodsUuid:e.item.goodsUuid,type:type};_store.store.stockDecr.get(param,function(data){self.goodsAmount=data.goodsAmount;self.quantity=data.quantity;self.categoryNum=data.categoryNum;e.item.quantity=data.qty;e.item.subtotal=(e.item.quantity*e.item.purchasePrice).toFixed(2);if(e.item.quantity==0){for(var i=0;i<self.goods.length;i++){if(self.goods[i].goodsUuid==e.item.goodsUuid){self.goods.splice(i,1);if(self.goods&&self.goods.length>0){self.detail=self.goods[0];self.update();(0,_jquery2.default)(".product-li ul li").eq(0).addClass("active");}else{(0,_jquery2.default)(".s-pro-d").hide();}}}}self.update();});}.bind(this);this.forDetail=function(e){(0,_jquery2.default)(".product-li ul li").removeClass("active");(0,_jquery2.default)(e.currentTarget).addClass("active");(0,_jquery2.default)(".s-pro-d").show();self.detail=e.item;if(self.detail.imageUrl){self.detail.imageUrl=e.item.imageUrl.replace('-min','-normal');}}.bind(this);_riotSeedFlux2.default.bind.call(self,{name:'supplierList',store:_store.store.supplierList,params:{},success:function success(){self.update();}});this.getGoods=function(){return function(item){self.goodsAdd(item);};}.bind(this);self.searchOpts={clickHandle:self.getGoods()};self.on('mount',function(){window.addEventListener('inputNumber',self.scanCodeStorage,false);});self.on('unmount',function(){_store.store.stockCommit.clear({type:type});window.removeEventListener('inputNumber',self.scanCodeStorage);});self.updatePrice=function(data){var params={};};self.goodsAdd=function(e){var param={type:type};param.goodsUuid=e.goodsUuid;_store.store.stockAdd.get(param,function(data){if(!data.goods.purchasePrice){(0,_jquery2.default)("#storageAddPurchasePrice")[0].open(data.goods);return;}self.categoryNum=data.categoryNum;self.quantity=data.quantity;self.goodsAmount=data.goodsAmount;var goods=false;if(self.goods&&self.goods.length>0){goods=true;}else{self.goods=[];}if(goods){var hasSame=false;for(var i=0;i<self.goods.length;i++){if(self.goods[i].goodsUuid==data.goods.goodsUuid){if(data.goods.imageUrl){data.goods.imageUrl=data.goods.imageUrl.split("?")[0]+"-min";}data.goods.subtotal=(data.goods.quantity*data.goods.purchasePrice).toFixed(2);self.goods[i]=data.goods;hasSame=true;}}if(!hasSame){var newList=[];data.goods.subtotal=(data.goods.quantity*data.goods.purchasePrice).toFixed(2);if(data.goods.imageUrl){data.goods.imageUrl=data.goods.imageUrl.split("?")[0]+"-min";}newList.push(data.goods);self.goods=self.goods.concat(newList);}}else{data.goods.subtotal=(data.goods.quantity*data.goods.purchasePrice).toFixed(2);if(data.goods.imageUrl){data.goods.imageUrl=data.goods.imageUrl.split("?")[0]+"-min";}self.goods.push(data.goods);self.detail=self.goods[0];if(self.detail.imageUrl){self.detail.imageUrl=self.goods[0].imageUrl.replace('-min','-normal');}(0,_jquery2.default)(".s-pro-d").show();self.goods[0].active=true;}self.update();});};});riot.tag2('storage-index','<ul> <li each="{list}"> <a onclick="{linkUrl}"> <img riot-src="{img}"> <div>{name}</div> </a> </li> </ul>','','',function(opts){var self=this;self.list=[{name:'入库',img:'imgs/import.png',link:'#/shop/storagein',loginName:'0401'},{name:'出库',img:'imgs/export.png',link:'#/shop/storageout',loginName:'0402'},{name:'单据',img:'imgs/shop-order.png',link:'#/shop/receipt',loginName:'0403'},{name:'供货商',img:'imgs/supplier.png',link:'#/shop/supplier',loginName:'0404'}];this.linkUrl=function(e){self.log(e.item.loginName);location.href=e.item.link;_utils2.default.setTitle(e.item.link,e.item.name);}.bind(this);self.log=function(name){_utils2.default.androidBridge(api.logEvent,{eventId:name},function(){console.log('---shop-index----埋点－－－');});};});riot.tag2('storage-receipt','<div class="storage-receipt"> <div class="calendar-bar"> <div class="chart-dater"><daterangepicker></daterangepicker></div> </div> <div class="receipt-content"> <div class="receipt-left"> <div class="re-top"> <a class="{active:active}" each="{tag}" onclick="{stockList}">{name}</a> </div> <div class="re-content" id="storReceipt"> <div class="re-pro" if="{stockListByDate.list.length>0}"> <div class="re-pro-list {active:active}" each="{stockListByDate.list}" onclick="{stockInfo}"> <div class="re-li"> <span class="fl-left supplier-name" if="{type==1}">入库单</span> <span class="fl-left supplier-name" if="{type==2}">出库单</span> <span class="fl-right">{stockSn}</span> <span class="clear"></span> </div> <div class="re-li"> <span class="fl-left">{supplierName}</span> <span class="fl-right">{creationDate}</span> <span class="clear"></span> </div> <div class="re-li"> <span class="fl-left">共<i>{categoryNum}</i>款 <i>{quantity}</i>件</span> <span class="fl-right price">￥ {amount}</span> <span class="clear"></span> </div> </div> </div> </div> </div> <div class="receipt-right"> <div class="receipt-pro-d" if="{stockListByDate.list.length>0}"> <div class="rpro-c"> <div class="title" if="{goods.type == 1}">进货单</div> <div class="title" if="{goods.type == 2}">出货单</div> <div class="name"> <span class="fl-left">供应商：{goods.supplierName}</span> <span class="fl-right">{goods.creationDate}</span> <span class="clear"></span> </div> <div class="name">单号：{goods.stockSn}</div> <div class="table-div"> <table> <tr> <td style="width:10%">项</td> <td style="width:60%">品名</td> <td style="width:10%">数量</td> <td style="width:10%">单价</td> <td style="width:10%">小计</td> </tr> </table> </div> </div> <div class="table-div table-content"> <table> <tr each="{item in goods.list}"> <td style="width:10%">{goods.list.indexOf(item) + 1}</td> <td style="width:60%">{item.goodsName}</td> <td style="width:10%">{item.quantity}</td> <td style="width:10%">{item.purchasePrice}</td> <td style="width:10%">{item.amount}</td> </tr> </table> </div> <div class="r-bottom"> <div class="b-d"> <span class="fl-left">总项：{goods.item}</span> <span class="fl-right">总金额：<i>￥{goods.amount}</i></span> <span class="clear"></span> </div> <div class="b-d"> <span class="fl-left">总数：{goods.quantity}</span> <span class="clear"></span> </div> </div> </div> </div> <div class="clear"></div> </div>','','',function(opts){var self=this;self.next=0;self.type=0;this.stockInfo=function(e){if((0,_jquery2.default)(e.currentTarget).is(".active")){return;}(0,_jquery2.default)(".re-pro-list").removeClass("active");(0,_jquery2.default)(e.currentTarget).addClass("active");var p={stockId:e.item.stockId,type:e.item.type};_store.store.stockGoodsList.get(p,function(data){self.goods=data;self.goods.item=e.item.categoryNum;self.goods.amount=e.item.amount;self.goods.quantity=e.item.quantity;self.update();});}.bind(this);this.stockList=function(e){if(e.item.active==true){return;}for(var i=0;i<self.tag.length;i++){self.tag[i].active=false;}self.type=e.item.type;e.item.active=true;var param={type:e.item.type,next:0,startDate:self.startDate,endDate:self.endDate};_store.store.stockListByDate.get(param);}.bind(this);self.on('mount',function(){self.tag=[{"name":"全部","type":0,"active":true},{"name":"入库单","type":1,"active":false},{"name":"出库单","type":2,"active":false}];self.update();self.init();self.nextPage();});self.format=function(myDate){return myDate.getFullYear()+"-"+(myDate.getMonth()+1<9?"0"+(myDate.getMonth()+1):myDate.getMonth()+1)+"-"+(myDate.getDate()<9?"0"+myDate.getDate():myDate.getDate());};self.init=function(){var myDate=new Date();var endDate=self.format(myDate);myDate.setTime(myDate.getTime()-24*60*60*1000*7);var startDate=self.format(myDate);self.startDate=startDate;self.endDate=endDate;_riotSeedFlux2.default.bind.call(self,{name:'stockListByDate',store:_store.store.stockListByDate,refresh:true,params:{type:self.type,next:self.next,startDate:startDate,endDate:endDate},success:function success(){self.update();if(self.stockListByDate.list&&self.stockListByDate.list.length>0){self.stockListByDate.list[0].active=true;var stockId=self.stockListByDate.list[0].stockId;var type=self.stockListByDate.list[0].type;var p={stockId:stockId,type:type};self.next=self.stockListByDate.next;_store.store.stockGoodsList.get(p,function(data){self.goods=data;self.goods.item=self.stockListByDate.list[0].categoryNum;self.goods.amount=self.stockListByDate.list[0].amount;self.goods.quantity=self.stockListByDate.list[0].quantity;self.update();});}else{self.goods="";self.update();}}});};self.on('dateChange',function(){var date=(0,_jquery2.default)(self.root).find('#daterange').val();var startDate=date.split("~")[0].replace(/(^\s*)|(\s*$)/g,"");var endDate=date.split("~")[1].replace(/(^\s*)|(\s*$)/g,"");self.startDate=startDate;self.endDate=endDate;var param={type:self.type,next:0,startDate:startDate,endDate:endDate};_store.store.stockListByDate.get(param);});self.nextPage=function(){var curPage=1;(0,_jquery2.default)("#storReceipt").scroll(function(){if(curPage==1){self.listWrap=(0,_jquery2.default)('#storReceipt')[0];var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-20){if(self.next){curPage=2;var param={next:self.next,type:self.type,startDate:self.startDate,endDate:self.endDate};_store.store.stockListByDate.getMore(param,function(next){self.next=next;self.update();curPage=1;});}}}});};});riot.tag2('storage-supplier','<div class="supplier"> <div class="supplier-list" each="{supplierList}"> <div class="input"> <label>名称:</label> <input type="text" value="{supplierName}" class="name" maxlength="20"> </div> <div class="input"> <label>电话:</label> <input type="text" value="{tel}" class="phone" maxlength="20"> </div> <div class="button"> <div class="fl-left "> <a class="cancel" onclick="{deleteSupplier}">删除</a> </div> <div class="fl-right"> <a class="sure" onclick="{saveSupplier}">保存</a> </div> <div class="clear"></div> </div> </div> <div class="supplier-list add addSupplier"> <div class="input"> <label>名称:</label> <input type="text" class="name" maxlength="20"> </div> <div class="input"> <label>电话:</label> <input type="text" class="phone" maxlength="20"> </div> <div class="button"> <div class="fl-left "> <a class="cancel" onclick="{cancel}">取消</a> </div> <div class="fl-right"> <a class="sure" onclick="{addSaveSupplier}">添加</a> </div> <div class="clear"></div> </div> </div> <div class="supplier-list addSupplier" onclick="{addSupplier}"> <div class="add"></div> <div class="info">添加供应商</div> </div> <modal id="supplier-warning" modal-width="200px" modal-height="80px" nofooter> <p class="warning-text">{parent.warningText}</p> </modal> </div>','','',function(opts){var self=this;self.addSupplier=self.cancel=function(){(0,_jquery2.default)(".addSupplier").toggleClass("add");};function warning(text){var layer=(0,_jquery2.default)('#supplier-warning')[0];self.warningText=text;self.update();layer.open();setTimeout(function(){layer.close();},1000);}this.deleteSupplier=function(e){var param={supplierId:e.item.supplierId};if(confirm("确定删除吗？")){_store.store.supplierDel.get(param,function(data){(0,_jquery2.default)(e.target).parent().parent().parent().remove();});}}.bind(this);this.addSaveSupplier=function(e){var param={};if(e.item&&e.item.supplierId){param.supplierId=e.item.supplierId;}param.name=(0,_jquery2.default)(e.target).parent().parent().parent().find(".name").val();param.tel=(0,_jquery2.default)(e.target).parent().parent().parent().find(".phone").val();if(!param.name){warning('请填写供货商名称');return;}if(!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(param.tel)){warning('请填写正确供货商电话');return;}_store.store.supplierAddOrUpdate.get(param,function(data){var suppList=[];suppList.push(data);self.supplierList=self.supplierList.concat(suppList);(0,_jquery2.default)(".addSupplier").toggleClass("add");(0,_jquery2.default)(e.target).parent().parent().parent().find(".name").val("");(0,_jquery2.default)(e.target).parent().parent().parent().find(".phone").val("");warning("添加成功");self.update();});}.bind(this);this.saveSupplier=function(e){var param={};if(e.item&&e.item.supplierId){param.supplierId=e.item.supplierId;}param.name=(0,_jquery2.default)(e.target).parent().parent().parent().find(".name").val();param.tel=(0,_jquery2.default)(e.target).parent().parent().parent().find(".phone").val();if(!param.name){warning('请填写供货商名称');return;}if(!/^(\+86)?((([0-9]{3,4}-)?[0-9]{7,8})|(1[3578][0-9]{9})|([0-9]{11,20}))$/.test(param.tel)){warning('请填写正确供货商电话');return;}_store.store.supplierAddOrUpdate.get(param,function(data){warning("修改成功");self.update();});}.bind(this);_riotSeedFlux2.default.bind.call(self,{name:'supplierList',store:_store.store.supplierList,params:{},success:function success(){self.update();}});});riot.tag2('coupon-add','<div class="coupon-pop"> <div class="coupon-add"> <div class="add-list"> <ul> <li onclick="{fillIn(\'couponPrice\')}"> <span>发放面额、数量及总额：</span> <span id="fillCouponPrice" class="fill"></span> </li> <li onclick="{fillIn(\'couponDate\')}"> <span>有效期：</span> <span id="fillCouponDate" class="fill"></span> </li> <li onclick="{fillIn(\'couponCondition\')}"> <span>获得条件：</span> <span id="fillCouponCondition" class="fill"></span> </li> <li onclick="{fillIn(\'couponWay\')}"> <span>使用方式：</span> <span id="fillCouponWay" class="fill"></span> </li> <li onclick="{fillIn(\'couponUse\')}"> <span>使用条件：</span> <span id="fillCouponUse" class="fill"></span> </li> </ul> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.cou={};self.update();self.fillIn=function(id){return function(e){var item=e.item;(0,_jquery2.default)('#'+id)[0].open(item);};};modal.onSubmit=function(){if(parent.newCoupon){if(!parent.newCoupon.totalNumber){_utils2.default.toast("请填写优惠券数量");return;}if(!parent.newCoupon.totalPrice){_utils2.default.toast("请填写优惠总金额");return;}if(parent.newCoupon.priceType==0){if(parent.newCoupon.fixedPrice){parent.newCoupon.minPrice=parent.newCoupon.fixedPrice;parent.newCoupon.maxPrice=parent.newCoupon.fixedPrice;}else{_utils2.default.toast("请填写单个金额");return;}}else{if(!parent.newCoupon.minPrice){_utils2.default.toast("请填写最小金额");return;}if(!parent.newCoupon.maxPrice){_utils2.default.toast("请填写最大金额");return;}}if(!parent.newCoupon.effectDays){_utils2.default.toast("请填写有效期");return;}if(!parent.newCoupon.preType){_utils2.default.toast("请选择获得条件");return;}if(!parent.newCoupon.useWay&&parent.newCoupon.useWay!=0){_utils2.default.toast("请选择使用方式");return;}if(!parent.newCoupon.priceLimit){_utils2.default.toast("请填写使用条件");return;}parent.newCoupon.ruleType=0;parent.newCoupon.type=0;parent.newCoupon.source=1;_store.store.coupon.create(parent.newCoupon,function(data){parent.newCoupon={};parent.next=0;parent.init();parent.update();modal.close();});}};modal.onClose=function(){(0,_jquery2.default)("coupon-add").find(".fill").text("");parent.newCoupon={};parent.update();self.update();};modal.onHelp=function(){(0,_jquery2.default)("#couponHelp")[0].open();};});riot.tag2('coupon-con','<div class="coupon-pop"> <div class="coupon-price" id="couponCon"> <div class="price-li" each="{conList}" onclick="{conselect}"> <div class="select con {selected:selected}"></div> <div class=" price-in"> <i class="blod">{title}：</i> {info} </div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){self.conList=[{"title":"首次登录网店","info":"顾客首次通过店铺二维码或者链接登录本店铺就会获得优惠券。","selected":true,"value":1000},{"title":"首次在网店下单","info":"顾客首次在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。","selected":false,"value":1001},{"title":"首次在实体店购物","info":"会员在实体店首次购物结算时，就会获得优惠券。","selected":false,"value":1002},{"title":"网店下单","info":"顾客在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。","selected":false,"value":1003},{"title":"实体店购物","info":"会员在实体店购物结算时，就会获得优惠券。","selected":false,"value":1004},{"title":"全部本店会员","info":"全部本店已有会员。","selected":false,"value":1005}];var selected=parent.newCoupon.preType;for(var i in self.conList){if(selected==self.conList[i].value){self.conList[i].selected=true;}else{self.conList[i].selected=false;}}self.update();};self.conselect=function(e){for(var i in self.conList){self.conList[i].selected=false;}e.item.selected=true;self.conCode=e.item;};modal.onClose=function(){};modal.onSubmit=function(){var couUseCon="";for(var i in self.conList){if(self.conList[i].selected){couUseCon=self.conList[i];}}if(couUseCon){(0,_jquery2.default)("#fillCouponCondition").text(couUseCon.title);parent.newCoupon.preType=couUseCon.value;modal.close();}else{_utils2.default.toast("请选择获得条件");}};});riot.tag2('coupon-data','<div class="coupon-pop"> <div class="coupon-data"> <div class="content"> <div class="use-text"> 有效天数 ： </div> <div class="use-input data"> <input type="tel" value="" maxlength="2" id="couData"> <span class="yuan">天</span> </div> <div class="clearfix"></div> </div> <div class="prompt"> *最多为90天 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("coupon-data").find("#couData").val(parent.newCoupon.effectDays);self.update();};modal.onClose=function(){(0,_jquery2.default)("coupon-data").find("#couData").val("");};modal.onSubmit=function(){var _couData=parseInt((0,_jquery2.default)("coupon-data").find("#couData").val());if(/^[1-9]\d*$/.test(_couData)&&_couData<=90){(0,_jquery2.default)("#fillCouponDate").text(_couData+"天");parent.newCoupon.effectDays=_couData;modal.close();}else{_utils2.default.toast("请填写正确的日期");return;}};});riot.tag2('coupon-help','<div class="coupon-pop"> <div class="coupon-help"> <div class="title"> 发放总数量： </div> <div class="info"> 为优惠券可使用的最大数量。如果使用完毕，优惠券会自动失效。 </div> <div class="title"> 发放总额： </div> <div class="info"> 为优惠券所发放的总额 </div> <div class="title"> 有效期： </div> <div class="info"> 为顾客领到优惠券的日期往后一直到所设置的天数。比如有效期为7天，顾客1月1日领到优惠券，1月7日24:00过期。 </div> <div class="title"> <span>获得条件：</span> <span class="normal">总共如下六种：</span> </div> <div class="info"> 首次登录网店：顾客首次通过店铺二维码或者链接登录本店铺就会获得优惠券。 </div> <div class="info"> 首次在网店下单：顾客首次在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。 </div> <div class="info"> 首次在实体店购物：会员在实体店首次购物结算时，就会获得优惠券。 </div> <div class="info"> 网店下单：顾客在网店下单并且订单配送成功（订单状态为“已完成”）就会获得优惠券。 </div> <div class="info"> 实体店购物：会员在实体店购物结算时，就会获得优惠券。 </div> <div class="info"> 全部本店会员：全部本店已有会员 </div> <div class="title"> <span>使用方式：</span> <span class="normal">分为网店使用、实体店使用和通用三种。</span> </div> <div class="info"> 网店使用：顾客在线上网店购物时使用。 </div> <div class="info"> 实体店使用：会员在实体店购物时使用。 </div> <div class="info"> 通用：顾客既可以在线上购物使用也可以在实体店购物使用。 </div> <div class="title"> 使用条件： </div> <div class="info"> 可以设置优惠券所应用单据的最低总额，比如使用需满足购物金额为20元，那么只有该笔单据满20元才可用该优惠券。 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;});riot.tag2('coupon-info','<div class="coupon-pop"> <div class="coupon-info"> <div class="title"> 优惠券来源： </div> <div class="info"> {info.sourceDesc} </div> <div class="title"> 优惠券详情 </div> <div class="info">金额：{info.denomination}</div> <div class="info" if="{info.beginTime}">领取时段：{info.beginTime}至{info.endTime}</div> <div class="info">有效期：{info.effectDays}天</div> <div class="info">获取条件：{info.getRules}</div> <div class="info">使用方式： <span if="{info.useWay===0}">通用</span> <span if="{info.useWay===1}">线上使用</span> <span if="{info.useWay===2}">店铺使用</span> </div> <div class="info">使用条件：{info.rules}</div> <div class="title"> 使用详情 </div> <div class="info">已使用：{info.useNumber}张，共{info.usePrice}元</div> <div class="info">已发放：{info.sendNumber}张，共{info.sendPrice}元</div> <div class="info">应发放总数：{info.totalNumber}张，共{info.totalPrice}元</div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var product=self.parent.parent;modal.onOpen=function(params){_store.store.coupon.info({couponId:params.storeCouponId},function(data){self.info=data;self.update();});};modal.onClose=function(){self.info="";self.update();};modal.onSubmit=function(){modal.close();};});riot.tag2('coupon-price-next','<div class="coupon-pop"> <div class="coupon-price"> <div class="price-li"> <div class="left price-in"> <span>发放总数：</span> <span class="price-fixed"> <input type="tel" value="" id="totalCoupon" oninput="{totalPrice}" maxlength="6"> </span> <span class="yuan">张</span> </div> <div class="clearfix"></div> </div> <div class="price-li"> <div class="left price-in"> <span>发放总额：</span> <span class="price-fixed"> <input type="tel" value="" id="totalPrice" maxlength="7"> </span> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> <div class="prompt"> *最小随机金额×总数≤总额≤最大随机金额×总数 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.totalPrice=function(){var totalCoupon=parseInt((0,_jquery2.default)("#totalCoupon").val());if(/^[1-9]\d*$/.test(totalCoupon)&&self.params.type===0){(0,_jquery2.default)("#totalPrice").val(totalCoupon*parent.fixedPrice);}};modal.onOpen=function(params){self.params=params;if(self.params.type===0){(0,_jquery2.default)("#totalPrice").attr("readonly",true);}else{(0,_jquery2.default)("#totalPrice").attr("readonly",false);}self.update();};modal.onClose=function(){(0,_jquery2.default)("#totalPrice").attr("readonly",false);(0,_jquery2.default)("coupon-price-next").find("input").val("");};modal.onSubmit=function(){var totalCoupon=parseInt((0,_jquery2.default)("#totalCoupon").val());var totalPrice=parseInt((0,_jquery2.default)("#totalPrice").val());if(!/^[1-9]\d*$/.test(totalCoupon)){_utils2.default.toast("请填写正确的数量");return;}if(!/^[1-9]\d*$/.test(totalPrice)){_utils2.default.toast("请填写正确的总额");return;}if(self.params.type===0){(0,_jquery2.default)("#fillCouponPrice").text(parent.fixedPrice+"元、"+totalCoupon+"张、"+totalPrice+"元");parent.newCoupon.totalNumber=totalCoupon;parent.newCoupon.totalPrice=totalPrice;parent.newCoupon.fixedPrice=parent.fixedPrice;parent.newCoupon.priceType=0;(0,_jquery2.default)("#totalPrice").attr("readonly",false);(0,_jquery2.default)("#couponPrice")[0].close();modal.close();}else{if(parent.minPrice*totalCoupon<=totalPrice&&totalPrice<=parent.maxPrice*totalCoupon){(0,_jquery2.default)("#fillCouponPrice").text(parent.minPrice+"-"+parent.maxPrice+"元、"+totalCoupon+"张、"+totalPrice+"元");parent.newCoupon.minPrice=parent.minPrice;parent.newCoupon.maxPrice=parent.maxPrice;parent.newCoupon.totalNumber=totalCoupon;parent.newCoupon.totalPrice=totalPrice;parent.newCoupon.priceType=1;(0,_jquery2.default)("#totalPrice").attr("readonly",false);(0,_jquery2.default)("#couponPrice")[0].close();modal.close();}else{_utils2.default.toast("请填写正确总额");return;}}};});riot.tag2('coupon-price','<div class="coupon-pop"> <div class="coupon-price"> <div class="price-li"> <div class="select left selected fixed" onclick="{select}"></div> <div class="left price-in"> <span>固定金额：</span> <span class="price-fixed"> <input type="tel" value="" id="fixedPrice" maxlength="7"> </span> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> <div class="price-li"> <div class="select left fixedno" onclick="{select}"></div> <div class="left price-in"> <span>随机金额：</span> <span class="price-random ran"> <input type="tel" value="" id="randomPriceLow" maxlength="7"> </span> <span class="price-m"></span> <span class="price-random"> <input type="tel" value="" id="randomPriceTall" maxlength="7"> </span> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> <div class="prompt"> *面额必须是整数,随机金额会取包含两端的整数 </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){parent.fixedPrice="";parent.minPrice="";parent.maxPrice="";if(parent.newCoupon.priceType==1){(0,_jquery2.default)(".fixedno").addClass("selected");(0,_jquery2.default)(".fixed").removeClass("selected");(0,_jquery2.default)("#randomPriceLow").val(parent.newCoupon.minPrice);(0,_jquery2.default)("#randomPriceTall").val(parent.newCoupon.maxPrice);}else{(0,_jquery2.default)(".fixed").addClass("selected");(0,_jquery2.default)(".fixedno").removeClass("selected");(0,_jquery2.default)("#fixedPrice").val(parent.newCoupon.fixedPrice);}self.update();};modal.onClose=function(){(0,_jquery2.default)("coupon-price").find("input").val("");self.update();};modal.onSubmit=function(){if((0,_jquery2.default)("#fixedPrice").parent().parent().prev(".select").is(".selected")){var fixedPrice=parseInt((0,_jquery2.default)("#fixedPrice").val());if(/^[1-9]\d*$/.test(fixedPrice)){parent.fixedPrice=fixedPrice;var params={type:0,fixedPrice:fixedPrice};(0,_jquery2.default)("#couponPriceNext")[0].open(params);}else{_utils2.default.toast("请填写正确的金额");return;}}else{var minPrice=parseInt((0,_jquery2.default)("#randomPriceLow").val());var maxPrice=parseInt((0,_jquery2.default)("#randomPriceTall").val());if(/^[1-9]\d*$/.test(minPrice)&&/^[1-9]\d*$/.test(maxPrice)&&minPrice<maxPrice){parent.minPrice=minPrice;parent.maxPrice=maxPrice;var params={type:1,minPrice:minPrice,maxPrice:maxPrice};(0,_jquery2.default)("#couponPriceNext")[0].open(params);}else{_utils2.default.toast("请填写正确的金额");return;}}};self.select=function(e){if(!(0,_jquery2.default)(e.target).is(".selected")){(0,_jquery2.default)(".select").removeClass("selected");(0,_jquery2.default)(e.target).addClass("selected");}};});riot.tag2('coupon-stop','<div class="coupon-pop"> <div class="coupon-stop"> 确定停止发放优惠券吗？已经停止发放的优惠券无法恢复发放。 </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(param){self.param=param;self.update();};modal.onSubmit=function(){parent.stopSure(self.param);modal.close();};});riot.tag2('coupon-use','<div class="coupon-pop"> <div class="coupon-use"> <div class="content"> <div class="use-text"> 使用需满足购物金额 ： </div> <div class="use-input"> <input type="tel" value="" maxlength="7" id=""> <span class="yuan">元</span> </div> <div class="clearfix"></div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("coupon-use").find("input").val(parent.newCoupon.priceLimit);self.update();};modal.onClose=function(){(0,_jquery2.default)("coupon-use").find("input").val("");};modal.onSubmit=function(){var conUseCode=(0,_jquery2.default)("coupon-use").find("input").val();if(!/^[1-9]\d*$/.test(conUseCode)){_utils2.default.toast("请填写正确的金额");return;}(0,_jquery2.default)("#fillCouponUse").text("购物满"+conUseCode+"元");parent.newCoupon.priceLimit=conUseCode;modal.close();};});riot.tag2('coupon-way','<div class="coupon-pop"> <div class="coupon-price"> <div class="price-li" each="{couUseList}" onclick="{couUseSelect}"> <div class="select left {selected:selected}"></div> <div class="left price-in"> {title} </div> <div class="clearfix"></div> </div> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.couUseList=[{"title":"网店使用","selected":true,"value":1},{"title":"实体店使用","selected":true,"value":2},{"title":"通用","selected":true,"value":0}];modal.onOpen=function(params){var selected=parent.newCoupon.useWay;for(var i in self.couUseList){if(selected===self.couUseList[i].value){self.couUseList[i].selected=true;}else{self.couUseList[i].selected=false;}}self.update();};modal.onClose=function(){};modal.onSubmit=function(){var couUseCode="";for(var i in self.couUseList){if(self.couUseList[i].selected){couUseCode=self.couUseList[i];}}if(couUseCode){(0,_jquery2.default)("#fillCouponWay").text(couUseCode.title);parent.newCoupon.useWay=couUseCode.value;modal.close();}else{_utils2.default.toast("请选择使用方式");}};self.couUseSelect=function(e){for(var i in self.couUseList){self.couUseList[i].selected=false;}e.item.selected=true;};});riot.tag2('create-product','<form id="create-product-form" name="create-product"> <label> 条码： <input type="text" name="barcode" oninput="{checkGood}" class="barcode-input long-input"> </label> <label> 商品名： <input type="text" name="goodsName" class="long-input" id="goodsName" maxlength="64"> </label> <div class="edit-area"> <label> 零售价（元）： <input type="tel" name="price" maxlength="8"> </label> <label> 进货价（元）： <input type="tel" name="purchasePrice" maxlength="8"> </label> <label> 分类： <select name="cateId"> <option each="{categorySelect}" value="{cateId}" __selected="{cateId==currentCateId}">{cateName}</option> </select> </label> <label> 库存： <input type="tel" name="stockNum" maxlength="10"> </label> <input type="hidden" name="imageUrl" id="create-product-imgUrl"> </div> <div class="img-area" id="create-product-img"> <img riot-src="{imageUrl || \'imgs/default-product.png\'}" onerror="javascript:this.src=\'imgs/default-product.png\' "> </div> </form>','','',function(opts){var self=this;self.type='update';var modal=self.parent;var cash=self.parent.parent;modal.onOpen=function(params){_utils2.default.createUploader({idName:'create-product-img',container:'create-product-form',success:function success(up,file,info){var domain=up.getOption('domain');var res=_jquery2.default.parseJSON(info);var sourceLink=domain+res.key;(0,_jquery2.default)('#create-product-imgUrl').val(sourceLink);self.imageUrl=sourceLink+"?imageView2/1/w/200/q/50";self.update();}});if(params&&params.casherCart){self.casherCart=true;}else{self.casherCart=false;}self.currentCateId=self.parent.parent.cateId;self.update();};modal.onClose=function(){_utils2.default.clearForm('create-product-form');(0,_jquery2.default)('#create-product .img-area img').attr('src','');(0,_jquery2.default)('#create-product-imgUrl').val('');(0,_jquery2.default)('.moxie-shim').remove();};modal.onSubmit=function(){var params=(0,_jquery2.default)('#create-product-form').serializeObject();params.parentCateId=cash.cateId;if(!params.goodsName){_utils2.default.toast('请输入商品名');return;}if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.price)){_utils2.default.toast('请输入正确的零售价');return;}if(params.purchasePrice!=""){if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.purchasePrice)){_utils2.default.toast('请输入正确的进货价');return;}}if(params.stockNum!=""){if(!/^\d+$/.test(params.stockNum)){_utils2.default.toast('请输入正确库存');return;}}if(self.casherCart){_store.store.goods.cashCreate(params,function(res){if(res&&res.goodsUuid){params.goodsUuid=res.goodsUuid;_store.store.synTask.get({name:"Goods"},function(success){if(success){_utils2.default.toast('添加成功');_store.store.loadTopGoodsList=true;cash.cashAddCart(params);}modal.close();});}});}else{_store.store.goods.create(params,function(){_utils2.default.toast('添加成功');cash.getGoodsCount(cash.cateId);_store.store.loadTopGoodsList=true;modal.close();});}};modal.onContinue=function(){var params=(0,_jquery2.default)('#create-product-form').serializeObject();params.parentCateId=cash.cateId;if(!params.goodsName){_utils2.default.toast('请输入商品名');return;}if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.price)){_utils2.default.toast('请输入正确的零售价');return;}if(params.purchasePrice!=""){if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.purchasePrice)){_utils2.default.toast('请输入正确的进货价');return;}}if(params.stockNum!=""){if(!/^\d+$/.test(params.stockNum)){_utils2.default.toast('请输入正确库存');return;}}_store.store.goods.create(params,function(){_utils2.default.toast('添加成功');_store.store.loadTopGoodsList=true;cash.getGoodsCount(cash.cateId);_utils2.default.clearForm('create-product-form');(0,_jquery2.default)('#create-product .img-area img').attr('src','');(0,_jquery2.default)('#create-product-imgUrl').val('');if(!_store.store.online){modal.close();cash.openCreate();}});};_riotSeedFlux2.default.bind.call(self,{name:'categorySelect',store:_store.store.categorySelect});self.on('mount',function(){if(_store.store.online){var gotimeout;(0,_jquery2.default)("#create-product-form").find("input").focus(function(){clearTimeout(gotimeout);(0,_jquery2.default)(".modal-dialog").css("top","220px");});(0,_jquery2.default)("#create-product-form").find("input").blur(function(){gotimeout=setTimeout(function(){(0,_jquery2.default)(".modal-dialog").css("top","50%");},200);});}});});riot.tag2('import-error','<div class="import-error"> <div class="title">Excel表格数据有误，导入失败</div> <div class="info">详情</div> <ul class="error-ul"> <li each="{i in error}">{i}</li> </ul> </div>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){var mgs=params;if(mgs.indexOf(';')>-1){var errormgs=mgs.split(';');self.error=errormgs;}else{self.error=[];self.error.push(params);}self.update();};modal.onClose=function(){self.error=[];self.update();};self.on('mount',function(){});});riot.tag2('import-loading','<div class="import-loading"> <div class="loading-text">{text}</div> <div class="loaded"> <div class="loader"> <div class="loader-inner line-scale"> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div> </div> <div class="button"> <a class="{active:button}" onclick="{onClose}">取消导入</a> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var timeInterval;var baseTime=600000;self.text="正在导入商品";self.time=0;modal.onOpen=function(params){self.button=false;clearInterval(timeInterval);self.time=0;(0,_jquery2.default)(".loading-text").text("正在导入商品");self.update();timeInterval=setInterval(function(){self.time=self.time+1;self.update();},1000);setTimeout(buttonOpen,baseTime);function buttonOpen(){self.button=true;clearInterval(timeInterval);self.update();}};self.onClose=function(){if(self.button){clearInterval(timeInterval);self.time=0;modal.close();self.button=false;self.update();}else{var lastTime=baseTime/1000-self.time;if(lastTime>60){var toastTime=parseInt(lastTime/60)+"分"+lastTime%60+"秒";}else{var toastTime=lastTime;}_utils2.default.toast("请在"+toastTime+"后取消");}};self.on('mount',function(){});});riot.tag2('input-barcode','<div class="wrap"> <div class="content"> <label for="priceNoName">商品条码：</label> <input id="barcodeInput" name="price" type="tel" oninput="{checkInput}"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var product=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("#barcodeInput").focus();self.update();};modal.onClose=function(){(0,_jquery2.default)("#barcodeInput").val("");};modal.onSubmit=function(){var input=(0,_jquery2.default)("#barcodeInput").val().trim();product.getGoodsInfo(input);modal.close();};self.checkInput=function(){var input=(0,_jquery2.default)("#barcodeInput").val().trim();if(input.length==13){product.getGoodsInfo(input);modal.close();}};self.on('mount',function(){});});riot.tag2('update-product','<form id="update-product-form" name="update-product"> <input type="hidden" value="{data.goodsUuid}" name="goodsUuid"> <label> 条码： <input value="{data.barcode}" name="barcode" class="long-input" readonly="readonly"> </label> <label> 商品名： <input type="text" value="{data.goodsName}" name="goodsName" class="long-input" maxlength="64"> </label> <div class="edit-area"> <label> 零售价（元）： <input type="tel" value="{data.price}" name="price" maxlength="8"> </label> <label> 进货价（元）： <input type="tel" value="{data.purchasePrice}" name="purchasePrice" maxlength="8"> </label> <label> 分类： <select name="cateId"> <option each="{categorySelect}" value="{cateId}" __selected="{cateId==currentCateId}">{cateName}</option> </select> </label> <label> 库存： <input type="tel" value="{data.stockNum || 0}" name="stockNum" maxlength="10"> </label> <input type="hidden" name="imageUrl" id="update-product-imgUrl"> </div> <div class="img-area" id="update-product-img"> <img riot-src="{data.imageUrl || \'imgs/default-product.png\'}"> </div> </form>','','',function(opts){var self=this;self.type='update';self.cates=new Array();var modal=self.parent;var cash=self.parent.parent;modal.onOpen=function(params){self.data={purchasePrice:" "};self.update();self.data=params;self.update();self.currentCateId=self.data.cateId;_utils2.default.createUploader({idName:'update-product-img',container:'prodcut-detail',success:function success(up,file,info){var domain=up.getOption('domain');var res=_jquery2.default.parseJSON(info);var sourceLink=domain+res.key;(0,_jquery2.default)('#update-product-imgUrl').val(sourceLink);self.data.imageUrl=sourceLink+"?imageView2/1/w/200/q/50";self.update();}});self.update();};modal.onClose=function(){(0,_jquery2.default)('.moxie-shim').remove();self.data={purchasePrice:" "};self.update();};modal.onSubmit=function(){var params=(0,_jquery2.default)('#update-product-form').serializeObject();params.parentCateId=cash.cateId;if(!params.goodsName){_utils2.default.toast('请输入商品名');return;}if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.price)){_utils2.default.toast('请输入正确的零售价');return;}params.purchasePrice=params.purchasePrice.trim();if(params.purchasePrice!=""){if(!/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(params.purchasePrice)){_utils2.default.toast('请输入正确的进货价');return;}}if(params.stockNum!=""){if(!/^\d+$/.test(params.stockNum)){_utils2.default.toast('请输入正确库存');return;}}_store.store.goods.update(params,function(){_utils2.default.toast('修改成功');_store.store.loadTopGoodsList=true;modal.close();self.data={purchasePrice:" "};self.update();});};modal.onDelete=function(){if(confirm('确认删除该商品么?')){var params={goodsUuid:self.data.goodsUuid,parentCateId:cash.cateId};_store.store.goods.delete(params,function(){_utils2.default.toast('删除成功');_store.store.loadTopGoodsList=true;cash.getGoodsCount(cash.cateId);modal.close();self.data={purchasePrice:" "};self.update();});}};_riotSeedFlux2.default.bind.call(self,{name:'categorySelect',store:_store.store.categorySelect});self.on('mount',function(){if(_store.store.online){var gotimeout;(0,_jquery2.default)("#update-product-form").find("input").focus(function(){if((0,_jquery2.default)(this).attr("readonly")!="readonly"){clearTimeout(gotimeout);(0,_jquery2.default)(".modal-dialog").css("top","220px");}});(0,_jquery2.default)("#update-product-form").find("input").blur(function(){gotimeout=setTimeout(function(){(0,_jquery2.default)(".modal-dialog").css("top","50%");},200);});}});});riot.tag2('pop-ad-reward','<div class="reward-pop"> <h2>广告收入：</h2> <h5>该奖励将使您的iPos客屏播放广告，您将获得广告分成。分成根 据实际广告播放时长和广告费浮动变化。因此，请务必确保iPos 在线并且正常播放广告。广告分成每天24:00统计。每月奖励收 入会按时一并打入您的账户。请点击“奖励收入”查看。</h5> <h2>广告收入详情：</h2> <div class="reward-ad-tab" if="{icome.length >0}"> <ul> <li each="{icome}"> <span>{date}</span> <span>{income}</span> </li> </ul> </div> <div class="reward-in-em" if="{icome.length == 0}"> 暂无广告收益 </div> </div>','','',function(opts){var self=this;var modal=self.parent;self.next=0;modal.onOpen=function(params){self.init();self.listenDown();};self.init=function(){self.next=0;var param={next:self.next};_store.store.advIncomeList.get(param,function(data){self.next=data.next;self.icome=data.list;self.update();});};self.scrollLock=false;self.listenDown=function(){setTimeout(function(){self.listWrap=(0,_jquery2.default)('.reward-list')[0];self.scrollDown=function(event){var clientHeight=self.listWrap.clientHeight;var scrollTop=self.listWrap.scrollTop;if(clientHeight+scrollTop>self.listWrap.scrollHeight-60){if(self.next&&!self.scrollLock){self.scrollLock=true;_store.store.advIncomeList.get({next:self.next},function(data){self.next=data.next;self.icome=self.coupon.concat(data.list);self.scrollLock=false;self.update();});}}};self.listWrap.addEventListener('scroll',self.scrollDown,false);},50);};modal.onClose=function(){self.next=0;self.icome=[];if(self.listWrap&&self.scrollDown){self.listWrap.removeEventListener('scroll',self.scrollDown);}};modal.onSubmit=function(){modal.close();};});riot.tag2('pop-add-card','<div class="add-card"> <h4>填写账户</h4> <div class="li"> <span>银行：</span> <input type="text" value="" id="bankName"> </div> <div class="li"> <span>卡号：</span> <input type="text" value="" id="cardCode"> </div> <div class="li"> <span>开户银行：</span> <input type="text" value="" class="long" id="bankAddress"> </div> <div class="li"> <span>姓名：</span> <input type="text" value="" id="name"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;modal.onOpen=function(){};modal.onClose=function(){(0,_jquery2.default)("pop-add-card").find("input").val("");};modal.onSubmit=function(){var param={bankName:(0,_jquery2.default)("#bankName").val(),cardCode:(0,_jquery2.default)("#cardCode").val(),bankAddress:(0,_jquery2.default)("#bankAddress").val(),name:(0,_jquery2.default)("#name").val()};if(!param.bankName){_utils2.default.toast("请填写银行");return;}if(!param.cardCode){_utils2.default.toast("请填写卡号");return;}if(param.cardCode.length<15||param.cardCode.length>19){_utils2.default.toast("银行卡号长度必须在15到19之间");return;}var num=/^\d*$/;if(!num.exec(param.cardCode)){_utils2.default.toast("银行卡号必须全为数字");return;}if(!param.bankAddress){_utils2.default.toast("请填写开户银行地址");return;}if(!param.name){_utils2.default.toast("请填写姓名");return;}_store.store.bankCardAdd.get(param,function(data){modal.close();location.href="#/shop/income";});};});riot.tag2('pop-app-reward-desc','<div class="reward-pop"> <h2>解锁应用:</h2> <h5>该奖励可以让您解锁 <i>{apps}</i> 应用,请到"应用"处下载并体验！</h5> <div style="height:30px"></div> </div>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){var param={reachRecordId:params.rewardRecordId};_store.store.reward.info(param,function(data){self.app=data.apps;var apps="";for(var i=0;i<data.apps.length;i++){apps=data.apps[i].name+"、";}apps=apps.substring(0,apps.length-1);self.apps=apps;self.update();});};modal.onClose=function(){};modal.onSubmit=function(){modal.close();};});riot.tag2('pop-coupon-reward','<div class="reward-pop"> <h2>优惠券：</h2> <h5>该奖励是系统自动发放优惠券给您的顾客。您依照优惠券使用方法核销即可。优惠券所产生的优惠金额由iPos承担。奖励收入为 优惠券实际使用金额。该金额会按时打入您的账户。请点击“奖励 收入”查看。</h5> <h2>优惠券详情:</h2> <h5> 金额：{info.totalPrice}元</h5> <h5> 有效时段：{info.beginTime} - {info.endTime}</h5> <h5> 获得条件：{info.getRules}</h5> <h5> 使用方式：{info.sourceDesc}</h5> <h5> 使用条件：{info.rules}</h5> <h2>奖励收入详情：</h2> <h5>已使用：{info.useNum?info.useNum:0} 张</h5> <h5>获得收入：￥{info.usePrice?info.usePrice:0}</h5> </div>','','',function(opts){var self=this;var modal=self.parent;modal.onOpen=function(params){var param={reachRecordId:params.rewardRecordId};_store.store.reward.info(param,function(data){self.info=data;self.update();});};modal.onClose=function(){self.info={};};modal.onSubmit=function(){modal.close();};});riot.tag2('pop-modify-phone','<div class="modify-pop"> <h4>验证手机号：</h4> <h5>已发送验证码到店铺手机号{phone}，请输入验证码</h5> <div class="modify-phone"> <span class="input"> <input type="tel" name="" value="" id="code"> </span> <span id="countDown" if="{isCounting}">{countNum}</span> <span if="{isCounting}">s</span> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var parent=self.parent.parent;self.isCounting=true;self.countNum=60;var csetTime;modal.onOpen=function(params){clearTimeout(csetTime);self.incomePhone=params.incomePhone;self.type=params.type;var phone=self.incomePhone.toString();self.phone=phone.substring(0,3)+"XXXX"+phone.substring(7,11);self.isCounting=true;self.countNum=60;self.update();countDown();};function countDown(){var count=(0,_jquery2.default)('#countDown');if(count[0]){count.text(self.countNum--);if(self.countNum>-1){csetTime=setTimeout(countDown,1000);}else{self.isCounting=false;self.update();}}}modal.onClose=function(){(0,_jquery2.default)("pop-modify-phone").find("input").val("");clearTimeout(csetTime);};modal.onSubmit=function(){var param={phoneMobile:self.incomePhone};var code=(0,_jquery2.default)("#code").val();if(!code){_utils2.default.toast("请填写验证码");return;}param.code=code;_store.store.mobileVerify.get(param,function(data){if(self.type==1){parent.addCard();}else{parent.account=false;parent.accountEdit=true;parent.update();}modal.close();});};});riot.tag2('address-select','<div class="scroll-wrap"> <div class="scroll-content"> <div> <ul type="levelOne"> <li each="{region.levelOne}" code="{code}"> {name}</li> </ul> </div> <div> <ul type="levelTwo"> <li if="{!region.levelTwo.length}"> -- </li> <li if="{region.levelTwo.length}" each="{region.levelTwo}" code="{code}"> {name}</li> </ul> </div> <div> <ul type="levelThree"> <li if="{!region.levelThree.length}"> -- </li> <li if="{region.levelThree.length}" each="{region.levelThree}" code="{code}"> {name}</li> </ul> </div> <p></p> </div> </div>','','',function(opts){var hasTouch=!!('ontouchstart'in window||window.DocumentTouch&&document instanceof window.DocumentTouch);var startEvt=hasTouch?'touchstart':'mousedown';var moveEvt=hasTouch?'touchmove':'mousemove';var endEvt=hasTouch?'touchend':'mouseup';var self=this;var modal=self.parent;self.on('mount',function(){_riotSeedFlux2.default.bind.call(self,{name:'region',store:_store.store.region,success:function success(){self.update();}});_riotSeedFlux2.default.bind.call(self,{name:'register',store:_store.store.register,success:function success(){self.update();}});bind();});function bind(){self.scale=40;(0,_jquery2.default)(self.root).find('ul').bind(startEvt,start);}function start(e){var e=window.event;self.target=(0,_jquery2.default)(e.target).parents('ul:first');self.startY=hasTouch&&e.targetTouches?e.targetTouches[0].pageY:e.pageY;self.top=parseInt(self.target.css('top'));self.max=self.target.height();if(self.max==self.scale){return;}(0,_jquery2.default)(window).bind(moveEvt,move);(0,_jquery2.default)(window).bind(endEvt,end);}function end(e){(0,_jquery2.default)(window).unbind(moveEvt);(0,_jquery2.default)(window).unbind(endEvt);self.top=parseInt(self.target.css('top'));var index=Math.round(Math.abs(self.top-self.scale)/self.scale);var left=Math.abs(self.scale*(1-index)-self.top);self.top=self.scale*(1-index);self.target.css('top',self.top);self.target.attr('idx',index);var key=self.target.attr('type');_store.store.region.setCurrent(key,self.region[key][index]);}function move(e){var e=window.event;e.preventDefault();self.offsetY=hasTouch&&e.targetTouches?e.targetTouches[0].pageY-self.startY:e.pageY-self.startY;var target=self.target;var topY=self.top+self.offsetY;if(topY<=self.scale&&topY>=self.scale*2-self.max){target.css('top',topY);}}modal.onSubmit=function(){var current=self.region.current;var addressCode=[];var addressValue=[];addressCode.push(current['levelOne']['code']);addressCode.push(current['levelTwo']['code']);addressCode.push(current['levelThree']['code']);addressValue.push(current['levelOne']['name']);addressValue.push(current['levelTwo']['name']);addressValue.push(current['levelThree']['name']);_store.store.register.set('addressCode',addressCode.join(','));modal.parent.addressCode=addressCode.join(',');modal.parent.newAddressCode=addressCode.join(',');modal.parent.addressValue=addressValue.join(',');modal.parent.addressValueWithoutSep=addressValue.join('');modal.parent.update();modal.root.close();};});riot.tag2('warning','<div class="warning" id="login-warning" style="display:none"> <h2>提示</h2> <p>{opts.msg}</p> <a class="red-box" onclick="{close}">知道了</a> </div>','','',function(opts){var self=this;self.root.open=function(){self.update();(0,_jquery2.default)('#login-warning').show();};self.close=self.root.close=function(){(0,_jquery2.default)('#login-warning').hide();};self.parent.on('update',function(){self.opts=self.opts?self.opts.opts:{};});});riot.tag2('add-price','<div class="wrap"> <div class="content"> <label for="priceNoName">请填写商品进价：</label> <input id="addPriceInput" name="price" type="tel" maxlength="20"> </div> </div>','','',function(opts){var self=this;var modal=self.parent;var product=self.parent.parent;modal.onOpen=function(params){(0,_jquery2.default)("#addPriceInput").focus();self.params=params;self.update();};modal.onClose=function(){(0,_jquery2.default)("#addPriceInput").val("");self.params="";self.update();};modal.onSubmit=function(){var input=(0,_jquery2.default)("#addPriceInput").val().trim();if(/^(0|[1-9][0-9]{0,9})(\.[0-9]{1,2})?$/.test(input)){self.params.purchasePrice=input;_store.store.goods.updateforstor(self.params,function(){_utils2.default.toast('保存成功');product.goodsAdd(self.params);modal.close();self.params="";self.update();});}else{_utils2.default.toast("请输入正确的价格");}};});
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
@@ -3622,11 +3622,18 @@
 
 	var store = {};
 	if (window.navigator.userAgent.match(/Cordova/)) {
-	    var api = __webpack_require__(11);
+	    var api = __webpack_require__(12);
 	    store.online = true;
 	} else {
-	    var api = __webpack_require__(12);
-	    store.online = false;
+	    if (_utils2.default.isAndroid()) {
+	        // Android 环境
+	        var api = __webpack_require__(11);
+	        store.online = true;
+	    } else {
+	        // pc 端
+	        var api = __webpack_require__(13);
+	        store.online = false;
+	    }
 	}
 	_riotSeedFlux2.default.config.refresh = true;
 
@@ -3634,12 +3641,6 @@
 	    return function (opts) {
 	        var url = opts.url;
 	        if (url.match(/\//)) {
-	            //	        if(store.online && url.indexOf('pos')>-1){
-	            //		        	var storeUrl = url.split('pos');
-	            //		        if(window.baseUrl || utils.iposHeader()){
-	            //		        		url = (window.baseUrl?window.baseUrl:utils.iposHeader()) + storeUrl[1];
-	            //		        }
-	            //      		}
 	            _jquery2.default[type]({
 	                url: url,
 	                data: opts.params,
@@ -3652,7 +3653,8 @@
 	                    if (res.code === 1) {
 	                        opts.success && opts.success(res);
 	                    } else if (res.code === 10005) {
-	                        location.href = "#login";
+	                        // location.href = "#login";
+	                        _utils2.default.androidBridge(api.goLogin);
 	                    } else if (res.code === 10002) {
 	                        _utils2.default.toast('您没有该权限');
 	                    } else if (res.msg) {
@@ -3660,9 +3662,6 @@
 	                    }
 	                },
 	                error: function error(err) {
-	                    // if(err.responseJSON.code ===10005 ){
-	                    // 	location.replace("#login");
-	                    // }
 	                    opts.error && opts.error(err);
 	                },
 	                complete: function complete(XMLHttpRequest, status) {
@@ -3677,8 +3676,10 @@
 	                }
 	            });
 	        } else {
-	            var parts = url.split('.');
-	            window[parts[0]][parts[1]](function (res) {
+	            console.log(url + "----------http-get-------" + JSON.stringify(opts.params));
+	            _utils2.default.androidBridge(url, opts.params, function (res) {
+	                res = JSON.parse(res);
+	                console.log("----------------------res---" + JSON.stringify(res));
 	                if (opts.complete) {
 	                    opts.complete && opts.complete(res);
 	                    return;
@@ -3686,15 +3687,36 @@
 	                if (res.code == 1) {
 	                    opts.success && opts.success(res);
 	                } else if (res.code === 10005) {
-	                    location.href = "#login";
+	                    // location.href = "#login";
+	                    _utils2.default.androidBridge(api.goLogin);
 	                } else if (res.code === 10002) {
 	                    _utils2.default.toast('您没有该权限');
 	                } else if (res.msg) {
 	                    _utils2.default.toast(res.msg);
 	                }
-	            }, function (err) {
-	                opts.error && opts.error(err);
-	            }, opts.params);
+	            });
+	            // var parts = url.split('.')
+	            // window[parts[0]][parts[1]](
+	            //     function(res) {
+	            //         if (opts.complete) {
+	            //             opts.complete && opts.complete(res);
+	            //             return;
+	            //         }
+	            //         if (res.code == 1) {
+	            //             opts.success && opts.success(res);
+	            //         } else if (res.code === 10005) {
+	            //             location.href = "#login";
+	            //         } else if (res.code === 10002) {
+	            //             utils.toast('您没有该权限');
+	            //         } else if (res.msg) {
+	            //             utils.toast(res.msg);
+	            //         }
+	            //     },
+	            //     function(err) {
+	            //         opts.error && opts.error(err);
+	            //     },
+	            //     opts.params
+	            // );
 	        }
 	    };
 	};
@@ -15242,7 +15264,7 @@
 
 /***/ },
 /* 10 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -15332,22 +15354,17 @@
 
 	    //用于向服务端同步数据
 	    sync: function sync(type) {
-	        if (window.Icommon) {
-	            Icommon.syn(null, null, {
-	                name: type
-	            });
-	        }
+	        var api = __webpack_require__(11);
+	        getWebViewJavascriptBridge(api.syn, { name: type });
 	    },
 
 	    loadShow: function loadShow() {
-	        if (window.Iprogress) {
-	            Iprogress.show();
-	        }
+	        var api = __webpack_require__(11);
+	        getWebViewJavascriptBridge(api.show);
 	    },
 	    loadHide: function loadHide() {
-	        if (window.Iprogress) {
-	            Iprogress.dismiss();
-	        }
+	        var api = __webpack_require__(11);
+	        getWebViewJavascriptBridge(api.dismiss);
 	    },
 	    iposHeader: function iposHeader() {
 	        if (window.Icommon) {
@@ -15362,14 +15379,291 @@
 	            //  			return  "http://zm.store.meilizongjian.com/pos/";
 	            return false;
 	        }
+	    },
+	    androidBridge: function androidBridge(url, params, callback) {
+	        if (window.WebViewJavascriptBridge) {
+	            window.WebViewJavascriptBridge.callHandler(url, params, function (res) {
+	                callback(res);
+	            });
+	        } else {
+	            document.addEventListener('WebViewJavascriptBridgeReady', function () {
+	                setTimeout(function () {
+	                    window.WebViewJavascriptBridge.callHandler(url, params, function (res) {
+	                        callback(res);
+	                    });
+	                }, 20);
+	            }, false);
+	        }
+	    },
+	    setTitle: function setTitle(link, name) {
+	        var api = __webpack_require__(11);
+	        getWebViewJavascriptBridge(api.setTitle, { title: name });
+	        location.href = link;
+	    },
+	    isAndroid: function isAndroid() {
+	        var u = navigator.userAgent;
+	        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+	        return isAndroid;
 	    }
-
 	};
-
+	function getWebViewJavascriptBridge(url, params, callback) {
+	    if (window.WebViewJavascriptBridge) {
+	        window.WebViewJavascriptBridge.callHandler(url, params, function (res) {
+	            callback(res);
+	        });
+	    } else {
+	        document.addEventListener('WebViewJavascriptBridgeReady', function () {
+	            setTimeout(function () {
+	                window.WebViewJavascriptBridge.callHandler(url, params, function (res) {
+	                    callback(res);
+	                });
+	            }, 20);
+	        }, false);
+	    }
+	}
 	exports.default = utils;
 
 /***/ },
 /* 11 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	//var iposHeader = "http://192.168.1.50:8081/admin";
+	// var iposHeader= "http://192.168.1.154:8080/pos";
+	//var iposHeader= "http://zm.store.meilizongjian.com/pos";
+	// var iposHeader = "http://jingjing.ipos.com/pos";
+	// window.iposHeader = "http://60.205.106.238:8080/pos";			//pos测试环境地址(原服务器)
+
+	// if (location.host.match(/localhost/)) {
+	// 	window.iposHeader = "http://" + location.host + "/pos";
+	// }
+	// else {
+	window.iposHeader = "http://hsy.pos.ipos100.cn/pos"; //pos正式环境
+	// window.iposHeader = "http://116.62.8.82:8080/pos";			//pos测试环境地址(现服务器IP)
+
+	// window.iposHeader = "http://192.168.1.154:8080/pos";
+	// window.iposHeader = "http://dev.hsy.pos.ipos100.cn/pos"	//pos测试环境地址(现服务器IP,统一用域名)
+	// }
+	// var iposHeader = "http://101.201.43.34:8080/pos";
+	// var iposHeader = "/posc";
+
+	var onlineApi = {
+		//qiniu token
+		qiniuToken: 'qiniu/uptoken', // 7牛上传图片token
+		//search
+		searchGoods: 'goodsSearch',
+
+		//weather
+		weather: 'store/weather', //天气
+		//store/login
+		login: 'login',
+		cdkey: 'store/cdkey/verify', //注册激活码
+
+		logout: 'logout',
+		lastLogin: 'lastLogin',
+		register: 'store/register/commit', //注册提交
+		registerNext: 'store/register/next', //注册下一步
+		sendCode: 'store/checkcode/send', //短信验证码
+		//region
+		region: 'store/region/list', //地址
+
+		pwdCode: 'store/pwdfind/sendcode', //找回密码短信验证码
+		pwdSet: 'store/pwdfind/commit', //找回密码提交
+
+		auth: 'userPermissionCodes',
+
+		//goods
+		goods: 'goodsList', // 商品列表－－1－－－－－－－－－－－－－－－
+		goodsTop: 'goodsToplist',
+		goodDetail: 'goodsGet', // 详情 ---2--------
+		goodSearch: 'goodsSearch',
+		category: 'goodsCategoryList', // fenl－－－3－－－－－－
+		categoryAll: 'goodsCategoryListAdd',
+		deleteGood: 'goods/del', //删除商品
+		createGood: 'goods/addOrUpdate', //添加或更新商品
+		updateGood: 'goods/addOrUpdate',
+		goodByBarcode: 'goodsGetByBarcode', // ----------4----------
+		goodBySpecBarcode: 'goods/spec/getByBarcode', //获取spu库商品信息
+		goodImport: 'goods/import', //商品导入
+
+		//设备管理：
+		printerInfo: 'getPrint', // -------5
+		printTest: 'testPrint', // --------6
+		switchPrinter: 'setPrint', //---------7－－－－不用
+		printQr: 'setPrintQr', ///---------8
+		printBill: 'setPrintBill', //----------9
+		printLogout: 'printLogout', //退出账户时打印小票
+
+		//销售单/退货单
+		salesOrder: 'billListByDate', //--------10
+		orderGoods: 'billGoodsList', //--------11
+		printOrder: 'billPrint', //---------12
+
+		//employee
+		employees: 'userList',
+		updateEmployee: 'user/addOrUpdate', //员工添加或更新
+		delEmployee: 'user/del', //员工删除
+
+		//store message
+		storeMessage: 'storeGet', //--------13
+		updateMessage: 'store/update', //店铺更新
+		showAds: 'showAds',
+
+		//shoppingcart
+		listCart: 'shoppingcartList',
+		changeCart: 'shoppingcartChange',
+		clearCart: 'shoppingcartClear',
+
+		addCart: 'shoppingcartGoodsIncr',
+		reduceCart: 'shoppingcartGoodsDecr',
+		addNoName: 'shoppingcartAddMoney',
+
+		cartByScan: 'shoppingcartEnterAndAdd',
+		openBox: 'openBox',
+		addBill: 'tmpbillAdd',
+		reviewBill: 'tmpbillTakeAndDel',
+		listBill: 'tmpbillList',
+
+		closeRefund: 'refundClose',
+		startRefund: 'refundBillopen',
+
+		setPay: 'billChange',
+		changePay: 'payChangePayment',
+		discountPay: 'payDiscount',
+		wipePay: 'payWipe',
+		payCoupon: 'payCoupon',
+		payVip: 'payVip',
+
+		commitPay: 'payCommit',
+		commitPayNew: 'payCommit',
+		modifyCartQuantity: 'shoppingcartGoodsQuantityModify', // 修改购物车数量
+		shoppingcartGoodsPriceModify: 'shoppingcartGoodsPriceModify', //结算时临时修改商品价格
+
+		//通道sys/set
+		sysSet: 'sendInfo',
+		sysGet: 'sys/get', //－－－－－－－－－－无用
+
+		//订单
+
+		orderHistory: 'order/history', //历史订单
+		orderToday: 'order/today', //今日订单
+		orderRefuse: 'order/refuse', //拒绝订单
+		orderCancel: 'order/cancel', //取消订单
+		orderInvalid: 'order/invalid', //订单无效
+		orderConfirm: 'order/confirm', //确认订单
+		orderComplete: 'order/complete', //完成订单
+		upCanOrder: 'order/upCanOrder', //改变接单状态
+		storeInfo: 'order/storeInfo', //店铺信息
+		orderConfirmed: 'order/toBeConfirmed', //待处理订单数量
+		newOrderHint: 'order/newOrderHint', //新订单通知
+		printOrderDetail: 'printOrder', //打印订单   ----------14
+		gooduuidByBarcode: 'goodsGetByBarcode', //获取店铺数据
+
+
+		//库存
+
+		stockAdd: "stock/goods/add", // 入库添加商品
+		stockIncr: "stock/goods/incr", // 增加商品数量
+		stockDecr: "stock/goods/decr", //减少商品数量
+		stockCommit: "stock/commit", //生成库存单据
+		stockClear: "stock/clear", //清空购物车
+		stockChangeNum: 'stock/goods/update', //修改出库入库商品数量
+
+
+		stockListByDate: "stock/listByDate", //查询库存单据
+		stockGoodsList: "stock/goods/list", //库存单据商品列表
+
+		supplierAddOrUpdate: "supplier/addOrUpdate", //供应商添加或更新
+		supplierDel: "supplier/del", //删除供应商
+		supplierList: "supplier/list", //供应商列表
+
+		// 我的数据
+		dataDashboard: "data/dashboard",
+		shiftRecordByDate: 'shiftRecordByDate', //交接班的订单----------------------15
+		//2.4 经营助手
+		getWeekSale: "data/sales/rank/date", //1.本周排名
+		saleByDate: "data/sales/simple/info", //2.按日期查销售额
+		weekMembers: "data/member/simple/info", //6.会员、订单简报
+		goodsRank: "data/sales/goods/rank", //5、商品销售排名
+		channelSale: "data/sales/channel/info", //3、分渠道销售情况
+		categoryScale: "data/sales/category/scale", //4.各分类销售占比
+		bestWarning: "data/sales/best/warning", //7、畅销商品库存预警
+		dullWarning: "data/sales/dull/warning", //8、滞销商品提醒
+		categoryRank: "data/sales/goods/rank/category", //9、排名商品分类
+		//down
+		downTemplateExcel: "downTemplateExcel", //-------------16
+		importTemplate: "goods/importTemplate", //模板链接
+		synTask: "synTask", //同步商品接口－－有返回值-----------17
+		downloadApp: "download", //下载app
+		unInstall: "unInstall", //删除app
+		downRegister: "register", //注册下载－－暂时没用
+		appList: "app/list", //app列表
+		getappinfo: "getappinfo", //app已下载列表
+		showPayQrCode: "storeQrInfoGet", //获取店铺支付二维码--------------18
+
+		judgeBqCommercial: "judgeBqCommercial", //获取是否是倍全店
+		iposHeader: "getServiceHost", //获取服务器地址
+
+		setOrderPrintState: "setOrderPrintState", //设置订单点确认打印------------19
+		getOrderPrintState: "getOrderPrintState", //获取设置订单点确认打印状态----------20
+		checkAppUpdateState: "checkAppUpdateState", //查看版本更新
+		initPush: "initPush", //首次
+
+		getGoodsCountByCateId: "getGoodsCountByCateId", //商品分类数量-----------21
+
+		//2.0
+		couponVerify: "pay/coupon/verify", //优惠券接口
+
+		couponList: "store/coupon/list", //优惠券列表
+		couponInfo: "store/coupon/info", //优惠券详情
+		couponStop: "store/coupon/grant/stop", //停止发放优惠券
+		couponCreate: "store/coupon/grant/create", //创建优惠券
+		memberVerify: "store/member/verify", //结算单会员登录
+
+		attainList: "store/attain/list", //成就列表
+		attainReward: "store/attain/task/reach", //领取奖励
+		rewardList: "store/reach/reward/list", //奖励列表
+		rewardInfo: "store/reach/reward/info", //奖励详情
+		record: "store/entity/record", // 打点
+
+		mobileVerify: "store/mobile/verify", //验证店老板修改奖励发放账户验证码
+		rewardIncomeList: "store/reward/income/list", //奖励收入记录
+		bankCardAdd: "store/bank/card/add", //绑定银行卡
+		bankCardUpdate: "store/bank/card/update", //修改绑定银行卡
+		bankCard: "store/bank/card", //查询银行卡绑定信息
+		changeCardCodeSend: "store/changeCardCode/send", //发送验证码
+		advIncomeList: "store/adv/income/list", //广告收入
+		globalIncomeList: "store/global/income/list", //全球购收入
+
+		openSetting: 'openSetting', // 打开设置
+		statisticalEvent: 'statisticalEvent', //shop-message 埋点
+		logEvent: 'logEvent', //埋点
+		getImei: 'getImei', //
+		lockScreen: 'lockScreen', //锁屏
+		//ipos重构
+		salePrintBill: 'printBill', //打印订单，结算单
+		//下载进度
+		dismiss: 'dismiss', //进度条
+		show: 'show',
+		syn: 'syn', //同步
+		printLogoutByUuid: 'printLogoutByUuid', //员工数据打印
+		goLogin: 'goLogin', //跳转登陆页面
+		setTitle: 'setTitle', //设置标题
+		updateNum: 'updateNum', //确认订单传side数量
+		payQrInfoGet: 'payQrInfoGet' };
+
+	for (var i in onlineApi) {
+		//如果匹配到/，则认为是远程接口
+		if (onlineApi[i].match(/\//)) {
+			onlineApi[i] = iposHeader + '/' + onlineApi[i];
+		}
+	}
+
+	module.exports = onlineApi;
+
+/***/ },
+/* 12 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15587,7 +15881,7 @@
 	module.exports = onlineApi;
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15779,7 +16073,7 @@
 	module.exports = serverApi;
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15803,33 +16097,33 @@
 	exports.default = CONSTANT;
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Export echarts as CommonJS module
 	 */
-	module.exports = __webpack_require__(15);
+	module.exports = __webpack_require__(16);
 
-	__webpack_require__(110);
-	__webpack_require__(146);
-	__webpack_require__(151);
-	__webpack_require__(160);
-	__webpack_require__(164);
-	__webpack_require__(168);
+	__webpack_require__(111);
+	__webpack_require__(147);
+	__webpack_require__(152);
+	__webpack_require__(161);
+	__webpack_require__(165);
+	__webpack_require__(169);
 
-	__webpack_require__(125);
-	__webpack_require__(174);
-
+	__webpack_require__(126);
 	__webpack_require__(175);
-	__webpack_require__(179);
-	__webpack_require__(185);
-	__webpack_require__(201);
 
-	__webpack_require__(216);
+	__webpack_require__(176);
+	__webpack_require__(180);
+	__webpack_require__(186);
+	__webpack_require__(202);
+
+	__webpack_require__(217);
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -15847,23 +16141,23 @@
 	 */
 
 
-	    var GlobalModel = __webpack_require__(16);
-	    var ExtensionAPI = __webpack_require__(37);
-	    var CoordinateSystemManager = __webpack_require__(38);
-	    var OptionManager = __webpack_require__(39);
+	    var GlobalModel = __webpack_require__(17);
+	    var ExtensionAPI = __webpack_require__(38);
+	    var CoordinateSystemManager = __webpack_require__(39);
+	    var OptionManager = __webpack_require__(40);
 
-	    var ComponentModel = __webpack_require__(32);
-	    var SeriesModel = __webpack_require__(40);
+	    var ComponentModel = __webpack_require__(33);
+	    var SeriesModel = __webpack_require__(41);
 
-	    var ComponentView = __webpack_require__(41);
-	    var ChartView = __webpack_require__(54);
-	    var graphic = __webpack_require__(55);
+	    var ComponentView = __webpack_require__(42);
+	    var ChartView = __webpack_require__(55);
+	    var graphic = __webpack_require__(56);
 
-	    var zrender = __webpack_require__(93);
-	    var zrUtil = __webpack_require__(17);
-	    var colorTool = __webpack_require__(51);
-	    var env = __webpack_require__(94);
-	    var Eventful = __webpack_require__(45);
+	    var zrender = __webpack_require__(94);
+	    var zrUtil = __webpack_require__(18);
+	    var colorTool = __webpack_require__(52);
+	    var env = __webpack_require__(95);
+	    var Eventful = __webpack_require__(46);
 
 	    var each = zrUtil.each;
 
@@ -16374,7 +16668,7 @@
 	        this._loadingFX && this._loadingFX.resize();
 	    };
 
-	    var defaultLoadingEffect = __webpack_require__(106);
+	    var defaultLoadingEffect = __webpack_require__(107);
 	    /**
 	     * Show loading effect
 	     * @param  {string} [name='default']
@@ -17081,9 +17375,9 @@
 	    };
 
 	    echarts.registerVisualCoding('echarts', zrUtil.curry(
-	        __webpack_require__(107), '', 'itemStyle'
+	        __webpack_require__(108), '', 'itemStyle'
 	    ));
-	    echarts.registerPreprocessor(__webpack_require__(108));
+	    echarts.registerPreprocessor(__webpack_require__(109));
 
 	    // Default action
 	    echarts.registerAction({
@@ -17102,11 +17396,11 @@
 	    // Exports
 	    // --------
 
-	    echarts.graphic = __webpack_require__(55);
-	    echarts.number = __webpack_require__(20);
-	    echarts.format = __webpack_require__(19);
-	    echarts.matrix = __webpack_require__(30);
-	    echarts.vector = __webpack_require__(29);
+	    echarts.graphic = __webpack_require__(56);
+	    echarts.number = __webpack_require__(21);
+	    echarts.format = __webpack_require__(20);
+	    echarts.matrix = __webpack_require__(31);
+	    echarts.vector = __webpack_require__(30);
 
 	    echarts.util = {};
 	    each([
@@ -17123,7 +17417,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17135,9 +17429,9 @@
 
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var modelUtil = __webpack_require__(18);
-	    var Model = __webpack_require__(21);
+	    var zrUtil = __webpack_require__(18);
+	    var modelUtil = __webpack_require__(19);
+	    var Model = __webpack_require__(22);
 	    var each = zrUtil.each;
 	    var filter = zrUtil.filter;
 	    var map = zrUtil.map;
@@ -17145,9 +17439,9 @@
 	    var indexOf = zrUtil.indexOf;
 	    var isObject = zrUtil.isObject;
 
-	    var ComponentModel = __webpack_require__(32);
+	    var ComponentModel = __webpack_require__(33);
 
-	    var globalDefault = __webpack_require__(36);
+	    var globalDefault = __webpack_require__(37);
 
 	    var OPTION_INNER_KEY = '\0_ec_inner';
 
@@ -17880,7 +18174,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/**
@@ -18377,14 +18671,14 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var formatUtil = __webpack_require__(19);
-	    var nubmerUtil = __webpack_require__(20);
-	    var zrUtil = __webpack_require__(17);
+	    var formatUtil = __webpack_require__(20);
+	    var nubmerUtil = __webpack_require__(21);
+	    var zrUtil = __webpack_require__(18);
 
 	    var AXIS_DIMS = ['x', 'y', 'z', 'radius', 'angle'];
 
@@ -18776,13 +19070,13 @@
 
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var numberUtil = __webpack_require__(21);
 
 	    /**
 	     * 每三位默认加,格式化
@@ -18943,7 +19237,7 @@
 
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/**
@@ -19143,7 +19437,7 @@
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19151,8 +19445,8 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var clazzUtil = __webpack_require__(22);
+	    var zrUtil = __webpack_require__(18);
+	    var clazzUtil = __webpack_require__(23);
 
 	    /**
 	     * @alias module:echarts/model/Model
@@ -19296,21 +19590,21 @@
 	    clazzUtil.enableClassExtend(Model);
 
 	    var mixin = zrUtil.mixin;
-	    mixin(Model, __webpack_require__(23));
-	    mixin(Model, __webpack_require__(25));
+	    mixin(Model, __webpack_require__(24));
 	    mixin(Model, __webpack_require__(26));
-	    mixin(Model, __webpack_require__(31));
+	    mixin(Model, __webpack_require__(27));
+	    mixin(Model, __webpack_require__(32));
 
 	    module.exports = Model;
 
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    var clazz = {};
 
@@ -19513,11 +19807,11 @@
 
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var getLineStyle = __webpack_require__(24)(
+	    var getLineStyle = __webpack_require__(25)(
 	        [
 	            ['lineWidth', 'width'],
 	            ['stroke', 'color'],
@@ -19545,13 +19839,13 @@
 
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TODO Parse shadow style
 	// TODO Only shallow path support
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    module.exports = function (properties) {
 	        // Normalize
@@ -19578,12 +19872,12 @@
 
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	    module.exports = {
-	        getAreaStyle: __webpack_require__(24)(
+	        getAreaStyle: __webpack_require__(25)(
 	            [
 	                ['fill', 'color'],
 	                ['shadowBlur'],
@@ -19597,12 +19891,12 @@
 
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var textContain = __webpack_require__(27);
+	    var textContain = __webpack_require__(28);
 
 	    function getShallow(model, path) {
 	        return model && model.getShallow(path);
@@ -19654,7 +19948,7 @@
 
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -19663,8 +19957,8 @@
 	    var textWidthCacheCounter = 0;
 	    var TEXT_CACHE_MAX = 5000;
 
-	    var util = __webpack_require__(17);
-	    var BoundingRect = __webpack_require__(28);
+	    var util = __webpack_require__(18);
+	    var BoundingRect = __webpack_require__(29);
 	    var retrieve = util.retrieve;
 
 	    function getTextWidth(text, textFont) {
@@ -19935,7 +20229,7 @@
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19944,8 +20238,8 @@
 	 */
 
 
-	    var vec2 = __webpack_require__(29);
-	    var matrix = __webpack_require__(30);
+	    var vec2 = __webpack_require__(30);
+	    var matrix = __webpack_require__(31);
 
 	    var v2ApplyTransform = vec2.applyTransform;
 	    var mathMin = Math.min;
@@ -20130,7 +20424,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports) {
 
 	
@@ -20416,7 +20710,7 @@
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	
@@ -20580,12 +20874,12 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	    module.exports = {
-	        getItemStyle: __webpack_require__(24)(
+	        getItemStyle: __webpack_require__(25)(
 	            [
 	                ['fill', 'color'],
 	                ['stroke', 'borderColor'],
@@ -20601,7 +20895,7 @@
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20611,12 +20905,12 @@
 	 */
 
 
-	    var Model = __webpack_require__(21);
-	    var zrUtil = __webpack_require__(17);
+	    var Model = __webpack_require__(22);
+	    var zrUtil = __webpack_require__(18);
 	    var arrayPush = Array.prototype.push;
-	    var componentUtil = __webpack_require__(33);
-	    var clazzUtil = __webpack_require__(22);
-	    var layout = __webpack_require__(34);
+	    var componentUtil = __webpack_require__(34);
+	    var clazzUtil = __webpack_require__(23);
+	    var layout = __webpack_require__(35);
 
 	    /**
 	     * @alias module:echarts/model/Component
@@ -20780,19 +21074,19 @@
 	        });
 	    }
 
-	    zrUtil.mixin(ComponentModel, __webpack_require__(35));
+	    zrUtil.mixin(ComponentModel, __webpack_require__(36));
 
 	    module.exports = ComponentModel;
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var clazz = __webpack_require__(22);
+	    var zrUtil = __webpack_require__(18);
+	    var clazz = __webpack_require__(23);
 
 	    var parseClassType = clazz.parseClassType;
 
@@ -20967,17 +21261,17 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// Layout helpers for each component positioning
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var BoundingRect = __webpack_require__(28);
-	    var numberUtil = __webpack_require__(20);
-	    var formatUtil = __webpack_require__(19);
+	    var zrUtil = __webpack_require__(18);
+	    var BoundingRect = __webpack_require__(29);
+	    var numberUtil = __webpack_require__(21);
+	    var formatUtil = __webpack_require__(20);
 	    var parsePercent = numberUtil.parsePercent;
 	    var each = zrUtil.each;
 
@@ -21372,7 +21666,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	
@@ -21392,7 +21686,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	
@@ -21441,13 +21735,13 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    var echartsAPIList = [
 	        'getDom', 'getZr', 'getWidth', 'getHeight', 'dispatchAction',
@@ -21464,7 +21758,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -21513,7 +21807,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21524,9 +21818,9 @@
 
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var modelUtil = __webpack_require__(18);
-	    var ComponentModel = __webpack_require__(32);
+	    var zrUtil = __webpack_require__(18);
+	    var modelUtil = __webpack_require__(19);
+	    var ComponentModel = __webpack_require__(33);
 	    var each = zrUtil.each;
 	    var clone = zrUtil.clone;
 	    var map = zrUtil.map;
@@ -21944,16 +22238,16 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var formatUtil = __webpack_require__(19);
-	    var modelUtil = __webpack_require__(18);
-	    var ComponentModel = __webpack_require__(32);
+	    var zrUtil = __webpack_require__(18);
+	    var formatUtil = __webpack_require__(20);
+	    var modelUtil = __webpack_require__(19);
+	    var ComponentModel = __webpack_require__(33);
 
 	    var encodeHTML = formatUtil.encodeHTML;
 	    var addCommas = formatUtil.addCommas;
@@ -22157,14 +22451,14 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var Group = __webpack_require__(42);
-	    var componentUtil = __webpack_require__(33);
-	    var clazzUtil = __webpack_require__(22);
+	    var Group = __webpack_require__(43);
+	    var componentUtil = __webpack_require__(34);
+	    var clazzUtil = __webpack_require__(23);
 
 	    var Component = function () {
 	        /**
@@ -22208,7 +22502,7 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22231,9 +22525,9 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var Element = __webpack_require__(43);
-	    var BoundingRect = __webpack_require__(28);
+	    var zrUtil = __webpack_require__(18);
+	    var Element = __webpack_require__(44);
+	    var BoundingRect = __webpack_require__(29);
 
 	    /**
 	     * @alias module:zrender/graphic/Group
@@ -22524,7 +22818,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22533,11 +22827,11 @@
 	 */
 
 
-	    var guid = __webpack_require__(44);
-	    var Eventful = __webpack_require__(45);
-	    var Transformable = __webpack_require__(46);
-	    var Animatable = __webpack_require__(47);
-	    var zrUtil = __webpack_require__(17);
+	    var guid = __webpack_require__(45);
+	    var Eventful = __webpack_require__(46);
+	    var Transformable = __webpack_require__(47);
+	    var Animatable = __webpack_require__(48);
+	    var zrUtil = __webpack_require__(18);
 
 	    /**
 	     * @alias module:zrender/Element
@@ -22792,7 +23086,7 @@
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports) {
 
 	/**
@@ -22811,7 +23105,7 @@
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/**
@@ -23114,7 +23408,7 @@
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23125,8 +23419,8 @@
 	 */
 
 
-	    var matrix = __webpack_require__(30);
-	    var vector = __webpack_require__(29);
+	    var matrix = __webpack_require__(31);
+	    var vector = __webpack_require__(30);
 	    var mIdentity = matrix.identity;
 
 	    var EPSILON = 5e-5;
@@ -23370,7 +23664,7 @@
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23379,12 +23673,12 @@
 	 */
 
 
-	    var Animator = __webpack_require__(48);
-	    var util = __webpack_require__(17);
+	    var Animator = __webpack_require__(49);
+	    var util = __webpack_require__(18);
 	    var isString = util.isString;
 	    var isFunction = util.isFunction;
 	    var isObject = util.isObject;
-	    var log = __webpack_require__(52);
+	    var log = __webpack_require__(53);
 
 	    /**
 	     * @alias modue:zrender/mixin/Animatable
@@ -23644,7 +23938,7 @@
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23652,9 +23946,9 @@
 	 */
 
 
-	    var Clip = __webpack_require__(49);
-	    var color = __webpack_require__(51);
-	    var util = __webpack_require__(17);
+	    var Clip = __webpack_require__(50);
+	    var color = __webpack_require__(52);
+	    var util = __webpack_require__(18);
 	    var isArrayLike = util.isArrayLike;
 
 	    var arraySlice = Array.prototype.slice;
@@ -24280,7 +24574,7 @@
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24299,7 +24593,7 @@
 	 */
 
 
-	    var easingFuncs = __webpack_require__(50);
+	    var easingFuncs = __webpack_require__(51);
 
 	    function Clip(options) {
 
@@ -24392,7 +24686,7 @@
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	/**
@@ -24743,7 +25037,7 @@
 
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	/**
@@ -25226,11 +25520,11 @@
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	        var config = __webpack_require__(53);
+	        var config = __webpack_require__(54);
 
 	        /**
 	         * @exports zrender/tool/log
@@ -25264,7 +25558,7 @@
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	
@@ -25296,14 +25590,14 @@
 
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var Group = __webpack_require__(42);
-	    var componentUtil = __webpack_require__(33);
-	    var clazzUtil = __webpack_require__(22);
+	    var Group = __webpack_require__(43);
+	    var componentUtil = __webpack_require__(34);
+	    var clazzUtil = __webpack_require__(23);
 
 	    function Chart() {
 
@@ -25435,55 +25729,55 @@
 
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
-	    var pathTool = __webpack_require__(56);
+	    var pathTool = __webpack_require__(57);
 	    var round = Math.round;
-	    var Path = __webpack_require__(57);
-	    var colorTool = __webpack_require__(51);
-	    var matrix = __webpack_require__(30);
-	    var vector = __webpack_require__(29);
-	    var Gradient = __webpack_require__(73);
+	    var Path = __webpack_require__(58);
+	    var colorTool = __webpack_require__(52);
+	    var matrix = __webpack_require__(31);
+	    var vector = __webpack_require__(30);
+	    var Gradient = __webpack_require__(74);
 
 	    var graphic = {};
 
-	    graphic.Group = __webpack_require__(42);
+	    graphic.Group = __webpack_require__(43);
 
-	    graphic.Image = __webpack_require__(74);
+	    graphic.Image = __webpack_require__(75);
 
-	    graphic.Text = __webpack_require__(76);
+	    graphic.Text = __webpack_require__(77);
 
-	    graphic.Circle = __webpack_require__(77);
+	    graphic.Circle = __webpack_require__(78);
 
-	    graphic.Sector = __webpack_require__(78);
+	    graphic.Sector = __webpack_require__(79);
 
-	    graphic.Ring = __webpack_require__(79);
+	    graphic.Ring = __webpack_require__(80);
 
-	    graphic.Polygon = __webpack_require__(80);
+	    graphic.Polygon = __webpack_require__(81);
 
-	    graphic.Polyline = __webpack_require__(84);
+	    graphic.Polyline = __webpack_require__(85);
 
-	    graphic.Rect = __webpack_require__(85);
+	    graphic.Rect = __webpack_require__(86);
 
-	    graphic.Line = __webpack_require__(87);
+	    graphic.Line = __webpack_require__(88);
 
-	    graphic.BezierCurve = __webpack_require__(88);
+	    graphic.BezierCurve = __webpack_require__(89);
 
-	    graphic.Arc = __webpack_require__(89);
+	    graphic.Arc = __webpack_require__(90);
 
-	    graphic.CompoundPath = __webpack_require__(90);
+	    graphic.CompoundPath = __webpack_require__(91);
 
-	    graphic.LinearGradient = __webpack_require__(91);
+	    graphic.LinearGradient = __webpack_require__(92);
 
-	    graphic.RadialGradient = __webpack_require__(92);
+	    graphic.RadialGradient = __webpack_require__(93);
 
-	    graphic.BoundingRect = __webpack_require__(28);
+	    graphic.BoundingRect = __webpack_require__(29);
 
 	    /**
 	     * Extend shape with parameters
@@ -25920,15 +26214,15 @@
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var Path = __webpack_require__(57);
-	    var PathProxy = __webpack_require__(61);
-	    var transformPath = __webpack_require__(72);
-	    var matrix = __webpack_require__(30);
+	    var Path = __webpack_require__(58);
+	    var PathProxy = __webpack_require__(62);
+	    var transformPath = __webpack_require__(73);
+	    var matrix = __webpack_require__(31);
 
 	    // command chars
 	    var cc = [
@@ -26328,7 +26622,7 @@
 
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26338,12 +26632,12 @@
 
 
 
-	    var Displayable = __webpack_require__(58);
-	    var zrUtil = __webpack_require__(17);
-	    var PathProxy = __webpack_require__(61);
-	    var pathContain = __webpack_require__(64);
+	    var Displayable = __webpack_require__(59);
+	    var zrUtil = __webpack_require__(18);
+	    var PathProxy = __webpack_require__(62);
+	    var pathContain = __webpack_require__(65);
 
-	    var Pattern = __webpack_require__(71);
+	    var Pattern = __webpack_require__(72);
 	    var getCanvasPattern = Pattern.prototype.getCanvasPattern;
 
 	    var abs = Math.abs;
@@ -26693,7 +26987,7 @@
 
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26704,12 +26998,12 @@
 
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
-	    var Style = __webpack_require__(59);
+	    var Style = __webpack_require__(60);
 
-	    var Element = __webpack_require__(43);
-	    var RectText = __webpack_require__(60);
+	    var Element = __webpack_require__(44);
+	    var RectText = __webpack_require__(61);
 	    // var Stateful = require('./mixin/Stateful');
 
 	    /**
@@ -26967,7 +27261,7 @@
 
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	/**
@@ -27283,7 +27577,7 @@
 
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27293,8 +27587,8 @@
 
 
 
-	    var textContain = __webpack_require__(27);
-	    var BoundingRect = __webpack_require__(28);
+	    var textContain = __webpack_require__(28);
+	    var BoundingRect = __webpack_require__(29);
 
 	    var tmpRect = new BoundingRect();
 
@@ -27432,7 +27726,7 @@
 
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27447,11 +27741,11 @@
 	 // TODO getTotalLength, getPointAtLength
 
 
-	    var curve = __webpack_require__(62);
-	    var vec2 = __webpack_require__(29);
-	    var bbox = __webpack_require__(63);
-	    var BoundingRect = __webpack_require__(28);
-	    var dpr = __webpack_require__(53).devicePixelRatio;
+	    var curve = __webpack_require__(63);
+	    var vec2 = __webpack_require__(30);
+	    var bbox = __webpack_require__(64);
+	    var BoundingRect = __webpack_require__(29);
+	    var dpr = __webpack_require__(54).devicePixelRatio;
 
 	    var CMD = {
 	        M: 1,
@@ -28207,7 +28501,7 @@
 
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28218,7 +28512,7 @@
 	 */
 
 
-	    var vec2 = __webpack_require__(29);
+	    var vec2 = __webpack_require__(30);
 	    var v2Create = vec2.create;
 	    var v2DistSquare = vec2.distSquare;
 	    var mathPow = Math.pow;
@@ -28753,7 +29047,7 @@
 
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28761,8 +29055,8 @@
 	 */
 
 
-	    var vec2 = __webpack_require__(29);
-	    var curve = __webpack_require__(62);
+	    var vec2 = __webpack_require__(30);
+	    var curve = __webpack_require__(63);
 
 	    var bbox = {};
 	    var mathMin = Math.min;
@@ -28989,21 +29283,21 @@
 
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var CMD = __webpack_require__(61).CMD;
-	    var line = __webpack_require__(65);
-	    var cubic = __webpack_require__(66);
-	    var quadratic = __webpack_require__(67);
-	    var arc = __webpack_require__(68);
-	    var normalizeRadian = __webpack_require__(69).normalizeRadian;
-	    var curve = __webpack_require__(62);
+	    var CMD = __webpack_require__(62).CMD;
+	    var line = __webpack_require__(66);
+	    var cubic = __webpack_require__(67);
+	    var quadratic = __webpack_require__(68);
+	    var arc = __webpack_require__(69);
+	    var normalizeRadian = __webpack_require__(70).normalizeRadian;
+	    var curve = __webpack_require__(63);
 
-	    var windingLine = __webpack_require__(70);
+	    var windingLine = __webpack_require__(71);
 
 	    var containStroke = line.containStroke;
 
@@ -29395,7 +29689,7 @@
 
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports) {
 
 	
@@ -29443,12 +29737,12 @@
 
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var curve = __webpack_require__(62);
+	    var curve = __webpack_require__(63);
 
 	    module.exports = {
 	        /**
@@ -29490,12 +29784,12 @@
 
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var curve = __webpack_require__(62);
+	    var curve = __webpack_require__(63);
 
 	    module.exports = {
 	        /**
@@ -29535,12 +29829,12 @@
 
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var normalizeRadian = __webpack_require__(69).normalizeRadian;
+	    var normalizeRadian = __webpack_require__(70).normalizeRadian;
 	    var PI2 = Math.PI * 2;
 
 	    module.exports = {
@@ -29601,7 +29895,7 @@
 
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports) {
 
 	
@@ -29619,7 +29913,7 @@
 
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	
@@ -29646,7 +29940,7 @@
 
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports) {
 
 	
@@ -29669,13 +29963,13 @@
 
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var CMD = __webpack_require__(61).CMD;
-	    var vec2 = __webpack_require__(29);
+	    var CMD = __webpack_require__(62).CMD;
+	    var vec2 = __webpack_require__(30);
 	    var v2ApplyTransform = vec2.applyTransform;
 
 	    var points = [[], [], []];
@@ -29770,7 +30064,7 @@
 
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	
@@ -29801,7 +30095,7 @@
 
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -29811,11 +30105,11 @@
 
 
 
-	    var Displayable = __webpack_require__(58);
-	    var BoundingRect = __webpack_require__(28);
-	    var zrUtil = __webpack_require__(17);
+	    var Displayable = __webpack_require__(59);
+	    var BoundingRect = __webpack_require__(29);
+	    var zrUtil = __webpack_require__(18);
 
-	    var LRU = __webpack_require__(75);
+	    var LRU = __webpack_require__(76);
 	    var globalImageCache = new LRU(50);
 	    /**
 	     * @alias zrender/graphic/Image
@@ -29962,7 +30256,7 @@
 
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports) {
 
 	// Simple LRU cache use doubly linked list
@@ -30137,7 +30431,7 @@
 
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30151,9 +30445,9 @@
 
 
 
-	    var Displayable = __webpack_require__(58);
-	    var zrUtil = __webpack_require__(17);
-	    var textContain = __webpack_require__(27);
+	    var Displayable = __webpack_require__(59);
+	    var zrUtil = __webpack_require__(18);
+	    var textContain = __webpack_require__(28);
 
 	    /**
 	     * @alias zrender/graphic/Text
@@ -30268,7 +30562,7 @@
 
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30279,7 +30573,7 @@
 
 
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 
 	        type: 'circle',
 
@@ -30305,7 +30599,7 @@
 
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30315,7 +30609,7 @@
 
 
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 
 	        type: 'sector',
 
@@ -30371,7 +30665,7 @@
 
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30380,7 +30674,7 @@
 	 */
 
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 
 	        type: 'ring',
 
@@ -30405,7 +30699,7 @@
 
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30414,9 +30708,9 @@
 	 */
 
 
-	    var polyHelper = __webpack_require__(81);
+	    var polyHelper = __webpack_require__(82);
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 	        
 	        type: 'polygon',
 
@@ -30435,13 +30729,13 @@
 
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var smoothSpline = __webpack_require__(82);
-	    var smoothBezier = __webpack_require__(83);
+	    var smoothSpline = __webpack_require__(83);
+	    var smoothBezier = __webpack_require__(84);
 
 	    module.exports = {
 	        buildPath: function (ctx, shape, closePath) {
@@ -30482,7 +30776,7 @@
 
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30493,7 +30787,7 @@
 	 *         errorrik (errorrik@gmail.com)
 	 */
 
-	    var vec2 = __webpack_require__(29);
+	    var vec2 = __webpack_require__(30);
 
 	    /**
 	     * @inner
@@ -30558,7 +30852,7 @@
 
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30570,7 +30864,7 @@
 	 */
 
 
-	    var vec2 = __webpack_require__(29);
+	    var vec2 = __webpack_require__(30);
 	    var v2Min = vec2.min;
 	    var v2Max = vec2.max;
 	    var v2Scale = vec2.scale;
@@ -30665,7 +30959,7 @@
 
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30673,9 +30967,9 @@
 	 */
 
 
-	    var polyHelper = __webpack_require__(81);
+	    var polyHelper = __webpack_require__(82);
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 	        
 	        type: 'polyline',
 
@@ -30700,7 +30994,7 @@
 
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30709,9 +31003,9 @@
 	 */
 
 
-	    var roundRectHelper = __webpack_require__(86);
+	    var roundRectHelper = __webpack_require__(87);
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 
 	        type: 'rect',
 
@@ -30748,7 +31042,7 @@
 
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports) {
 
 	
@@ -30843,7 +31137,7 @@
 
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -30851,7 +31145,7 @@
 	 * @module zrender/graphic/shape/Line
 	 */
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 
 	        type: 'line',
 
@@ -30908,7 +31202,7 @@
 
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30918,8 +31212,8 @@
 	 */
 
 
-	    var curveTool = __webpack_require__(62);
-	    var vec2 = __webpack_require__(29);
+	    var curveTool = __webpack_require__(63);
+	    var vec2 = __webpack_require__(30);
 	    var quadraticSubdivide = curveTool.quadraticSubdivide;
 	    var cubicSubdivide = curveTool.cubicSubdivide;
 	    var quadraticAt = curveTool.quadraticAt;
@@ -30945,7 +31239,7 @@
 	            ];
 	        }
 	    }
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 
 	        type: 'bezier-curve',
 
@@ -31049,7 +31343,7 @@
 
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -31058,7 +31352,7 @@
 	 */
 	 
 
-	    module.exports = __webpack_require__(57).extend({
+	    module.exports = __webpack_require__(58).extend({
 
 	        type: 'arc',
 
@@ -31103,13 +31397,13 @@
 
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CompoundPath to improve performance
 
 
-	    var Path = __webpack_require__(57);
+	    var Path = __webpack_require__(58);
 	    module.exports = Path.extend({
 
 	        type: 'compound',
@@ -31162,15 +31456,15 @@
 
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
-	    var Gradient = __webpack_require__(73);
+	    var Gradient = __webpack_require__(74);
 
 	    /**
 	     * x, y, x2, y2 are all percent from 0 to 1
@@ -31210,15 +31504,15 @@
 
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
-	    var Gradient = __webpack_require__(73);
+	    var Gradient = __webpack_require__(74);
 
 	    /**
 	     * x, y, r are all percent from 0 to 1
@@ -31255,7 +31549,7 @@
 
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -31269,18 +31563,18 @@
 	 */
 	// Global defines
 
-	    var guid = __webpack_require__(44);
-	    var env = __webpack_require__(94);
+	    var guid = __webpack_require__(45);
+	    var env = __webpack_require__(95);
 
-	    var Handler = __webpack_require__(95);
-	    var Storage = __webpack_require__(97);
-	    var Animation = __webpack_require__(99);
-	    var HandlerProxy = __webpack_require__(102);
+	    var Handler = __webpack_require__(96);
+	    var Storage = __webpack_require__(98);
+	    var Animation = __webpack_require__(100);
+	    var HandlerProxy = __webpack_require__(103);
 
 	    var useVML = !env.canvasSupported;
 
 	    var painterCtors = {
-	        canvas: __webpack_require__(104)
+	        canvas: __webpack_require__(105)
 	    };
 
 	    var instances = {};    // ZRender实例map索引
@@ -31679,7 +31973,7 @@
 
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports) {
 
 	/**
@@ -31800,7 +32094,7 @@
 
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31813,10 +32107,10 @@
 	 */
 
 
-	    var util = __webpack_require__(17);
-	    var Draggable = __webpack_require__(96);
+	    var util = __webpack_require__(18);
+	    var Draggable = __webpack_require__(97);
 
-	    var Eventful = __webpack_require__(45);
+	    var Eventful = __webpack_require__(46);
 
 	    function makeEventPacket(eveType, target, event) {
 	        return {
@@ -32100,7 +32394,7 @@
 
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports) {
 
 	// TODO Draggable for group
@@ -32188,7 +32482,7 @@
 
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32201,14 +32495,14 @@
 	 */
 
 
-	    var util = __webpack_require__(17);
-	    var env = __webpack_require__(94);
+	    var util = __webpack_require__(18);
+	    var env = __webpack_require__(95);
 
-	    var Group = __webpack_require__(42);
+	    var Group = __webpack_require__(43);
 
 	    // Use timsort because in most case elements are partially sorted
 	    // https://jsfiddle.net/pissang/jr4x7mdm/8/
-	    var timsort = __webpack_require__(98);
+	    var timsort = __webpack_require__(99);
 
 	    function shapeCompareFunc(a, b) {
 	        if (a.zlevel === b.zlevel) {
@@ -32462,7 +32756,7 @@
 
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports) {
 
 	// https://github.com/mziccard/node-timsort
@@ -33143,7 +33437,7 @@
 
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33158,12 +33452,12 @@
 	// https://developer.apple.com/videos/wwdc2014/#236
 
 
-	    var util = __webpack_require__(17);
-	    var Dispatcher = __webpack_require__(100).Dispatcher;
+	    var util = __webpack_require__(18);
+	    var Dispatcher = __webpack_require__(101).Dispatcher;
 
-	    var requestAnimationFrame = __webpack_require__(101);
+	    var requestAnimationFrame = __webpack_require__(102);
 
-	    var Animator = __webpack_require__(48);
+	    var Animator = __webpack_require__(49);
 	    /**
 	     * @typedef {Object} IZRenderStage
 	     * @property {Function} update
@@ -33400,7 +33694,7 @@
 
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33411,8 +33705,8 @@
 	 */
 
 
-	    var Eventful = __webpack_require__(45);
-	    var env = __webpack_require__(94);
+	    var Eventful = __webpack_require__(46);
+	    var env = __webpack_require__(95);
 
 	    var isDomLevel2 = (typeof window !== 'undefined') && !!window.addEventListener;
 
@@ -33548,7 +33842,7 @@
 
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports) {
 
 	
@@ -33565,16 +33859,16 @@
 
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var eventTool = __webpack_require__(100);
-	    var zrUtil = __webpack_require__(17);
-	    var Eventful = __webpack_require__(45);
-	    var env = __webpack_require__(94);
-	    var GestureMgr = __webpack_require__(103);
+	    var eventTool = __webpack_require__(101);
+	    var zrUtil = __webpack_require__(18);
+	    var Eventful = __webpack_require__(46);
+	    var env = __webpack_require__(95);
+	    var GestureMgr = __webpack_require__(104);
 
 	    var addEventListener = eventTool.addEventListener;
 	    var removeEventListener = eventTool.removeEventListener;
@@ -33840,7 +34134,7 @@
 
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33849,7 +34143,7 @@
 	 */
 
 
-	    var eventUtil = __webpack_require__(100);
+	    var eventUtil = __webpack_require__(101);
 
 	    var GestureMgr = function () {
 
@@ -33966,7 +34260,7 @@
 
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33979,15 +34273,15 @@
 	 */
 	 
 
-	    var config = __webpack_require__(53);
-	    var util = __webpack_require__(17);
-	    var log = __webpack_require__(52);
-	    var BoundingRect = __webpack_require__(28);
-	    var timsort = __webpack_require__(98);
+	    var config = __webpack_require__(54);
+	    var util = __webpack_require__(18);
+	    var log = __webpack_require__(53);
+	    var BoundingRect = __webpack_require__(29);
+	    var timsort = __webpack_require__(99);
 
-	    var Layer = __webpack_require__(105);
+	    var Layer = __webpack_require__(106);
 
-	    var requestAnimationFrame = __webpack_require__(101);
+	    var requestAnimationFrame = __webpack_require__(102);
 
 	    // PENDIGN
 	    // Layer exceeds MAX_PROGRESSIVE_LAYER_NUMBER may have some problem when flush directly second time.
@@ -34995,7 +35289,7 @@
 	                path.brush(ctx);
 	            }
 
-	            var ImageShape = __webpack_require__(74);
+	            var ImageShape = __webpack_require__(75);
 	            var imgShape = new ImageShape({
 	                id: id,
 	                style: {
@@ -35036,7 +35330,7 @@
 
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35045,10 +35339,10 @@
 	 */
 
 
-	    var util = __webpack_require__(17);
-	    var config = __webpack_require__(53);
-	    var Style = __webpack_require__(59);
-	    var Pattern = __webpack_require__(71);
+	    var util = __webpack_require__(18);
+	    var config = __webpack_require__(54);
+	    var Style = __webpack_require__(60);
+	    var Pattern = __webpack_require__(72);
 
 	    function returnFalse() {
 	        return false;
@@ -35271,13 +35565,13 @@
 
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var graphic = __webpack_require__(55);
-	    var zrUtil = __webpack_require__(17);
+	    var graphic = __webpack_require__(56);
+	    var zrUtil = __webpack_require__(18);
 	    var PI = Math.PI;
 	    /**
 	     * @param {module:echarts/ExtensionAPI} api
@@ -35374,11 +35668,11 @@
 
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var Gradient = __webpack_require__(73);
+	    var Gradient = __webpack_require__(74);
 	    module.exports = function (seriesType, styleType, ecModel) {
 	        function encodeColor(seriesModel) {
 	            var colorAccessPath = [styleType, 'normal', 'color'];
@@ -35415,14 +35709,14 @@
 
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Compatitable with 2.0
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var compatStyle = __webpack_require__(109);
+	    var zrUtil = __webpack_require__(18);
+	    var compatStyle = __webpack_require__(110);
 
 	    function get(opt, path) {
 	        path = path.split(',');
@@ -35525,12 +35819,12 @@
 
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    var POSSIBLE_STYLES = [
 	        'areaStyle', 'lineStyle', 'nodeStyle', 'linkStyle',
@@ -35606,42 +35900,42 @@
 
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var echarts = __webpack_require__(15);
+	    var zrUtil = __webpack_require__(18);
+	    var echarts = __webpack_require__(16);
 
-	    __webpack_require__(111);
-	    __webpack_require__(116);
+	    __webpack_require__(112);
+	    __webpack_require__(117);
 
 	    echarts.registerVisualCoding('chart', zrUtil.curry(
-	        __webpack_require__(122), 'line', 'circle', 'line'
+	        __webpack_require__(123), 'line', 'circle', 'line'
 	    ));
 	    echarts.registerLayout(zrUtil.curry(
-	        __webpack_require__(123), 'line'
+	        __webpack_require__(124), 'line'
 	    ));
 
 	    // Down sample after filter
 	    echarts.registerProcessor('statistic', zrUtil.curry(
-	        __webpack_require__(124), 'line'
+	        __webpack_require__(125), 'line'
 	    ));
 
 	    // In case developer forget to include grid component
-	    __webpack_require__(125);
+	    __webpack_require__(126);
 
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var createListFromArray = __webpack_require__(112);
-	    var SeriesModel = __webpack_require__(40);
+	    var createListFromArray = __webpack_require__(113);
+	    var SeriesModel = __webpack_require__(41);
 
 	    module.exports = SeriesModel.extend({
 
@@ -35712,17 +36006,17 @@
 
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var List = __webpack_require__(113);
-	    var completeDimensions = __webpack_require__(115);
-	    var zrUtil = __webpack_require__(17);
-	    var modelUtil = __webpack_require__(18);
-	    var CoordinateSystem = __webpack_require__(38);
+	    var List = __webpack_require__(114);
+	    var completeDimensions = __webpack_require__(116);
+	    var zrUtil = __webpack_require__(18);
+	    var modelUtil = __webpack_require__(19);
+	    var CoordinateSystem = __webpack_require__(39);
 	    var getDataItemValue = modelUtil.getDataItemValue;
 	    var converDataValue = modelUtil.converDataValue;
 
@@ -35946,7 +36240,7 @@
 
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -35971,11 +36265,11 @@
 	        'time': Array
 	    };
 
-	    var Model = __webpack_require__(21);
-	    var DataDiffer = __webpack_require__(114);
+	    var Model = __webpack_require__(22);
+	    var DataDiffer = __webpack_require__(115);
 
-	    var zrUtil = __webpack_require__(17);
-	    var modelUtil = __webpack_require__(18);
+	    var zrUtil = __webpack_require__(18);
+	    var modelUtil = __webpack_require__(19);
 	    var isObject = zrUtil.isObject;
 
 	    var IMMUTABLE_PROPERTIES = [
@@ -37012,7 +37306,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37137,7 +37431,7 @@
 
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37145,7 +37439,7 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    /**
 	     * Complete the dimensions array guessed from the data structure.
@@ -37207,21 +37501,21 @@
 
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var SymbolDraw = __webpack_require__(117);
-	    var Symbol = __webpack_require__(118);
-	    var lineAnimationDiff = __webpack_require__(120);
-	    var graphic = __webpack_require__(55);
+	    var zrUtil = __webpack_require__(18);
+	    var SymbolDraw = __webpack_require__(118);
+	    var Symbol = __webpack_require__(119);
+	    var lineAnimationDiff = __webpack_require__(121);
+	    var graphic = __webpack_require__(56);
 
-	    var polyHelper = __webpack_require__(121);
+	    var polyHelper = __webpack_require__(122);
 
-	    var ChartView = __webpack_require__(54);
+	    var ChartView = __webpack_require__(55);
 
 	    function isPointsSame(points1, points2) {
 	        if (points1.length !== points2.length) {
@@ -37761,7 +38055,7 @@
 
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37769,8 +38063,8 @@
 	 */
 
 
-	    var graphic = __webpack_require__(55);
-	    var Symbol = __webpack_require__(118);
+	    var graphic = __webpack_require__(56);
+	    var Symbol = __webpack_require__(119);
 
 	    /**
 	     * @constructor
@@ -37877,7 +38171,7 @@
 
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37885,10 +38179,10 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var symbolUtil = __webpack_require__(119);
-	    var graphic = __webpack_require__(55);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var symbolUtil = __webpack_require__(120);
+	    var graphic = __webpack_require__(56);
+	    var numberUtil = __webpack_require__(21);
 
 	    function normalizeSymbolSize(symbolSize) {
 	        if (!zrUtil.isArray(symbolSize)) {
@@ -38143,15 +38437,15 @@
 
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// Symbol factory
 
 
-	    var graphic = __webpack_require__(55);
-	    var BoundingRect = __webpack_require__(28);
+	    var graphic = __webpack_require__(56);
+	    var BoundingRect = __webpack_require__(29);
 
 	    /**
 	     * Triangle shape
@@ -38501,7 +38795,7 @@
 
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports) {
 
 	
@@ -38715,14 +39009,14 @@
 
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Poly path support NaN point
 
 
-	    var Path = __webpack_require__(57);
-	    var vec2 = __webpack_require__(29);
+	    var Path = __webpack_require__(58);
+	    var vec2 = __webpack_require__(30);
 
 	    var vec2Min = vec2.min;
 	    var vec2Max = vec2.max;
@@ -38970,7 +39264,7 @@
 
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports) {
 
 	
@@ -39019,7 +39313,7 @@
 
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports) {
 
 	
@@ -39049,7 +39343,7 @@
 
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports) {
 
 	
@@ -39132,21 +39426,21 @@
 
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var graphic = __webpack_require__(55);
-	    var zrUtil = __webpack_require__(17);
+	    var graphic = __webpack_require__(56);
+	    var zrUtil = __webpack_require__(18);
 
-	    __webpack_require__(126);
+	    __webpack_require__(127);
 
-	    __webpack_require__(143);
+	    __webpack_require__(144);
 
 	    // Grid view
-	    __webpack_require__(15).extendComponentView({
+	    __webpack_require__(16).extendComponentView({
 
 	        type: 'grid',
 
@@ -39166,7 +39460,7 @@
 
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39176,12 +39470,12 @@
 	 */
 	var factory = exports;
 
-	    var layout = __webpack_require__(34);
-	    var axisHelper = __webpack_require__(127);
+	    var layout = __webpack_require__(35);
+	    var axisHelper = __webpack_require__(128);
 
-	    var zrUtil = __webpack_require__(17);
-	    var Cartesian2D = __webpack_require__(133);
-	    var Axis2D = __webpack_require__(135);
+	    var zrUtil = __webpack_require__(18);
+	    var Cartesian2D = __webpack_require__(134);
+	    var Axis2D = __webpack_require__(136);
 
 	    var each = zrUtil.each;
 
@@ -39189,7 +39483,7 @@
 	    var niceScaleExtent = axisHelper.niceScaleExtent;
 
 	    // 依赖 GridModel, AxisModel 做预处理
-	    __webpack_require__(138);
+	    __webpack_require__(139);
 
 	    /**
 	     * Check if the axis is used in the specified grid
@@ -39584,26 +39878,26 @@
 	    // For deciding which dimensions to use when creating list data
 	    Grid.dimensions = Cartesian2D.prototype.dimensions;
 
-	    __webpack_require__(38).register('cartesian2d', Grid);
+	    __webpack_require__(39).register('cartesian2d', Grid);
 
 	    module.exports = Grid;
 
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var OrdinalScale = __webpack_require__(128);
-	    var IntervalScale = __webpack_require__(130);
-	    __webpack_require__(131);
+	    var OrdinalScale = __webpack_require__(129);
+	    var IntervalScale = __webpack_require__(131);
 	    __webpack_require__(132);
-	    var Scale = __webpack_require__(129);
+	    __webpack_require__(133);
+	    var Scale = __webpack_require__(130);
 
-	    var numberUtil = __webpack_require__(20);
-	    var zrUtil = __webpack_require__(17);
-	    var textContain = __webpack_require__(27);
+	    var numberUtil = __webpack_require__(21);
+	    var zrUtil = __webpack_require__(18);
+	    var textContain = __webpack_require__(28);
 	    var axisHelper = {};
 
 	    /**
@@ -39797,7 +40091,7 @@
 
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39810,8 +40104,8 @@
 	// FIXME only one data
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var Scale = __webpack_require__(129);
+	    var zrUtil = __webpack_require__(18);
+	    var Scale = __webpack_require__(130);
 
 	    var scaleProto = Scale.prototype;
 
@@ -39897,7 +40191,7 @@
 
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39906,7 +40200,7 @@
 	 */
 
 
-	    var clazzUtil = __webpack_require__(22);
+	    var clazzUtil = __webpack_require__(23);
 
 	    function Scale() {
 	        /**
@@ -40025,7 +40319,7 @@
 
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40035,9 +40329,9 @@
 
 
 
-	    var numberUtil = __webpack_require__(20);
-	    var formatUtil = __webpack_require__(19);
-	    var Scale = __webpack_require__(129);
+	    var numberUtil = __webpack_require__(21);
+	    var formatUtil = __webpack_require__(20);
+	    var Scale = __webpack_require__(130);
 
 	    var mathFloor = Math.floor;
 	    var mathCeil = Math.ceil;
@@ -40232,7 +40526,7 @@
 
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40242,11 +40536,11 @@
 
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var numberUtil = __webpack_require__(20);
-	    var formatUtil = __webpack_require__(19);
+	    var zrUtil = __webpack_require__(18);
+	    var numberUtil = __webpack_require__(21);
+	    var formatUtil = __webpack_require__(20);
 
-	    var IntervalScale = __webpack_require__(130);
+	    var IntervalScale = __webpack_require__(131);
 
 	    var intervalScaleProto = IntervalScale.prototype;
 
@@ -40395,7 +40689,7 @@
 
 
 /***/ },
-/* 132 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40404,12 +40698,12 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var Scale = __webpack_require__(129);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var Scale = __webpack_require__(130);
+	    var numberUtil = __webpack_require__(21);
 
 	    // Use some method of IntervalScale
-	    var IntervalScale = __webpack_require__(130);
+	    var IntervalScale = __webpack_require__(131);
 
 	    var scaleProto = Scale.prototype;
 	    var intervalScaleProto = IntervalScale.prototype;
@@ -40530,14 +40824,14 @@
 
 
 /***/ },
-/* 133 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var Cartesian = __webpack_require__(134);
+	    var zrUtil = __webpack_require__(18);
+	    var Cartesian = __webpack_require__(135);
 
 	    function Cartesian2D(name) {
 
@@ -40646,7 +40940,7 @@
 
 
 /***/ },
-/* 134 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40657,7 +40951,7 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    function dimAxisMapper(dim) {
 	        return this._axes[dim];
@@ -40764,14 +41058,14 @@
 
 
 /***/ },
-/* 135 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var Axis = __webpack_require__(136);
-	    var axisLabelInterval = __webpack_require__(137);
+	    var zrUtil = __webpack_require__(18);
+	    var Axis = __webpack_require__(137);
+	    var axisLabelInterval = __webpack_require__(138);
 
 	    /**
 	     * Extend axis 2d
@@ -40886,14 +41180,14 @@
 
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var numberUtil = __webpack_require__(20);
+	    var numberUtil = __webpack_require__(21);
 	    var linearMap = numberUtil.linearMap;
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    function fixExtentWithBands(extent, nTick) {
 	        var size = extent[1] - extent[0];
@@ -41123,7 +41417,7 @@
 
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41133,8 +41427,8 @@
 
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var axisHelper = __webpack_require__(127);
+	    var zrUtil = __webpack_require__(18);
+	    var axisHelper = __webpack_require__(128);
 
 	    module.exports = function (axis) {
 	        var axisModel = axis.model;
@@ -41154,7 +41448,7 @@
 
 
 /***/ },
-/* 138 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41162,8 +41456,8 @@
 	// 所以这里也要被 Cartesian2D 依赖
 
 
-	    __webpack_require__(139);
-	    var ComponentModel = __webpack_require__(32);
+	    __webpack_require__(140);
+	    var ComponentModel = __webpack_require__(33);
 
 	    module.exports = ComponentModel.extend({
 
@@ -41198,15 +41492,15 @@
 
 
 /***/ },
-/* 139 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var ComponentModel = __webpack_require__(32);
-	    var zrUtil = __webpack_require__(17);
-	    var axisModelCreator = __webpack_require__(140);
+	    var ComponentModel = __webpack_require__(33);
+	    var zrUtil = __webpack_require__(18);
+	    var axisModelCreator = __webpack_require__(141);
 
 	    var AxisModel = ComponentModel.extend({
 
@@ -41294,7 +41588,7 @@
 	        return option.type || (option.data ? 'category' : 'value');
 	    }
 
-	    zrUtil.merge(AxisModel.prototype, __webpack_require__(142));
+	    zrUtil.merge(AxisModel.prototype, __webpack_require__(143));
 
 	    var extraOption = {
 	        gridIndex: 0
@@ -41307,15 +41601,15 @@
 
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var axisDefault = __webpack_require__(141);
-	    var zrUtil = __webpack_require__(17);
-	    var ComponentModel = __webpack_require__(32);
-	    var layout = __webpack_require__(34);
+	    var axisDefault = __webpack_require__(142);
+	    var zrUtil = __webpack_require__(18);
+	    var ComponentModel = __webpack_require__(33);
+	    var layout = __webpack_require__(35);
 
 	    // FIXME axisType is fixed ?
 	    var AXIS_TYPES = ['value', 'category', 'time', 'log'];
@@ -41370,12 +41664,12 @@
 
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    var defaultOption = {
 	        show: true,
@@ -41503,13 +41797,13 @@
 
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var axisHelper = __webpack_require__(127);
+	    var zrUtil = __webpack_require__(18);
+	    var axisHelper = __webpack_require__(128);
 
 	    function getName(obj) {
 	        if (zrUtil.isObject(obj) && obj.value != null) {
@@ -41547,27 +41841,27 @@
 
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// TODO boundaryGap
 
 
-	    __webpack_require__(139);
+	    __webpack_require__(140);
 
-	    __webpack_require__(144);
+	    __webpack_require__(145);
 
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var graphic = __webpack_require__(55);
-	    var AxisBuilder = __webpack_require__(145);
+	    var zrUtil = __webpack_require__(18);
+	    var graphic = __webpack_require__(56);
+	    var AxisBuilder = __webpack_require__(146);
 	    var ifIgnoreOnTick = AxisBuilder.ifIgnoreOnTick;
 	    var getInterval = AxisBuilder.getInterval;
 
@@ -41578,7 +41872,7 @@
 	        'splitLine', 'splitArea'
 	    ];
 
-	    var AxisView = __webpack_require__(15).extendComponentView({
+	    var AxisView = __webpack_require__(16).extendComponentView({
 
 	        type: 'axis',
 
@@ -41839,15 +42133,15 @@
 
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var graphic = __webpack_require__(55);
-	    var Model = __webpack_require__(21);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var graphic = __webpack_require__(56);
+	    var Model = __webpack_require__(22);
+	    var numberUtil = __webpack_require__(21);
 	    var remRadian = numberUtil.remRadian;
 	    var isRadianAroundZero = numberUtil.isRadianAroundZero;
 
@@ -42307,20 +42601,20 @@
 
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
-	    __webpack_require__(126);
+	    __webpack_require__(127);
 
-	    __webpack_require__(147);
 	    __webpack_require__(148);
+	    __webpack_require__(149);
 
-	    var barLayoutGrid = __webpack_require__(150);
-	    var echarts = __webpack_require__(15);
+	    var barLayoutGrid = __webpack_require__(151);
+	    var echarts = __webpack_require__(16);
 
 	    echarts.registerLayout(zrUtil.curry(barLayoutGrid, 'bar'));
 	    // Visual coding for legend
@@ -42332,18 +42626,18 @@
 	    });
 
 	    // In case developer forget to include grid component
-	    __webpack_require__(125);
+	    __webpack_require__(126);
 
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var SeriesModel = __webpack_require__(40);
-	    var createListFromArray = __webpack_require__(112);
+	    var SeriesModel = __webpack_require__(41);
+	    var createListFromArray = __webpack_require__(113);
 
 	    module.exports = SeriesModel.extend({
 
@@ -42416,16 +42710,16 @@
 
 
 /***/ },
-/* 148 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var graphic = __webpack_require__(55);
+	    var zrUtil = __webpack_require__(18);
+	    var graphic = __webpack_require__(56);
 
-	    zrUtil.extend(__webpack_require__(21).prototype, __webpack_require__(149));
+	    zrUtil.extend(__webpack_require__(22).prototype, __webpack_require__(150));
 
 	    function fixLayoutWithLineWidth(layout, lineWidth) {
 	        var signX = layout.width > 0 ? 1 : -1;
@@ -42438,7 +42732,7 @@
 	        layout.height -= signY * lineWidth;
 	    }
 
-	    module.exports = __webpack_require__(15).extendChartView({
+	    module.exports = __webpack_require__(16).extendChartView({
 
 	        type: 'bar',
 
@@ -42635,12 +42929,12 @@
 
 
 /***/ },
-/* 149 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	    module.exports = {
-	        getBarItemStyle: __webpack_require__(24)(
+	        getBarItemStyle: __webpack_require__(25)(
 	            [
 	                ['fill', 'color'],
 	                ['stroke', 'borderColor'],
@@ -42659,14 +42953,14 @@
 
 
 /***/ },
-/* 150 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var numberUtil = __webpack_require__(21);
 	    var parsePercent = numberUtil.parsePercent;
 
 	    function getSeriesStackId(seriesModel) {
@@ -42880,18 +43174,18 @@
 
 
 /***/ },
-/* 151 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var echarts = __webpack_require__(15);
+	    var zrUtil = __webpack_require__(18);
+	    var echarts = __webpack_require__(16);
 
-	    __webpack_require__(152);
-	    __webpack_require__(154);
+	    __webpack_require__(153);
+	    __webpack_require__(155);
 
-	    __webpack_require__(155)('pie', [{
+	    __webpack_require__(156)('pie', [{
 	        type: 'pieToggleSelect',
 	        event: 'pieselectchanged',
 	        method: 'toggleSelected'
@@ -42906,33 +43200,33 @@
 	    }]);
 
 	    echarts.registerVisualCoding(
-	        'chart',  zrUtil.curry(__webpack_require__(156), 'pie')
+	        'chart',  zrUtil.curry(__webpack_require__(157), 'pie')
 	    );
 
 	    echarts.registerLayout(zrUtil.curry(
-	        __webpack_require__(157), 'pie'
+	        __webpack_require__(158), 'pie'
 	    ));
 
 	    echarts.registerProcessor(
-	        'filter', zrUtil.curry(__webpack_require__(159), 'pie')
+	        'filter', zrUtil.curry(__webpack_require__(160), 'pie')
 	    );
 
 
 /***/ },
-/* 152 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var List = __webpack_require__(113);
-	    var zrUtil = __webpack_require__(17);
-	    var modelUtil = __webpack_require__(18);
-	    var completeDimensions = __webpack_require__(115);
+	    var List = __webpack_require__(114);
+	    var zrUtil = __webpack_require__(18);
+	    var modelUtil = __webpack_require__(19);
+	    var completeDimensions = __webpack_require__(116);
 
-	    var dataSelectableMixin = __webpack_require__(153);
+	    var dataSelectableMixin = __webpack_require__(154);
 
-	    var PieSeries = __webpack_require__(15).extendSeriesModel({
+	    var PieSeries = __webpack_require__(16).extendSeriesModel({
 
 	        type: 'series.pie',
 
@@ -43069,7 +43363,7 @@
 
 
 /***/ },
-/* 153 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43081,7 +43375,7 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    module.exports = {
 
@@ -43140,13 +43434,13 @@
 
 
 /***/ },
-/* 154 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var graphic = __webpack_require__(55);
-	    var zrUtil = __webpack_require__(17);
+	    var graphic = __webpack_require__(56);
+	    var zrUtil = __webpack_require__(18);
 
 	    /**
 	     * @param {module:echarts/model/Series} seriesModel
@@ -43407,7 +43701,7 @@
 
 
 	    // Pie view
-	    var Pie = __webpack_require__(54).extend({
+	    var Pie = __webpack_require__(55).extend({
 
 	        type: 'pie',
 
@@ -43507,12 +43801,12 @@
 
 
 /***/ },
-/* 155 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    var echarts = __webpack_require__(15);
-	    var zrUtil = __webpack_require__(17);
+	    var echarts = __webpack_require__(16);
+	    var zrUtil = __webpack_require__(18);
 	    module.exports = function (seriesType, actionInfos) {
 	        zrUtil.each(actionInfos, function (actionInfo) {
 	            actionInfo.update = 'updateView';
@@ -43547,7 +43841,7 @@
 
 
 /***/ },
-/* 156 */
+/* 157 */
 /***/ function(module, exports) {
 
 	// Pick color from palette for each data item
@@ -43586,17 +43880,17 @@
 
 
 /***/ },
-/* 157 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TODO minAngle
 
 
 
-	    var numberUtil = __webpack_require__(20);
+	    var numberUtil = __webpack_require__(21);
 	    var parsePercent = numberUtil.parsePercent;
-	    var labelLayout = __webpack_require__(158);
-	    var zrUtil = __webpack_require__(17);
+	    var labelLayout = __webpack_require__(159);
+	    var zrUtil = __webpack_require__(18);
 
 	    var PI2 = Math.PI * 2;
 	    var RADIAN = Math.PI / 180;
@@ -43714,14 +44008,14 @@
 
 
 /***/ },
-/* 158 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// FIXME emphasis label position is not same with normal label position
 
 
-	    var textContain = __webpack_require__(27);
+	    var textContain = __webpack_require__(28);
 
 	    function adjustSingleSide(list, cx, cy, r, dir, viewWidth, viewHeight) {
 	        list.sort(function (a, b) {
@@ -43945,7 +44239,7 @@
 
 
 /***/ },
-/* 159 */
+/* 160 */
 /***/ function(module, exports) {
 
 	
@@ -43973,37 +44267,37 @@
 
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var echarts = __webpack_require__(15);
+	    var zrUtil = __webpack_require__(18);
+	    var echarts = __webpack_require__(16);
 
-	    __webpack_require__(161);
 	    __webpack_require__(162);
+	    __webpack_require__(163);
 
 	    echarts.registerVisualCoding('chart', zrUtil.curry(
-	        __webpack_require__(122), 'scatter', 'circle', null
+	        __webpack_require__(123), 'scatter', 'circle', null
 	    ));
 	    echarts.registerLayout(zrUtil.curry(
-	        __webpack_require__(123), 'scatter'
+	        __webpack_require__(124), 'scatter'
 	    ));
 
 	    // In case developer forget to include grid component
-	    __webpack_require__(125);
+	    __webpack_require__(126);
 
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var createListFromArray = __webpack_require__(112);
-	    var SeriesModel = __webpack_require__(40);
+	    var createListFromArray = __webpack_require__(113);
+	    var SeriesModel = __webpack_require__(41);
 
 	    module.exports = SeriesModel.extend({
 
@@ -44062,15 +44356,15 @@
 
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var SymbolDraw = __webpack_require__(117);
-	    var LargeSymbolDraw = __webpack_require__(163);
+	    var SymbolDraw = __webpack_require__(118);
+	    var LargeSymbolDraw = __webpack_require__(164);
 
-	    __webpack_require__(15).extendChartView({
+	    __webpack_require__(16).extendChartView({
 
 	        type: 'scatter',
 
@@ -44109,14 +44403,14 @@
 
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var graphic = __webpack_require__(55);
-	    var symbolUtil = __webpack_require__(119);
-	    var zrUtil = __webpack_require__(17);
+	    var graphic = __webpack_require__(56);
+	    var symbolUtil = __webpack_require__(120);
+	    var zrUtil = __webpack_require__(18);
 
 	    var LargeSymbolPath = graphic.extendShape({
 	        shape: {
@@ -44223,15 +44517,15 @@
 
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// FIXME Better way to pack data in graphic element
 
 
-	    __webpack_require__(165);
-
 	    __webpack_require__(166);
+
+	    __webpack_require__(167);
 
 	    // Show tip action
 	    /**
@@ -44242,7 +44536,7 @@
 	     * @property {number} [x]
 	     * @property {number} [y]
 	     */
-	    __webpack_require__(15).registerAction(
+	    __webpack_require__(16).registerAction(
 	        {
 	            type: 'showTip',
 	            event: 'showTip',
@@ -44252,7 +44546,7 @@
 	        function () {}
 	    );
 	    // Hide tip action
-	    __webpack_require__(15).registerAction(
+	    __webpack_require__(16).registerAction(
 	        {
 	            type: 'hideTip',
 	            event: 'hideTip',
@@ -44264,12 +44558,12 @@
 
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    __webpack_require__(15).extendComponentModel({
+	    __webpack_require__(16).extendComponentModel({
 
 	        type: 'tooltip',
 
@@ -44373,18 +44667,18 @@
 
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var TooltipContent = __webpack_require__(167);
-	    var graphic = __webpack_require__(55);
-	    var zrUtil = __webpack_require__(17);
-	    var formatUtil = __webpack_require__(19);
-	    var numberUtil = __webpack_require__(20);
+	    var TooltipContent = __webpack_require__(168);
+	    var graphic = __webpack_require__(56);
+	    var zrUtil = __webpack_require__(18);
+	    var formatUtil = __webpack_require__(20);
+	    var numberUtil = __webpack_require__(21);
 	    var parsePercent = numberUtil.parsePercent;
-	    var env = __webpack_require__(94);
+	    var env = __webpack_require__(95);
 
 	    function dataEqual(a, b) {
 	        if (!a || !b) {
@@ -44538,7 +44832,7 @@
 	            || trigger === 'item');
 	    }
 
-	    __webpack_require__(15).extendComponentView({
+	    __webpack_require__(16).extendComponentView({
 
 	        type: 'tooltip',
 
@@ -45522,7 +45816,7 @@
 
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45530,10 +45824,10 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var zrColor = __webpack_require__(51);
-	    var eventUtil = __webpack_require__(100);
-	    var formatUtil = __webpack_require__(19);
+	    var zrUtil = __webpack_require__(18);
+	    var zrColor = __webpack_require__(52);
+	    var eventUtil = __webpack_require__(101);
+	    var formatUtil = __webpack_require__(20);
 	    var each = zrUtil.each;
 	    var toCamelCase = formatUtil.toCamelCase;
 
@@ -45787,7 +46081,7 @@
 
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45795,26 +46089,26 @@
 	 */
 
 
-	    __webpack_require__(169);
 	    __webpack_require__(170);
 	    __webpack_require__(171);
+	    __webpack_require__(172);
 
-	    var echarts = __webpack_require__(15);
+	    var echarts = __webpack_require__(16);
 	    // Series Filter
-	    echarts.registerProcessor('filter', __webpack_require__(173));
+	    echarts.registerProcessor('filter', __webpack_require__(174));
 
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var Model = __webpack_require__(21);
+	    var zrUtil = __webpack_require__(18);
+	    var Model = __webpack_require__(22);
 
-	    var LegendModel = __webpack_require__(15).extendComponentModel({
+	    var LegendModel = __webpack_require__(16).extendComponentModel({
 
 	        type: 'legend',
 
@@ -45989,7 +46283,7 @@
 
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -45997,8 +46291,8 @@
 	 */
 
 
-	    var echarts = __webpack_require__(15);
-	    var zrUtil = __webpack_require__(17);
+	    var echarts = __webpack_require__(16);
+	    var zrUtil = __webpack_require__(18);
 
 	    function legendSelectActionHandler(methodName, payload, ecModel) {
 	        var selectedMap = {};
@@ -46076,15 +46370,15 @@
 
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var symbolCreator = __webpack_require__(119);
-	    var graphic = __webpack_require__(55);
-	    var listComponentHelper = __webpack_require__(172);
+	    var zrUtil = __webpack_require__(18);
+	    var symbolCreator = __webpack_require__(120);
+	    var graphic = __webpack_require__(56);
+	    var listComponentHelper = __webpack_require__(173);
 
 	    var curry = zrUtil.curry;
 
@@ -46113,7 +46407,7 @@
 	        });
 	    }
 
-	    module.exports = __webpack_require__(15).extendComponentView({
+	    module.exports = __webpack_require__(16).extendComponentView({
 
 	        type: 'legend',
 
@@ -46311,14 +46605,14 @@
 
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 	    // List layout
-	    var layout = __webpack_require__(34);
-	    var formatUtil = __webpack_require__(19);
-	    var graphic = __webpack_require__(55);
+	    var layout = __webpack_require__(35);
+	    var formatUtil = __webpack_require__(20);
+	    var graphic = __webpack_require__(56);
 
 	    function positionGroup(group, model, api) {
 	        layout.positionGroup(
@@ -46381,7 +46675,7 @@
 
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports) {
 
 	
@@ -46405,15 +46699,15 @@
 
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var echarts = __webpack_require__(15);
-	    var graphic = __webpack_require__(55);
-	    var layout = __webpack_require__(34);
+	    var echarts = __webpack_require__(16);
+	    var graphic = __webpack_require__(56);
+	    var layout = __webpack_require__(35);
 
 	    // Model
 	    echarts.extendComponentModel({
@@ -46597,29 +46891,29 @@
 
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// HINT Markpoint can't be used too much
 
 
-	    __webpack_require__(176);
 	    __webpack_require__(177);
+	    __webpack_require__(178);
 
-	    __webpack_require__(15).registerPreprocessor(function (opt) {
+	    __webpack_require__(16).registerPreprocessor(function (opt) {
 	        // Make sure markPoint component is enabled
 	        opt.markPoint = opt.markPoint || {};
 	    });
 
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var modelUtil = __webpack_require__(18);
-	    var zrUtil = __webpack_require__(17);
+	    var modelUtil = __webpack_require__(19);
+	    var zrUtil = __webpack_require__(18);
 
 	    function fillLabel(opt) {
 	        modelUtil.defaultEmphasis(
@@ -46627,7 +46921,7 @@
 	            modelUtil.LABEL_OPTIONS
 	        );
 	    }
-	    var MarkPointModel = __webpack_require__(15).extendComponentModel({
+	    var MarkPointModel = __webpack_require__(16).extendComponentModel({
 
 	        type: 'markPoint',
 
@@ -46705,23 +46999,23 @@
 
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var SymbolDraw = __webpack_require__(117);
-	    var zrUtil = __webpack_require__(17);
-	    var formatUtil = __webpack_require__(19);
-	    var modelUtil = __webpack_require__(18);
-	    var numberUtil = __webpack_require__(20);
+	    var SymbolDraw = __webpack_require__(118);
+	    var zrUtil = __webpack_require__(18);
+	    var formatUtil = __webpack_require__(20);
+	    var modelUtil = __webpack_require__(19);
+	    var numberUtil = __webpack_require__(21);
 
 	    var addCommas = formatUtil.addCommas;
 	    var encodeHTML = formatUtil.encodeHTML;
 
-	    var List = __webpack_require__(113);
+	    var List = __webpack_require__(114);
 
-	    var markerHelper = __webpack_require__(178);
+	    var markerHelper = __webpack_require__(179);
 
 	    function updateMarkerLayout(mpData, seriesModel, api) {
 	        var coordSys = seriesModel.coordinateSystem;
@@ -46776,7 +47070,7 @@
 
 	    zrUtil.defaults(markPointFormatMixin, modelUtil.dataFormatMixin);
 
-	    __webpack_require__(15).extendComponentView({
+	    __webpack_require__(16).extendComponentView({
 
 	        type: 'markPoint',
 
@@ -46910,13 +47204,13 @@
 
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var numberUtil = __webpack_require__(21);
 	    var indexOf = zrUtil.indexOf;
 
 	    function getPrecision(data, valueAxisDim, dataIndex) {
@@ -47089,28 +47383,28 @@
 
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    __webpack_require__(180);
 	    __webpack_require__(181);
+	    __webpack_require__(182);
 
-	    __webpack_require__(15).registerPreprocessor(function (opt) {
+	    __webpack_require__(16).registerPreprocessor(function (opt) {
 	        // Make sure markLine component is enabled
 	        opt.markLine = opt.markLine || {};
 	    });
 
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var modelUtil = __webpack_require__(18);
-	    var zrUtil = __webpack_require__(17);
+	    var modelUtil = __webpack_require__(19);
+	    var zrUtil = __webpack_require__(18);
 
 	    function fillLabel(opt) {
 	        modelUtil.defaultEmphasis(
@@ -47119,7 +47413,7 @@
 	        );
 	    }
 
-	    var MarkLineModel = __webpack_require__(15).extendComponentModel({
+	    var MarkLineModel = __webpack_require__(16).extendComponentModel({
 
 	        type: 'markLine',
 
@@ -47212,23 +47506,23 @@
 
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var List = __webpack_require__(113);
-	    var formatUtil = __webpack_require__(19);
-	    var modelUtil = __webpack_require__(18);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var List = __webpack_require__(114);
+	    var formatUtil = __webpack_require__(20);
+	    var modelUtil = __webpack_require__(19);
+	    var numberUtil = __webpack_require__(21);
 
 	    var addCommas = formatUtil.addCommas;
 	    var encodeHTML = formatUtil.encodeHTML;
 
-	    var markerHelper = __webpack_require__(178);
+	    var markerHelper = __webpack_require__(179);
 
-	    var LineDraw = __webpack_require__(182);
+	    var LineDraw = __webpack_require__(183);
 
 	    var markLineTransform = function (seriesModel, coordSys, mlModel, item) {
 	        var data = seriesModel.getData();
@@ -47361,7 +47655,7 @@
 
 	    zrUtil.defaults(markLineFormatMixin, modelUtil.dataFormatMixin);
 
-	    __webpack_require__(15).extendComponentView({
+	    __webpack_require__(16).extendComponentView({
 
 	        type: 'markLine',
 
@@ -47570,7 +47864,7 @@
 
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47578,8 +47872,8 @@
 	 */
 
 
-	    var graphic = __webpack_require__(55);
-	    var LineGroup = __webpack_require__(183);
+	    var graphic = __webpack_require__(56);
+	    var LineGroup = __webpack_require__(184);
 
 	    /**
 	     * @alias module:echarts/component/marker/LineDraw
@@ -47640,7 +47934,7 @@
 
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -47648,13 +47942,13 @@
 	 */
 
 
-	    var symbolUtil = __webpack_require__(119);
-	    var vector = __webpack_require__(29);
+	    var symbolUtil = __webpack_require__(120);
+	    var vector = __webpack_require__(30);
 	    // var matrix = require('zrender/lib/core/matrix');
-	    var LinePath = __webpack_require__(184);
-	    var graphic = __webpack_require__(55);
-	    var zrUtil = __webpack_require__(17);
-	    var numberUtil = __webpack_require__(20);
+	    var LinePath = __webpack_require__(185);
+	    var graphic = __webpack_require__(56);
+	    var zrUtil = __webpack_require__(18);
+	    var numberUtil = __webpack_require__(21);
 
 	    var SYMBOL_CATEGORIES = ['fromSymbol', 'toSymbol'];
 	    function makeSymbolTypeKey(symbolCategory) {
@@ -47976,15 +48270,15 @@
 
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Line path for bezier and straight line draw
 	 */
 
-	    var graphic = __webpack_require__(55);
-	    var vec2 = __webpack_require__(29);
+	    var graphic = __webpack_require__(56);
+	    var vec2 = __webpack_require__(30);
 
 	    var straightLineProto = graphic.Line.prototype;
 	    var bezierCurveProto = graphic.BezierCurve.prototype;
@@ -48033,7 +48327,7 @@
 
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48041,32 +48335,19 @@
 	 */
 
 
-	    __webpack_require__(186);
-
 	    __webpack_require__(187);
-	    __webpack_require__(189);
 
+	    __webpack_require__(188);
 	    __webpack_require__(190);
+
 	    __webpack_require__(191);
+	    __webpack_require__(192);
 
-	    __webpack_require__(194);
 	    __webpack_require__(195);
+	    __webpack_require__(196);
 
-	    __webpack_require__(199);
 	    __webpack_require__(200);
-
-
-
-/***/ },
-/* 186 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-
-	    __webpack_require__(32).registerSubTypeDefaulter('dataZoom', function (option) {
-	        // Default 'slider' when no type specified.
-	        return 'slider';
-	    });
+	    __webpack_require__(201);
 
 
 
@@ -48074,16 +48355,29 @@
 /* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
+
+	    __webpack_require__(33).registerSubTypeDefaulter('dataZoom', function (option) {
+	        // Default 'slider' when no type specified.
+	        return 'slider';
+	    });
+
+
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * @file Data zoom model
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var env = __webpack_require__(94);
-	    var echarts = __webpack_require__(15);
-	    var modelUtil = __webpack_require__(18);
-	    var AxisProxy = __webpack_require__(188);
+	    var zrUtil = __webpack_require__(18);
+	    var env = __webpack_require__(95);
+	    var echarts = __webpack_require__(16);
+	    var modelUtil = __webpack_require__(19);
+	    var AxisProxy = __webpack_require__(189);
 	    var each = zrUtil.each;
 	    var eachAxisDim = modelUtil.eachAxisDim;
 
@@ -48509,7 +48803,7 @@
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48517,8 +48811,8 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var numberUtil = __webpack_require__(20);
+	    var zrUtil = __webpack_require__(18);
+	    var numberUtil = __webpack_require__(21);
 	    var each = zrUtil.each;
 	    var asc = numberUtil.asc;
 
@@ -48869,12 +49163,12 @@
 
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var ComponentView = __webpack_require__(41);
+	    var ComponentView = __webpack_require__(42);
 
 	    module.exports = ComponentView.extend({
 
@@ -48958,7 +49252,7 @@
 
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -48966,7 +49260,7 @@
 	 */
 
 
-	    var DataZoomModel = __webpack_require__(187);
+	    var DataZoomModel = __webpack_require__(188);
 
 	    var SliderZoomModel = DataZoomModel.extend({
 
@@ -49020,20 +49314,20 @@
 
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var zrUtil = __webpack_require__(17);
-	    var graphic = __webpack_require__(55);
-	    var throttle = __webpack_require__(192);
-	    var DataZoomView = __webpack_require__(189);
+	    var zrUtil = __webpack_require__(18);
+	    var graphic = __webpack_require__(56);
+	    var throttle = __webpack_require__(193);
+	    var DataZoomView = __webpack_require__(190);
 	    var Rect = graphic.Rect;
-	    var numberUtil = __webpack_require__(20);
+	    var numberUtil = __webpack_require__(21);
 	    var linearMap = numberUtil.linearMap;
-	    var layout = __webpack_require__(34);
-	    var sliderMove = __webpack_require__(193);
+	    var layout = __webpack_require__(35);
+	    var sliderMove = __webpack_require__(194);
 	    var asc = numberUtil.asc;
 	    var bind = zrUtil.bind;
 	    var mathRound = Math.round;
@@ -49725,7 +50019,7 @@
 
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports) {
 
 	
@@ -49925,7 +50219,7 @@
 
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports) {
 
 	
@@ -49984,7 +50278,7 @@
 
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -49992,7 +50286,7 @@
 	 */
 
 
-	    module.exports = __webpack_require__(187).extend({
+	    module.exports = __webpack_require__(188).extend({
 
 	        type: 'dataZoom.inside',
 
@@ -50006,15 +50300,15 @@
 
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var DataZoomView = __webpack_require__(189);
-	    var zrUtil = __webpack_require__(17);
-	    var sliderMove = __webpack_require__(193);
-	    var roams = __webpack_require__(196);
+	    var DataZoomView = __webpack_require__(190);
+	    var zrUtil = __webpack_require__(18);
+	    var sliderMove = __webpack_require__(194);
+	    var roams = __webpack_require__(197);
 	    var bind = zrUtil.bind;
 
 	    var InsideZoomView = DataZoomView.extend({
@@ -50205,7 +50499,7 @@
 
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50219,9 +50513,9 @@
 	    // pan or zoom, only dispatch one action for those data zoom
 	    // components.
 
-	    var zrUtil = __webpack_require__(17);
-	    var RoamController = __webpack_require__(197);
-	    var throttle = __webpack_require__(192);
+	    var zrUtil = __webpack_require__(18);
+	    var RoamController = __webpack_require__(198);
+	    var throttle = __webpack_require__(193);
 	    var curry = zrUtil.curry;
 
 	    var ATTR = '\0_ec_dataZoom_roams';
@@ -50402,7 +50696,7 @@
 
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50411,10 +50705,10 @@
 
 
 
-	    var Eventful = __webpack_require__(45);
-	    var zrUtil = __webpack_require__(17);
-	    var eventTool = __webpack_require__(100);
-	    var interactionMutex = __webpack_require__(198);
+	    var Eventful = __webpack_require__(46);
+	    var zrUtil = __webpack_require__(18);
+	    var eventTool = __webpack_require__(101);
+	    var interactionMutex = __webpack_require__(199);
 
 	    function mousedown(e) {
 	        if (e.target && e.target.draggable) {
@@ -50628,7 +50922,7 @@
 
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports) {
 
 	
@@ -50658,7 +50952,7 @@
 
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50666,7 +50960,7 @@
 	 */
 
 
-	    var echarts = __webpack_require__(15);
+	    var echarts = __webpack_require__(16);
 
 	    echarts.registerProcessor('filter', function (ecModel, api) {
 
@@ -50720,7 +51014,7 @@
 
 
 /***/ },
-/* 200 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -50728,9 +51022,9 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var modelUtil = __webpack_require__(18);
-	    var echarts = __webpack_require__(15);
+	    var zrUtil = __webpack_require__(18);
+	    var modelUtil = __webpack_require__(19);
+	    var echarts = __webpack_require__(16);
 
 
 	    echarts.registerAction('dataZoom', function (payload, ecModel) {
@@ -50768,31 +51062,31 @@
 
 
 /***/ },
-/* 201 */
-/***/ function(module, exports, __webpack_require__) {
-
-	
-
-	    __webpack_require__(202);
-	    __webpack_require__(204);
-
-	    __webpack_require__(206);
-	    __webpack_require__(207);
-	    __webpack_require__(208);
-	    __webpack_require__(209);
-	    __webpack_require__(215);
-
-
-/***/ },
 /* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var featureManager = __webpack_require__(203);
-	    var zrUtil = __webpack_require__(17);
+	    __webpack_require__(203);
+	    __webpack_require__(205);
 
-	    var ToolboxModel = __webpack_require__(15).extendComponentModel({
+	    __webpack_require__(207);
+	    __webpack_require__(208);
+	    __webpack_require__(209);
+	    __webpack_require__(210);
+	    __webpack_require__(216);
+
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+
+	    var featureManager = __webpack_require__(204);
+	    var zrUtil = __webpack_require__(18);
+
+	    var ToolboxModel = __webpack_require__(16).extendComponentModel({
 
 	        type: 'toolbox',
 
@@ -50860,7 +51154,7 @@
 
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -50880,20 +51174,20 @@
 
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {
 
-	    var featureManager = __webpack_require__(203);
-	    var zrUtil = __webpack_require__(17);
-	    var graphic = __webpack_require__(55);
-	    var Model = __webpack_require__(21);
-	    var DataDiffer = __webpack_require__(114);
-	    var listComponentHelper = __webpack_require__(172);
-	    var textContain = __webpack_require__(27);
+	    var featureManager = __webpack_require__(204);
+	    var zrUtil = __webpack_require__(18);
+	    var graphic = __webpack_require__(56);
+	    var Model = __webpack_require__(22);
+	    var DataDiffer = __webpack_require__(115);
+	    var listComponentHelper = __webpack_require__(173);
+	    var textContain = __webpack_require__(28);
 
-	    module.exports = __webpack_require__(15).extendComponentView({
+	    module.exports = __webpack_require__(16).extendComponentView({
 
 	        type: 'toolbox',
 
@@ -51116,10 +51410,10 @@
 	    }
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(205)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(206)))
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -51305,12 +51599,12 @@
 
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	    var env = __webpack_require__(94);
+	    var env = __webpack_require__(95);
 
 	    function SaveAsImage (model) {
 	        this.model = model;
@@ -51369,7 +51663,7 @@
 	        }
 	    };
 
-	    __webpack_require__(203).register(
+	    __webpack_require__(204).register(
 	        'saveAsImage', SaveAsImage
 	    );
 
@@ -51377,13 +51671,13 @@
 
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 
 	    function MagicType(model) {
 	        this.model = model;
@@ -51536,7 +51830,7 @@
 	        });
 	    };
 
-	    var echarts = __webpack_require__(15);
+	    var echarts = __webpack_require__(16);
 	    echarts.registerAction({
 	        type: 'changeMagicType',
 	        event: 'magicTypeChanged',
@@ -51545,13 +51839,13 @@
 	        ecModel.mergeOption(payload.newOption);
 	    });
 
-	    __webpack_require__(203).register('magicType', MagicType);
+	    __webpack_require__(204).register('magicType', MagicType);
 
 	    module.exports = MagicType;
 
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -51560,8 +51854,8 @@
 
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var eventTool = __webpack_require__(100);
+	    var zrUtil = __webpack_require__(18);
+	    var eventTool = __webpack_require__(101);
 
 
 	    var BLOCK_SPLITER = new Array(60).join('-');
@@ -51998,9 +52292,9 @@
 	        });
 	    }
 
-	    __webpack_require__(203).register('dataView', DataView);
+	    __webpack_require__(204).register('dataView', DataView);
 
-	    __webpack_require__(15).registerAction({
+	    __webpack_require__(16).registerAction({
 	        type: 'changeDataView',
 	        event: 'dataViewChanged',
 	        update: 'prepareAndUpdate'
@@ -52034,25 +52328,25 @@
 
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 
-	    var zrUtil = __webpack_require__(17);
-	    var numberUtil = __webpack_require__(20);
-	    var SelectController = __webpack_require__(210);
-	    var BoundingRect = __webpack_require__(28);
-	    var Group = __webpack_require__(42);
-	    var history = __webpack_require__(211);
-	    var interactionMutex = __webpack_require__(198);
+	    var zrUtil = __webpack_require__(18);
+	    var numberUtil = __webpack_require__(21);
+	    var SelectController = __webpack_require__(211);
+	    var BoundingRect = __webpack_require__(29);
+	    var Group = __webpack_require__(43);
+	    var history = __webpack_require__(212);
+	    var interactionMutex = __webpack_require__(199);
 
 	    var each = zrUtil.each;
 	    var asc = numberUtil.asc;
 
 	    // Use dataZoomSelect
-	    __webpack_require__(212);
+	    __webpack_require__(213);
 
 	    // Spectial component id start with \0ec\0, see echarts/model/Global.js~hasInnerId
 	    var DATA_ZOOM_ID_BASE = '\0_ec_\0toolbox-dataZoom_';
@@ -52311,11 +52605,11 @@
 	    }
 
 
-	    __webpack_require__(203).register('dataZoom', DataZoom);
+	    __webpack_require__(204).register('dataZoom', DataZoom);
 
 
 	    // Create special dataZoom option for select
-	    __webpack_require__(15).registerPreprocessor(function (option) {
+	    __webpack_require__(16).registerPreprocessor(function (option) {
 	        if (!option) {
 	            return;
 	        }
@@ -52382,7 +52676,7 @@
 
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52393,9 +52687,9 @@
 
 
 
-	    var Eventful = __webpack_require__(45);
-	    var zrUtil = __webpack_require__(17);
-	    var graphic = __webpack_require__(55);
+	    var Eventful = __webpack_require__(46);
+	    var zrUtil = __webpack_require__(18);
+	    var graphic = __webpack_require__(56);
 	    var bind = zrUtil.bind;
 	    var each = zrUtil.each;
 	    var mathMin = Math.min;
@@ -52760,7 +53054,7 @@
 
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52768,7 +53062,7 @@
 	 */
 
 
-	    var zrUtil = __webpack_require__(17);
+	    var zrUtil = __webpack_require__(18);
 	    var each = zrUtil.each;
 
 	    var ATTR = '\0_ec_hist_store';
@@ -52874,7 +53168,7 @@
 
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -52882,35 +53176,16 @@
 	 */
 
 
-	    __webpack_require__(186);
-
 	    __webpack_require__(187);
-	    __webpack_require__(189);
 
-	    __webpack_require__(213);
+	    __webpack_require__(188);
+	    __webpack_require__(190);
+
 	    __webpack_require__(214);
+	    __webpack_require__(215);
 
-	    __webpack_require__(199);
 	    __webpack_require__(200);
-
-
-
-/***/ },
-/* 213 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * @file Data zoom model
-	 */
-
-
-	    var DataZoomModel = __webpack_require__(187);
-
-	    module.exports = DataZoomModel.extend({
-
-	        type: 'dataZoom.select'
-
-	    });
+	    __webpack_require__(201);
 
 
 
@@ -52918,9 +53193,14 @@
 /* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+	/**
+	 * @file Data zoom model
+	 */
 
-	    module.exports = __webpack_require__(189).extend({
+
+	    var DataZoomModel = __webpack_require__(188);
+
+	    module.exports = DataZoomModel.extend({
 
 	        type: 'dataZoom.select'
 
@@ -52932,10 +53212,24 @@
 /* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
+
+	    module.exports = __webpack_require__(190).extend({
+
+	        type: 'dataZoom.select'
+
+	    });
+
+
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 
-	    var history = __webpack_require__(211);
+	    var history = __webpack_require__(212);
 
 	    function Restore(model) {
 	        this.model = model;
@@ -52959,10 +53253,10 @@
 	    };
 
 
-	    __webpack_require__(203).register('restore', Restore);
+	    __webpack_require__(204).register('restore', Restore);
 
 
-	    __webpack_require__(15).registerAction(
+	    __webpack_require__(16).registerAction(
 	        {type: 'restore', event: 'restore', update: 'prepareAndUpdate'},
 	        function (payload, ecModel) {
 	            ecModel.resetOption('recreate');
@@ -52973,37 +53267,37 @@
 
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
-	    __webpack_require__(217);
-	    __webpack_require__(93).registerPainter('vml', __webpack_require__(219));
+	    __webpack_require__(218);
+	    __webpack_require__(94).registerPainter('vml', __webpack_require__(220));
 
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// http://www.w3.org/TR/NOTE-VML
 	// TODO Use proxy like svg instead of overwrite brush methods
 
 
-	if (!__webpack_require__(94).canvasSupported) {
-	    var vec2 = __webpack_require__(29);
-	    var BoundingRect = __webpack_require__(28);
-	    var CMD = __webpack_require__(61).CMD;
-	    var colorTool = __webpack_require__(51);
-	    var textContain = __webpack_require__(27);
-	    var RectText = __webpack_require__(60);
-	    var Displayable = __webpack_require__(58);
-	    var ZImage = __webpack_require__(74);
-	    var Text = __webpack_require__(76);
-	    var Path = __webpack_require__(57);
+	if (!__webpack_require__(95).canvasSupported) {
+	    var vec2 = __webpack_require__(30);
+	    var BoundingRect = __webpack_require__(29);
+	    var CMD = __webpack_require__(62).CMD;
+	    var colorTool = __webpack_require__(52);
+	    var textContain = __webpack_require__(28);
+	    var RectText = __webpack_require__(61);
+	    var Displayable = __webpack_require__(59);
+	    var ZImage = __webpack_require__(75);
+	    var Text = __webpack_require__(77);
+	    var Path = __webpack_require__(58);
 
-	    var Gradient = __webpack_require__(73);
+	    var Gradient = __webpack_require__(74);
 
-	    var vmlCore = __webpack_require__(218);
+	    var vmlCore = __webpack_require__(219);
 
 	    var round = Math.round;
 	    var sqrt = Math.sqrt;
@@ -54040,12 +54334,12 @@
 
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
 
-	if (!__webpack_require__(94).canvasSupported) {
+	if (!__webpack_require__(95).canvasSupported) {
 	    var urn = 'urn:schemas-microsoft-com:vml';
 
 	    var createNode;
@@ -54093,7 +54387,7 @@
 
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -54104,8 +54398,8 @@
 
 
 
-	    var zrLog = __webpack_require__(52);
-	    var vmlCore = __webpack_require__(218);
+	    var zrLog = __webpack_require__(53);
+	    var vmlCore = __webpack_require__(219);
 
 	    function parseInt10(val) {
 	        return parseInt(val, 10);
@@ -54292,7 +54586,7 @@
 
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54315,9 +54609,9 @@
 
 	//riot tags需要的依赖
 	if (window.navigator.userAgent.match(/Cordova/)) {
-	    var api = __webpack_require__(11);
-	} else {
 	    var api = __webpack_require__(12);
+	} else {
+	    var api = __webpack_require__(13);
 	}
 	_riotSeedFlux2.default.config.refresh = true;
 	//2.0版本需求接口
@@ -54649,7 +54943,7 @@
 	});
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports) {
 
 	"use strict";

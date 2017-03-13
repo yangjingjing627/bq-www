@@ -8,8 +8,13 @@ if (window.navigator.userAgent.match(/Cordova/)) {
     var api = require('./API-online');
     store.online = true;
 } else {
+  if (utils.isAndroid()) {   // Android 环境
+    var api = require('./API-android');
+    store.online = true;
+  } else {    // pc 端
     var api = require('./API-server');
     store.online = false;
+  }
 }
 flux.config.refresh = true;
 
@@ -17,12 +22,6 @@ var httpBasic = function(type) {
     return function(opts) {
         var url = opts.url;
         if (url.match(/\//)) {
-            //	        if(store.online && url.indexOf('pos')>-1){
-            //		        	var storeUrl = url.split('pos');
-            //		        if(window.baseUrl || utils.iposHeader()){
-            //		        		url = (window.baseUrl?window.baseUrl:utils.iposHeader()) + storeUrl[1];
-            //		        }
-            //      		}
             $[type]({
                 url: url,
                 data: opts.params,
@@ -35,7 +34,8 @@ var httpBasic = function(type) {
                     if (res.code === 1) {
                         opts.success && opts.success(res);
                     } else if (res.code === 10005) {
-                        location.href = "#login";
+                        // location.href = "#login";
+                        utils.androidBridge(api.goLogin)
                     } else if (res.code === 10002) {
                         utils.toast('您没有该权限');
                     } else if (res.msg) {
@@ -43,9 +43,6 @@ var httpBasic = function(type) {
                     }
                 },
                 error: function(err) {
-	                	// if(err.responseJSON.code ===10005 ){
-	                	// 	location.replace("#login");
-	                	// }
 	                    opts.error && opts.error(err);
                 },
                 complete: function(XMLHttpRequest, status) {
@@ -60,28 +57,51 @@ var httpBasic = function(type) {
                 }
             });
         } else {
-            var parts = url.split('.')
-            window[parts[0]][parts[1]](
-                function(res) {
-                    if (opts.complete) {
-                        opts.complete && opts.complete(res);
-                        return;
-                    }
-                    if (res.code == 1) {
-                        opts.success && opts.success(res);
-                    } else if (res.code === 10005) {
-                        location.href = "#login";
-                    } else if (res.code === 10002) {
-                        utils.toast('您没有该权限');
-                    } else if (res.msg) {
-                        utils.toast(res.msg);
-                    }
-                },
-                function(err) {
-                    opts.error && opts.error(err);
-                },
-                opts.params
-            );
+          console.log(url +"----------http-get-------" + JSON.stringify(opts.params));
+          utils.androidBridge(
+            url,
+            opts.params,
+            function(res) {
+              res = JSON.parse(res)
+              console.log("----------------------res---" + JSON.stringify(res));
+              if (opts.complete) {
+                opts.complete && opts.complete(res);
+                return;
+              }
+              if (res.code == 1) {
+                  opts.success && opts.success(res);
+              } else if (res.code === 10005) {
+                  // location.href = "#login";
+                  utils.androidBridge(api.goLogin)
+
+              } else if (res.code === 10002) {
+                  utils.toast('您没有该权限');
+              } else if (res.msg) {
+                  utils.toast(res.msg);
+              }
+          })
+            // var parts = url.split('.')
+            // window[parts[0]][parts[1]](
+            //     function(res) {
+            //         if (opts.complete) {
+            //             opts.complete && opts.complete(res);
+            //             return;
+            //         }
+            //         if (res.code == 1) {
+            //             opts.success && opts.success(res);
+            //         } else if (res.code === 10005) {
+            //             location.href = "#login";
+            //         } else if (res.code === 10002) {
+            //             utils.toast('您没有该权限');
+            //         } else if (res.msg) {
+            //             utils.toast(res.msg);
+            //         }
+            //     },
+            //     function(err) {
+            //         opts.error && opts.error(err);
+            //     },
+            //     opts.params
+            // );
         }
     }
 }

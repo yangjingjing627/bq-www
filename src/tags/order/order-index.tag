@@ -108,7 +108,7 @@
 		self.status = 1;
 
 		histroyOrder(e) {
-			window.location.href = "#/order/history";
+			utils.setTitle("#/order/history", '历史订单')
 		}
 
 		self.orderPrint = function () {
