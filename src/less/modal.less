@@ -1,0 +1,101 @@
+@import 'variables.less';
+/*
+ *  Modal style
+ */
+modal,
+pop {
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    align-self: center;
+    .modal-dialog {
+        width: 500px;
+        /*         margin: auto auto; */
+        background: #fff;
+        background-clip: padding-box;
+        border-radius: 6px;
+        outline: 0;
+        height: auto;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }
+    .modal-title {
+        color: @my-color;
+        width: 100%;
+        .font-size(18);
+        text-align: center;
+        .height(38);
+        .line-height(38);
+        border-bottom: 1px solid #ccc;
+    }
+    .modal-container {
+        padding: 0.185185rem 0.37037rem;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        /*         // padding-bottom: 52px; */
+    }
+    .modal-container * {
+        white-space: pre-line;
+        word-wrap: break-word;
+    }
+    .modal-submit {
+        position: relative;
+        text-align: center;
+        padding: 0.277778rem;
+        margin: 0 0.37037rem;
+        height: 1.481481rem;
+    }
+    .modal-submit a.btn {
+        margin: 0 0.185185rem;
+        width: 3.240741rem;
+        height: 0.925926rem;
+        line-height: 0.925926rem;
+        color: @my-color;
+        font-size: 0.333333rem;
+        // font-weight: bold;
+        border-radius: @radius;
+        display: inline-block;
+    }
+    .modal-submit a.btn.btn-default {
+        background: #fff;
+        border: 1px solid #ccc;
+        color: @my-color;
+    }
+    .modal-submit a.btn.small {
+        width: 1.388889rem;
+    }
+    .modal-submit a.three {
+        .width(118);
+    }
+    .modal-submit a.btn.btn-primary {
+        background: @red;
+    }
+    .about-close {
+        .width(40);
+        .height(40);
+        position: absolute;
+        top: 0;
+        right: 0;
+        .font-size(20);
+        background: url("../imgs/wclose.png") no-repeat center;
+        background-size: 22px;
+    }
+}
